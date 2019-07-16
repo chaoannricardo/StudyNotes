@@ -1,1 +1,7 @@
-# 1907Intern
+# 1907 Intern
+
+## C#
+
+## Python
+
+## Deep Learning
