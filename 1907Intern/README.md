@@ -1,9 +1,7 @@
 # 1907 Intern
 
-## C#
-* Mental Assessment Webform
-    * MentalAssessmentWebform.aspx
-    * MentalAssessmentWebform.aspx.cs
+## Project
+Includes documents related to the project coordinated within internship period.
 
 ## Python
 
