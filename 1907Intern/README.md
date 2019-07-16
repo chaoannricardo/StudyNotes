@@ -1,8 +1,8 @@
 # 1907 Intern
 
 ## Project
-Includes documents related to the project coordinated within internship period.
+Includes codes related to the project coordinated within internship period.
 
-## Python
+## PythonNotebook
+Includes codes written by daily learning and testing within internship period.
 
-## Deep Learning
