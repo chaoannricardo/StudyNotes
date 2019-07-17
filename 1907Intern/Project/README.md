@@ -1,14 +1,14 @@
 # Project
 
 ## Python
-* Project_dccel_log.ipynb 2019/07/03
-* Project_VPA13C_OAD_Data_ipynb.7z 2019/07/03
-* FTPDataPreparation.ipynb 2019/07/05
-* LogExtract.ipynb 2019/07/10
+* 190703Project_dccel_log.ipynb
+* 190703Project_VPA13C_OAD_Data_ipynb.7z
+* 190705FTPDataPreparation.ipynb
+* 190710LogExtract.ipynb
 
 
 ## C#
-* Mental Assessment Webform   2019/07/15
+* 190715Mental Assessment Webform
     * MentalAssessmentWebform.aspx
     * MentalAssessmentWebform.aspx.cs
-* LogExtract.cs  2019/07/17
+* 190716LogExtract.cs
