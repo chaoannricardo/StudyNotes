@@ -1,1 +1,1 @@
-# Study Notes of <Deep Learning From Scratch>
+# Study Notes of Deep Learning From Scratch
