@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MentalAssessmentWebform.aspx.cs" Inherits="Pages_Report_Test_RicardoWeb"  validateRequest="False" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MentalAssessmentWebform.aspx.cs" Inherits="Pages_Report_Test_RicardoWeb" ValidateRequest="False" %>
 
 <!DOCTYPE html>
 
@@ -15,6 +15,7 @@
     </style>
 
 
+
 </head>
 <body style="background-color: #f5ffe8">
     <form id="form1" runat="server">
@@ -23,14 +24,10 @@
             <p>
                 <asp:Button ID="Button1" runat="server" Text="填寫完成，送出資料" Height="30px" Width="150px" OnClick="Button1_Click1" />
             </p>
-            
+
             <h3 style="text-align: left;">關懷狀況資料查詢：</h3>
             <h3 style="text-align: left;">查詢日期：&nbsp;&nbsp; 從&nbsp;&nbsp;&nbsp; 
-                <asp:DropDownList ID="DropDownList1" runat="server">
-                    <asp:ListItem>2015</asp:ListItem>
-                    <asp:ListItem>2016</asp:ListItem>
-                    <asp:ListItem Value="2017"></asp:ListItem>
-                    <asp:ListItem Value="2018"></asp:ListItem>
+                <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                     <asp:ListItem Value="2019"></asp:ListItem>
                     <asp:ListItem Value="2020"></asp:ListItem>
                     <asp:ListItem Value="2021"></asp:ListItem>
@@ -92,10 +89,6 @@
                 </asp:DropDownList>
                 日&nbsp;&nbsp;&nbsp; 至&nbsp;&nbsp; 
                 <asp:DropDownList ID="DropDownList4" runat="server">
-                    <asp:ListItem>2015</asp:ListItem>
-                    <asp:ListItem>2016</asp:ListItem>
-                    <asp:ListItem Value="2017"></asp:ListItem>
-                    <asp:ListItem Value="2018"></asp:ListItem>
                     <asp:ListItem Value="2019"></asp:ListItem>
                     <asp:ListItem Value="2020"></asp:ListItem>
                     <asp:ListItem Value="2021"></asp:ListItem>
@@ -162,7 +155,7 @@
                 <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" CssClass="offset-1 justify-content-around table-hover table-borderd " CellPadding="2" CellSpacing="1" Width="100%">
                 </asp:GridView>
             </p>
-            
+
             <h3 style="text-align: left;">目前當班人員列表：
             </h3>
             <p>
@@ -171,11 +164,8 @@
                     <Columns>
 
                         <asp:TemplateField HeaderText="NG">
-                            <EditItemTemplate>
-                                <asp:CheckBox ID="CheckBox1" runat="server"/>
-                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:CheckBox ID="CheckBox1" runat="server" />
+                                <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckChanged" AutoPostBack="true" />
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -237,5 +227,10 @@
             </p>
         </div>
     </form>
+
+
+
+
+
 </body>
 </html>
