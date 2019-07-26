@@ -85,7 +85,7 @@ public partial class Pages_Report_Test_RicardoWeb : System.Web.UI.Page
             }
 
             // 測試用日期
-            //currentDate = "2019-07-12";
+            currentDate = "2019-07-12";
 
             // SELECT data from MySQL database
             string SQL = "SELECT h.MFGday, h.OVERTIME, h.DN, p.WNUM ,h.NAME FROM h_hr_manpower_daily_actual_name h LEFT OUTER JOIN personal_data p ON(h.NAME = p.NAME) WHERE h.MFGday = \"" + currentDate + "\" AND ( h.OVERTIME = \"當班\" OR h.OVERTIME = \"加班\" ) AND (h.DN = \"" + currentShift + "\")";
@@ -140,10 +140,10 @@ public partial class Pages_Report_Test_RicardoWeb : System.Web.UI.Page
             TextBox NG_NOTE = (TextBox)GridView1.Rows[i].FindControl("TextBox1");
             string currentDateForInsert = DateTime.Now.ToString("yyyy-MM-dd");
 
-            //string insertedCommand = "INSERT INTO h_hr_mental_health_assessment VALUES( \"" + currentDateForInsert + "\", \"" + WNUM.Text + "\", \"" + NAME.Text + "\", \"" + OVERTIME.Text + "\" , \"NG\" , \"" + NG_NOTE.Text + "\", \"" + Session["User_Name"] + "\", \"" + Session["W_ID"] + "\", \"" + clicktime + "\")";
+            string insertedCommand = "INSERT INTO h_hr_mental_health_assessment VALUES( \"" + currentDateForInsert + "\", \"" + WNUM.Text + "\", \"" + NAME.Text + "\", \"" + OVERTIME.Text + "\" , \"NG\" , \"" + NG_NOTE.Text + "\", \"" + Session["User_Name"] + "\", \"" + Session["W_ID"] + "\", \"" + clicktime + "\", \"" + DN.Text + "\")";
 
             // ricardo 測試用
-            string insertedCommand = "INSERT INTO h_hr_mental_health_assessment VALUES( \"" + currentDateForInsert + "\", \"" + WNUM.Text + "\", \"" + NAME.Text + "\", \"" + OVERTIME.Text + "\" , \"NG\" , \"" + NG_NOTE.Text + "\", \"" + "開發測試可刪除" + "\", \"" + "開發測試可刪除" + "\", \"" + clicktime + "\", \"" + DN.Text + "\")";
+            //string insertedCommand = "INSERT INTO h_hr_mental_health_assessment VALUES( \"" + currentDateForInsert + "\", \"" + WNUM.Text + "\", \"" + NAME.Text + "\", \"" + OVERTIME.Text + "\" , \"NG\" , \"" + NG_NOTE.Text + "\", \"" + "開發測試可刪除" + "\", \"" + "開發測試可刪除" + "\", \"" + clicktime + "\", \"" + DN.Text + "\")";
 
 
             if (checkBox.Checked == true)
@@ -179,7 +179,7 @@ public partial class Pages_Report_Test_RicardoWeb : System.Web.UI.Page
             else
             {
                 textBox.ReadOnly = true;
-                textBox.Style.Add("background", "#C0C0C0");
+                textBox.Style.Add("background", "#f5ffe8");
             }
 
 
