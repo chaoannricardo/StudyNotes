@@ -1,0 +1,40 @@
+2 寫一支 JAVA程式 Procedure1.java 包含兩個功能
+  a. 輸入一筆電影 放映時間, 電影代號, 廳院 到 playlist 放映表格
+  b. 參考廳院座位表 m_room, 產生(新增)指定場次的電影座次表 到 seats表格
+
+提示
+   a. 先執行 SQL-IMP作業2-0create table.sql scripts 建立相關表格 (playlist, m_room, seats)
+      先暫不用建立客戶資料, 訂購明細 等表格
+
+   b. JAVA程式中 呼叫 JDBC 輸入'2016-12-25 13:00', 1, 'A廳' 到 playlist 表格
+      insert into playlist values ('2016-12-25 13:00', 1, 'A廳');
+
+   c. JAVA程式中 查詢廳院座位表 m_room, 找出指定廳的座位數(row, col)
+
+   d. 寫兩個迴圈 將該場次所有座位新增到 seats 表格 
+      根據座位數 v_row, v_col 產生座位表 寫迴圈 insert 
+      insert into seats values ('2016-12-25 13:00', 1, v_row-v_col組合, '0', NULL);
+ 
+測試輸出指令:
+   1 select * from seats where ...
+   2 select CONVERT(varchar(16), ptime ,121),  ...  from seats
+   3 select CAST(ptime as varchar(16)), ..          from seats ...
+
+ptime            movie       seat_num sold ordid
+---------------- ----------- -------- ---- -----------
+2016-12-25 13:00 1           01-01    0    NULL
+2016-12-25 13:00 1           01-02    0    NULL
+:
+2016-12-25 13:00 1           20-20    0    NULL
+
+--可, 但不佳
+2016-12-25 13:00  1        09- 15   0      NULL
+2016-12-25 13:00  1         9-6     0      NULL
+12 25 2016  1:00 1           03-12    0    NULL
+
+
+   **注意 12-15表 12排15號 須由程式中轉換
+   會自動產生 底下筆數 　ROW * COL 筆
+   insert into seats values ('2016-12-25 13:00', 1, '12-15, '0', NULL);
+      
+ 

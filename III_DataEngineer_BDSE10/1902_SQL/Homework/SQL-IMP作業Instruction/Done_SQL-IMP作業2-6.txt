@@ -1,0 +1,48 @@
+
+4 建立一個 Trigger trig_seats 檔名 trig_seats.sql 包含一個功能
+  當新增一筆 放映時間, 電影代號, 廳院 到放映表格 playlist時
+  參考廳院座位表, 產生(新增)指定場次的電影座次表 到 seats表格
+
+  輸入 insert into playlist values ('2016-12-25 13:00', 1, 'A廳');
+
+  輸出 select * from seats;
+
+提示
+   a 先執行 scripts 建立表格
+   b trigger 程式中 根據廳院之值 參考廳院座位表 m_rooms, 
+     寫一個迴圈 將該場次座位新增到 seats 表格 
+
+   --宣告 放映時間, 電影代號, 廳院 等變數    
+   --先查尋 指定廳院之座位數 row, col
+   --根據座位數 v_row, v_col 產生座位表 寫迴圈 insert 
+     insert into seats values ('2016-12-25 13:00', 1, v_row-v_col組合, '0', NULL);
+
+--程式開始
+
+create TRIGGER trig_seats 
+ON    playlist
+AFTER INSERT
+AS
+BEGIN
+  DECLARE   @v_ptime   varchar(20); 
+  DECLARE   @v_movie   int;
+  DECLARE   @v_roomid  varchar(10);
+
+  --引用新的值從 inserted 表格 ; 無法直接以 inserted.ptime存取
+   
+  SELECT @v_ptime = ptime, @v_movie = movie, @v_roomid =roomid
+  FROM   inserted;
+      
+  --根據 inserted表觸發產生的值,呼叫 作業2-4 之 gen_seats stored procedure
+
+  EXEC gen_seats @v_ptime, @v_movie, @v_roomid;
+
+END;
+    
+--程式結束
+     
+測試輸出指令:
+   0 insert  into playlist values ('2008-12-25 13:00', 1, 'A廳') 
+   1 select * from seats where ...
+
+
