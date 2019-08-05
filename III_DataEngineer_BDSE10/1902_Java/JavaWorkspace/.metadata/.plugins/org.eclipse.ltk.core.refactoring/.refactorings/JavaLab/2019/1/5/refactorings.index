@@ -1,0 +1,19 @@
+1548638392772	Move compilation unit
+1548639885839	Copy compilation units
+1548640683594	Copy compilation unit
+1548733509278	Extract local variable 'iterator'
+1548741315327	Copy compilation unit
+1548813007491	Extract local variable 'iterator'
+1548814334910	Delete element
+1548816908217	Extract local variable 'TestArraysList0'
+1548816933793	Extract local variable 'TestArraysList1'
+1548828071314	Extract local variable 'readlength'
+1548832701074	Extract local variable 'is'
+1548834298241	Extract local variable 'length'
+1548896958809	Copy compilation unit
+1548898081523	Extract local variable 'OutChannel'
+1548898658752	Extract local variable 'inChannel'
+1548918467752	Extract local variable 'newChannel'
+1548918481752	Extract local variable 'newChannel2'
+1548920827866	Extract local variable 'inputStream'
+1548920839397	Extract local variable 'outputStream'

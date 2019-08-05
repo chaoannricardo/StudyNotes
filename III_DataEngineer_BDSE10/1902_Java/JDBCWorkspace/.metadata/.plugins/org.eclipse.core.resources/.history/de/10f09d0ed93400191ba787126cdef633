@@ -1,0 +1,30 @@
+package defaultpackage;
+
+import java.sql.*;
+
+public class Q1 {
+
+	public static void main(String[] args) {
+
+		try (Connection connection = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=JDBCDB",
+				"scott", "tiger");
+				PreparedStatement statement = connection.prepareStatement("select ENAME, EMPNO from EMP");
+		) {
+
+			ResultSet resultset = statement.executeQuery();
+			if (resultset.next()) {
+				System.out.println(
+						"Name is " + resultset.getString("ENAME" + ", and empno is " + resultset.getString("EMPNO")));
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			System.out.println("Finish");
+		}
+
+	}
+
+}

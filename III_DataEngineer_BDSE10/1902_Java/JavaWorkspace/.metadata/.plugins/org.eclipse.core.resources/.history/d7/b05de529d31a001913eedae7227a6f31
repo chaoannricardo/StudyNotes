@@ -1,0 +1,70 @@
+
+public class TestBasic180118 {
+
+	public static void main(String[] args) {
+	
+		
+				System.out.println();
+				System.out.println("18/1/2019");
+				
+				float sammy = 1.23456789f;
+				System.out.println(sammy);
+				
+				
+				//float值的定義需要額外多加一個f
+				System.out.println(77.7777f*55);
+				
+				
+				//印中文字元
+				char sammmy0 = '甯';
+				
+				//布林值判斷
+				int age = 23;
+				boolean isAdult = (age >= 18);
+				System.out.println(sammmy0 + " is a " + isAdult + " adult.");
+				
+				
+				//換行 & ascII 表的特殊小用法
+				char a = '2';
+				int age0 = 17;
+				System.out.println(a + age0);
+				System.out.println(a + "+" + age0);
+				System.out.println("Love \r\n\r\nYou.");
+				
+				System.out.println(age);
+				
+				
+				//晉升及型別轉換
+				int abc = 5;
+				double chd = 7.888;
+				double yy = (abc + chd);
+				
+				int zzz = (int)chd;
+				System.out.println(zzz);
+				
+				
+				//布林值的判斷
+				int c = 15;
+				int b = 30;
+				System.out.println(c != b);  //自動認列為bootlean判別值
+				
+				//條件運算
+				int age1 = 23;
+				System.out.println(age1 > 25 || age1 < 15);
+				System.out.println(age1 > 15 && age1 < 25);
+				
+				//！
+				System.out.println( !(age1 > 20) );
+				
+				//位元位移運算子
+				System.out.println(100 << 4);
+				
+				
+				//遞增遞減運算(++--)
+				++age;
+				System.out.println(age1++);
+				System.out.println(++age1);
+
+	}
+
+}

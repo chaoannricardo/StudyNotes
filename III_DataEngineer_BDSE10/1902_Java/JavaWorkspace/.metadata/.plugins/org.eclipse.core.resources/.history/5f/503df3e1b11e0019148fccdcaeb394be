@@ -1,0 +1,38 @@
+package array;
+
+public class TestArray190123 {
+
+	public static void main(String[] args) {
+		
+		//陣列
+		System.out.println("陣列：第一部分");
+		int[] age = new int[10];
+		age[0] = 234; //陣列的編碼是從0開始
+		age[1] = 456;
+		age[2] = 789;
+		System.out.println(age[0]);
+		System.out.println(age[9]); //若無給定值，則預設陣列值為0
+		//若超出陣列邊界，則程式無法運作
+		
+		
+		//陣列:使用外部資料(Employee190123.java)
+		System.out.println();
+		System.out.println("陣列：第二部分");
+		Employee190123[] emps = new Employee190123[10];
+		emps[0] = new Employee190123();
+		Employee190123 emp2 = emps[0];
+		emp2.name = "在emps裡面";
+		System.out.println(emp2.name);
+  		
+		
+		
+				
+		
+		
+		
+		
+		
+
+	}
+
+}

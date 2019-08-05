@@ -1,0 +1,13 @@
+
+public class Manager extends Employee{
+
+	private long bonus;
+
+	public Manager(long bonus) {
+		super();
+		this.bonus = bonus;
+	}
+
+	
+	
+}

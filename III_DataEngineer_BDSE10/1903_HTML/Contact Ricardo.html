@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message Box</title>
+    <!-- 套用ST1主樣式模板 -->
+    <link rel="stylesheet" href="../Style/ST1.css">
+    <style>
+        .MessageBox0{
+        font-family: Arial;
+        font-size: 18px;
+        font-style: italic;
+        width: 800px;
+        margin: 0px auto;
+        padding: 30px 80px;
+        border-bottom: 1px solid silver;
+        background-color: #FFFFFF;
+        }
+
+        .label0{
+            width: 100px;
+            float: left;
+            padding-bottom: 10px;
+           
+        }
+
+        fieldset{
+            width: 800px;
+            margin: 0px auto;
+            border: 2px solid black;
+            border-radius: 30px;
+        }
+        textarea{
+            resize: none;
+        }
+
+    </style>
+</head>
+
+<body style="background-color:#ffe4ca">
+
+    <form>
+
+
+        <div class="MessageBox0">
+            <!-- 英文標題 -->
+            <h1>Contact Ricardo</h1>
+            <!-- 中文標題 -->
+            <span class="articletitle"></span>
+        </div>
+
+
+        <!-- 姓名輸入框 -->
+        <div class="MessageBox0">
+            <label for="Account" class="label0"> Name </label>
+            <input type="text" id="Account" name="Account">
+
+        </div>
+
+        <!-- 電子郵件輸入框 -->
+        <div class="MessageBox0">
+            <label for="email" class="label0">
+                Your email
+            </label>
+            <input type="textd" id="email" name="Account">
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <!-- 留言 -->
+        <div class="MessageBox0">
+            <label for="Comment" class="label0">
+                Comment
+            </label>
+            <textarea cols="100" rows="20" id="Comment" name="Comment"></textarea>
+        </div>
+
+        <div class="MessageBox0" style="text-align:center">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </div>
+
+        <div class="MessageBox0" style="text-align:center">
+            Still not satisfied with the result?<br>
+            You may also mail Ricardo by <a href="mailto:richiechao95!gmail.com">richiechao95@gmail.com</a>
+        </div>
+
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+
+public class Employee {
+	
+	//類別及物件(P108)
+	int employeeno = 0001;
+	String employeenameString = "李大明";
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

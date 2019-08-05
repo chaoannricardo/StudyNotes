@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomeworkQ2</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <style>
+        .caution {
+            background-color: #fffffF;
+            color: red;
+            font-size: 20px;
+            text-align: center;
+            font-style: italic;
+            font-weight: bold;
+            text-decoration: underline;
+            width: 900px;
+            height: 20px;
+            margin: 0px auto;
+            padding-bottom: 10px;
+            padding-left: 40px;
+            padding-top: 80px;
+            padding-right: 40px;
+        }
+
+
+        fieldset {
+            width: 900px;
+            margin: 15px auto;
+            padding: 15px;
+            border: black 3px solid;
+            border-radius: 30px;
+        }
+
+        .button {
+            height: 40px;
+            width: 100px;
+            font-size: 20px;
+            font-style: italic;
+            border: black 1px solid;
+            margin: 0px auto;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .inputbox {
+            height: 50px;
+            width: 400px;
+            font-size: 20px;
+            margin: 0px auto;
+            padding-bottom: 0px;
+            display: inline-block;
+        }
+
+        .label {
+            width: 250px;
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body style="background-color:#d1e9e9">
+
+    <!-- form heading -->
+    <!-- title -->
+    <div class="title" style="margin-top:20px;padding-bottom:0px;padding-top: 30px;">
+        <h1>Registration Form</h1>
+    </div>
+
+    <!-- clock -->
+    <div class="content" style="padding-top:50px;padding-bottom:0px;height:35px;text-align:right">
+        <img alt="" id="picH1" class="clock" />&nbsp;&nbsp;<img alt="" id="picH2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picM1" class="clock" />&nbsp;&nbsp;<img alt="" id="picM2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picS1" class="clock" />&nbsp;&nbsp;<img alt="" id="picS2" class="clock" />
+    </div>
+
+    <!-- title bar 0320-->
+    <div class="titlebar" style="background-color:#000000;">
+        <span id="HW1" style="color:white;display: inline-block;width: 150px;"><a href="Q1.html">HW I </a></span>
+        <span id="HW2" style="color:white;display: inline-block;width: 150px;"><a href="Q2.html">HW II </a></span>
+        <span id="Home" style="color:yellow;display: inline-block;width: 200px;"><a href="Index.html"
+                style="color:yellow;">Home</a></span>
+        <span id="HW3" style="color:white;display: inline-block;width: 150px;"><a href="Q34.html">HW III(IV)</a></span>
+        <span id="HW4" style="color:white;display: inline-block;width: 150px;"><a href="Q5.html">HW VI </a></span>
+    </div>
+
+
+    <form>
+
+        <!-- your basic info -->
+        <fieldset>
+            <legend style="font-size: 25px;font-style: italic;"> &nbsp Create Your Account &nbsp&nbsp </legend>
+
+            <!-- Please enter your Account -->
+            <div class="content">
+                <label class="label" style="font-weight:bold;"> Account ID </label>
+                <input type="text" id="accountid" size="40px" class="inputbox" autocomplete="off"
+                    style="background-color:#f0f0f0">
+            </div>
+
+            <!-- Please enter your password -->
+            <div class="content" style="height:20px;">
+                <label class="label" style="font-weight:bold"> Password </label>
+                <input type="password" id="password" class="inputbox" autocomplete="off"
+                    style="background-color:#f0f0f0">
+                <h6 style="font-weight:400;font-style:italic;text-align: center;font-weight: bolder;">No blanks, should
+                    be more than 5 with
+                    english letters, numbers, and special charaacters. (!@#$%^&*)</h6>
+            </div>
+
+            <div class="caution">
+                <span id="passwordv0"></span>
+            </div>
+
+            <!-- Please reenter your password -->
+            <div class="content">
+                <label class="label" style="font-weight:bold"> Confirm Password
+                </label>
+                <input type="password" id="password0" class="inputbox" autocomplete="off"
+                    style="background-color:#f0f0f0">
+            </div>
+            <div class="caution">
+                <span id="passwordv1"></span>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+            <legend style="font-size: 25px;font-style: italic;"> &nbsp Your Basic Info &nbsp&nbsp </legend>
+
+            <!-- Please enter your name -->
+            <div class="content">
+                <label class="label" style="font-weight:bold"> Name </label>
+                <input type="text" id="name" size="40px" class="inputbox" autocomplete="off"
+                    style="background-color:#f0f0f0">
+                <h6 style="font-weight:400;font-style:italic;text-align: center;">No blanks, should be more than 6
+                    characters, and only
+                    accept Chinese characters. </h6>
+            </div>
+            <div class="caution">
+                <span id="namev"></span>
+            </div>
+
+
+
+            <!-- Please enter your birthday -->
+            <div class="content">
+                <label class="label" id="birthday" style="font-weight:bold"> Birthday
+                </label>
+                <input type="date" id="birthday" class="inputbox" style="text-align:center;background-color:#f0f0f0">
+                <h6 style="font-weight:400;font-style:italic;text-align: center;">Only date format is accepted.</h6>
+            </div>
+
+
+            <!-- Please enter your email -->
+            <div class="content">
+                <label class="label" style="font-weight:bold"> E-mail
+                </label>
+                <input type="text" id="email0" class="inputbox" style="background-color:#f0f0f0">
+            </div>
+            <div class="caution">
+                <span id="emailv"></span>
+            </div>
+
+            <!-- Please confirm your email -->
+            <div class="content">
+                <label class="label" style="font-weight:bold"> Confirm E-mail
+                </label>
+                <input type="text" id="email1" class="inputbox" style="background-color:#f0f0f0">
+            </div>
+            <div class="caution">
+                <span id="emailv0"></span>
+            </div>
+
+
+
+            <!-- submit & reset button -->
+            <div class="content">
+                <center><input type="button" name="Submit" id="submit" value="Submit" class="button">
+                    <input type="reset" name="Reset" value="Reset" class="button"></center>
+            </div>
+
+
+
+
+        </fieldset>
+
+
+
+    </form>
+
+    <!-- Contact Bar -->
+    <div class="content" style="padding-top:50px;padding-bottom:30px;height:35px;text-align:center;border-bottom-left-radius :50px;
+    border-bottom-right-radius:50px;">
+
+        <h6 style="font-family:'Times New Roman', Times, serif;font-style: italic;">richiechao95@gmail.com ; Ricardo S.
+            Chao ; (+886)912-345-678</h6>
+    </div>
+
+    <!-- verify engine -->
+    <script>
+
+        // verify function call
+        document.getElementById("password").addEventListener("blur", passwordcheck0, false)
+        document.getElementById("password0").addEventListener("blur", passwordcheck1, false)
+        document.getElementById("name").addEventListener("blur", namecheck, false)
+        document.getElementById("email0").addEventListener("blur", emailcheck, false)
+        document.getElementById("email1").addEventListener("blur", emailconfirm, false)
+        document.getElementById("submit").addEventListener("blur", finalcheck, false)
+
+
+        // Name Check
+        function namecheck() {
+            // value of name
+            let namevalue = document.getElementById("name").value;
+
+            let re = /[\u4e00-\u9fff{2,5}]/;
+
+            if (re.test(namevalue)) { }
+            else {
+                document.getElementById("namev").textContent = `Name must be at least 2 Chinese characters.`
+            }
+
+            // Old Method
+            // //Name Length Check & Blank Check
+            // if (namelength < 2) {
+            //     alert(`Name must be at least 2 characters.`)
+            // } else if (namevalue == "") {
+            //     alert("Name could not be blank.")
+            // }
+
+            // //Chinese Character Check
+            // for (let index = 0; index < namelength; index++) {
+            //     //Chinese Character Encoder
+            //     let namecode = namevalue.charCodeAt(index);
+            //     // Chinese character check
+            //     if (namecode >= 0x4e00 && namecode <= 0x9fff) {
+            //         continue;
+            //     } else {
+            //         alert(`Only Chinese characters are acceptable.`)
+            //         break;
+            //     }
+            // }
+        }
+
+        // Password Check
+        function passwordcheck0() {
+
+            // value of password
+            let passwordvalue = document.getElementById("password").value;
+            let passwordvalue0 = document.getElementById("password0").value;
+            let passwordlength = passwordvalue.length;
+
+            // flags
+            let flag0 = false;
+            let flag1 = false;
+            let flag2 = false;
+
+            // password length check & blank check
+            if (passwordlength <= 5) {
+                document.getElementById("passwordv0").textContent = `Password must be at least 6 characters.`
+            } else if (passwordlength == "") {
+                document.getElementById("passwordv0").textContent = `Password should not be blank.`
+            }
+
+            // check if contains english characters &　numbers
+            for (let i = 0; i < passwordlength; i++) {
+                // turn password characters into uppercase
+                let passwordcheck = passwordvalue.charAt(i).toUpperCase();
+
+                // check whether password is between A & Z
+                if (passwordcheck >= "A" && passwordcheck <= "Z") {
+                    flag0 = true;
+                    // check whether password is between 0 & 9
+                } else if (passwordcheck >= "0" && passwordcheck <= "9") {
+                    flag1 = true;
+                }
+            }
+            if (flag0 && flag1) {
+            } else {
+                document.getElementById("passwordv0").textContent = `Password should contain both english characters and numbers`
+            }
+
+            //check if contains special characters (!@#$%^&*)
+            for (let index = 0; index < passwordlength; index++) {
+                let passwordindex = passwordvalue.charAt(index);
+                if (passwordindex == "!" || passwordindex == "@" || passwordindex == "#" || passwordindex == "$" || passwordindex == "%" || passwordindex == "^" || passwordindex == "&" || passwordindex == "*") {
+                    flag2 = true;
+                } else {
+                    continue;
+                }
+            }
+
+            if (flag2) {
+            } else {
+                document.getElementById("passwordv0").textContent = `Password Should contain special characters (!@#$%^&*)`
+            }
+
+
+
+        }
+
+        function passwordcheck1() {
+
+            let passwordvalue = document.getElementById("password").value;
+            let passwordvalue0 = document.getElementById("password0").value;
+
+            //password confirm
+            if (passwordvalue == passwordvalue0) {
+            } else {
+                document.getElementById("passwordv1").textContent = `Passwords do not match.`
+            }
+        }
+
+
+        //email check
+        function emailcheck() {
+            // value of email
+            let emailvalue = document.getElementById("email0").value;
+            let emailvalue0 = document.getElementById("email1").value;
+            // email address combination
+            let re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+            if (re.test(emailvalue)) { }
+            else {
+                document.getElementById("emailv").textContent = `Invalid Email format.`
+            }
+        }
+
+        //email confirm
+        function emailconfirm() {
+            // value of email
+            let emailvalue = document.getElementById("email0").value;
+            let emailvalue0 = document.getElementById("email1").value;
+            if (emailvalue == emailvalue0) {
+            } else {
+                document.getElementById("emailv0").textContent = `Email does not match.`
+            }
+        }
+
+
+        //finalcheck
+        function finalcheck() {
+            if (condition) {
+
+            }
+
+
+        }
+
+        // clock
+        function setClock() {
+            //建立日期
+            let d = new Date();
+
+            //取得秒數，分割為兩位數
+            let s1 = parseInt(d.getSeconds() / 10);
+            let s2 = (d.getSeconds() % 10);
+            let m1 = parseInt(d.getMinutes() / 10);
+            let m2 = (d.getMinutes() % 10);
+            let h1 = parseInt(d.getHours() / 10);
+            let h2 = (d.getHours() % 10);
+
+            //顯示圖片，對應秒數
+            document.getElementById("picS1").src = `images/Clock/${s1}.jpg`;
+            document.getElementById("picS2").src = `images/Clock/${s2}.jpg`;
+            document.getElementById("picM1").src = `images/Clock/${m1}.jpg`;
+            document.getElementById("picM2").src = `images/Clock/${m2}.jpg`;
+            document.getElementById("picH1").src = `images/Clock/${h1}.jpg`;
+            document.getElementById("picH2").src = `images/Clock/${h2}.jpg`;
+        }
+        setClock();
+        window.setInterval(setClock, 1000);
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

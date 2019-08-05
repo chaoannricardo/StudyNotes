@@ -1,0 +1,13 @@
+package encap;
+
+public class TestCar {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Car toyota = new Car();
+		toyota.setModel("Tercel");
+		toyota.getPrice(500000)
+		System.out.println(toyota.price);
+	}
+}

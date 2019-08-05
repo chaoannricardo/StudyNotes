@@ -1,0 +1,49 @@
+1550461983936	Extract local variable 'connection'
+1550462203099	Extract local variable 'statement'
+1550462242132	Extract local variable 'rs'
+1550462992171	Extract local variable 'empname'
+1550463012588	Extract local variable 'empno'
+1550473638589	Copy compilation unit
+1550473653975	Rename type 'HelloJDBC'
+1550473673043	Rename type 'ResuktSetLab'
+1550477080583	Copy compilation unit
+1550478386275	Extract local variable 'calendar'
+1550538827884	Copy compilation unit
+1550538841539	Rename type 'ResultSetUpdateLab'
+1550539523783	Extract local variable 'changedRows'
+1550540073945	Copy compilation unit
+1550540361991	Extract local variable 'prepareStatement'
+1550540971378	Extract local variable 'rs'
+1550542409980	Copy compilation unit
+1550542425169	Rename type 'PreparedStatementUUpdateLab'
+1550544278916	Copy compilation unit
+1550545396813	Extract local variable 'location'
+1550545414631	Extract local variable 'empno'
+1550545527569	Extract local variable 'commission'
+1550545574896	Extract local variable 'commission'
+1550548525712	Copy compilation unit
+1550555917868	Copy compilation unit
+1550556576357	Extract local variable 'summary'
+1550557059409	Copy compilation unit
+1550557340044	Extract local variable 'status'
+1550562404223	Extract local variable 'rs'
+1550562470020	Extract local variable 'tablename'
+1550563475681	Extract local variable 'columnrs'
+1550563532961	Extract local variable 'name'
+1550563585131	Extract local variable 'Type'
+1550563646820	Extract local variable 'size'
+1550563674984	Extract local variable 'digits'
+1550564460350	Copy compilation unit
+1550564668695	Copy compilation unit
+1550712433095	Extract local variable 'Savepoint'
+1550712771425	Delete element
+1550727230781	Copy compilation unit
+1550727829979	Extract local variable 'Statement'
+1550728544390	Extract local variable 'result'
+1550735103895	Extract local variable 'sstatement'
+1550735158983	Extract local variable 'prepareStatement'
+1550735209526	Extract local variable 'file'
+1550736267454	Extract local variable 'statement'
+1550736317620	Extract local variable 'rs'
+1550736367911	Extract local variable 'name'
+1550736387560	Extract local variable 'data'

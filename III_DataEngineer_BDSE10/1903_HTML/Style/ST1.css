@@ -1,0 +1,91 @@
+
+/* 統一將一組CSS樣式套用於一種標籤上，將會影響所有的子網頁 */
+h1{
+    font-family:'Edwardian Script ITC';
+    font-size: 300%;
+    line-height: 140%;
+    margin:0px;
+    padding: 0px;
+    border:0px;
+}
+
+/* Class選擇器：使之可以套用指定的CSS樣式集 */
+/* 各種外掛字型 */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+TC');
+
+/* 各種字型格式 */
+.articletitle{
+    font-family: 'Noto Serif TC', serif;
+    font-weight: bold;
+    font-size: 20px;
+    font-style: italic;
+    width: 800px;
+    margin:0px;
+    padding: 0px;
+    border:0px;
+}
+
+
+.articlecontent{
+    font-family: 'Noto Serif TC', serif;
+    line-height: 18px;
+    width: 800px;
+    margin: 10px auto;
+    padding: 30px 80px;
+    background-color: #FFFFFF;
+    
+}
+
+.articlecontentENG{
+    font-family: Arial;
+    width: 800px;
+    margin: 10px auto;
+    padding: 30px 80px;
+    background-color: #FFFFFF;
+}
+
+
+/* 網站編輯中警告 */
+.warning{
+color:#BD0000;
+font-weight: 900;
+}
+/* Reminder:一組標籤中可以套用複數標籤 */
+.st2{
+text-transform: uppercase;
+}
+
+/* id選擇器：只能使用一次 */
+#idst1{
+font-style: italic;
+}
+
+/* 普通超連結樣式 */
+a:link{
+color:black;
+}
+a:visited{
+color:black;  
+}
+a:hover{
+color:black;     
+}
+a:active{
+color:black;  
+}
+
+/* 工具列超連結樣式 */
+.stmap a:link{
+color:black;
+text-decoration:none;
+}
+.stmap a:visited{
+color:black;  
+}
+.stmap a:hover{
+color:black;     
+}
+.stmap a:active{
+color:black;  
+}
+

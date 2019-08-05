@@ -1,0 +1,12 @@
+1548033953004	Rename type 'Employee'
+1548033967786	Rename type 'TestEmployee'
+1548041221253	Delete element
+1548055132755	Rename type 'TestString'
+1548055139870	Rename type 'TestPackage'
+1548055148127	Rename type 'TestPackage2'
+1548055155691	Rename type 'Employee190120'
+1548206736690	Copy compilation unit
+1548206754097	Rename type 'TestArray'
+1548206769441	Rename type 'Employee190120'
+1548223096615	Extract local variable 'bmi'
+1548223218777	Extract local variable 'bmi2'

@@ -1,0 +1,25 @@
+import java.util.jar.Attributes.Name;
+
+public class TestEmployee190120 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("//新增物件");
+		Employee190120 emp = new Employee190120();
+		emp.name = "李大明";
+		emp.empno = 1;
+		System.out.println(emp.name);
+		
+		
+		Employee190120 emp1 = new Employee190120();
+		emp1.name = "張大華";
+		
+		System.out.println("//比較記憶體位置是否相同");
+		System.out.println(emp == emp1);
+		
+		
+		
+	}
+
+}

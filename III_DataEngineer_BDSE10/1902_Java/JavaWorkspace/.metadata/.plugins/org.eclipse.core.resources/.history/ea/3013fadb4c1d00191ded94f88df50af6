@@ -1,0 +1,10 @@
+
+public class Employee190120 {
+	
+	//類別及物件(P108)
+	int empno;
+	String name;
+
+	
+
+}

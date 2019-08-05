@@ -1,0 +1,10 @@
+
+public class Practice_190117 {
+
+	public static void main(String[] args) {
+		
+		System.out.println("Another usual day, arrived in the classroom after finishing a pot of hot black coffee in side my house.");
+
+	}
+
+}

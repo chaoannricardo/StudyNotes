@@ -1,0 +1,24 @@
+
+public class Practice_190117 {
+
+	public static void main(String[] args) {
+		
+		System.out.println("Another usual day, arrived in the classroom after finishing a pot of hot black coffee in side my house.");
+		
+		byte month = 12;
+		
+		System.out.println("Even though the coffee beans I've used could be somethings that being stored for more than " + month + " months,");
+		
+		System.out.println("I still enjoyed it, sincerely.");
+		
+		System.out.println();
+		
+		System.out.println("And well, when it comes to the lesson of this morning...");
+		
+	
+		
+				
+
+	}
+
+}

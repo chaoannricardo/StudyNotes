@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Food.java&apos; to &apos;JavaLab/src/inheritance&apos;&#x0D;&#x0A;- Original project: &apos;Sample&apos;&#x0D;&#x0A;- Destination element: &apos;JavaLab/src/inheritance&apos;&#x0D;&#x0A;- Original element: &apos;polymorphism.Food.java&apos;" description="Copy compilation unit" destination="=JavaLab/src&lt;inheritance" element1="/src&lt;polymorphism{Food.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1548400770527" units="1" version="1.0"/>
+</session>

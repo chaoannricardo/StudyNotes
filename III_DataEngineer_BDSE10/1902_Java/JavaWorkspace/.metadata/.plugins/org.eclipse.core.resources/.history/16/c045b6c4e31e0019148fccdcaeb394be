@@ -1,0 +1,12 @@
+package encap;
+
+public class Car {
+
+	String model;
+	double price;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

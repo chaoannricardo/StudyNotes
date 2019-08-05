@@ -1,0 +1,9 @@
+package encap;
+
+class Car {
+
+	String model;
+	int price;
+	
+	
+}

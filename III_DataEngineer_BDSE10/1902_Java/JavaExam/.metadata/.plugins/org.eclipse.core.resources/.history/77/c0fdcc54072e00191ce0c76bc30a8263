@@ -1,0 +1,10 @@
+
+public class TestQ4{
+
+	public static void main(String[] args) {
+		
+	Manager Ricardo = new Manager(1, "Ricardo", 10000000, 10000000)
+
+	}
+
+}

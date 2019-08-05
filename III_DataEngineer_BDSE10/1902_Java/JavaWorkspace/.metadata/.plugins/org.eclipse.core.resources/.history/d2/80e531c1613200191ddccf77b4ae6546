@@ -1,0 +1,12 @@
+package EX3;
+
+public class EX3_1 {
+	
+	public static void main(String[] args) {
+		
+		int l = 6;
+		int w = 5;
+		System.out.println(l * w);
+	}
+
+}

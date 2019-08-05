@@ -1,0 +1,41 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class IOTest {
+	public static void main(String[] args) {
+		// http://iosnetworkdemo.appspot.com/json.jsp?msg=helloWorld
+		// 此將此網址回傳的結果示在Console中
+
+		try {
+			URL url = new URL("http://iosnetworkdemo.appspot.com/json.jsp?msg=helloWorld");
+
+			try (InputStream is = url.openStream();
+					BufferedInputStream bis = new BufferedInputStream(is);
+					) {
+
+				byte[] bytes = new byte[1024];
+
+				while ((bis.read(bytes)) != -1) { // -1時代表檔案讀取完成了
+					System.out.println(bis.readLine());
+					
+				}
+				
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} catch (MalformedURLException e) { // 也可以直接往外丟，會寫錯這的也太low了
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+	}
+}

@@ -1,0 +1,25 @@
+
+public class TestString190121 {
+
+	public static void main(String[] args) {
+		
+		//String記憶體位置比較
+		String name = "Ricardo";
+		String name1 = "Ricardo";
+		String name2 = new String("Ricardo");
+		System.out.println(name == name1);
+		System.out.println(name == name2);
+
+		//String字串是否相同比較
+		System.out.println("//String字串是否相同比較：name v.s. name2");
+		System.out.println(name.equals(name2));
+		
+		System.out.println("//String字串是否相同比較：name v.s. name1");
+		System.out.println(name.equals(name1));
+		
+		//String常用的方法
+		System.out.println();
+		System.out.println(name.length());
+	}
+
+}

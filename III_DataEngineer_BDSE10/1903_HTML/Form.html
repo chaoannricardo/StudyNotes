@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <!-- 套用ST1主樣式模板 -->
+    <link rel="stylesheet" href="../Style/ST1.css">
+    <style>
+        .MessageBox0{
+        font-family: Arial;
+        font-size: 18px;
+        font-style: italic;
+        width: 800px;
+        margin: 0px auto;
+        padding: 30px 80px;
+        border-bottom: 1px solid silver;
+        background-color: #FFFFFF;
+        }
+
+        .label0{
+            width: 100px;
+            float: left;
+            padding-bottom: 10px;
+           
+        }
+
+        fieldset{
+            width: 800px;
+            margin: 0px auto;
+            border: 2px solid black;
+            border-radius: 30px;
+        }
+        textarea{
+            resize: none;
+        }
+
+    </style>
+</head>
+
+<body style="background-color:#f5ffe8">
+
+    <form>
+
+
+        <div class="MessageBox0">
+            <!-- 英文標題 -->
+            <h1>Questionnaire</h1>
+            <!-- 中文標題 -->
+            <span class="articletitle">Share your thoughts and tell us where to improve.</span>
+        </div>
+
+        <fieldset>
+            <legend style="font-family:Arial, Helvetica, sans-serif;font-size:18px;font-style:italic;">Your Basic Info</legend>
+            <!-- 姓名輸入框 -->
+            <div class="MessageBox0">
+                <label for="Account" class="label0"> Name </label>
+                <input type="text" id="Account" name="Account" placeholder="Ricardo S. Chao" autocomplete="off"
+                    autofocus>
+
+            </div>
+
+            <!-- 電子郵件輸入框 -->
+            <div class="MessageBox0">
+                <label for="email" class="label0">
+                    Your email
+                </label>
+                <input type="email" id="email" name="Account" placeholder="XXX@gmail.com" autocomplete="off">
+            </div>
+
+            <!-- 性別輸入框 -->
+            <div class="MessageBox0">
+                <label class="label0"> Gender </label>
+                <label>
+                    <input type="radio" values="Male" name="Gender0"> Male
+                </label>
+                <label>
+                    <input type="radio" values="Female" name="Gender0"> Female
+                </label>
+                <label>
+                    <input type="radio" values="Rather not say" name="Gender0"> Rather not say
+                </label>
+
+
+            </div>
+
+            <!-- 生日 -->
+            <div class="MessageBox0">
+                <label class="label0"> Birthday </label>
+                <input type="date">
+            </div>
+
+
+
+
+        </fieldset>
+
+        <fieldset style="margin-top:15px;">
+            <legend style="font-family:Arial, Helvetica, sans-serif;font-size:18px;font-style:italic;">More about you</legend>
+
+
+            <!-- 身分證字號 -->
+            <div class="MessageBox0" style="font-size: 16px">
+                <label class="label0">ID Number</label>
+                <input type="text" pattern="[A-Z]{1}[1-2]{1}\d{8}">
+            </div>
+
+
+
+
+            <!-- 感興趣的主題 -->
+            <div class="MessageBox0" style="font-size: 16px">
+
+                <label class="label0"> Topic You're interested in </label>
+
+                <label>
+                    <input type="checkbox" values="Travel" name="Topic"> Travel
+                </label>
+                <label>
+                    <input type="checkbox" values="Data Science" name="Topic"> Data Science
+                </label>
+                <label>
+                    <input type="checkbox" values="Finance" name="Topic"> Finance
+                </label>
+                <label>
+                    &nbsp;&nbsp;<input type="checkbox" values="Others" name="Topic"> Other Topic :&nbsp;<input type="text"
+                        name="Topic">
+                </label>
+
+            </div>
+
+            <!-- 有使用的社群軟件 -->
+            <div class="MessageBox0" style="font-size: 16px">
+
+                <label class="label0"> SMS you're in </label>
+
+                <label>
+                    <input type="checkbox" values="Instagram" name="SMS"> Instagram
+                </label>
+                <label>
+                    <input type="checkbox" values="Facebook" name="SMS"> Facebook
+                </label>
+                <label>
+                    <input type="checkbox" values="Finance" name="SMS"> Twitter
+                </label>
+                <label>
+                    <input type="checkbox" values="Snapchat" name="SMS"> Snapchat
+                </label>
+
+                <label>
+                    &nbsp;&nbsp;<input type="checkbox" values="Others" name="SMS"> Other SMS :&nbsp;<input type="text"
+                        name="Topic">
+                </label>
+
+            </div>
+
+            <!-- Where are you from -->
+            <div class="MessageBox0" style="font-size: 16px">
+                <label for="Gender" class="label0"> Where are you from? </label>
+
+                <select name="ContinentFrom" style="width:300px;text-align: center;">
+                    <option value="Asia Pasific">Asia Pasific</option>
+                    <option value="Middle East">Middle East</option>
+                    <option value="Other Asian Regions">Other Asian Regions</option>
+                    <option value="Europe">Europe</option>
+                    <option value="North America">North America</option>
+                    <option value="South America">South America</option>
+
+                </select>
+
+            </div>
+
+            <!-- Your mother tongue -->
+            <div class="MessageBox0" style="font-size: 16px">
+                <label for="Languange">What's your mother tongue language?</label>
+                <input type="text" name="language" list="lang" size="30">
+                <datalist id="lang">
+                    <option value="Madarin Chinese"></option>
+                    <option value="Taiwanese"></option>
+                    <option value="Catonese"></option>
+                    <option value="English"></option>
+                    <option value="Spanish"></option>
+                    <option value="Japanese"></option>
+                    <option value="French"></option>
+                </datalist>
+
+
+            </div>
+        </fieldset>
+
+
+
+        <fieldset style="margin-top:15px;">
+            <legend style="font-family:Arial, Helvetica, sans-serif;font-size:18px;font-style:italic;"> &nbsp;Anything
+                you would like to tell us&nbsp;</legend>
+            <!-- 留言 -->
+            <div class="MessageBox0">
+                <label for="Comment" class="label0">
+                    Comment
+                </label>
+                <textarea cols="100" rows="20" id="Comment" name="Comment"></textarea>
+            </div>
+
+            <div class="MessageBox0">
+                <label for="Comment" class="label0" style="font-size:15px">
+                    Attach File with form
+                </label>
+                <input type="file" name="file1" multiple>
+            </div>
+
+            <div class="MessageBox0" style="text-align:center">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </div>
+
+            <div class="MessageBox0" style="text-align:center">
+                Still not satisfied with the result?<br>
+                You may also mail Ricardo by <a href="mailto:richiechao95!gmail.com">richiechao95@gmail.com</a><br>
+                Or visit out Contact Page to fill up your comments.
+
+            </div>
+        </fieldset>
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+
+public class Manager extends Employee{
+
+	private long bonus;
+
+	public Manager(int empno, String nemae, long salary, long bonus) {
+		super();
+		this.bonus = bonus;
+	}
+
+	
+	
+}

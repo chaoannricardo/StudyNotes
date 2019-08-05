@@ -1,0 +1,23 @@
+package encap;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+class Car {
+
+	private String model;
+	private int price;
+	
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public int getPrice() {
+		return price;
+	}
+
+
+
+	}
+

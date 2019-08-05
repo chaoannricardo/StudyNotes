@@ -1,0 +1,13 @@
+
+public class Manager extends Employee{
+
+	private long bonus;
+	
+	public static void main(String[] args) {
+		
+		
+		
+
+	}
+
+}

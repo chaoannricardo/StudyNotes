@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomeworkQ3Q4</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <style>
+        /* Gray Scale */
+        .s {
+            -webkit-filter: grayscale(1);
+        }
+
+        /* Normal Scale */
+        .n {
+            -webkit-filter: grayscale(0);
+        }
+
+        .q {
+            -webkit-filter: invert(1);
+        }
+
+        .r {
+            -webkit-filter: invert(0);
+        }
+
+        .block {
+            width: 800PX;
+            height: 566px;
+            display: block;
+            cursor: pointer;
+        }
+
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body style="background-color:#d1e9e9">
+
+    <!-- title -->
+    <div class="title" style="padding-top:10px;padding-bottom:100px;background-color:#000000">
+        <h1 style="color:white">Gallery</h1>
+    </div>
+
+
+    <!-- title bar -->
+    <div class="titlebar"
+        style="background-color:#000000;border-top: #ffffff solid 2px;border-bottom: #ffffff solid 2px;">
+        <span id="HW1" style="color:white;display: inline-block;width: 150px;"><a href="Q1.html">HW I </a></span>
+        <span id="HW2" style="color:white;display: inline-block;width: 150px;"><a href="Q2.html">HW II </a></span>
+        <span id="Home" style="color:yellow;display: inline-block;width: 150px;">Home </span>
+        <span id="HW3" style="color:white;display: inline-block;width: 150px;">HW III </span>
+        <span id="HW4" style="color:white;display: inline-block;width: 150px;">HW IV </span>
+    </div>
+
+    <!-- photo section -->
+    <figure class="content" style="background-color:#3c3c3c;padding-top:50px;padding-bottom:560px;text-align: center;">
+        <!-- main photo -->
+        <img id="main0" src="images/PhotoStream/0.PNG" alt="" width="800px" height="566px" class="block"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main1" src="images/PhotoStream/1.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main2" src="images/PhotoStream/2.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main3" src="images/PhotoStream/3.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main4" src="images/PhotoStream/4.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main5" src="images/PhotoStream/5.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main6" src="images/PhotoStream/6.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main7" src="images/PhotoStream/7.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main8" src="images/PhotoStream/8.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+        <img id="main9" src="images/PhotoStream/9.PNG" alt="" width="800px" height="566px" class="none"
+            style="margin:auto;box-shadow: 10px 10px 5px grey;margin-bottom: 20px;">
+
+
+
+
+
+        <!-- square -->
+        <img id="s0" class="k q" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s1" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s2" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s3" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s4" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s5" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s6" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s7" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s8" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+        <img id="s9" class="k" src="images/square.png" alt="" width="15px" style="margin:auto;">
+    </figure>
+
+    <!-- photo scroller sector -->
+    <figure class="content" style="background-color:#3c3c3c;padding-top:0px;padding-bottom:1px;text-align: center;">
+        <img id="left" src="images/left.png" alt="" width="50px" style="margin:auto;">
+        &nbsp;&nbsp;&nbsp;
+        <img id="play" src="images/play.png" alt="" width="50px" style="margin:auto;">
+        &nbsp;&nbsp;&nbsp;
+        <img id="right" src="images/right.png" alt="" width="50px" style="margin:auto;">
+    </figure>
+
+
+    <!-- document sector -->
+    <div class="content" style="background-color:#3c3c3c;padding-top:0px;padding-bottom:1px;" height="500px">
+        <span id="document"></span>
+    </div>
+
+    <!-- rating section -->
+    <figure class="content" style="background-color:#ffffff;padding-bottom:50px;text-align: center;">
+        <img id="idstar1" class="s" src="images/2.jpg" alt="" width="100px">
+        <img id="idstar2" class="s" src="images/2.jpg" alt="" width="100px">
+        <img id="idstar3" class="s" src="images/2.jpg" alt="" width="100px">
+        <img id="idstar4" class="s" src="images/2.jpg" alt="" width="100px">
+        <img id="idstar5" class="s" src="images/2.jpg" alt="" width="100px">
+        <br>
+        <!-- rating star -->
+        <span id="idstard" style="font-weight:bolder;font-style:italic"> </span>
+    </figure>
+
+    <!-- reset -->
+    <div class="content" style="background-color:#ffffff;padding-bottom:30px;text-align: center;">
+        <input type="button" id="reset" value="Reset"
+            style="width:200px;height:50px;font-size:20px;font-weight:bolder;border:#000000 1px solid;">
+    </div>
+
+
+    <!-- Contact Bar -->
+    <div class="content" style="padding-top:10px;padding-bottom:70px;height:35px;text-align:center;border-bottom-left-radius :50px;
+    border-bottom-right-radius:50px;">
+        <img alt="" id="picH1" class="clock" />&nbsp;&nbsp;<img alt="" id="picH2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picM1" class="clock" />&nbsp;&nbsp;<img alt="" id="picM2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picS1" class="clock" />&nbsp;&nbsp;<img alt="" id="picS2" class="clock" />
+        <h6 style="font-family:'Times New Roman', Times, serif;font-style: italic;">richiechao95@gmail.com ; Ricardo S.
+            Chao ; (+886)912-345-678</h6>
+    </div>
+
+
+
+    <script>
+
+        // evaluation system
+        var flag = false;
+        var ratingIndex = 0;
+        let areas = document.querySelectorAll(".s");
+        for (let values of areas) {
+            values.addEventListener("mouseover", mouseOver)
+            values.addEventListener("mouseout", mouseOut)
+            values.addEventListener("click", Click)
+        }
+        // rating mouseover
+        function mouseOver() {
+            if (flag) { } else {
+                for (let index = 1; index <= this.id.substr(6); index++) {
+                    document.images[index + 23].className = "n"
+                }
+                // rating caption
+                if (this.id.substr(6) == 1) {
+                    document.getElementById("idstard").textContent = `"Very Poor"`
+                } else if (this.id.substr(6) == 2) {
+                    document.getElementById("idstard").textContent = `"Poor"`
+                } else if (this.id.substr(6) == 3) {
+                    document.getElementById("idstard").textContent = `"Normal"`
+                } else if (this.id.substr(6) == 4) {
+                    document.getElementById("idstard").textContent = `"Good"`
+                } else if (this.id.substr(6) == 5) {
+                    document.getElementById("idstard").textContent = `"Excellent"`
+                }
+            }
+        }
+        //rating  mouseout
+        function mouseOut() {
+            if (flag) { } else {
+                for (let index = 1; index <= this.id.substr(6); index++) {
+                    document.images[index + 23].className = "s"
+                }
+            }
+        }
+        //    click
+        function Click() {
+            if (flag) {
+                flag = false;
+            } else {
+                for (let index = 1; index <= this.id.substr(6); index++) {
+                    document.images[index + 23].className = "n"
+                }
+                // rating caption
+                if (this.id.substr(6) == 1) {
+                    document.getElementById("idstard").textContent = `"Very Poor"`
+                } else if (this.id.substr(6) == 2) {
+                    document.getElementById("idstard").textContent = `"Poor"`
+                } else if (this.id.substr(6) == 3) {
+                    document.getElementById("idstard").textContent = `"Normal"`
+                } else if (this.id.substr(6) == 4) {
+                    document.getElementById("idstard").textContent = `"Good"`
+                } else if (this.id.substr(6) == 5) {
+                    document.getElementById("idstard").textContent = `"Excellent"`
+                }
+                flag = true;
+                ratingIndex = this.id.substr(6);
+            }
+        }
+        // reset button
+        document.getElementById("reset").addEventListener("click", reset)
+        function reset() {
+            flag = false;
+            for (let index = 1; index <= ratingIndex; index++) {
+                document.images[index + 23].className = "s"
+                document.getElementById("idstard").textContent = ``
+            }
+        }
+
+
+
+        //Photo
+        let adImgs;
+        let count, t, flagp;
+        adImgs = document.querySelectorAll("img.block,img.none");
+        squares = document.querySelectorAll("img.k,img.q,img.r");
+        document.getElementById("left").onclick = backf;
+        document.getElementById("right").onclick = nextf;
+        document.getElementById("play").onclick = pauseplayf;
+
+        count = 0;
+        flagp = true;
+        function show() {
+            adImgs[count].className = "none";
+            squares[count].className = "r";
+            count++;
+            if (count > 9) count = 0;
+            adImgs[count].className = "block";
+            squares[count].className = "q";
+        }
+        t = window.setInterval(show, 3000);
+
+
+        function backf() {
+            adImgs[count].className = "none";
+            squares[count].className = "r";
+            count--;
+            if (count < 0) count = 9;
+            adImgs[count].className = "block";
+            adsImgs[count].className = "q";
+        }
+        function pauseplayf() {
+            if (flagp) {
+                flagp = false;
+                document.getElementById("play").src = "images/play.png";
+                window.clearInterval(t);
+            } else {
+                flagp = true;
+                document.getElementById("play").src = "images/stop.png";
+                t = window.setInterval(show, 3000);
+            }
+        }
+        function nextf() {
+            show();
+        }
+
+
+
+
+        // clock
+        function setClock() {
+            //建立日期
+            let d = new Date();
+
+            //取得秒數，分割為兩位數
+            let s1 = parseInt(d.getSeconds() / 10);
+            let s2 = (d.getSeconds() % 10);
+            let m1 = parseInt(d.getMinutes() / 10);
+            let m2 = (d.getMinutes() % 10);
+            let h1 = parseInt(d.getHours() / 10);
+            let h2 = (d.getHours() % 10);
+
+            //顯示圖片，對應秒數
+            document.getElementById("picS1").src = `images/Clock/${s1}.jpg`;
+            document.getElementById("picS2").src = `images/Clock/${s2}.jpg`;
+            document.getElementById("picM1").src = `images/Clock/${m1}.jpg`;
+            document.getElementById("picM2").src = `images/Clock/${m2}.jpg`;
+            document.getElementById("picH1").src = `images/Clock/${h1}.jpg`;
+            document.getElementById("picH2").src = `images/Clock/${h2}.jpg`;
+        }
+        setClock();
+        window.setInterval(setClock, 1000);
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

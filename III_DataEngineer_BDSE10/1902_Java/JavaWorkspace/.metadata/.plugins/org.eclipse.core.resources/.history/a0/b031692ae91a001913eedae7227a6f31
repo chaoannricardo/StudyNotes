@@ -1,0 +1,66 @@
+
+public class TestIf20190118 {
+
+	public static void main(String[] args) {
+
+		// if else statement
+		int age = 15;
+		if (age <= 10) {
+			System.out.println("不合法");
+		} else if (age <= 23 && age > 10) {
+			System.out.println("死學生");
+		} else if (age <= 40 && age > 23) {
+			System.out.println("成年人");
+		} else if (age > 65) {
+			System.out.println("老人");
+		} else {
+			System.out.println("甚麼也不是");
+		}
+
+		int student = 35;
+		if (student < 20) {
+			System.out.println("教室201");
+		} else if (student >= 20 && student < 30) {
+			System.out.println("教室305");
+		} else {
+			System.out.println("教室204");
+		}
+
+		
+		//巢狀if敘述
+		int student0 = 14;
+		if (student0 < 20) {
+			System.out.println("教室201");
+			if (student0 < 5) {
+				System.out.println("這麼少人還開甚麼班阿！");
+
+			} else if (student0 < 15) {
+				System.out.println("這還差不多一點");
+
+			} else {
+				System.out.println("應該快坐不下了吧！");
+			}
+		} else if (student0 >= 20 && student0 < 30) {
+			System.out.println("教室305");
+		} else {
+			System.out.println("教室204");
+		}
+
+		
+		String student1 = "5";
+		switch ( student1) {
+		case "1":
+			System.out.println("小朋友");
+			break;
+		case "2":
+			System.out.println("中朋友");
+			break;
+		default:
+			System.out.println("大朋友");
+			break;
+		}
+		
+		
+	}
+
+}

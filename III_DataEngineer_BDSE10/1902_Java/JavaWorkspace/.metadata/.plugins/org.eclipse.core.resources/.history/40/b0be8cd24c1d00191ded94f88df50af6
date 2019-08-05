@@ -1,0 +1,15 @@
+import pack.Employee190120;
+
+
+public class TestPackage {
+
+	
+	Employee190120 employee190120 = new Employee190120();
+	
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

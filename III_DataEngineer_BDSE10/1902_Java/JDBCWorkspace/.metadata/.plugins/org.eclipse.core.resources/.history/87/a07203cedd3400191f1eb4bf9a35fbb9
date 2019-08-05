@@ -1,0 +1,28 @@
+package defaultpackage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.*;
+
+public class Q1 {
+
+	public static void main(String[] args) {
+
+		try (Connection connection = DriverManager.getConnection("jdbc:sqlserver://localhost;databaseName=JDBCDB",
+				"scott", "tiger");) {
+			
+		
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			System.out.println("Finish");
+		}
+
+	}
+
+}

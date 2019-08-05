@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HomeworkQ5</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <style>
+        fieldset {
+            width: 900px;
+            margin: 15px auto;
+            padding: 15px;
+            border: black 3px solid;
+            border-radius: 30px;
+        }
+
+        .label {
+            width: 250px;
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        .inputbox {
+            height: 50px;
+            width: 200px;
+            font-size: 20px;
+            margin: 0px auto;
+            padding-bottom: 0px;
+            border: 1px black solid;
+            text-align: center;
+        }
+
+        .caution {
+            background-color: #fffffF;
+            color: red;
+            font-size: 50px;
+            text-align: center;
+            font-style: italic;
+            font-weight: bold;
+            text-decoration: underline;
+            width: 900px;
+            height: 20px;
+            margin: 0px auto;
+            padding-bottom: 10px;
+            padding-left: 40px;
+            padding-top: 80px;
+            padding-right: 40px;
+        }
+    </style>
+</head>
+
+<body style="background-color:#d1e9e9">
+    <!-- title -->
+    <div class="title" style="padding-bottom:0px;">
+        <h1>Date Selector</h1>
+    </div>
+
+    <!-- clock -->
+    <div class="content" style="padding-top:50px;padding-bottom:0px;height:35px;text-align:right">
+        <img alt="" id="picH1" class="clock" />&nbsp;&nbsp;<img alt="" id="picH2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picM1" class="clock" />&nbsp;&nbsp;<img alt="" id="picM2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picS1" class="clock" />&nbsp;&nbsp;<img alt="" id="picS2" class="clock" />
+    </div>
+
+    <!-- title bar 0320-->
+    <div class="titlebar" style="background-color:#000000;">
+        <span id="HW1" style="color:white;display: inline-block;width: 150px;"><a href="Q1.html">HW I </a></span>
+        <span id="HW2" style="color:white;display: inline-block;width: 150px;"><a href="Q2.html">HW II </a></span>
+        <span id="Home" style="color:yellow;display: inline-block;width: 200px;"><a href="Index.html"
+                style="color:yellow;">Home</a></span>
+        <span id="HW3" style="color:white;display: inline-block;width: 150px;"><a href="Q34.html">HW III(IV)</a></span>
+        <span id="HW4" style="color:white;display: inline-block;width: 150px;"><a href="Q5.html">HW VI </a></span>
+    </div>
+
+    <form>
+
+        <!-- Date Selector -->
+        <fieldset>
+            <legend style="font-size: 25px;font-style: italic;"> &nbsp Date Selector &nbsp&nbsp </legend>
+
+            <!-- Date Selector -->
+            <div class="content" style="text-align:center;">
+                <select name="Year" class="inputbox" id="year">
+                    　<option value="2010">2010</option>
+                    　<option value="2011">2011</option>
+                    　<option value="2012">2012</option>
+                    　<option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                </select>
+
+                <span>年</span>
+
+                <select name="Month" class="inputbox" id="month">
+                    　<option value="1">1</option>
+                    　<option value="2">2</option>
+                    　<option value="3">3</option>
+                    　<option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+
+                <span>月</span>
+
+                <select name="Day" class="inputbox" id="day">
+                    <option value="1">1</option>
+                    　<option value="2">2</option>
+                    　<option value="3">3</option>
+                    　<option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    　<option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    　<option value="22">22</option>
+                    　<option value="23">23</option>
+                    　<option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+
+                <span>日</span>
+            </div>
+
+            <!-- Submit & Reset -->
+            <div class="content" style="text-align:center;">
+
+                <input type="button" class="inputbox" value="Submit" id="submit">
+                <input type="reset" class="inputbox" value="Reset">
+
+            </div>
+
+
+        </fieldset>
+
+        <!-- caution -->
+        <div class="caution" style="text-align:center;">
+
+            <span id="caution"></span>
+
+        </div>
+
+
+        <!-- ShowBox -->
+        <div class="content" style="text-align:center;height:400px" id="show">
+
+
+        </div>
+
+        <!-- Contact Bar -->
+        <div class="content" style="padding-top:50px;padding-bottom:30px;height:35px;text-align:center;border-bottom-left-radius :50px;
+    border-bottom-right-radius:50px;">
+
+            <h6 style="font-family:'Times New Roman', Times, serif;font-style: italic;">richiechao95@gmail.com ; Ricardo
+                S.
+                Chao ; (+886)912-345-678</h6>
+        </div>
+
+        <script>
+
+            // date selector
+            document.getElementById("submit").addEventListener("click", sub);
+            document.getElementById("year").addEventListener("change", setyear);
+            document.getElementById("month").addEventListener("change", setmonth);
+            document.getElementById("day").addEventListener("change", setday);
+
+            function setyear() { year = Number(document.getElementById("year").value) }
+            function setmonth() { month = Number(document.getElementById("month").value) }
+            function setday() { day = Number(document.getElementById("day").value) }
+
+            function sub() {
+                if (month == 2 && day > 29) {
+                    document.getElementById("caution").textContent = `Invalid Date Format`
+                } else if ((month == 4 | 6 | 9 | 11) && day > 30) {
+                    document.getElementById("caution").textContent = `Invalid Date Format`
+                } else if ((year % 4 != 0) && month == 2 && day == 29) {
+                    document.getElementById("caution").textContent = `Invalid Date Format`
+                } else {
+                    document.getElementById("show").innerHTML = `<table class="content" style="font-size:18px;text-align:center;border: black 3px solid;width: 800px;height: 400px;border-bottom-left-radius :50px;
+            border-bottom-right-radius:50px;;border-top-left-radius :50px;border-top-right-radius:50px;">
+                <tr><td style="font-family: 微軟正黑體;font-size: 40px;">您所選擇的日期是：<br>
+                        ${year}年${month}月${day}日</td></tr></table>`
+                }
+            }
+
+
+
+            // clock
+            function setClock() {
+                //建立日期
+                let d = new Date();
+
+                //取得秒數，分割為兩位數
+                let s1 = parseInt(d.getSeconds() / 10);
+                let s2 = (d.getSeconds() % 10);
+                let m1 = parseInt(d.getMinutes() / 10);
+                let m2 = (d.getMinutes() % 10);
+                let h1 = parseInt(d.getHours() / 10);
+                let h2 = (d.getHours() % 10);
+
+                //顯示圖片，對應秒數
+                document.getElementById("picS1").src = `images/Clock/${s1}.jpg`;
+                document.getElementById("picS2").src = `images/Clock/${s2}.jpg`;
+                document.getElementById("picM1").src = `images/Clock/${m1}.jpg`;
+                document.getElementById("picM2").src = `images/Clock/${m2}.jpg`;
+                document.getElementById("picH1").src = `images/Clock/${h1}.jpg`;
+                document.getElementById("picH2").src = `images/Clock/${h2}.jpg`;
+            }
+            setClock();
+            window.setInterval(setClock, 1000);
+
+        </script>
+
+
+</body>
+
+</html>

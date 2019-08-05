@@ -1,0 +1,31 @@
+package encap;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+class Car {
+
+	private String model;
+	private int price;
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public int getPrice() {
+		if (model.equals("Tercel")) {
+			this.price = 500000;
+		} else if (model.equals("Yaris")) {
+			this.price = 650000;
+		} else {
+			System.out.println("錯誤車型");
+
+		}
+		return this.price;
+
+	}
+
+}

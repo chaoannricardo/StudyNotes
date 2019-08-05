@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>Index</title>
+    <style>
+
+    </style>
+</head>
+
+<body style="background-color:#d1e9e9">
+
+    <!-- title -->
+    <div class="title" style="padding-top:10px;padding-bottom:10px;;">
+        <h1 style="color:black;">Home Page</h1>
+    </div>
+
+    <!-- clock -->
+    <div class="content" style="padding-top:50px;padding-bottom:0px;height:35px;text-align:right">
+        <img alt="" id="picH1" class="clock" />&nbsp;&nbsp;<img alt="" id="picH2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picM1" class="clock" />&nbsp;&nbsp;<img alt="" id="picM2" class="clock" /><img alt=""
+            class="clock" src="images/Clock/colon.png" />
+        <img alt="" id="picS1" class="clock" />&nbsp;&nbsp;<img alt="" id="picS2" class="clock" />
+    </div>
+
+    <!-- title bar 0320-->
+    <div class="titlebar" style="background-color:#000000;">
+        <span id="HW1" style="color:white;display: inline-block;width: 150px;"><a href="Q1.html">HW I </a></span>
+        <span id="HW2" style="color:white;display: inline-block;width: 150px;"><a href="Q2.html">HW II </a></span>
+        <span id="Home" style="color:yellow;display: inline-block;width: 200px;"><a href="Index.html"
+                style="color:yellow;">Home</a></span>
+        <span id="HW3" style="color:white;display: inline-block;width: 150px;"><a href="Q34.html">HW III(IV)</a></span>
+        <span id="HW4" style="color:white;display: inline-block;width: 150px;"><a href="Q5.html">HW VI </a></span>
+    </div>
+
+    <!-- Index -->
+    <div class="content"
+    style="padding-top:50px;padding-bottom:700px;height:35px;text-align:center">
+        <br>
+        <img src="images/cover.jpg" width="800px">
+        <br>
+        <h1
+            style="font-family:'Edwardian Script ITC';font-size: 100px;text-decoration:underline;text-shadow: 10px 10px 5px grey;">
+            Welcome.</h1>
+    </div>
+    
+    <!-- Contact Bar -->
+    <div class="content"
+    style="padding-top:50px;padding-bottom:30px;height:35px;text-align:center;border-bottom-left-radius :50px;
+    border-bottom-right-radius:50px;">
+
+        <h6 style="font-family:'Times New Roman', Times, serif;font-style: italic;">richiechao95@gmail.com ; Ricardo S.
+            Chao ; (+886)912-345-678</h6>
+    </div>
+
+
+
+
+    <script>
+
+        // clock
+        function setClock() {
+            //建立日期
+            let d = new Date();
+
+            //取得秒數，分割為兩位數
+            let s1 = parseInt(d.getSeconds() / 10);
+            let s2 = (d.getSeconds() % 10);
+            let m1 = parseInt(d.getMinutes() / 10);
+            let m2 = (d.getMinutes() % 10);
+            let h1 = parseInt(d.getHours() / 10);
+            let h2 = (d.getHours() % 10);
+
+            //顯示圖片，對應秒數
+            document.getElementById("picS1").src = `images/Clock/${s1}.jpg`;
+            document.getElementById("picS2").src = `images/Clock/${s2}.jpg`;
+            document.getElementById("picM1").src = `images/Clock/${m1}.jpg`;
+            document.getElementById("picM2").src = `images/Clock/${m2}.jpg`;
+            document.getElementById("picH1").src = `images/Clock/${h1}.jpg`;
+            document.getElementById("picH2").src = `images/Clock/${h2}.jpg`;
+        }
+        setClock();
+        window.setInterval(setClock, 1000);
+
+    </script>
+
+
+
+</body>
+
+</html>

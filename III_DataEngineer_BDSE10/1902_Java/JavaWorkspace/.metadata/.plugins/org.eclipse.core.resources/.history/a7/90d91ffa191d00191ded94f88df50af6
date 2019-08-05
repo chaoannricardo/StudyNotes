@@ -1,0 +1,12 @@
+
+public class Employee {
+	
+	int employeeno = 0001;
+	String employeenameString = "";
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,10 @@
+
+public class Manager extends Employee{
+
+	private long bonus;
+
+	public void ManagerSalary() {
+		
+	}
+	
+}

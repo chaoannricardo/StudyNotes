@@ -1,0 +1,12 @@
+
+public class TestPackage {
+
+	pack.Employee190120 = new pack.Employee190120();
+	
+	public static void main(String[] args) {
+		
+		
+
+	}
+
+}

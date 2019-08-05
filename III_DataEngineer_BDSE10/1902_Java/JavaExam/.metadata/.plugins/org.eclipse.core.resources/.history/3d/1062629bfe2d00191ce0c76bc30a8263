@@ -1,0 +1,13 @@
+
+public class Manager extends Employee{
+
+	private long bonus;
+
+	public void ManagerSalary(int empno, String name, long salary) {
+		super();
+		
+		
+		
+	}
+	
+}

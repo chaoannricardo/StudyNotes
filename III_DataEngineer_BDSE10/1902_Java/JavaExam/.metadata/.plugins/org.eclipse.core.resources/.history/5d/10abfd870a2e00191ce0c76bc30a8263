@@ -1,0 +1,7 @@
+public class Food extends Product {
+
+    public Food(String name, int price) {
+        super(name, price);
+        Food cookie = new Food("Cookie",200);
+    }
+}
