@@ -1,0 +1,4 @@
+-i §å¦¸ÀÉ
+
+
+sqlcmd -E -i C:\temp\extra\ch2-1.sql

@@ -1,0 +1,34 @@
+Partitioned View
+  ms-help://MS.SQLCC.v10/MS.SQLSVR.v10.en/s10de_1devconc/html/415dbdb5-07af-4b6d-bdc3-c83468487930.htm
+
+©w¸q
+   A partitioned view joins horizontally partitioned data from a set of member tables across one or more servers, making the data appear as if from one table. Microsoft SQL Server distinguishes between local and distributed partitioned views. In a local partitioned view, all participating tables and the view reside on the same instance of SQL Server. In a distributed partitioned view, at least one of the participating tables resides on a different (remote) server. In addition, SQL Server differentiates between partitioned views that are updatable and views that are read-only copies of the underlying tables
+
+
+»yªk
+  ms-help://MS.SQLCC.v10/MS.SQLSVR.v10.en/s10de_6tsql/html/aecc2f73-2ab5-4db9-b1e6-2f9e3c601fb9.htm
+
+
+CREATE VIEW [ schema_name . ] view_name [ (column [ ,...n ] ) ] 
+[ WITH <view_attribute> [ ,...n ] ] 
+AS select_statement 
+[ WITH CHECK OPTION ] [ ; ]
+
+<view_attribute> ::= 
+{
+    [ ENCRYPTION ]
+    [ SCHEMABINDING ]
+    [ VIEW_METADATA ]    
+
+
+
+
+
+create view  v35
+as
+select employeeid, lastname  from  northwind.dbo. employees
+UNION
+select * from   sample2.dbo.cust4
+
+
+select * from  v35

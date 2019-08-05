@@ -1,0 +1,78 @@
+
+
+特性
+
+交易 (Transaction) 是以工作的單一邏輯單元 (Logic Unit) 來執行的一系列相關作業。
+工作邏輯單元必須呈現出四種屬性，即不可部份完成性 (Atomicity)、一致性 (Consistency)、隔離性 (Isolation) 
+與耐久性 (Durability) 屬性，稱為 ACID，
+才能有資格成為一筆交易。
+
+不可部份完成性
+交易必須是不可部份完成 (Atomic) 的工作；資料的修改不是全部執行，就是全部不執行。
+
+一致性
+交易完成時，全部的資料必須維持一致性的狀態。在關聯式資料庫 (Relational Database) 中，
+必須將所有的規則 (Rule) 套用於交易的修改，以維護所有的資料整合性 (Integrity)。所有的內部資料結構，
+例如 B 型樹狀結構索引 (B-tree Index) 
+或是雙向連結串列 (Doubly-Linked List)，在交易終止時必須是正確的。
+
+隔離性
+並行的交易所做的修改，必須與其他任何並行的交易所做的修改隔離。交易所辨識的資料不是處於另一筆
+並行的交易修改資料之前的狀態，就是處於第二筆交易完成後的狀態，但是卻無法辨識中繼狀態。這稱為
+序列化能力 (Serializability)，因為這樣可以產生重新載入起始資料並重新執行一系列的交易，以便讓
+資料最終能夠與原始交易執行後的狀態相同的能力。
+
+耐久性
+交易完成之後，其作用便永遠存在於系統之中。即使系統發生失敗的事件但修改仍會保存。
+------------------------------------------------------
+
+SQL Server 採用下列交易模式來操作。
+
+自動認可交易 : 每個個別陳述式都是一項交易。
+               Database Engine 的預設模式。每一個別 Transact-SQL 陳述式在完成時便會認可。
+               您不必指定任何陳述式來控制交易。
+
+
+明確交易 :每項交易都是用 BEGIN TRANSACTION 陳述式來明確啟動，用 COMMIT 或 ROLLBACK 陳述式來明確結束。
+          明確交易是明確定義交易的啟動與結束的一種交易
+          BEGIN TRANSACTION :標示外顯交易的連線啟動點。
+          COMMIT TRANSACTION 或 COMMIT WORK : 如果沒有發生錯誤，可用來順利結束交易。交易中所做的一切資料
+              修改都會變成資料庫永久的一部份。交易所佔用的資源已被釋放。
+          ROLLBACK TRANSACTION 或 ROLLBACK WORK: 發生錯誤時，用來清除交易。交易所修改的一切資料都會回到
+              交易啟動時的狀態。交易所佔用的資源已被釋放。
+
+隱含交易 : 在上一項交易完成時，隱含地啟動新的交易，但每項交易都用 COMMIT 或 ROLLBACK 陳述式來明確地完成。
+           透過 API 函數或 Transact-SQL SET IMPLICIT_TRANSACTIONS ON 陳述式，可將隱含交易模式設為開啟。
+           下一個陳述式會自動啟動一筆新的交易。當該筆交易完成時，下一個 Transact-SQL 陳述式又會啟動
+           一筆新的交易。
+
+**當連接的隱含交易模式設定為開啟之後，Database Engine 的執行個體便會在第一次執行下列任一個陳述式時，
+自動啟動一筆交易：
+
+ALTER TABLE /  INSERT /CREATE / OPEN / DELETE /  REVOKE  /DROP /  SELECT 
+FETCH /  TRUNCATE TABLE / GRANT / UPDATE
+ 
+交易會維持作用，直到您提交 COMMIT 或 ROLLBACK 陳述式為止。在第一個交易完成認可或回復後，Database Engine
+ 的執行個體會在連接下一次執行這些陳述式中的任一個時，自動啟動新的交易。這個執行個體會持續產生隱含交易鏈，
+直到隱含交易模式關閉為止。
+
+--------------------------------------------------------------------
+您可以在明確的交易中，使用下列陳述式以外的所有 Transact-SQL 陳述式：
+
+CREATE DATABASE/ ALTER DATABASE/ DROP DATABASE/ 
+CREATE FULLTEXT CATALOG/ALTER FULLTEXT CATALOG / DROP FULLTEXT CATALOG
+ 
+CREATE FULLTEXT INDEX/ ALTER FULLTEXT INDEX /  DROP FULLTEXT INDEX
+ 
+BACKUP /  RESTORE/ RECONFIGURE / UPDATE STATISTICS
+ 
+您也無法使用下列預存程序：
+
+在明確交易中的全文檢索系統預存程序。如需詳細資訊，請參閱＜全文檢索搜尋預存程序 (Transact-SQL)＞。
+sp_fulltext_ 開頭的系統預存程序
+
+sp_dboption 來設定資料庫選項，或是在明確或隱含交易中使用修改 master 資料庫的任何系統程序。
+
+
+
+

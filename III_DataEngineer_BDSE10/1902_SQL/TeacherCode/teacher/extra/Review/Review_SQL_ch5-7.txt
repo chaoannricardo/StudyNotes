@@ -1,0 +1,88 @@
+Review
+ch5 Query
+
+--薄挂
+--Client       Server
+--ssms  ---->  DB01 
+               employees/departments tables)
+
+ch5-1 膀セ琩高
+SELECT   * |  col_name, ...
+FROM     table_name
+
+ch5-2 兵ン琩高
+SELECT  
+FROM 
+WHERE  col_name = value  and
+        c2  = v2
+
+ch5-2 逼
+SELECT  
+FROM 
+WHERE
+ORDER  dno, sal
+
+
+ch5-3 虫ㄧ计  
+--single row function
+  y = f(x)  = 2x + 3
+  x = 5     2 * 5 + 3 = 13
+
+
+SELECT     col_name, 虫ㄧ计(col_name)
+FROM     table_name
+
+john   ----> JOHN
+mary   ----> MARY
+smith  ----> SMITH
+
+--function include in function
+SELECT     col_name,  虫ㄧ计( 虫ㄧ计(col_name) ,把计 )
+FROM     table_name
+
+ch6 ㄖ琩高
+--ANSI 粂猭
+SELECT  
+FROM    TableA  JOIN  TableB
+ON  TableA.id =  TableB.id
+ 
+--join 3 tables
+SELECT  
+FROM    TableA  JOIN  TableB
+ON  TableA.id =  TableB.id
+JOIN TableC
+ON TableB.cid  = TableC.cid 
+
+
+--硄ノ 粂猭
+SELECT  
+FROM    TableA  , TableB 
+WHERE TableA.id =  TableB.id
+
+--join 3 tables
+SELECT  
+FROM    TableA  , TableB , TableC
+WHERE TableA.id =  TableB.id
+    and TableB.cid  = TableC.cid 
+
+--ch7 multiple row
+
+
+--だΘ舱 AVG, SUM
+101 24000
+102 17000   --->  18000
+103 17000
+
+SELECT    稪羆ㄧ计(col_name)
+FROM     table_name
+ 
+
+--だΘ舱 AVG by depno
+101 24000 10
+102 17000 10  --->  10 20500  2
+103 17000 20        20 17000  1
+
+SELECT  col_name  ,  稪羆ㄧ计(col_name)
+FROM     table_name
+group by  col_name
+

@@ -1,0 +1,46 @@
+--查資料庫1
+exec sp_helpdb 
+
+--查資料庫2
+
+select database_id,  name from sys.databases 
+
+--查結構描述 dbo 之 schema_id = 1
+
+select SCHEMA_ID, name from sys.schemas
+
+--查資料表 dbo 留意 object_id 
+select object_id, name  from sys.tables  where schema_id = 1
+
+--查資料表2
+exec sp_tables
+exec sp_tables employees
+
+
+--查欄位 1
+
+exec sp_columns employees
+
+--查欄位 2
+
+select name from sys.columns  where object_id = 2139154666
+
+--查欄位 2 (employees之欄位)
+
+select name 
+from sys.columns  
+where object_id = (select object_id 
+                   from sys.tables  
+                   where schema_id = 1 
+                   and name = 'employees'
+)
+
+
+
+--查詢 table 及 schema name
+
+select s.name, t.name 
+from sys.tables t JOIN sys.schemas s
+ON t.schema_id = s.schema_id 
+where s.name = 'dbo'
+

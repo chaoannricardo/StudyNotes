@@ -1,0 +1,55 @@
+您受託為一家知名的拍賣網站建立資料庫, 請依下列規格建立 TABLE: (寫出語法於答案紙上) 
+
+1 會員資料表 : MEMBER
+      編號    姓名      住址 
+欄名: mno     name      addr
+型態: INT     CHAR(20)  CHAR(30)
+限制: PK
+
+
+2 拍賣產品 : PROD
+      編號    類別      品名       起標價  結標日     會員編號
+欄名: pno     pclass    pname      bprice  edate      mno
+型態: INT     CHAR(10)  CHAR(20)   INT     DATETIME   INT
+限制: PK                                              FK到MEMBER
+
+
+        
+3 出價記錄 : BID
+      產品編號  會員編號    出價日期   出價
+欄名: pno       mno         bdate      bprice
+型態: INT       INT         DATETIME   INT
+限制: FK到PROD  FK到MEMBER
+樣本: 1         101         2009-09-15 910
+
+----------------------------------------------------------
+1 建立資料庫 SALES
+
+2.0 建立 3資料表 (先未設關聯 ,即無 PK,FK)
+
+  2.1 建立 會員資料表(MEMBER) 表格 
+
+  2.2  拍賣產品表(PROD) 表格
+
+  2.3 出價記錄表(BID) 表格
+
+3.0 依前述建立之 3資料表 (事後再補設關聯 ,即加入 PK,FK)
+
+  3.1 新增會員資料表(MEMBER) 表格  之  mno 為 主鍵 PK
+
+  3.2 新增拍賣產品表(PROD) 表格  之  pno 為 主鍵 PK  
+  3.3 新增拍賣產品表(PROD) 表格  之  mno 為 外部鍵 FK 關聯到 MEMBER表格之 mno欄位
+
+  3.4 新增出價記錄表(BID) 表格 之  mno 為 外部鍵 FK 關聯到 MEMBER表格之 mno欄位
+  3.5 新增出價記錄表(BID) 表格 之  pno 為 外部鍵 FK 關聯到 PROD 表格之 pno欄位       
+  3.6 新增出價記錄表(BID) 表格 表格  之  pno+mno 為 主鍵 PK  
+
+4.0 建立 3資料表 (同時設關聯 ,即有 PK,FK)
+
+  4.1 建立 會員資料表(MEMBER2) 表格 
+
+  4.2 建立 拍賣產品表(PROD2) 表格
+
+  4.3 建立出價記錄表(BID2) 表格
+
+

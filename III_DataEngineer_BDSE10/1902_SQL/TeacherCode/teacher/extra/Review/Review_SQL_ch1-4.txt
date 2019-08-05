@@ -1,0 +1,23 @@
+Review
+
+ch1 DATA/DATBASE/ DBMS/ Realtion DBMS/ Table/ Database Desgin--> ER model -->  MS SQL or Oracle or MySQL or IBM Db2 Sybase Informix
+    SQL(  DDL:  create table
+          DML : insert  / update / delete /  ch5 select 
+          DCL : grant / revoke
+
+Install SQL :  ssms / sample DB: adventureworks2016 /  doc
+  在家:  直接裝:  copy  d:\source
+         裝在虛擬機 copy d:\VM
+
+ch2 Tools:   SQLCMD  -U  -P  / -E    -?    -d  -S  192.168.200.57
+         ok   1>  select * from student
+         xx   2>  sqlcmd  -E
+        xx   c:\>   select * from xx
+               c:\>  telnet  ptt.cc
+
+            SSMS:
+ch3: create database DB01
+     create table student( id  int  PRIMARY KEY....)
+
+ch4: insert /update /delete  / ch5 select
+

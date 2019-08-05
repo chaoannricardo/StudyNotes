@@ -1,0 +1,10 @@
+ch2_建立安裝 Lab
+
+1 下載 lab檔  \\192.168.35.12\temp\T-SQL 到 C:\T-SQL
+
+2 開啟命令視窗 : Start / 輸入  cmd  或是 附屬應用程式 / 命令提示字元
+
+3 C:\>    輸入   sqlcmd  -E  -iC:\T-SQL\lab.sql
+
+4 開啟 SSMS  確認 資料庫中有 DB01
+

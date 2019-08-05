@@ -1,0 +1,21 @@
+
+1 將 九九乘法表 loop99.sql 改寫成 stored procedure 名 loop99
+  輸入 x 及 y 就會列出　各種相乘積
+
+  執行方式   exec  loop99  9,9 ; 
+  就會列出 
+
+     1x1 = 1
+     1x2 = 2
+       :
+     9x9 = 81
+
+
+  提示
+
+    create procedure loop99 ( ..  )
+    AS
+    begin
+      :
+    end;
+    

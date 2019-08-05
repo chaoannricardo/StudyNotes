@@ -1,0 +1,30 @@
+﻿--Inserting or Updating an Image File Using OPENROWSET and BULK : OPENROWSET « Data Types « SQL Server / T-SQL Tutorial
+
+--建一個table  Album 欄位 pic 放照片 varbinary(max)
+--建一個目錄TEMP 放 1000張照片
+--新增幾筆照片, 然後開始練習用 jsp等測 瀑布流...
+--以後再用 T-SQL寫迴圈一次讀1000個照片
+--
+/*參考 http://www.java2s.com/Tutorial/SQLServer/0100__Data-Types/InsertingorUpdatinganImageFileUsingOPENROWSETandBULK.htm
+/*
+
+--ch4
+CREATE TABLE ImageTable
+(
+  ID  int            NOT NULL,
+  Gif varbinary(max) NOT NULL
+)
+go
+
+
+--method1
+
+INSERT INTO ImageTable VALUES (1,  (SELECT  BulkColumn FROM OPENROWSET(BULK 'C:\temp\1.jpg',SINGLE_BLOB) AS x ))
+INSERT INTO ImageTable VALUES (2,  (SELECT  BulkColumn FROM OPENROWSET(BULK 'C:\temp\2.jpg',SINGLE_BLOB) AS x ))
+
+--method2
+
+INSERT ImageTable (ID, Gif) SELECT 3, BulkColumn FROM OPENROWSET(BULK 'C:\temp\3.jpg',SINGLE_BLOB) AS x
+
+
+

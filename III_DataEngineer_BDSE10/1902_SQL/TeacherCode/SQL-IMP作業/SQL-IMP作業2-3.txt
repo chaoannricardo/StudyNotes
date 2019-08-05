@@ -1,0 +1,57 @@
+3 建立一  T-SQL 程式 存成檔名 gen_seats.sql  包含一個功能
+  宣告　放映時間, 電影代號, 廳院 等變數
+  參考廳院座位表, 產生(新增)指定場次的電影座次表 到 seats表格
+
+  輸入  sqlcmd -E -i gen_seats.sql     或在 SSMS 之 新增查詢視窗執行 
+
+
+提示
+   a 先執行 scripts 建立表格
+   b T-SQL 程式中 根據廳院之變數值 參考廳院座位表 m_room, 
+     寫一個迴圈 將該場次座位新增到 seats 表格 
+   
+   --宣告 放映時間, 電影代號, 廳院 等變數    
+   --先查尋 指定廳院之座位數 row, col
+   --根據座位數 v_row, v_col 產生座位表 寫迴圈 insert 
+     insert into seats values ('2016-12-25 13:00', 1, v_row-v_col組合, '0', NULL);
+
+--程式開始
+BEGIN
+  DECLARE   @v_row     int;
+  DECLARE   @v_col     int;
+  DECLARE   @v_ptime   varchar(20); 
+  DECLARE   @v_movie   int;
+  DECLARE   @v_roomid  varchar(10);
+  DECLARE   @x_row     int;
+  DECLARE   @x_col     int;
+
+  --設定變數值
+  SET @v_ptime  = '2016-12-25 13:00';
+  SET @v_movie  = 1;
+  SET @v_roomid = 'A廳';
+
+  --先查尋 指定廳院之座位數 row, col
+  select @v_row = seat_row , @v_col = seat_col
+  from   m_room
+  where  ..
+
+  --根據座位數 @v_row, @v_col 產生座位表
+  SET @x_row = 1;       
+    WHILE ( @x_row  <= @v_row )
+      BEGIN
+        SET @x_col = 1;     
+        WHILE ( @x_col  <= @v_col )
+          BEGIN
+            insert into seats values ( @v_ptime, @v_movie, @v_row-@v_col組合, '0', NULL);
+            ..   --增加 @x_col
+          END; 
+        .. -- 設定 @x_row, @x_col
+      END;
+END;
+    
+--程式結束
+   
+測試輸出指令:
+   0 sqlcmd -E -i gen_seats.sql
+   1 select * from seats where ...
+   2 select CONVERT(varchar(16), ptime ,121) as ptime, movie, seat_num, sold, ordid from seats

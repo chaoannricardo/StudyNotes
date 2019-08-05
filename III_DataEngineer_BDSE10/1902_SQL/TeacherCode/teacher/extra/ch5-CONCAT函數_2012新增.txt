@@ -1,0 +1,40 @@
+-- SQL SERVER – Concat Strings in SQL Server using T-SQL – SQL in Sixty Seconds #035 – Video
+
+-- CONCAT函數 自動轉換數字為字串,再串連一起
+
+/*
+http://blog.sqlauthority.com/2012/12/05/sql-server-concat-strings-in-sql-server-using-t-sql-sql-in-sixty-seconds-035-video/
+
+ SQL Server 2012 has introduced new function CONCAT which concatenates the strings much efficiently.
+
+When we concat values with ‘+’ in SQL Server we have to make sure that values are in string format. However, when we attempt to concat integer we have to convert the integers to a string or else it will throw an error. However, with the newly introduce the function of CONCAT in SQL Server 2012 we do not have to worry about this kind of issue. It concatenates strings and integers without casting or converting them. You can specify various values as a parameter to CONCAT functions and it concatenates them together.
+
+/*
+
+-- Method 1: Concatenating two strings
+SELECT 'FirstName' + ' ' + 'LastName' AS FullName
+FROM AdventureWorks2012.Person.Person
+
+-- Method 2: Concatenating two Numbers
+SELECT CAST(1 AS VARCHAR(10)) + ' ' + CAST(2 AS VARCHAR(10))
+FROM AdventureWorks2012.Person.Person
+
+-- Method 3: Concatenating values of table columns
+SELECT FirstName + ' ' + LastName AS FullName
+FROM AdventureWorks2012.Person.Person
+
+-- Method 4: SQL Server 2012 CONCAT function 
+SELECT CONCAT(FirstName , ' ' , LastName) AS FullName
+FROM AdventureWorks2012.Person.Person
+
+--資料庫定序須相同 
+/*
+訊息 468，層級 16，狀態 9，行 1
+ 無法解析 concat 作業中 "SQL_Latin1_General_CP1_CI_AS" 與
+ "Chinese_Taiwan_Stroke_CI_AS" 之間的定序衝突。
+*/
+
+-- Method 5: SQL Server 2012 CONCAT function
+SELECT CONCAT(FirstName , ' ' , 1) AS FullName
+FROM AdventureWorks2012.Person.Person
+

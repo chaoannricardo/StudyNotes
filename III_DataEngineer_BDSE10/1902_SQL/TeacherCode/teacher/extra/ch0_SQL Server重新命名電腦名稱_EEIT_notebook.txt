@@ -1,0 +1,31 @@
+sql server 電腦名稱
+
+何謂[預設的執行個體]
+在安裝 SQL Server 期間，SQL Server 安裝程式會將作業系統的伺服器
+伺服器名稱設成電腦名稱。
+
+以下是 SQL Server 線上說明提供的步驟來重新命名
+
+--00登入 SSMS  伺服器名稱 輸入 .   ( 一個點 表示本機)
+
+--01 檢查伺服器名稱，預期看到原本的伺服器名稱  
+SELECT @@SERVERNAME  
+  
+--02  
+syntax:
+EXEC sp_dropserver '原本的伺服器名稱'  
+
+ex:
+EXEC sp_dropserver 'M580V-01'  
+  
+--03  
+EXEC sp_addserver  
+@server='M580V-NB12',         --xx = 您電腦名 ex M580V-NB12
+@local = 'local'  
+  
+--04 重新啟動 SQL Server  
+  SQL　configuration Manager
+  SQL Server (MSSQLSERVER)
+
+--05 檢查伺服器名稱  
+SELECT @@SERVERNAME  

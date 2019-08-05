@@ -1,0 +1,7 @@
+x-y ¤TºØ¼gªk
+
+Integer.toString(x).format("%02d", x)+"-"+ Integer.toString(y).format("%02d", y)
+
+String.format("%02d", x)+"-"+String.format("%02d", y)
+
+String.format("%02d-%02d", x, y)

@@ -1,0 +1,55 @@
+4 參考 SQL-IMP作業2-3 程式,
+  建立一個 stored proedure: gen_seats  包含一個功能 存成檔名 sp_gen_seats.sql
+  輸入　放映時間, 電影代號, 廳院 等參數
+  參考廳院座位表, 產生(新增)指定場次的電影座次表 到 seats表格
+
+  輸入  exec  gen_seats '2016-12-25 13:00', 1, 'A廳'
+
+
+提示
+   a 先執行 scripts 建立表格
+   b Stored Procedure 程式中 根據廳院之變數值 參考廳院座位表 m_room, 
+     寫一個迴圈 將該場次座位新增到 seats 表格 
+   
+   --宣告 放映時間, 電影代號, 廳院 等變數    
+   --先查尋 指定廳院之座位數 row, col
+   --根據座位數 v_row, v_col 產生座位表 寫迴圈 insert 
+     insert into seats values ('2016-12-25 13:00', 1, v_row-v_col組合, '0', NULL);
+
+--程式開始
+  create procedure gen_seats ( @v_ptime  varchar(20), 
+                               @v_movie  int, 
+                               @v_roomid varchar(10) )
+  AS
+  BEGIN
+    DECLARE   @v_row     int;
+    DECLARE   @v_col     int;
+    DECLARE   @x_row     int;
+    DECLARE   @x_col     int;
+  
+      --先查尋 指定廳院之座位數 row, col
+      select @v_row = seat_row , @v_col = seat_col
+      from   m_room
+      where  ..
+
+      --根據座位數 @v_row, @v_col 產生座位表
+       SET @x_row = 1;       
+       WHILE ( @x_row  <= @v_row )
+         BEGIN
+           SET @x_col = 1;     
+           WHILE ( @x_col  <= @v_col )
+             BEGIN
+               insert into seats values ( @v_ptime, @v_movie, @v_row-@v_col組合, '0', NULL);
+               ..   --增加 @x_col
+             END;
+           .. -- 設定 @x_row, @x_col
+         END;
+   END;
+    
+--程式結束
+   
+測試輸出指令:
+   0  exec  gen_seats '2016-12-25 13:00', 1, 'A廳'
+   1  select * from seats where ...
+
+

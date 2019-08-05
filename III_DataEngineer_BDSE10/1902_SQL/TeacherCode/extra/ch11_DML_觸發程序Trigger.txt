@@ -1,0 +1,130 @@
+語法_DML Trigger
+
+CREATE TRIGGER [ schema_name . ]trigger_name 
+ON { table | view } 
+[ WITH <dml_trigger_option> [ ,...n ] ]
+{ FOR | AFTER | INSTEAD OF } 
+{ [ INSERT ] [ , ] [ UPDATE ] [ , ] [ DELETE ] } 
+[ WITH APPEND ] 
+[ NOT FOR REPLICATION ] 
+AS { sql_statement  [ ; ] [ ,...n ] | EXTERNAL NAME <method specifier [ ; ] > }
+
+<dml_trigger_option> ::=
+    [ ENCRYPTION ]
+    [ EXECUTE AS Clause ]
+
+
+--修改 
+  ALter trigger
+
+-關閉/啟動  
+ DISABLE/ENABLE  trigger
+
+  DISABLE TRIGGER { [ schema_name . ] trigger_name [ ,...n ] | ALL }
+    ON { object_name | DATABASE | ALL SERVER } [ ; ]
+
+
+--刪除 以SSMS時 可查相依的物件
+  DROP trigger
+
+--查詢
+sp_help        Trigger名
+sp_helptrigger 表格名
+select name from sys.triggers
+
+
+--例 1 INSERT trigger 新增 [Order Details] 表後 去減少 products表之庫存量
+
+USE northwind
+CREATE TRIGGER OrdDet_Insert
+ON [Order Details] 
+FOR INSERT
+AS
+  UPDATE P SET UnitsInStock = (P.UnitsInStock - I.Quantity)
+    FROM products AS P INNER JOIN inserted AS I
+    ON P.ProductID = I.ProductID 
+go
+
+--run before stock=17
+  SELECT * from products where ProductID = 2
+
+--run
+  INSERT INTO  [Order Details] VALUES (10525, 2, 19.00, 5, 0.2)
+
+--after stock=12
+  SELECT * from products where ProductID = 2
+
+
+--例 2 DELETE trigger 刪除 categories表後 去更新 products表
+
+USE northwind
+CREATE TRIGGER category_delete
+ON categories
+FOR DELETE
+AS
+  UPDATE P SET discontinued = 1 
+    FROM products AS P INNER JOIN deleted AS d
+    ON P.CategoryID = d.CategoryID
+go
+
+
+--run 會有 error 因當 categoryid 會fk到 products 之 categoryid
+DELETE from categories WHERE CategoryID = 4
+
+
+--例 3 UPDATE trigger 更新 Employees 表後 會記錄改變前後之值, 此例不允許更新指定欄位
+USE northwind
+CREATE TRIGGER Employee_Update
+ON  Employees
+FOR UPDATE
+AS
+
+  IF UPDATE(LastName)
+  BEGIN TRANSACTION
+    RAISERROR('Transaction cannot be processed.\ 
+       *****Employee Lastname cannot be modified.', 10 ,1)
+  ROLLBACK TRANSACTION
+go
+
+--before
+ select lastname from Employees WHERE EmployeeID = 2
+
+--run
+UPDATE Employees SET Lastname = 'AAA' WHERE EmployeeID = 2
+
+
+
+--例 4 INSTEAD OF trigger 對 VIEW 做 UPDATE 會套用至 base 表格, 原先對 view的update將被取代而不再執行
+--Customers View 包含兩個 Base Tables
+
+CREATE VIEW Customers 
+AS
+SELECT * FROM CustomersMex
+UNION
+SELECT * FROM CustomersGer
+
+--run 會實際更新 base 表 CustomersGer
+UPDATE Customers set Phone = '030-0074321' where CustomerID= 'ALFKI'
+
+
+
+--例 5 判斷子表仍有資料時不能刪除之trigger
+
+USE [Northwind]
+
+CREATE TRIGGER [Product_Delete] 
+ON [Products] 
+FOR DELETE
+AS
+IF (Select Count (*)
+    FROM [Order Details] INNER JOIN deleted 
+    ON [Order Details].ProductID = Deleted.ProductID    ) > 0 
+BEGIN
+   RAISERROR('Transaction cannot be processed. \
+              This Product still has a history of orders.', 16, 1)
+   ROLLBACK TRANSACTION
+END
+
+
+
+

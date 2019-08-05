@@ -1,0 +1,21 @@
+alter index  xx on 表格 REBUILD 或 REORGANIZE
+
+微軟建議 片斷(Fragmentation)情形 < 30% 須 REORGANIZE, > 30% 須  REBUILD
+
+
+1
+REBUILD [ WITH (<rebuild_index_option> [ ,...n]) ] 
+指定將利用相同的資料行、索引類型、唯一屬性和排序順序來重建索引。
+這個子句相當於 DBCC DBREINDEX。REBUILD 會啟用停用的索引。
+除非指定了 ALL 關鍵字，否則，重建叢集索引不會重建相關聯的非叢集索引。
+如果未指定索引選項，便會套用儲存在 sys.indexes 中的現有索引選項值。
+任何其值未儲存在 sys.indexes 中的索引選項，都會套用選項引數定義中所指示的預設值。
+
+
+2 
+REORGANIZE
+指定將重新組織索引分葉層級。這個子句相當於 DBCC INDEXDEFRAG。
+ALTER INDEX REORGANIZE 陳述式一律是在線上執行。這表示不會保留長期封鎖的資料表鎖定，
+在 ALTER INDEX REORGANIZE 交易期間，可以繼續查詢或更新基礎資料表。
+停用的索引或 ALLOW_PAGE_LOCKS 設為 OFF 的索引不能指定 REORGANIZE。
+

@@ -1,0 +1,27 @@
+-- 變更 sa 密碼 
+
+以 Windows 驗證登入 SSMS 後 
+
+點 安全性 / 登入 / 右鍵 sa / 屬性 / 一般 / SQL Serever驗證 密碼: 123456 / 確認密碼: 123456
+
+   取消勾選 (不要勾) 強制執行密碼原則
+
+確定
+
+
+安裝時確認有選擇 SQL Server and Windows 混合驗證
+  - 以 Windows 驗證 登入 SSMS
+  - 右鍵 SQL Server 名  / 屬性 / 安全性 / 點 "SQL Server and Windows 混合驗證"
+  - 點 安全性 / 登入 / 右鍵 sa / 屬性 / 狀態 / 登入 點 "已啟用"
+  - SQL Server 組態管理員 / SQL Server服務 / 右鍵 SQL Server (MSSQLSERVER) / 重新啟動
+
+
+或以 SQLCMD 登入 sqlcmd -E
+
+alter login sa with password='passw0rd'
+go
+
+
+**請務必記的 sa密碼, 課程結束後 記的 還原成 空白 ,
+  以免造成下一位老師困擾
+

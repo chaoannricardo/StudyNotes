@@ -1,0 +1,254 @@
+CREATE  FUNCTION
+
+定義
+建立使用者自訂函數。這是一個會傳回值之已儲存的 Transact-SQL 或 Common Language Runtime (CLR) 常式。
+使用者自訂函數不能用來執行修改資料庫狀態的動作。就像系統函數一樣，使用者自訂函數也可以從查詢中叫用。
+就像預存程序一樣，純量函數也可以利用 EXECUTE 陳述式來執行。
+ 
+自訂函數:
+  1 純量值函數(Scalar Functions)                    : 用於傳回單一值
+  2 嵌入資料表值函數(Inline Table-Valued Functions) : 用於 FROM 呼叫  語法中寫 RETURN TABLE 及單一SELECT 
+                                                      不可加BEGIN END
+  3 多重陳述資料表值函數 (Multistatement Table-valued Functions): 傳回定義之表格及資料 
+
+SSMS介面顯示種類:
+  資料表值函數 TF/IF
+  純量值函數   FN
+  彙總函數
+  系統函數
+
+--------------------------------------------------------------------------------
+語法1 純量值函數 Scalar Functions
+
+CREATE FUNCTION [ schema_name. ] function_name 
+( [ { @parameter_name [ AS ][ type_schema_name. ] parameter_data_type 
+    [ = default ] [ READONLY ] } 
+    [ ,...n ]
+  ]
+)
+RETURNS return_data_type
+[ WITH <function_option> [ ,...n ] ]
+[ AS ]
+BEGIN 
+  function_body 
+  RETURN scalar_expression
+END
+[ ; ]
+
+--------------------------------------------------------------------------------
+語法2 嵌入資料表值函數 Inline Table-Valued Functions : 不可加BEGIN
+
+CREATE FUNCTION [ schema_name. ] function_name 
+( [ { @parameter_name [ AS ] [ type_schema_name. ] parameter_data_type 
+    [ = default ] [ READONLY ] } 
+    [ ,...n ]
+  ]
+)
+RETURNS TABLE
+    [ WITH <function_option> [ ,...n ] ]
+[ AS ]
+RETURN [ ( ] select_stmt [ ) ]
+[ ; ]
+
+
+--------------------------------------------------------------------------------
+語法3 多重陳述資料表值函數 Multistatement Table-valued Functions
+
+CREATE FUNCTION [ schema_name. ] function_name 
+( [ { @parameter_name [ AS ] [ type_schema_name. ] parameter_data_type 
+    [ = default ] [READONLY] } 
+    [ ,...n ]
+  ]
+)
+RETURNS @return_variable TABLE <table_type_definition>
+[ WITH <function_option> [ ,...n ] ]
+[ AS ]
+BEGIN 
+   function_body 
+   RETURN
+END
+[ ; ]
+
+
+說明
+Function Options
+<function_option>::= 
+{
+    [ ENCRYPTION ]
+  | [ SCHEMABINDING ]
+  | [ RETURNS NULL ON NULL INPUT | CALLED ON NULL INPUT ]
+  | [ EXECUTE_AS_Clause ]
+}
+
+function_body 
+指定 Transact-SQL 陳述式序列 (這些陳述式聯合後不會產生資料表修改之類的副作用) 負責定義函數的值。
+function_body 只能用在純量函數和多重陳述式資料表值函數中。
+
+ENCRYPTION
+指出 Database Engine 會將 CREATE FUNCTION 陳述式的原始文字轉換為混亂格式。
+
+SCHEMABINDING
+指定函數必須繫結到參考的資料庫物件。如果其他結構描述繫結的物件正在參考函數，這個條件可防止對函數進行變更。
+
+data_type 
+指定資料行資料類型。就 Transact-SQL 函數而言，除了 timestamp 以外，其他所有資料類型 (包括 CLR 使用者自訂類型)
+ 都是允許的資料類型。
+
+---------------------------------------------------------------------------------
+查詢 函數內容 : sys.sql_modules 
+  若要顯示 Transact-SQL 使用者自訂函數的定義，請使用函數所在資料庫中的 sys.sql_modules 目錄檢視。
+
+例如：
+
+USE AdventureWorks;
+GO
+SELECT definition, type 
+FROM sys.sql_modules AS m JOIN sys.objects AS o 
+ON m.object_id = o.object_id  AND type IN ('FN', 'IF', 'TF');
+GO
+
+---------------------------------------------------------------------------------
+查詢 函數相依之物件: sys.sql_expression_dependencies
+  函數參考之物件的相關報告，請使用 sys.sql_expression_dependencies。
+
+---------------------------------------------------------------------------------
+--例1 純量值函數 計算 ISO 週的純量值
+下列範例會建立使用者自訂函數 ISOweek。這個函數取用日期引數並計算 ISO 週數。若要使函數能夠正確計算，
+必須先叫用 SET DATEFIRST 1，才呼叫該函數。
+
+這個範例也顯示如何使用 EXECUTE AS 子句來指定可執行預存程序的安全性內容。在這個範例中，選項 CALLER 
+指定將在呼叫程序的使用者之內容中執行程序。您可指定的其他選項有 SELF、OWNER 及 user_name。
+
+以下是函數呼叫。請注意，DATEFIRST 是設為 1。 
+--SET DATEFIRST 會指定每週第一天。U.S. English 預設值是 7，也就是星期日。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID (N'dbo.ISOweek', N'FN') IS NOT NULL
+    DROP FUNCTION dbo.ISOweek;
+GO
+
+CREATE FUNCTION dbo.ISOweek (@DATE datetime)
+RETURNS int
+WITH EXECUTE AS CALLER
+AS
+BEGIN
+     DECLARE @ISOweek int;
+     SET @ISOweek= DATEPART(wk,@DATE)+1
+          -DATEPART(wk,CAST(DATEPART(yy,@DATE) as CHAR(4))+'0104');
+--Special cases: Jan 1-3 may belong to the previous year
+     IF (@ISOweek=0) 
+          SET @ISOweek=dbo.ISOweek(CAST(DATEPART(yy,@DATE)-1 
+               AS CHAR(4))+'12'+ CAST(24+DATEPART(DAY,@DATE) AS CHAR(2)))+1;
+--Special case: Dec 29-31 may belong to the next year
+     IF ((DATEPART(mm,@DATE)=12) AND 
+          ((DATEPART(dd,@DATE)-DATEPART(dw,@DATE))>= 28))
+          SET @ISOweek=1;
+     RETURN(@ISOweek);
+END;
+GO
+
+--執行
+SET DATEFIRST 1;
+SELECT dbo.ISOweek(CONVERT(DATETIME,'12/26/2004',101)) AS 'ISO Week';
+
+---------------------------------------------------------------------------------
+--例1-2 純量值函數搭配使用者定義函數使用 EXECUTE
+        下列範例會執行 ufnGetSalesOrderStatusText 純量使用者定義函數。它會使用變數 @returnstatus 
+        來儲存該函數傳回的值。該函數會預期接受一個輸入參數 @Status。它定義為 tinyint 資料類型。
+
+
+--run
+USE AdventureWorks;
+GO
+DECLARE @returnstatus nvarchar(15);
+SET @returnstatus = NULL;
+EXEC @returnstatus = dbo.ufnGetSalesOrderStatusText @Status = 2;
+PRINT @returnstatus;
+GO
+---------------------------------------------------------------------------------
+--例2  建立嵌入資料表值函數傳回嵌入資料表值函數。它傳回三個資料行：ProductID、Name，以及年初
+--     至今賣給商店之每項產品的總計彙總 YTD Total (依商店區分)。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID (N'Sales.ufn_SalesByStore', N'IF') IS NOT NULL
+    DROP FUNCTION Sales.ufn_SalesByStore;
+GO
+CREATE FUNCTION Sales.ufn_SalesByStore (@storeid int)
+RETURNS TABLE
+AS
+RETURN 
+(
+    SELECT P.ProductID, P.Name, SUM(SD.LineTotal) AS 'YTD Total'
+    FROM Production.Product AS P JOIN Sales.SalesOrderDetail AS SD 
+    ON SD.ProductID = P.ProductID
+    JOIN Sales.SalesOrderHeader AS SH ON SH.SalesOrderID = SD.SalesOrderID
+    WHERE SH.CustomerID = @storeid
+    GROUP BY P.ProductID, P.Name
+);
+GO
+
+--執行
+SELECT * FROM Sales.ufn_SalesByStore (602);
+
+---------------------------------------------------------------------------------
+--例3 建立多重陳述式資料表值函數
+下列範例建立資料表值函數 fn_FindReports(InEmpID)。當提供有效的員工識別碼時，函數會傳回對應於所有員工的資料表，
+該資料表會直接或間接報告至員工。函數利用遞迴一般資料表運算式 (CTE) 來產生階層式員工清單。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID (N'dbo.ufn_FindReports', N'TF') IS NOT NULL
+    DROP FUNCTION dbo.ufn_FindReports;
+GO
+CREATE FUNCTION dbo.ufn_FindReports (@InEmpID INTEGER)
+RETURNS @retFindReports TABLE 
+(
+    EmployeeID int primary key NOT NULL,
+    Name nvarchar(255) NOT NULL,
+    Title nvarchar(50) NOT NULL,
+    EmployeeLevel int NOT NULL,
+    Sort nvarchar (255) NOT NULL
+)
+--Returns a result set that lists all the employees who report to the 
+--specific employee directly or indirectly.*/
+AS
+BEGIN
+   WITH DirectReports(Name, Title, EmployeeID, EmployeeLevel, Sort) AS
+    (SELECT CONVERT(Varchar(255), c.FirstName + ' ' + c.LastName),
+        e.Title,
+        e.EmployeeID,
+        1,
+        CONVERT(Varchar(255), c.FirstName + ' ' + c.LastName)
+     FROM HumanResources.Employee AS e
+          JOIN Person.Contact AS c ON e.ContactID = c.ContactID 
+     WHERE e.EmployeeID = @InEmpID
+   UNION ALL
+     SELECT CONVERT(Varchar(255), REPLICATE ('| ' , EmployeeLevel) +
+        c.FirstName + ' ' + c.LastName),
+        e.Title,
+        e.EmployeeID,
+        EmployeeLevel + 1,
+        CONVERT (Varchar(255), RTRIM(Sort) + '| ' + FirstName + ' ' + 
+                 LastName)
+     FROM HumanResources.Employee as e
+          JOIN Person.Contact AS c ON e.ContactID = c.ContactID
+          JOIN DirectReports AS d ON e.ManagerID = d.EmployeeID
+    )
+-- copy the required columns to the result of the function 
+   INSERT @retFindReports
+   SELECT EmployeeID, Name, Title, EmployeeLevel, Sort
+   FROM DirectReports 
+   RETURN
+END;
+GO
+
+-- 執行 Example invocation
+SELECT EmployeeID, Name, Title, EmployeeLevel
+FROM dbo.ufn_FindReports(109)
+ORDER BY Sort;
+GO
+
+
+---------------------------------------------------------------------------------

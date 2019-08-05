@@ -1,0 +1,74 @@
+USE northwind
+
+膀セ琩高:
+select employeeid, lastname
+from employees
+
+
+兵ン琩高:
+ select employeeid, lastname
+from employees
+where lastname = 'Dodswort
+
+
+逼:
+select employeeid, lastname
+from employees
+order by lastname
+
+ㄧ计-虫single row function:
+select employeeid, lastname, upper(lastname), substring(lastname,1,5),
+       convert(varchar(40),birthdate,101)
+from employees
+
+ㄧ计-multiple row function I
+    select avg(unitprice), sum(unitsinstock)
+    from  products
+
+ㄧ计-だ竤multiple row function II
+ select categoryid , AVG(unitprice)
+from  products
+group by categoryid 
+
+
+癸单ㄖ (equal-join)
+  select c.customerid, c.companyname, o.customerid, o.orderid, o.orderdate
+from customers c JOIN orders  o
+ON   c.customerid = o.customerid
+where  c.customerid= 'VINET'
+
+场ㄖ (outer-join)
+   SELECT 
+   FROM 
+   WHERE 
+иㄖ (self-join)
+ select w.employeeid,w.lastname, w.reportsto, m.employeeid AS mgrid, m.lastname AS mgrname
+from employees w  JOIN employees m
+ON w.reportsto = m.employeeid
+
+盻琩高 (subquery)
+select employeeid, lastname, reportsto
+from   employees
+where  reportsto IN (  select reportsto
+                      from   employees
+                      where lastname = 'King'
+                   )
+ユ-COMMIT/ROLLBACK/SAVEPOINT
+
+DML
+穝糤 INSERT
+э UPDATE
+埃 DELETE
+
+DDL
+ミ CREATE TABLE
+э ALTER TABLE
+埃 DROP TABLE
+睲埃 TRUNCATE TABLE
+
+ミVIEW  :  CREATE VIEW
+ミINDEX :  CREATE INDEX
+
+DCL: 
+  GRANT
+  REVOKE

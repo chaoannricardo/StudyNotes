@@ -1,0 +1,368 @@
+CREATE PROCEDURE 陳述式
+
+
+定義
+  建立預存程序。預存程序是已儲存的 Transact-SQL 陳述式集合，或可取用及傳回使用者提供之參數的
+  Microsoft .NET Framework Common Language Runtime (CLR) 方法的參考。程序建立後可作為永久使用或
+  在工作階段內作為暫時使用 (本機暫存程序)，或者，可在所有工作階段內作為暫時使用 (全域暫存程序)。
+
+註 此家procedure不單執行 動作 亦可傳回 查詢結果集 或在程式內加 RETURN 或
+   沒加 return也可以 在呼叫時 像函數一樣傳回執行狀態
+   且執行時 參數 不能用括號  exec proc_name( par1, par2) 只能 exec proc_name par1, par2
+
+語法
+CREATE { PROC | PROCEDURE } [schema_name.] procedure_name
+    [ { @parameter data_type }  [ = default ] [ OUT | OUTPUT ] [READONLY]
+    ] [ ,...n ] 
+[ WITH <procedure_option> [ ,...n ] ]
+[ FOR REPLICATION ] 
+AS { <sql_statement> [;]
+
+------------------------------------------------------------------------------------------
+說明
+<procedure_option> ::= 
+    [ ENCRYPTION ]
+    [ RECOMPILE ]
+    [ EXECUTE AS Clause ]
+
+<sql_statement> ::= 
+{ [ BEGIN ] statements [ END ] }
+
+
+READONLY
+指示無法在程序的主體內更新或修改參數。如果參數類型是使用者定義資料表類型，就必須指定 READONLY。
+
+--查詢procedure 內容 / 取得預存程序的相關資訊  sys.sql_modules 
+
+USE AdventureWorks;
+GO
+SELECT name, mo.object_id, definition 
+FROM   sys.sql_modules mo JOIN sys.objects ob
+ON     mo.object_id = ob.object_id AND TYPE = 'P';
+
+
+------------------------------------------------------------------------------------------
+--例1 使用簡單的預存程序從檢視傳回所有員工 (所提供的姓氏和名字)、工作職稱及部門名稱。不帶任何參數
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ( 'HumanResources.uspGetAllEmployees', 'P' ) IS NOT NULL 
+    DROP PROCEDURE HumanResources.uspGetAllEmployees;
+GO
+CREATE PROCEDURE HumanResources.uspGetAllEmployees
+AS
+    SELECT LastName, FirstName, JobTitle, Department
+    FROM   HumanResources.vEmployeeDepartment;
+GO
+
+--執行 uspGetEmployees 預存程序 
+EXECUTE HumanResources.uspGetAllEmployees;
+GO
+-- Or
+EXEC HumanResources.uspGetAllEmployees;
+GO
+
+--------------------------------------------------------------------------------------------------
+--例 2 搭配參數使用簡單的程序從檢視傳回指定的員工 (所提供的姓氏和名字)、職稱及部門名稱。
+--     這個預存程序接受與傳遞的參數完全相符的項目。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ( 'HumanResources.uspGetEmployees', 'P' ) IS NOT NULL 
+    DROP PROCEDURE HumanResources.uspGetEmployees;
+GO
+CREATE PROCEDURE HumanResources.uspGetEmployees 
+    @LastName  nvarchar(50), 
+    @FirstName nvarchar(50) 
+AS 
+    SELECT FirstName, LastName, JobTitle, Department
+    FROM   HumanResources.vEmployeeDepartment
+    WHERE  FirstName = @FirstName AND LastName = @LastName;
+GO
+
+--執行 uspGetEmployees 預存程序
+
+EXECUTE HumanResources.uspGetEmployees 'Ackerman', 'Pilar';
+
+--或 加 Unicode 符號 N
+EXECUTE HumanResources.uspGetEmployees N'Ackerman', N'Pilar';
+
+-- Or 指定參數名
+EXEC HumanResources.uspGetEmployees @LastName = N'Ackerman', @FirstName = N'Pilar';
+GO
+-- Or 參數順序不一樣
+EXECUTE HumanResources.uspGetEmployees @FirstName = N'Pilar', @LastName = N'Ackerman';
+GO
+
+------------------------------------------------------------------------------------------
+--例 3 搭配萬用字元參數使用簡單的程序從檢視傳回指定的員工 (所提供的姓氏和名字)、職稱及部門。
+--     這個預存程序模式符合傳遞的參數，或者，如果沒有提供，該模式會使用預設值 (以字母 D 為開頭的姓氏)。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ( 'HumanResources.uspGetEmployees', 'P' ) IS NOT NULL 
+    DROP PROCEDURE HumanResources.uspGetEmployees;
+GO
+CREATE PROCEDURE HumanResources.uspGetEmployees 
+    @LastName nvarchar(50) = N'D%', 
+    @FirstName nvarchar(50) = N'%'
+AS 
+    SELECT FirstName, LastName, JobTitle, Department
+    FROM   HumanResources.vEmployeeDepartment
+    WHERE  FirstName LIKE @FirstName AND 
+           LastName  LIKE @LastName;
+GO
+
+--利用多種組合執行 uspGetEmployees 預存程序
+EXECUTE HumanResources.uspGetEmployees;
+
+-- Or 查 LastName 為 Wi開頭 
+EXECUTE HumanResources.uspGetEmployees N'Wi%';
+
+-- Or 查 FirstName 為 任意開頭 
+EXECUTE HumanResources.uspGetEmployees @FirstName = N'%';
+
+-- Or
+EXECUTE HumanResources.uspGetEmployees N'[CK]ars[OE]n';
+
+-- Or
+EXECUTE HumanResources.uspGetEmployees N'Hesse', N'Stefen';
+
+-- Or
+EXECUTE HumanResources.uspGetEmployees N'H%', N'S%';
+
+------------------------------------------------------------------------------------------
+--例3.1 搭配 DEFAULT 使用 EXECUTE
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID(N'dbo.ProcTestDefaults', N'P')IS NOT NULL
+   DROP PROCEDURE dbo.ProcTestDefaults;
+GO
+-- Create the stored procedure.
+CREATE PROCEDURE dbo.ProcTestDefaults (
+    @p1 smallint = 42, 
+    @p2 char(1), 
+    @p3 varchar(8) = 'CAR')
+    AS 
+   SELECT @p1, @p2, @p3
+;
+GO
+
+--run
+-- Specifying a value only for one parameter (@p2).
+EXECUTE dbo.ProcTestDefaults @p2 = 'A';
+
+-- Specifying a value for the first two parameters.
+EXECUTE dbo.ProcTestDefaults 68, 'B';
+
+-- Specifying a value for all three parameters.
+EXECUTE dbo.ProcTestDefaults 68, 'C', 'House';
+
+-- Using the DEFAULT keyword for the first parameter.
+EXECUTE dbo.ProcTestDefaults @p1 = DEFAULT, @p2 = 'D';
+
+-- Specifying the parameters in an order different from the order defined in the procedure.
+EXECUTE dbo.ProcTestDefaults DEFAULT, @p3 = 'Local', @p2 = 'E';
+
+-- Using the DEFAULT keyword for the first and third parameters.
+EXECUTE dbo.ProcTestDefaults DEFAULT, 'H', DEFAULT;
+EXECUTE dbo.ProcTestDefaults DEFAULT, 'I', @p3 = DEFAULT;
+
+------------------------------------------------------------------------------------------
+--例 4 傳回一個以上的結果集。下列預存程序會傳回兩個結果集。
+
+USE AdventureWorks;
+GO
+CREATE PROCEDURE uspNResults 
+AS
+SELECT COUNT(ContactID) FROM Person.Contact
+SELECT COUNT(CustomerID) FROM Sales.Customer;
+GO
+
+--執行
+EXEC uspNResults 
+
+
+------------------------------------------------------------------------------------------
+--例 5-1 使用 OUTPUT 傳進及傳出值
+
+USE Northwind
+GO
+CREATE PROCEDURE Multi
+	@m1 smallint,
+	@m2 smallint,
+	@result smallint OUTPUT
+AS
+	SET @result = @m1* @m2 * @result
+        RETURN @ERROR   --亦可 RETURN 傳回 狀態; 省略亦會回傳狀態
+GO
+
+--執行
+
+DECLARE @answer smallint = 3 
+DECLARE @st int
+
+EXECUTE MathTutor 5,6, @answer OUTPUT
+SELECT 'The result is:', @answer
+
+--亦可 傳回 狀態
+DECLARE @answer smallint = 3 
+DECLARE @st int
+
+EXECUTE @st = MathTutor 5,6, @answer OUTPUT
+SELECT 'The result is:', @answer, @st
+GO
+
+------------------------------------------------------------------------------------------
+--例 5-2 使用 OUTPUT 參數建立 uspGetList 預存程序。傳回一份產品清單，其中產品的價格都沒有超過指定的金額。
+--     這個範例顯示多重 SELECT 陳述式和多重 OUTPUT 參數的用法。OUTPUT 參數可讓外部程序、批次，或多個
+--     Transact-SQL 陳述式在程序執行期間存取值集。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ( 'Production.uspGetList', 'P' ) IS NOT NULL 
+    DROP PROCEDURE Production.uspGetList;
+GO
+CREATE PROCEDURE Production.uspGetList @Product      varchar(40) 
+                                     , @MaxPrice     money 
+                                     , @ComparePrice money OUTPUT
+                                     , @ListPrice    money OUT
+AS
+BEGIN
+    SELECT p.[Name] AS Product, p.ListPrice AS 'List Price'
+    FROM Production.Product AS p JOIN Production.ProductSubcategory AS s 
+    ON    p.ProductSubcategoryID = s.ProductSubcategoryID
+    WHERE s.[Name] LIKE @Product AND p.ListPrice < @MaxPrice;
+
+-- Populate the output variable @ListPprice.
+SET @ListPrice = (SELECT MAX(p.ListPrice)
+                  FROM   Production.Product AS p JOIN  Production.ProductSubcategory AS s 
+                  ON     p.ProductSubcategoryID = s.ProductSubcategoryID
+                  WHERE s.[Name] LIKE @Product AND p.ListPrice < @MaxPrice);
+
+-- Populate the output variable @compareprice.
+SET @ComparePrice = @MaxPrice;
+END;
+GO
+
+--執行 uspGetList 以傳回成本低於 $700 的 Adventure Works 產品 (自行車) 清單。
+--搭配流程控制語言使用 OUTPUT 參數 @Cost 和 @ComparePrices，即可在 [訊息] 視窗中傳回訊息。
+--查詢結果 與 PRINT 訊息在不同視窗
+
+DECLARE @ComparePrice money, @Cost money 
+EXECUTE Production.uspGetList '%Bikes%', 700, 
+                              @ComparePrice OUT, 
+                              @Cost OUTPUT
+IF @Cost <= @ComparePrice 
+BEGIN
+    PRINT 'These products can be purchased for less than 
+    $'+RTRIM(CAST(@ComparePrice AS varchar(20)))+'.'
+END
+ELSE
+    PRINT 'The prices for all products in this category exceed 
+    $'+ RTRIM(CAST(@ComparePrice AS varchar(20)))+'.'
+    
+
+------------------------------------------------------------------------------------------
+--例 6 使用 WITH RECOMPILE 選項; 如果提供給程序的參數將不是典型的參數，且不應該在記憶體中快取或
+--     儲存新的執行計畫時，WITH RECOMPILE 子句十分好用。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ( 'dbo.uspProductByVendor', 'P' ) IS NOT NULL 
+    DROP PROCEDURE dbo.uspProductByVendor;
+GO
+CREATE PROCEDURE dbo.uspProductByVendor @Name varchar(30) = '%'
+WITH RECOMPILE
+AS
+    SELECT v.Name AS 'Vendor name', p.Name AS 'Product name'
+    FROM Purchasing.Vendor AS v  JOIN Purchasing.ProductVendor AS pv 
+    ON v.VendorID = pv.VendorID 
+    JOIN Production.Product AS p 
+    ON pv.ProductID = p.ProductID
+    WHERE v.Name LIKE @Name;
+GO
+
+--執行 輸入 vender name
+exec dbo.uspProductByVendor @Name ='Bi%'
+
+------------------------------------------------------------------------------------------
+--例 7 使用 WITH ENCRYPTION 選項 - 選項防止預存程序的定義被傳回
+--     下列範例會建立 HumanResources.uspEncryptThis 預存程序。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ( 'HumanResources.uspEncryptThis', 'P' ) IS NOT NULL 
+    DROP PROCEDURE HumanResources.uspEncryptThis;
+GO
+CREATE PROCEDURE HumanResources.uspEncryptThis
+WITH ENCRYPTION
+AS
+    SELECT EmployeeID, Title, NationalIDNumber, VacationHours, SickLeaveHours 
+    FROM HumanResources.Employee;
+GO
+
+--執行
+EXEC sp_helptext 'HumanResources.uspEncryptThis';
+
+   物件 'HumanResources.uspEncryptThis' 的文字已加密。
+
+--執行2 也是 null
+USE AdventureWorks;
+GO
+SELECT definition FROM sys.sql_modules
+WHERE object_id = OBJECT_ID('HumanResources.uspEncryptThis');
+
+------------------------------------------------------------------------------------------
+--例8 procedure 傳值後 回傳OUTPUT 資料及 return 狀態
+
+USE AdventureWorks;
+GO
+-- Create a procedure that takes one input parameter
+-- and returns one output parameter and a return code.
+CREATE PROCEDURE SampleProcedure @EmployeeIDParm INT,
+                                 @MaxTotal       INT OUTPUT
+AS
+-- Declare and initialize a variable to hold @@ERROR.
+DECLARE @ErrorSave int;
+SET @ErrorSave = 0;
+
+-- Do a SELECT using the input parameter.
+SELECT c.FirstName, c.LastName, e.Title
+FROM HumanResources.Employee AS e JOIN Person.Contact AS c 
+ON e.ContactID = c.ContactID
+WHERE EmployeeID = @EmployeeIDParm;
+
+-- Save any nonzero @@ERROR value.
+IF (@@ERROR <> 0)
+    SET @ErrorSave = @@ERROR;
+
+-- Set a value in the output parameter.
+SELECT @MaxTotal = MAX(TotalDue)
+FROM  Sales.SalesOrderHeader;
+
+IF (@@ERROR <> 0)
+    SET @ErrorSave = @@ERROR;
+-- Returns 0 if neither SELECT statement had
+-- an error, otherwise returns the last error.
+RETURN @ErrorSave;
+GO
+
+--run 執行預存程序的 Transact-SQL 批次或預存程序，可擷取傳回碼並放到整數變數中：
+
+DECLARE @ReturnStatus int;
+DECLARE @MaxTotalVariable int;
+DECLARE @MaxTotal int;
+
+EXECUTE @ReturnStatus = SampleProcedure @EmployeeIDParm = 65 ,@MaxTotal = @MaxTotalVariable OUTPUT;
+PRINT ' ';
+PRINT 'Return code = ' + CAST(@ReturnStatus AS CHAR(10));
+PRINT 'Maximum Order Total = ' + CAST(@MaxTotalVariable AS CHAR(15));
+GO
+
+--傳回結果是在 訊息視窗
+Return code = 0         
+Maximum Order Total = 247914    
+
+------------------------------------------------------------------------------------------

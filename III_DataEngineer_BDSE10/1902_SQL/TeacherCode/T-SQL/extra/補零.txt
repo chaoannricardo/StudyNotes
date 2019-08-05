@@ -1,0 +1,8 @@
+
+3--> 03
+12 -> 012  --> 12
+
+SELECT RIGHT('0'+CAST(MONTH('2009-03-30') as varchar(2)),2)
+SELECT RIGHT('0'+CAST(MONTH('2009-12-30') as varchar(2)),2)
+
+

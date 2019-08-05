@@ -1,0 +1,19 @@
+                          2013.07.02
+
+若要以手動方式解除安裝 SQL Server 2017，請依照下列步驟執行： 
+1.在命令提示字元中輸入下列命令，然後按下 ENTER：
+   CD  "C:\Program Files\Microsoft SQL Server\140\Setup Bootstrap\SQL2017"
+
+2.輸入下列命令，並按下 ENTER 鍵：  
+  setup.exe /ACTION=uninstall 
+
+3.最後記得去安裝路徑下，把所有殘留檔案都刪除。 (若刪不掉 先做 步驟 4 後重開機 再刪)
+
+4.還要移除 Registery 服務 ( regedit) 搜尋 "SQL Server" 刪除
+
+
+就成功刪除 SQL2017 及其套件了!
+
+**2012   110
+  2014   120
+  2017   140

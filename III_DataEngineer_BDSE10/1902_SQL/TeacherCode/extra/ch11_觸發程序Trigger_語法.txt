@@ -1,0 +1,441 @@
+
+觸發程序
+
+種類  DML DDL logon
+
+建立 DML、DDL 或登入觸發程序。觸發程序是一種在資料庫伺服器發生事件時，會自動執行的特殊預存程序。
+當使用者試圖透過資料操作語言 (DML) 事件來修改資料時，便會執行 DML 觸發程序。DML 事件包括資料表或
+檢視的 INSERT、UPDATE 或 DELETE 陳述式。
+
+--1 語法_DML Trigger
+--1 Trigger on an INSERT, UPDATE, or DELETE statement to a table or view (DML Trigger)
+
+CREATE TRIGGER [ schema_name . ]trigger_name 
+ON { table | view } 
+[ WITH <dml_trigger_option> [ ,...n ] ]
+{ FOR | AFTER | INSTEAD OF } 
+{ [ INSERT ] [ , ] [ UPDATE ] [ , ] [ DELETE ] } 
+[ WITH APPEND ] 
+[ NOT FOR REPLICATION ] 
+AS { sql_statement  [ ; ] [ ,...n ] | EXTERNAL NAME <method specifier [ ; ] > }
+
+<dml_trigger_option> ::=
+    [ ENCRYPTION ]
+    [ EXECUTE AS Clause ]
+
+
+--2 語法_DDL_DCL Trigger
+--2 Trigger on a CREATE, ALTER, DROP, GRANT, DENY, REVOKE, or UPDATE STATISTICS statement (DDL Trigger)
+
+CREATE TRIGGER trigger_name 
+ON { ALL SERVER | DATABASE } 
+[ WITH <ddl_trigger_option> [ ,...n ] ]
+{ FOR | AFTER } { event_type | event_group } [ ,...n ]
+AS { sql_statement  [ ; ] [ ,...n ] | EXTERNAL NAME < method specifier >  [ ; ] }
+
+--3 語法_ LOGON event  Trigger
+--3 Trigger on a LOGON event (Logon Trigger)
+
+CREATE TRIGGER trigger_name 
+ON ALL SERVER 
+[ WITH <logon_trigger_option> [ ,...n ] ]
+{ FOR | AFTER } LOGON  
+AS { sql_statement  [ ; ] [ ,...n ] | EXTERNAL NAME < method specifier >  [ ; ] }
+
+--修改 
+  ALter trigger
+
+-關閉/啟動  
+ DISABLE/ENABLE  trigger
+
+  DISABLE TRIGGER { [ schema_name . ] trigger_name [ ,...n ] | ALL }
+    ON { object_name | DATABASE | ALL SERVER } [ ; ]
+
+
+--刪除 以SSMS時 可查相依的物件
+  DROP trigger
+
+--查詢
+sp_help        Trigger名
+sp_helptrigger 表格名
+select name from sys.triggers
+
+
+註 
+
+FOR | AFTER
+AFTER 指定只在觸發的 SQL 陳述式指定的所有作業都執行成功時，才引發 DML 觸發程序。所有參考的重疊
+顯示動作和條件約束檢查也都必須成功之後，才會引發這個觸發程序。
+
+當指定的關鍵字只有 FOR 時，預設值便是 AFTER。
+檢視不能定義 AFTER 觸發程序。
+
+INSTEAD OF
+指定執行 DML 觸發程序來取代觸發的 SQL 陳述式，因此，會覆寫觸發陳述式的動作。DDL 或登入觸發程序
+不能指定 INSTEAD OF。
+
+WITH APPEND
+指定應該加入現有類型的其他觸發程序。只有在相容性層級是 65 或以下時，才需要使用這個選擇性的子句。
+如果相容性層級是 70 或以上，就不需要利用 WITH APPEND 子句來加入現有類型的其他觸發程序。這是相容性
+層級設定是 70 或以上之 CREATE TRIGGER 的預設行為。
+
+--查詢變動資料 deleted 和 inserted 資料表用來保留使用者動作可能已變更之資料列的舊值或新值
+DML 觸發程序會使用 deleted 和 inserted 邏輯 (概念) 資料表。它們的結構類似於定義觸發程序的資料表，
+也就是使用者動作試圖處理的資料表。deleted 和 inserted 資料表用來保留使用者動作可能已變更之資料列
+的舊值或新值。例如，若要擷取 deleted 資料表中的所有值，請使用：
+
+SELECT *
+FROM deleted
+
+---
+DDL 和登入觸發程序會利用 EVENTDATA (Transact-SQL) 函數來擷取觸發事件的相關資訊。
+登入觸發程序
+
+--
+測試特定資料行的 UPDATE 或 INSERT 動作
+您可以設計一個 Transact-SQL 觸發程序來執行以特定資料行之 UPDATE 或 INSERT 修改為基礎的特定動作。
+請在觸發程序的主體中，利用 UPDATE() 或 COLUMNS_UPDATED 來完成這個目的。UPDATE() 會測試單一資料行
+所嘗試的 UPDATE 或 INSERT。COLUMNS_UPDATED 會測試多個資料行所執行的 UPDATE 或 INSERT 動作，且會
+傳回一個位元模式來指出插入或更新了哪些資料行。
+
+觸發程序限制
+CREATE TRIGGER 必須是批次中的第一個陳述式，且只能套用至一份資料表。
+
+觸發程序只會建立在目前資料庫中；不過，觸發程序可以參考在目前資料庫之外的物件。
+如果指定觸發程序結構描述名稱來限定觸發程序，請依照相同方式來限定資料表名稱。
+您可以在相同 CREATE TRIGGER 陳述式中，定義多個使用者動作 (如 INSERT 和 UPDATE) 的相同觸發程序動作。
+您不能在外部索引鍵定義了 DELETE/UPDATE 動作串聯的資料表上，定義 INSTEAD OF DELETE/UPDATE 觸發程序。
+
+-----------------------------------------------------------------------------------------
+
+例 1 查詢 DDL 觸發程序中的事件資料
+下列範例會建立一個 DDL 觸發程序來防止在資料庫中建立新的資料表。引發觸發程序的 Transact-SQL 陳述式
+是利用 XQuery 針對 EVENTDATA 所產生的 XML 資料來擷取的
+
+USE AdventureWorks;
+GO
+CREATE TRIGGER safety 
+ON DATABASE 
+FOR CREATE_TABLE 
+AS 
+    PRINT 'CREATE TABLE Issued.'
+    SELECT EVENTDATA().value
+        ('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]','nvarchar(max)')
+   RAISERROR ('New tables cannot be created in this database.', 16, 1) 
+   ROLLBACK
+;
+GO
+--Test the trigger.
+CREATE TABLE NewTable (Column1 int);
+GO
+--Drop the trigger.
+DROP TRIGGER safety
+ON DATABASE
+GO
+
+---關閉 trigger
+DISABLE TRIGGER [safety] ON DATABASE
+
+-----------------------------------------------------------------------------------------
+例 2 利用 DDL 觸發程序中的事件資料來建立記錄資料表
+下列範例會建立一份資料表來儲存有關所有資料庫層級事件的資訊，且會以 DDL 觸發程序來擴展資料表。
+事件類型和 Transact-SQL 陳述式是利用 XQuery 針對 EVENTDATA 所產生的 XML 資料所擷取。
+
+USE AdventureWorks;
+GO
+CREATE TABLE ddl_log (PostTime datetime, DB_User nvarchar(100), Event nvarchar(100), TSQL nvarchar(2000));
+GO
+CREATE TRIGGER log 
+ON DATABASE 
+FOR DDL_DATABASE_LEVEL_EVENTS 
+AS
+DECLARE @data XML
+SET @data = EVENTDATA()
+INSERT ddl_log 
+   (PostTime, DB_User, Event, TSQL) 
+   VALUES 
+   (GETDATE(), 
+   CONVERT(nvarchar(100), CURRENT_USER), 
+   @data.value('(/EVENT_INSTANCE/EventType)[1]', 'nvarchar(100)'), 
+   @data.value('(/EVENT_INSTANCE/TSQLCommand)[1]', 'nvarchar(2000)') ) ;
+GO
+--Test the trigger.
+CREATE TABLE TestTable (a int)
+DROP TABLE TestTable ;
+GO
+SELECT * FROM ddl_log ;
+GO
+--Drop the trigger.
+DROP TRIGGER log
+ON DATABASE
+GO
+--Drop table ddl_log.
+DROP TABLE ddl_log
+GO
+
+-----------------------------------------------------------------------------------------
+例 3 針對部分結構描述驗證事件執行個體  "有錯"
+下列範例會針對 EVENTDATA 傳回的結構描述驗證 DROP_TABLE 事件。
+
+
+IF EXISTS (SELECT * FROM sys.xml_schema_collections WHERE name='EventsXML')
+DROP XML SCHEMA COLLECTION EventsXML ;
+GO
+
+DECLARE @x xml
+SET @x = (SELECT * FROM OPENROWSET(BULK 'c:\Program Files\Microsoft SQL Server\100\Tools\Binn\schemas\sqlserver\2006\11\events\events.xsd', single_clob) AS x)
+CREATE XML SCHEMA COLLECTION EventsXML AS @x ;
+GO
+
+DECLARE @x xml(XSDEVENTS)
+DECLARE @y xml
+DECLARE @n nvarchar(max)
+
+SELECT @y = EVENTDATA()
+SELECT @n = @y
+SELECT @n = REPLACE(@n, '<EVENT_INSTANCE', '<EVENT_INSTANCE xmlns=''http://schemas.microsoft.com/sqlserver/2006/eventdata'' xmlns:xsi=''http://www.w3.org/2001/XMLSchema-instance'' xsi:type=''EVENT_INSTANCE_DROP_TABLE''')
+
+SELECT @x = @n -- This causes the validation.
+
+
+--錯誤
+訊息 6314，層級 16，狀態 1，行 10
+中繼資料內沒有指定的集合 : XSDEVENTS'
+
+-----------------------------------------------------------------------------------------
+例 4 LOGON 觸發程式 - 限同一帳號登入3次以上 
+您可以使用登入觸發程序稽核和控制伺服器工作階段，例如追蹤登入活動、限制登入 SQL Server，或限制特定
+登入的工作階段數。例如，在下列程式碼中，如果登入 login_test 已經建立三個使用者工作階段，登入觸發程序
+就會拒絕該登入對 SQL Server 所起始的登入嘗試。
+
+USE master;
+GO
+CREATE LOGIN login_test WITH PASSWORD = '123',
+    CHECK_EXPIRATION = ON;
+GO
+GRANT VIEW SERVER STATE TO login_test;
+GO
+CREATE TRIGGER connection_limit_trigger
+ON ALL SERVER WITH EXECUTE AS 'login_test'
+FOR LOGON
+AS
+BEGIN
+IF ORIGINAL_LOGIN()= 'login_test' AND
+    (SELECT COUNT(*) FROM sys.dm_exec_sessions
+     WHERE is_user_process = 1 AND  original_login_name = 'login_test') > 3
+   ROLLBACK;
+END;
+
+
+--run 4個視窗, 第四個時出現 error
+C:\> sqlcmd -U login_test  -P 123
+
+訊息 17892, 層級 14, 狀態 1, 伺服器 R20302, 行 1
+登入名稱 'login_test' 的登入因觸發程序執行而失敗。
+
+--在伺服器物件 刪除 trigger, 
+drop TRIGGER connection_limit_trigger ON ALL SERVER
+
+
+----------------------------
+查詢  取得有關登入觸發程序的資訊
+查詢 sys.server_triggers 目錄檢視，檢視登入觸發程序的中繼資料。
+
+------------------------------------------------------------
+
+遞迴觸發程序
+當利用 ALTER DATABASE 來啟用 RECURSIVE_TRIGGERS 設定時，SQL Server 也允許觸發程序的遞迴叫用。
+
+遞迴觸發程序有可能產生下列遞迴類型：
+
+間接遞迴
+當進行間接遞迴時，應用程式會更新 T1 資料表。這會引發 TR1 觸發程序，更新 T2 資料表。在這個狀況下，
+T2 觸發程序後來又會引發和更新 T1 資料表。
+
+
+直接遞迴
+當進行直接遞迴時，應用程式會更新 T1 資料表。這會引發 TR1 觸發程序，更新 T1 資料表。由於更新了 T1 資料表，
+因此，又會引發 TR1 觸發程序，依此類推。
+
+下列範例會使用間接和直接觸發程序遞迴。它假設 T1 資料表定義了 TR1 和 TR2 這兩個更新觸發程序。
+TR1 觸發程序會遞迴更新 T1 資料表。UPDATE 陳述式會執行每個 TR1 和 TR2 各一次。另外，
+執行 TR1 會觸發執行 TR1 (遞迴) 和 TR2。特定觸發程序的 inserted 和 deleted 資料表包含只對應於
+呼叫觸發程序之 UPDATE 陳述式的資料表。
+
+------------------------------------------------------------
+例 1 A. 使用含提示訊息的 DML 觸發程序
+當任何人嘗試在 Customer 資料表中新增或變更資料時，下列 DML 觸發程序會向用戶端列印一則訊息。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ('Sales.reminder1', 'TR') IS NOT NULL
+   DROP TRIGGER Sales.reminder1;
+GO
+CREATE TRIGGER reminder1
+ON Sales.Customer
+AFTER INSERT, UPDATE 
+AS RAISERROR ('Notify Customer Relations', 16, 10);
+GO
+
+--企圖執行更新時 失敗
+update sales.customer set Customertype ='I' where customerid = 1
+
+訊息 50000，層級 16，狀態 10，程序 reminder1，行 4
+Notify Customer Relations
+
+
+------------------------------------------------------------
+例 2 使用含提示電子郵件訊息的 DML 觸發程序
+當 Customer 資料表有了改變時，下列範例會向指定的人 (MaryM) 傳送一則電子郵件訊息。
+
+USE AdventureWorks;
+GO
+IF OBJECT_ID ('Sales.reminder2','TR') IS NOT NULL
+    DROP TRIGGER Sales.reminder2;
+GO
+CREATE TRIGGER reminder2
+ON Sales.Customer
+AFTER INSERT, UPDATE, DELETE 
+AS
+   EXEC msdb.dbo.sp_send_dbmail
+        @profile_name = 'AdventureWorks Administrator',
+        @recipients = 'danw@Adventure-Works.com',
+        @body = 'Don''t forget to print a report for the sales force.',
+        @subject = 'Reminder';
+GO
+
+--企圖執行更新時 失敗
+update sales.customer set Customertype ='I' where customerid = 1
+
+--錯誤 須先啟動 mail
+訊息 15281，層級 16，狀態 1，程序 sp_send_dbmail，行 0
+SQL Server 已封鎖元件 'Database Mail XPs' 的 程序 'dbo.sp_send_dbmail' 之存取，因為此元件已經由此
+伺服器的安全性組態關閉。系統管理員可以使用 sp_configure 來啟用 'Database Mail XPs' 的使用。
+如需有關啟用 'Database Mail XPs' 的詳細資訊，請參閱《SQL Server 線上叢書》中的＜介面區組態＞(Surface Area Configuration)。
+陳述式已經結束。
+
+------------------------------------------------------------
+例 3 利用 DML AFTER 觸發程序來強制執行 PurchaseOrderHeader 和 Vendor 資料表之間的商務規則
+由於 CHECK 條件約束只能參考定義了資料行層級或資料表層級條件約束的資料行，任何跨資料表的條件約束
+ (這裡是商務規則) 都必須定義成觸發程序。
+
+下列範例會建立一個 DML 觸發程序。當試圖在 PurchaseOrderHeader 資料表中插入新的採購單時，這個觸發程序
+會檢查確認供應商的信用等級良好。為了取得供應商的信用等級，必須參考 Vendor 資料表。如果信用等級太低，
+就會顯示一則訊息，且不會執行插入動作。
+
+IF OBJECT_ID ('Purchasing.LowCredit','TR') IS NOT NULL
+   DROP TRIGGER Purchasing.LowCredit;
+GO
+
+CREATE TRIGGER LowCredit ON Purchasing.PurchaseOrderHeader
+AFTER INSERT
+AS
+DECLARE @creditrating tinyint,
+   @vendorid int
+SELECT @creditrating = v.CreditRating, @vendorid = p.VendorID
+FROM Purchasing.PurchaseOrderHeader AS p  INNER JOIN inserted AS i 
+ON p.PurchaseOrderID = i.PurchaseOrderID 
+JOIN Purchasing.Vendor AS v on v.VendorID = i.VendorID
+
+IF @creditrating = 5
+BEGIN
+   RAISERROR ('This vendor''s credit rating is too low to accept new purchase orders.', 16, 1)
+   ROLLBACK TRANSACTION
+END
+GO
+
+
+--
+select * from Purchasing.Vendor
+
+--venderid 22 或 63 的 creditrating=5
+
+insert into Purchasing.PurchaseOrderHeader
+(RevisionNumber, Status, EmployeeID, VendorID, ShipMethodID, OrderDate ,ShipDate ,SubTotal ,TaxAmt ,Freight ,ModifiedDate)
+values (0,4,244,22,3,'2001-05-17','2001-05-26',201.04, 16.0832, 5.026,'2001-05-26')
+
+
+訊息 50000，層級 16，狀態 1，程序 LowCredit，行 13
+This vendor's credit rating is too low to accept new
+      purchase orders.
+訊息 3609，層級 16，狀態 1，行 1
+交易在觸發程序中結束。已中止批次。
+
+
+------------------------------------------------------------
+例 3 使用資料庫範圍的 DDL 觸發程序
+下列範例會利用 DDL 觸發程序來防止卸除資料庫中的任何同義字。
+
+USE AdventureWorks;
+GO
+IF EXISTS (SELECT * FROM sys.triggers
+    WHERE parent_class = 0 AND name = 'safety')
+DROP TRIGGER safety
+ON DATABASE;
+GO
+CREATE TRIGGER safety 
+ON DATABASE 
+FOR DROP_SYNONYM
+AS 
+   RAISERROR ('You must disable Trigger "safety" to drop synonyms!',10, 1)
+   ROLLBACK
+GO
+
+--test
+create synonym s1 for humanresources.employees
+drop synonym s1
+
+--drop 之後才能成功
+
+DROP TRIGGER safety
+ON DATABASE;
+GO
+
+--drop 成功
+drop synonym s1
+
+------------------------------------------------------------
+例 5 使用伺服器範圍的 DDL 觸發程序
+下列範例會在目前伺服器執行個體出現任何 CREATE DATABASE 事件時，利用 DDL 觸發程序來列印訊息，
+它會利用 EVENTDATA 函數來擷取對應 Transact-SQL 陳述式的文字。
+
+IF EXISTS (SELECT * FROM sys.server_triggers
+    WHERE name = 'ddl_trig_database')
+DROP TRIGGER ddl_trig_database
+ON ALL SERVER;
+GO
+CREATE TRIGGER ddl_trig_database 
+ON ALL SERVER 
+FOR CREATE_DATABASE 
+AS 
+    PRINT 'Database Created.'
+    SELECT EVENTDATA().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]','nvarchar(max)')
+GO
+
+--test 建立db時 會顯示內容
+create database test1
+
+DROP TRIGGER ddl_trig_database
+ON ALL SERVER;
+GO
+
+drop database test1
+
+
+------------------------------------------------------------
+查詢  檢視造成引發觸發程序的事件
+查詢 sys.triggers 和 sys.trigger_events 目錄檢視來判斷哪些 Transact-SQL 語言事件造成引發 safety 觸發程序。
+safety 是上一個範例所建立的。
+
+SELECT TE.*
+FROM sys.trigger_events AS TE
+JOIN sys.triggers AS T
+ON T.object_id = TE.object_id
+WHERE T.parent_class = 0
+AND T.name = 'safety'
+GO
+
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------

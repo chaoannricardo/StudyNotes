@@ -1,0 +1,59 @@
+禣ん计
+
+--good----------------------------------------------
+
+
+import java.util.Scanner;
+public class Fibonacci {
+  public static void main(String[] args) {
+  Scanner Key = new Scanner(System.in);
+    int last=0,next=1;
+    System.out.print("璶碭计禣ん计");
+    int n = Key.nextInt()-2;
+    System.out.println("禣ん计逼猭 : ");
+    System.out.print(last+", "+next);
+    for(int i = 0; i < n; i++) {
+      next += last;
+      last = next-last;
+      System.out.print(", "+next);
+    }
+  }
+}
+
+
+
+---bad---------------------------------------------
+
+public class Fibonacci {
+ 
+  public static void main(String[] args) {
+    int F0=0,F1=1,sum=0,n=10;
+    System.out.print("禣ん计F0~F10逼猭:\n"+F0+",");
+    System.out.print(F1+",");
+    for(int i=2;i<=n;i++){    
+      sum=F0+F1;
+      F0=F1;
+      F1=sum;
+      System.out.print(sum+",");
+      }
+      System.out.print("\nF10="+sum);
+        }
+  }
+
+--method3----------------------------------------------
+public class FibonacciTest {
+
+ public static void main(String[] args) {    
+   System.out.println(fibonacci(50));    
+ }
+
+ public static long fibonacci(int x){
+
+  if(x==1||x==2){
+   return 1;
+  }else {
+   return fibonacci(x-1)+fibonacci(x-2);
+  }  
+ }  
+}
+

@@ -1,0 +1,44 @@
+
+
+連線登入本機- windows驗證
+   sqlcmd -E -d Adventureworks2017
+   
+連線登入本機- SQL server驗證
+   sqlcmd -Usa -Ppassword  -d northwind
+
+
+select employeeid, lastname from employees
+go
+
+---------------------------
+**確認 遠端
+   1 允許遠端連線  (右鍵 SQL server) 屬性/ 連接 確認已勾 允許此伺服器遠端連線 
+   2 組態工具:SQL Config manager或SQL Server 組態管理員
+      : 網路組態/MSSQLSERVER: 啟動TCP : 重啟服務  SQL Server(MSSQLSERVER)
+
+   3 防火牆 關閉 或 新增連接埠 1433 /
+       **win7 控制台/防火牆/進階設定/輸入規則/新增規則/連接埠/下一步/ TCP, 1433/允許連線/下一步/名稱:SQL/ 完成
+       **win10 方法1: [開始]  按鈕，開啟 [Windows Defender 資訊安全中心] > [防火牆與網路保護]。
+                      分別點  私人網路、公用網路  開啟或關閉 防火牆。(區域網路 可不用點)
+       **win10 方法2: 設定/ 更新與安全性/ Windows Defender / 
+
+連線登入遠端- windows驗證
+   sqlcmd -S 192.168.23.51 -E  -d northwind
+ 
+連線登入遠端- SQL server驗證
+   sqlcmd -S 192.168.23.51 -Usa -Ppassword  -d northwind
+
+
+select employeeid, lastname from employees
+go
+
+------
+
+Win8 或 Win10 ，如何開啟 SQL 組態管理員 
+由於Win8 和Win10 是以APP的角度去建置開始選單，所以會沒看到 SQL 組態管理員，您可以以下兩種方式叫出來：
+
+以下範例為 SQL Server 2012 的做法(SQLServerManager11.msc)
+如果是 SQL Sever 2014，請輸入SQLServerManager12.msc
+如果是 SQL Sever 2017，請輸入SQLServerManager14.msc
+
+
