@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS執行先後順序</title>
+    <link rel="stylesheet" href="styles/color1.css">
+    <style>
+        .g1 {
+            color:green;
+        }
+        .p1 {
+            color:purple;
+        }
+        .y1 {
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="g1">green</h1>
+    <h1>red</h1>
+    <h1 class="p1">purple</h1>
+    <h2>red</h2>
+    <h2 style="color:blue;">blue</h2>
+    <h2 class="y1">yellow</h2>
+    <h3 class="y1">yellow</h3>
+    <h3>red</h3>
+    <h3 class="g1">green</h3>
+    <h3 class="p1">purple</h3>
+</body>
+</html>

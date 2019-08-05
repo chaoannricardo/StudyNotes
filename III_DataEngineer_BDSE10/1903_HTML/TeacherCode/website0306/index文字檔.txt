@@ -1,0 +1,177 @@
+﻿/*CSS樣式*/
+
+body {
+		
+		font-family:微軟正黑體;		
+		color:#333333;
+		}
+
+* {margin:0;
+   padding:0;
+   }
+
+#allpage {
+			width:1024px;
+			margin:0 auto;
+			}
+
+.menu {
+		overflow:auto;
+		width:100%;
+		list-style-type:none;
+		background-color: #66B3FF;
+		border-bottom:3px solid #cccccc;
+		border-top-right-radius:15px;
+		border-top-left-radius:15px;
+		}
+
+.menu li{
+         float:left;         
+         width:7em;     /*為了讓連結區域能依字型大小的變化自動放大,因此在指定width屬性時採用em為單位*/
+         border-right:1px solid #cccccc;                 	    
+         }
+
+.menu li a{
+         display:block;
+         width:100%;        	     
+         line-height:2.5em;/*讓文字上下空出適當的空白,不用padding屬性,直接將行Box的高度設的高一些*/
+         color:#333333;
+         text-decoration:none;         
+         text-align:center;         	     
+         }
+         
+.menu li a:hover {color:#FFFFFF;
+			   background-color:#0080FF;
+}
+
+.content {
+			overflow:auto;			
+			width:100%;
+			padding-bottom:20px;
+			}
+			
+article {
+		float:left;			
+            width:75%;
+			}
+
+aside {
+		float:right;
+        width:20%;
+		
+		}
+
+.title {
+		background-color:#0066CC;
+		line-height:2.5em;
+		color:#F0F0F0;
+		padding-left:20px;
+		}		
+
+article section {
+			margin:16px;
+			border-bottom:1px solid #cccccc;
+			padding-bottom:10px;
+			}
+			
+article section p {
+			margin:10px 0;
+			}
+			
+		
+.list1  {		
+		list-style:decimal inside;
+		}
+
+aside dl {
+		margin:16px;
+		}
+
+footer {
+		width:100%;
+		
+		line-height:2.5em;		
+		text-align:center;
+		color:#ffffff;
+		background-color:#66B3FF;
+		border-bottom-right-radius:15px;
+		border-bottom-left-radius:15px;
+		}
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+<!--<div id="allpage">-->
+<!--<header>-->
+
+<!--請加上項目清單及清單項目-->
+回首頁
+解決方案
+實績介紹
+合作夥伴
+主要客戶
+公司簡介
+聯絡我們
+
+<!--</header>-->
+
+<!--<div class="content">-->
+<!--<article>-->
+關於本公司  <!--請在此加上標題標籤並套用title樣式-->
+
+<!--<section>-->
+設計全方位服務 專案執行無斷層    <!--請在此加上標題標籤-->
+
+<!--請在此加上段落元素-->
+隨著網路科技迅速發展，人與人之間關係的連結多了一種新的溝通模式，基於這樣的基礎架構下，
+成立設計部門、網路行銷部門及IT研發部門，持續創新網路行銷策略及技術來服務客戶，提供六大服務項目：
+網路公關行銷、網站設計建置、APP程式開發、UI介面設計、企業識別規劃、平面視覺規劃來滿足客戶的需求。
+<!--</section>-->
+
+<!--<section>-->
+擁有資訊技術研發團隊  <!--請在此加上標題標籤-->
+<!--請在此加上段落元素-->
+為了因應市場的快速變化以及提昇客戶資訊化的競爭力，我們於2004年成立資訊技術研發團隊，其主要任務為：
+
+<!--請在此加上項目清單及清單項目並套用list1樣式-->
+開發及建置大型網站平台及後台管理機制
+App與雲端整合技術
+研究數位行銷機制
+協助客戶整合現有的異質系統
+
+<!--請在此加上段落元素-->
+2000設立至今，框體整合了行銷、美學及科技的元素，協助客戶共同創造、佈新、維持產品及服務的品牌形象，
+以及與其客戶之間的關係。我們始終堅持「不只服務客戶需求，更要滿足客戶的客戶」的價值鏈，並將這信念融
+入在所有專案執行的過程。
+<!--</section>-->
+<!--/article-->
+
+<!--<aside>-->
+最新消息  <!--請在此加上標題標籤並套用title樣式-->
+
+<!--請加上定義清單-->
+     2019年2月
+     大數據有限公司網頁全新改版
+
+     2019年2月
+     大數據有限公司網頁全新改版
+     
+     2019年2月
+     大數據有限公司網頁全新改版
+
+     2019年2月
+     大數據有限公司網頁全新改版
+
+     2019年2月
+     大數據有限公司網頁全新改版
+<!--</aside>-->
+<!--</div>-->
+
+<!--<footer>-->
+<!--請加上段落元素-->
+E-amil:aaa@gmail.com &nbsp; Tel:(02)2222-2222 &nbsp; 台北市復興南路一段390號 &nbsp; &copy; 2014 All Rights Reserved Quality Art Technology CO. 
+<!--</footer>-->
+<!--</div>-->
+       		
