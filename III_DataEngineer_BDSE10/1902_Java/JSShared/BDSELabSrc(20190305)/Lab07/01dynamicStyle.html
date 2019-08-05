@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01dynamicStyle.html</title>
+    <style>
+        .n{
+			color:blue;
+			font-family:Arial;
+			font-size:24px;
+		}
+		.s{
+			color:red;
+			font-family:"Script MT Bold";
+			font-size:36px;
+		}
+    </style>
+</head>
+<body>
+    <h1 id="h" class="n" >this is heading 1</h1>
+
+    <script>        
+        document.getElementById("h").onmouseover = mouseOver;  //事件繫結，滑鼠滑入
+        document.getElementById("h").onmouseout = mouseOut;    //事件繫結，滑鼠滑出      
+
+        function mouseOver() {
+            //動態樣式改變，方法 1
+
+            //動態樣式改變，方法 2
+
+        }
+
+        function mouseOut() {
+            //動態樣式改變，方法 1
+
+            //動態樣式改變，方法 2
+
+        }
+    </script>
+</body>
+</html>

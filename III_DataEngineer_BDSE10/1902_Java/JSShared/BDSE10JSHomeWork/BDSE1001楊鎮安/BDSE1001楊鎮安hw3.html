@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Homework 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            margin: 40px 300px;
+        }
+
+        .s {
+            -webkit-filter: grayscale(1);
+            /*沒有任何色彩的黑白影像*/
+
+        }
+
+        .n {
+            -webkit-filter: grayscale(0);
+            /*顏色不變*/
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="images/UES8 - edited.jpg" width="600px"><br>
+        <img id="star1" class="s" src="images/star.jpg">
+        <img id="star2" class="s" src="images/star.jpg">
+        <img id="star3" class="s" src="images/star.jpg">
+        <img id="star4" class="s" src="images/star.jpg">
+        <img id="star5" class="s" src="images/star.jpg">
+        <h2 id="grading"></h2>
+    </div>
+
+    <script>
+
+        let stars = ["star1", "star2", "star3", "star4", "star5"];
+        let flag1 = true;
+        let flag2 = true;
+        let flag3 = true;
+
+        for (let i = 0; i < stars.length; i++) {
+
+            document.getElementById(stars[i]).onmouseover = mouseOver;  //First star 事件繫結，滑鼠滑入
+            document.getElementById(stars[i]).onmouseout = mouseOut;    //事件繫結，滑鼠滑出       
+            document.getElementById(stars[i]).onmousedown = mouseDown;
+
+
+            function mouseOver() {
+                if (flag1) {
+                    for (let j = i - i; j <= i; j++) {
+                        document.getElementById(stars[j]).className = "n";
+                        document.getElementById("grading").innerHTML = `Grading...`;
+                    }
+                }
+            }
+
+            function mouseOut() {
+                if (flag2) {
+                    for (let j = i - i; j <= i; j++) {
+                        document.getElementById(stars[j]).className = "s";
+                        document.getElementById("grading").innerHTML = ``;
+                    }
+                }
+            }
+            function mouseDown() {
+                flag1 = false;
+                flag2 = false;
+
+                if (flag3) {
+                    for (let j = i - i; j <= i; j++) {
+                        if (j == 0) {
+                            document.getElementById("grading").innerHTML = `One Star Grading`;
+                        } else if (j == 1) {
+                            document.getElementById("grading").innerHTML = `Two Stars Grading`;
+                        } else if (j == 2) {
+                            document.getElementById("grading").innerHTML = `Three Stars Grading`;
+                        } else if (j == 3) {
+                            document.getElementById("grading").innerHTML = `Four Stars Grading`;
+                        } else {
+                            document.getElementById("grading").innerHTML = `Five Stars Grading`;
+                        }
+
+                    }
+
+
+                }
+            }
+            document.getElementById(stars[i]).onclick = afterclick;
+        }
+
+        function afterclick() {
+            flag3 = false;
+        }
+
+    </script>
+
+</body>
+
+</html>

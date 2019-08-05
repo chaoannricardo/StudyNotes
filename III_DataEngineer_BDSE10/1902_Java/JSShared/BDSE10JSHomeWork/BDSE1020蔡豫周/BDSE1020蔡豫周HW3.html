@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BDSE10蔡豫周HW3</title>
+    <style>
+        .s {
+            -webkit-filter: grayscale(1);
+            /*沒有任何色彩的黑白影像*/
+
+        }
+
+        .n {
+            -webkit-filter: grayscale(0);
+            /*顏色不變*/
+        }
+    </style>
+</head>
+
+<body>
+    <img class="score s" src="images/star.jpg">
+    <img class="score s" src="images/star.jpg">
+    <img class="score s" src="images/star.jpg">
+    <img class="score s" src="images/star.jpg">
+    <img class="score s" src="images/star.jpg">
+    <p id="comment"></p>
+
+    <script>
+        imgs = document.querySelectorAll("img.score");
+        let flagClick = false;
+        for (let i = 0; i < imgs.length; i++) {
+            imgs[i].onmouseover = function () {
+                if (!flagClick) {
+                    for (let j = 0; j <= i; j++) {
+                        imgs[j].className = "score n";
+                    }
+                    document.getElementById("comment").innerHTML = `打分中...${i + 1}`;
+                }
+
+            }
+            imgs[i].onmouseout = function () {
+                if (!flagClick) {
+                    for (let j = 0; j <= i; j++) {
+                        imgs[j].className = "score s";
+                    }
+                    document.getElementById("comment").innerHTML = ``;
+                }
+            }
+            imgs[i].onclick = function () {
+                if (!flagClick) {
+                    flagClick = true;
+                    document.getElementById("comment").innerHTML = `你給${i + 1}顆星`;
+                }
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

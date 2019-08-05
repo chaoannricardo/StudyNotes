@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>HW03.html</title>
+    <style>
+        .s {
+            -webkit-filter: grayscale(1);
+            /*沒有任何色彩的黑白影像*/
+        }
+    
+        .n {
+            -webkit-filter: grayscale(0);
+            /*顏色不變*/
+        }
+    </style>    
+</head>
+<body>
+    <div>
+        <img id="img1" class="s" src="images/star.jpg">
+        <img id="img2" class="s" src="images/star.jpg">
+        <img id="img3" class="s" src="images/star.jpg">
+        <img id="img4" class="s" src="images/star.jpg">
+        <img id="img5" class="s" src="images/star.jpg">
+        <div id="iddiv"></div>
+    </div>
+
+    <script>
+        let flag=true;
+        let Imgs=document.querySelectorAll("img.s");
+        for(let i=0;i<Imgs.length;i++){
+            Imgs[i].onmouseover=mouseOver;
+            Imgs[i].onmouseout=mouseOut;
+            Imgs[i].onclick=Click;
+        }
+        function mouseOver(){
+            if(flag){
+                let starNo=this.id.charAt(3);
+                for(let i=0;i<starNo;i++){
+                    Imgs[i].className="n";
+                    console.log(`mouseover=${i}`);
+                }
+                console.log("===========");
+                document.getElementById("iddiv").innerHTML=`star No=${starNo}`;
+        }
+        }
+        function mouseOut(){
+            if(flag){
+            let starNo=this.id.charAt(3);
+            for(let i=0;i<starNo;i++){
+                Imgs[i].className="s";
+                console.log(`mouseout=${i}`);
+            }
+            console.log("===========");
+            // document.getElementById("iddiv").innerHTML=`star No=${starNo-1}`;
+            document.getElementById("iddiv").innerHTML="";
+        }
+        }
+        function Click(){
+            flag=false;
+            let starNo=this.id.charAt(3);
+            document.getElementById("iddiv").innerHTML=`you give star No=${starNo}`;
+        }
+    </script>
+</body>
+</html>

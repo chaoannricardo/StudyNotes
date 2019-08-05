@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="button" value="button">
+    <p id="p1">ppp</p>
+    <p id="p2">ppp</p>
+    <p id="p3">ppp</p>
+    <script>
+        
+            function now(){return new Date().getTime();}
+            const button=document.querySelector("#button");
+            const p1=document.querySelector('#p1');
+            const p2=document.querySelector('#p2');
+            const p3=document.querySelector('#p3');
+            button.addEventListener('click',(e)=>{
+                setTimeout(()=>{
+                    p1.textContent='p1:'+now();
+                },3000);
+                p2.textContent='p2:'+now();
+                p3.textContent='p3:'+now();
+            })
+
+       
+    </script>
+    
+</body>
+</html>

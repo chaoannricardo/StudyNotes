@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Homework 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        fieldset {
+            border-color: rgb(5, 194, 5);
+            width: 500px;
+            margin: 100px 250px;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        span {
+            font-size: 60%;
+            color: lightslategrey;
+        }
+
+        div {
+            margin: 10px;
+
+        }
+
+        .st1 {
+            margin-top: 10px;
+            margin-left: 190px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>
+                <h3>Form Check</h3>
+            </legend>
+            <div>
+                <label>姓名:</label>
+                <input type="text" name="account" id="acct" required>
+                <span id="accAlert"></span><br>
+                <span>(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)</span>
+            </div>
+            <hr>
+            <div>
+                <label>密碼:</label>
+                <input type="text" name="password" id="pwd" placeholder="請輸入密碼" minlength="6" required>
+                <span id="pwdAlert"></span><br>
+                <span>(1.不可空白，2.至少6個字必須包含英文字母、數字、特殊字元[!@#$%^&*])</span>
+            </div>
+            <hr>
+            <div>
+                <label>日期:</label>
+                <input type="text" name="date" id="date" placeholder="ex: 2000/02/29" required>
+                <span id="dateAlert"></span><br>
+                <span>格式:西元年/月/日 yyyy/MM/dd</span>
+            </div>
+            <hr>
+            <div>
+                <input type="submit" name="submit" class="st1">
+                <input type="reset" name="reset">
+            </div>
+        </fieldset>
+    </form>
+
+    <script>
+
+        document.getElementById("acct").onblur = checkName;
+        document.getElementById("pwd").onblur = checkPwd;
+        document.getElementById("date").onblur = checkDate;
+
+        function checkName() {
+            let acctCheck = document.getElementById("acct").value;
+            let acctCheckLen =acctCheck.length;
+           
+            if(acctCheckLen == ""){
+                alert("You must enter your name!")
+            }else if(acctCheckLen >= 2){
+                let flag1 = false;
+                for(let i = 0; i < acctCheckLen; i++){
+                    let acctUnicode = acctCheck.charCodeAt(i);
+                    if(acctUnicode >= 0x4E00 && acctUnicode <= 0x9FFF){
+                        flag1 = true;
+                    }else{                        
+                        flag1 = false;
+                        break
+                    }
+                }
+                if(flag1 == true){
+                    document.getElementById("accAlert").innerHTML = `<img src ="images/tick_01.png"> Name entered successfully.`;
+                }else{
+                    document.getElementById("accAlert").innerHTML = `<img src ="images/no_delete-2.png"> Please enter Chinese characters.`;
+                }
+            }else{
+                alert("Name must be longer than two Chinese characters.")
+            }            
+        }
+
+        function checkPwd(){
+            let pwdCheck = document.getElementById("pwd").value;
+            let pwdLen = pwdCheck.length;
+
+            if(pwdLen >= 6){
+                let flag1 = false;
+                let flag2 = false;
+                let flag3 = false;
+                
+                for(let i = 0; i < pwdLen; i++){
+                    let notations = "!@#$%^&*";
+                    let pwdChar = pwdCheck.charAt(i).toUpperCase();
+                    if(pwdChar >= "A" &&　pwdChar <= "Z"){
+                        flag1 = true;
+                    }else if(pwdChar >= "0" && pwdChar <= "9"){
+                        flag2 = true;
+                    }else if(notations.indexOf(pwdChar) != -1){ 
+                        flag3 = true;//the character in pwdChar is within the notaion string
+                    } 
+                }
+                if(flag1 && flag2 && flag3){
+                    document.getElementById("pwdAlert").innerHTML = `<img src ="images/tick_01.png"> Password entered successfully.`;
+                }else{
+                    document.getElementById("pwdAlert").innerHTML = `<img src ="images/no_delete-2.png"> "Password doesn't follow the format.`;
+                }
+
+
+            }else if(pwdLen == ""){
+                alert("You must enter the passwrod!")
+            }else{
+                alert("Password must be at least 6 characters long.")
+            }
+        }
+
+        function checkDate(){
+            let newDate = document.getElementById("date").value;
+            let text = newDate.split(`/`);
+            let text_new;
+            alert(text)
+            
+            if(newDate == ""){
+                alert("You must enter the date!")
+            }else{
+                
+                for (let i = 0; i < text.length; i++){
+                    //deleted extra zeros
+                    if (text[i].substr(0,1) == "0"){
+                        text[i] = text[i].substr(1);
+                    }
+                    text_new = text[0] + "/" + text[1] + "/" + text[2];                   
+                }
+                alert(text_new)
+
+                let text_date = new Date(text_new); //Tests whether the date is valid
+                let text_datestr = `${text_date.getFullYear()}/${text_date.getMonth() + 1}/${text_date.getDate()}`;
+
+                alert(text_date)
+                alert(text_datestr)
+                if(text_datestr == text_new){
+                    document.getElementById("dateAlert").innerHTML = `<img src ="images/tick_01.png"> Date entered successfully.`;
+                }else{
+                    document.getElementById("dateAlert").innerHTML = `<img src ="images/no_delete-2.png"> Date doesn't follow the format.`;
+                }
+
+            }                    
+        }
+                
+    </script>
+</body>
+
+</html>

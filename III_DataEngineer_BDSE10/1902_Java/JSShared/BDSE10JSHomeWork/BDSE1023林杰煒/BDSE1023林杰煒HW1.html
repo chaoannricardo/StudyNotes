@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>04for.html</title>
+    <style>
+        td{
+            border:1px solid blue;
+            color:red;
+            
+            
+        }
+        table{
+            border:2px solid blue;
+            background: #00ffff;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <tr>
+            <script>
+                for (y=2;y<=9;y++){
+                    document.write("<td>")
+                        for(let x=1;x<=9;x++){
+                            document.write(y+"x"+x+"="+y*x+"<br>")
+                            }
+                    document.write("</td>")
+                }
+            </script>
+        </tr>
+    </table>
+
+
+    <script>
+        function array(a){
+            for(let x=1;x<=9;x++){
+                document.write(a+"x"+x+"="+a*x+"<br>")
+                }
+            }
+    </script>
+</body>
+</html>

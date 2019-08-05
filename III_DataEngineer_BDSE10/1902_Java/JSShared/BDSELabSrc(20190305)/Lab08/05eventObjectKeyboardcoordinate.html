@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>05eventObjectKeyborad.html</title>
+    
+</head>
+<body>    
+    <!--JavaScript屬性事件處理程序-->    
+    <input type="button" id="idbut" value="座標" />
+
+    <script> 
+        //鍵盤事件繫結
+        documentonkeydown=keyDown;  //大寫鍵，控制鍵        
+        function keyDown(nsevent) {
+            var theEvent = nsevent || window.event;
+            if (theEvent.altKey) alert("ALT");
+            if (theEvent.ctrlKey) alert("CTRL");
+            if (theEvent.shiftKey) alert("SHIFT");
+        }
+
+
+        //JavaScript屬性事件處理程序(IE9以上)座標屬性        
+        //document.getElementById("idbut").onclick=CoordXY;  //座標coordinate           
+        
+
+        function CoordXY() {
+
+        }           
+    </script>
+</body>
+</html>

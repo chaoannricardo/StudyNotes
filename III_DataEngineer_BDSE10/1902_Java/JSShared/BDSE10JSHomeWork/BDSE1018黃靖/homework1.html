@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BDSE1018</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="images/EEIT_logo.png" type="image/x-icon" />
+
+    <style>   
+    table,td {
+            border: 2px solid 	#0000AA;
+            border-collapse: collapse;
+            background-color:  #66B3FF;
+            color: rgb(236, 38, 38);
+            padding: 10px;
+            margin:auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+            <nav>
+                <ul class="menu">
+                        <li><a href="homework1.html">homework1</a></li>
+                        <li><a href="homework2.html">homework2</a></li>
+                        <li><a href="homework3.html">homework3</a></li>
+                        <li><a href="homework4.html">homework4</a></li>
+                        <li><a href="homework5.html">homework5</a></li>
+                    
+                </ul>
+            </nav>
+        </header>
+        <div class="content"> <!--將要浮動的article 與 aside包在一個div中 才不會影響其他物件-->
+        <article>
+            <h2 class="title">HOMEWORK1</h2>
+            <section>
+                <h2>使用table印出九九乘法表</h2>
+                <br>
+                <table>
+                    <tr>
+                        <script>
+            
+                            for (let i = 2; i < 10; i++) {
+            
+                                document.write("<td>");
+                                for (let j = 1; j < 10; j++) {
+                                    document.write(`${i}*${j}=${i * j}<br>`);
+                                }
+                                document.write("</td>");
+                            }
+                        </script>
+                    </tr>
+                </table>
+            </section>
+           
+        </article>
+       
+    </div><!--end content-->
+    <footer>
+        <p>
+            Name: Hwang Ching &nbsp; E-mail: jimhwch@gmail.com &nbsp; Phone: 0926-800-557 &nbsp;  
+        </p>
+    </footer>
+    </div><!--end allpage-->
+</body>
+
+</html>

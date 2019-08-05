@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>02dynamicStyleImg.html</title>
+    <style>
+       /* css 前綴詞
+            -moz- for Firefox, 
+            -webkit- for Safari and Chrome,
+             -o- for Opera,
+            -ms- for Internet Explorer
+        */
+        .s {
+            -webkit-filter: grayscale(1);  /*沒有任何色彩的黑白影像*/
+            
+        }
+        .n {
+            -webkit-filter: grayscale(0);  /*顏色不變*/
+        }
+    </style>
+</head>
+<body>
+    <img id="idstar" class="s" src="Images/star.jpg" />
+
+    <script>
+        // http://blog.shihshih.com/css-filter/
+        
+        document.getElementById("idstar").onmouseover = mouseOver;  //事件繫結，滑鼠滑入
+        document.getElementById("idstar").onmouseout = mouseOut;    //事件繫結，滑鼠滑出       
+
+        function mouseOver() {
+            document.getElementById("idstar").className = "n";
+        }
+
+        function mouseOut() {
+            document.getElementById("idstar").className = "s";
+        }
+    </script>
+</body>
+</html>

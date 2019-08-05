@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework2</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            height: 250px;
+            width: 350px;
+            margin: 100px auto;
+        }
+        fieldset{
+            border: 2px solid #009100;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        .right{
+            background: url("images/right.png") no-repeat 5px center;
+            background-size: 15px 15px;
+            padding-left: 20px;
+            color: lightgreen;
+        }
+        .error{
+            background: url("images/error.png") no-repeat 5px center;
+            background-size: 15px 15px;
+            padding-left: 20px;
+            color: lightpink;
+        }
+        .prompt{
+            text-indent: 4px;
+            margin-bottom: 5px;
+            font-size: 8px;
+            color: #a2a2a2;
+            display: block;
+        }
+        hr{
+            margin-bottom: 10px;
+        }
+        #box2{
+            margin: 0 auto;
+            width: 80px;
+        }
+        #submit,#reset{
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <form id="form" action="#" method="get">
+            <fieldset>
+                <legend>Form Check</legend>
+                <!--姓名-->
+                <label for="name">姓名: </label>
+                <input id="name" type="text" placeholder="請輸入姓名">
+                <span id="checking-name"></span>
+                <span class="prompt">(1.不可空白，2.至少兩個字以上，3.必須全為中文字)</span>
+                <hr>
+                <!--密碼-->
+                <label for="pwd">密碼:</label>
+                <input id="pwd" type="password" placeholder="請輸入密碼">
+                <span id="checking-pwd"></span>
+                <span class="prompt">(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</span>
+                <hr>
+                <!--日期-->
+                <label for="date">日期 :</label>
+                <input id="date" type="text" placeholder="ex:2000/02/29" >
+                <span id="checking-date"></span>
+                <span class="prompt">格式:西元年/月/日 yyyy/MM/dd</span>
+                <hr>
+                <!--按鈕-->
+                <div id="box2">
+                    <input id="submit" type="submit" value="送出">
+                    <input id="reset" type="reset" value="清除">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        window.onload = function () {
+
+            var nameReg = new RegExp('^[\u4e00-\u9fa5]{2,}$', 'g');
+            check('name', nameReg);
+
+            var pwdReg = new RegExp('^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{6,}$', 'g');
+            check('pwd', pwdReg);
+
+            var dateReg = new RegExp('^(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})\/(((0[13578]|1[02])\/(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)\/(0[1-9]|[12][0-9]|30))|(02\/(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))\/02\/29)$', 'g');
+            check('date', dateReg)
+
+        };
+        function $(id) {
+            return typeof id === "string" ? document.getElementById(id) : null;
+        }
+        function dealStyle(id, msg, className) {
+            $(id).innerText = msg;
+            $(id).className = className;
+        }
+        function check(id, regexp) {
+            // 輸入框失去焦點
+            $(id).onblur = function () {
+                // 1. 獲取輸入框內文字
+                var value = $(id).value;
+                // 解決 test() 方法，會循環 true and false
+                regexp.lastIndex = 0;
+                // 2. 驗證
+                regexp.test(value) ? dealStyle('checking-'+id, '正確', 'right') : dealStyle('checking-'+id, '錯誤', 'error');
+            };
+            // 輸入框獲得焦點
+            $(id).onfocus = function () {
+                dealStyle('checking-'+id, '', '');
+            };
+        }
+    </script>
+</body>
+</html>

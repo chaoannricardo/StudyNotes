@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01globalObject.html</title>
+</head>
+<body>
+    <script>
+        // console.log(window.prompt("input","10").charAt(0));
+        document.write("eval('1>2')=" + eval('1>2') + "<br>");        
+        document.write("encodeURI('123&chen@iii.org.tw')=" + encodeURI('123&chen@iii.org.tw') + "<br>");
+        document.write("encodeURI('中文')=" + encodeURI('中文') + "<br>");
+        document.write("encodeURI('一')=" + encodeURI('一') + "<br>");
+        document.write("decodeURI('%E4%B8%AD%E6%96%87')=" + decodeURI('%E4%B8%AD%E6%96%87') + "<br>");
+    </script>
+</body>
+</html>

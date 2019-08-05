@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BDSE10蔡豫周HW2</title>
+    <style>
+        label{
+            line-height: 16px;
+        }
+        input{
+            line-height: 16px;
+        }
+        p{
+            color: rgb(162, 162, 162);
+            font-size:12px;
+            margin:0;
+            padding:0;
+        }
+        .inputColumn{
+            padding: 4px 0;
+        }
+        .submit{
+            text-align: center;
+        }
+        #all{
+            width:500px;
+            margin: auto;
+        }
+    
+    </style>
+</head>
+<body>
+    <form action="#" method="GET">
+        <fieldset id="all">
+            <legend>Form Check</legend>
+            <div class="inputColumn">
+                <label for="name">姓名:</label>
+                <input type="text" name="name" value="" id="name">
+                <span id="nameCheck"></span>
+                <!-- <img src="images/right.png" height="16px" > <span id="nameRight">正確</span> -->
+                <!-- <img src="images/wrong.png" height="16px"> <span id="nameWrong">正確</span> -->
+                <p>(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)</p>
+                <hr>
+            </div>
+            <div class="inputColumn">
+                <label for="password">密碼:</label>
+                <input type="password" name="password" id="password">
+                <span id="pwCheck"></span>
+                <p>(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</p>
+                <hr>
+            </div>
+            <div class="inputColumn">
+                <label for="date">日期</label>
+                <input type="text" name="date" id="date">
+                <span id="dateCheck"></span>
+                <p>格式:西元年/月/日 yyyy/MM/dd</p>
+                <hr>
+            </div>
+            <div class="submit">
+                <input id="submitB" type="submit" value="送出">
+                <input type="reset" value="清除">
+            </div>
+        </fieldset>
+    </form>
+
+    <script>
+        document.getElementById("name").onblur = blurName;
+        document.getElementById("password").onblur = blurPassword;
+        document.getElementById("date").onblur = blurDate;
+        document.getElementById("submitB").onclick=clickSubmit;
+        
+
+        function blurName(){
+            let nameValue = document.getElementById("name").value;
+            let re = /^[\u4e00-\u9fa5]{1,}$/;
+            if (re.test(nameValue)){
+                document.getElementById("nameCheck").innerHTML=`<img src="images/right.png" height="16px">正確`;
+                return true;
+            }else{
+                document.getElementById("nameCheck").innerHTML=`<img src="images/wrong.png" height="16px">輸入錯誤`;
+            }
+        }
+        function blurPassword(){
+            let pwValue = document.getElementById("password").value;
+            let re = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{6,}$/;
+            if (re.test(pwValue)){
+                document.getElementById("pwCheck").innerHTML=`<img src="images/right.png" height="16px">正確`;
+                return true;
+            }else{
+                document.getElementById("pwCheck").innerHTML=`<img src="images/wrong.png" height="16px">輸入錯誤`;
+            } 
+        }
+        function blurDate(){
+            let dateValue = document.getElementById("date").value;
+            let dateInput = new Date(`${dateValue}`);
+            let dateRight = `${dateInput.getFullYear()}/${dateInput.getMonth()+1}/${dateInput.getDate()}`;
+            let monthAdd0 = dateInput.getMonth()<=8 ? "0"+(dateInput.getMonth()+1) :(dateInput.getMonth()+1);
+            let dateAdd0 = dateInput.getDate()<=9 ? "0"+(dateInput.getDate()) :(dateInput.getDate());
+            let dateRight2 = `${dateInput.getFullYear()}/${monthAdd0}/${dateAdd0}`;
+            
+            if ((dateValue == dateRight)||(dateValue == dateRight2)) {
+                document.getElementById("dateCheck").innerHTML=`<img src="images/right.png" height="16px">正確`;
+                return true;
+            }else{
+                document.getElementById("dateCheck").innerHTML=`<img src="images/wrong.png" height="16px">輸入錯誤`;
+            } 
+        }
+        function clickSubmit(e){
+            if(blurDate()&&blurPassword()&&blurName()){
+                e.currentTarget.submit();
+            }else{
+                return false;
+            }
+        }
+    
+    
+    
+    </script>
+
+
+</body>
+</html>

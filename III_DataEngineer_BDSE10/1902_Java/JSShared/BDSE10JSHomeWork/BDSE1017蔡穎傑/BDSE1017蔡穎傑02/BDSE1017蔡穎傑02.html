@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .st1 {
+            width: 450px;
+            /*要給定一個範圍否則之後設定的格線會填滿整個頁面 */
+            border-bottom: 1px solid rgb(231, 228, 228);
+            /*畫下分界線 */
+            margin: 20px;
+            padding-bottom: 10px;
+        }
+
+        .sub {
+            width: 450px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .t1 {
+            width: 40px;
+            float: left;
+            text-align: right;
+            padding-right: 3px;
+        }
+
+        .t2 {
+            font-size: 1px;
+            color: rgb(188, 188, 189);
+            padding: 6px
+        }
+        .t3 {
+            width: 450px;
+            padding: 3px;
+            border-color: rgb(77, 204, 162);
+            border-radius: 10px
+
+        }
+        /* input{
+            border:1px solid black
+        } */
+    </style>
+</head>
+
+<body>
+    <form action="#" method="GET">
+        <fieldset class="t3">
+            <legend>Form Check</legend>
+
+            <div class="st1">
+                <label class="t1" for="account1">姓名:</label><input type="text" id="account1" name="account"
+                    autocomplete="off" placeholder="王建民" size="20"><span id="idsp"></span>
+                <br>
+                <label class="t2">(1.不可空白，2.至少兩個字以上，3.必須全部為中文字</label>
+            </div>
+            <div class="st1">
+                <label class="t1" for="pwd1">密碼:</label><input type="password" id="pwd1" name="pwd" placeholder="請輸入密碼"
+                    maxlength="8"><span id="codesp"></span>
+                <br>
+                <label class="t2">(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</label>
+            </div>
+            <div class="st1">
+                <label class="t1" for="date">日期:</label><input type="text" id="date" name="date"
+                    placeholder="ex:2019/02/18" maxlength="12"><span id="datesp"></span>
+                <br>
+                <label class="t2">格式：西元年/月/日 yyyy/MM/dd</label>
+            </div>
+            <div class="sub">
+                <input type="submit" value="送出" onclick="name1();submit1();date1();">
+                <input type="reset" value="清除">
+            </div>
+        </fieldset>
+    </form>
+    
+    <script>
+        document.getElementById("pwd1").onblur=submit1;
+        function submit1(){
+            // let codeOb=document.getElementById("pwd1");
+            // alert(typeof codeOb);
+            let code=document.getElementById("pwd1").value;
+            let codeLen=code.length;
+            let flag1=false,flag2=false, flag3=false;
+            let str=["!","@","#","$","%","^","&","*"];
+
+            if (code ==""){
+                // alert("you must enter");
+                document.getElementById("codesp").innerHTML=`<img src="Images/error.png">You must enter`;}
+            else if(codeLen >=6){
+
+                for(let i=0;i<codeLen;i++){
+                    let PwdCh=code.charAt(i).toUpperCase();
+                    if(PwdCh>="A" && PwdCh<="Z")
+                        flag1=true;
+                    else if (PwdCh>="0" && PwdCh<="9")
+                        flag2=true;
+                    else{
+                        for(let value of str){
+                            if(PwdCh=value)
+                               flag3=true;
+                        }
+                    }
+                    if(flag1 && flag2 && flag3)break;
+                }
+                if(flag1 && flag2 && flag3) document.getElementById("codesp").innerHTML=`<img src="Images/correct.jpeg">correct`;
+                // alert("correct");
+                 else document.getElementById("codesp").innerHTML=`<img src="Images/error.png">incorrect`;
+                //  alert("incorrect");
+           
+            }
+            else
+            // alert("Password length must greater than 6");
+            document.getElementById("codesp").innerHTML=`<img src="Images/error.png">Password length must greater than 6`;
+        }
+
+    
+        document.getElementById("account1").onblur=name1;
+        function name1(){
+        //     let name1 = document.getElementById("account1").value;
+        //     let re3=/^[\u4e00-\u9fff]{2,}$/;
+        // if (re3.test(name1))
+        //     alert("successful");
+        // else
+        //     alert("failure");
+        // }
+            
+            let name = document.getElementById("account1").value;
+            let nameLen=name.length;
+            let flag4=false;
+            
+            
+            if (name ==""){
+                // alert("you must enter");
+                document.getElementById("idsp").innerHTML=`<img src="Images/error.png">You must enter`;}
+            else if(nameLen >=2){
+                for(let j=0;j<nameLen;j++){
+                    let ch=name.charCodeAt(j);
+                    if(ch<0x4e00 || ch>0x9fff) 
+                    flag4=true;
+                    
+                    if (flag4 )break;
+                }
+                if (flag4) document.getElementById("idsp").innerHTML=`<img src="Images/error.png">incorrect`;
+                
+                else document.getElementById("idsp").innerHTML=`<img src="Images/correct.jpeg">correct`;
+               
+                
+            }
+            else
+            document.getElementById("idsp").innerHTML=`<img src="Images/error.png">At least two words`;
+
+
+        }
+        
+        document.getElementById("date").onblur=date1;
+        function date1(){
+            let date1=document.getElementById("date").value;
+            if(date1==""){
+                document.getElementById("datesp").innerHTML=`<img src="Images/error.png">You must enter`;
+            };
+
+            let date2=date1.split("/");
+            if(date2[1].charAt(0)=='0'){
+                date2[1]=Number(date2[1]);
+            }
+            if(date2[2].charAt(0)=='0'){
+                date2[2]=Number(date2[2]);
+            }
+            
+           let date3=(`${date2[0]}/${date2[1]}/${date2[2]}`);
+
+
+                       
+            let d = new Date(date3);
+            let dYear=d.getFullYear();
+            let dMonth=d.getMonth()+1;
+           
+            let dDay=d.getDate();
+            let d2=(`${dYear}/${dMonth}/${dDay}`)
+            if(d2==date3){
+                document.getElementById("datesp").innerHTML=`<img src="Images/correct.jpeg">correct`
+            }
+            
+            else{
+            document.getElementById("datesp").innerHTML=`<img src="Images/error.png">invaild date`;
+            }
+        }    
+    </script>
+</body>
+
+</html>

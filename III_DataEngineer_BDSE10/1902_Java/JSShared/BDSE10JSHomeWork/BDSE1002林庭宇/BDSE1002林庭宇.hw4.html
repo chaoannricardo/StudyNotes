@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循環播放</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .t {
+            width: 600px;
+            height: 400px;
+        }
+
+        .t1 {
+            width: 40px;
+            margin-left: 30px;
+        }
+
+        .d {
+            border: 10px solid rgb(48, 180, 48);
+            border-radius: 10px;
+            width: 600px;
+            height: 400px;
+            margin: 50px auto;
+            margin-bottom: 50px;
+            cursor: pointer;
+        }
+
+        .d1 {
+            width: 350px;
+            margin: auto;
+            margin-bottom: 50px;
+
+        }
+        .d2 {
+            width: 90px;
+            height: 50px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .d3 {
+            border: 2px solid rgba(224, 184, 6, 0.918);
+            width: 90px;
+            height: 50px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+        .d4 {
+            width: 500px;
+            height: 100px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html">回首頁</a></li>
+                    <li><a href="BDSE1002林庭宇.hw1.html">九九乘法表</a></li>
+                    <li><a href="BDSE1002林庭宇.hw2.html">表單</a></li>
+                    <li><a href="BDSE1002林庭宇.hw3.html">星星評分</a></li>
+                    <li><a href="BDSE1002林庭宇.hw5.html">日期選擇器</a></li>
+                </ul>
+            </nav>
+            <img src="images/logo1.jpg" alt="logo" title="logo" width="1024">
+        </header>
+        <h2 class="title">循環播放</h2>
+        <div class="d" id="images"></div>
+        <div class="d4" id="images1">
+            <img class="d3" src="images/movie01.jpg">
+            <img class="d2" src="images/movie02.jpg">
+            <img class="d2" src="images/movie03.jpg">
+            <img class="d2" src="images/movie04.jpg">
+            <img class="d2" src="images/movie05.jpg">
+        </div>
+        <div class="d1">
+            <img class='t1' id="but1" onclick="Back()" src="images/backbutton.JPG">
+            <img class='t1' id="but2" onclick="Click()" src="images/playbutton.JPG">
+            <img class='t1' id="but3" onclick="Stop()" src="images/stopbutton.JPG">
+            <img class='t1' id="but4" onclick="Forward()" src="images/forwardbutton.JPG">
+        </div>
+        <script>
+
+            document.getElementById("but1").onclick = Back;
+            document.getElementById("but2").onclick = Click;
+            document.getElementById("but3").onclick = Stop;
+            document.getElementById("but4").onclick = Forward;
+            let i = 1;
+            let j = 0;
+            let images1 = document.querySelectorAll("img.d2, img.d3");
+            function setClock() {
+                let images = new Array(5);
+                images[0] = "<a href='#' onclick='window.open(`https://www.youtube.com/watch?v=QK3fhjmJdF0`);'><img class='t' src='images/movie01.jpg'></a>";
+                images[1] = "<a href='#' onclick='window.open(`https://www.youtube.com/watch?v=BnfyVQ0YKnU`);'><img class='t' src='images/movie02.jpg'></a>";
+                images[2] = "<a href='#' onclick='window.open(`https://www.youtube.com/watch?v=OuieVBnF80Y`);'><img class='t' src='images/movie03.jpg'></a>";
+                images[3] = "<a href='#' onclick='window.open(`https://www.youtube.com/watch?v=Ck-CC5NqSkk`);'><img class='t' src='images/movie04.jpg'></a>";
+                images[4] = "<a href='#' onclick='window.open(`https://www.youtube.com/watch?v=I7f5xJqvNQc`);'><img class='t' src='images/movie05.jpg'></a>";
+                let imgLen = images.length;
+                document.getElementById("images").innerHTML = images[i];
+                images1[j].className="d2";
+                i++;
+                if (i >= imgLen)
+                    i = 0;
+                j++;
+                if(j > 4) j=0;
+                images1[j].className="d3";
+                
+            }
+            let imgInterval;
+            function Click() {
+                setClock();
+                imgInterval = window.setInterval(setClock, 1500);
+            }
+            Click();
+
+            function Back() {
+                let images = new Array(5);
+                images[0] = "<a href='https://www.youtube.com/watch?v=QK3fhjmJdF0'><img class='t' src='images/movie01.jpg'></a>";
+                images[1] = "<a href='https://www.youtube.com/watch?v=BnfyVQ0YKnU' ><img class='t' src='images/movie02.jpg'></a>";
+                images[2] = "<a href='https://www.youtube.com/watch?v=OuieVBnF80Y' ><img class='t' src='images/movie03.jpg'></a>";
+                images[3] = "<a href='https://www.youtube.com/watch?v=Ck-CC5NqSkk' ><img class='t' src='images/movie04.jpg'></a>";
+                images[4] = "<a href='https://www.youtube.com/watch?v=I7f5xJqvNQc'><img class='t' src='images/movie05.jpg'></a>";
+                let imgLen = images.length;
+                images1[j].className="d2";
+                document.getElementById("images").innerHTML = images[i];
+                i--;
+                if (i < 0)
+                    i = imgLen - 1;
+                j--
+                if(j < 0) 
+                    j = 4 ;
+                images1[j].className="d3";
+            }
+
+            function Stop() {
+                clearInterval(imgInterval);
+            }
+            function Forward() {
+                let images = new Array(5);
+                images[0] = "<a href='https://www.youtube.com/watch?v=QK3fhjmJdF0'><img class='t' src='images/movie01.jpg'></a>";
+                images[1] = "<a href='https://www.youtube.com/watch?v=BnfyVQ0YKnU' ><img class='t' src='images/movie02.jpg'></a>";
+                images[2] = "<a href='https://www.youtube.com/watch?v=OuieVBnF80Y' ><img class='t' src='images/movie03.jpg'></a>";
+                images[3] = "<a href='https://www.youtube.com/watch?v=Ck-CC5NqSkk' ><img class='t' src='images/movie04.jpg'></a>";
+                images[4] = "<a href='https://www.youtube.com/watch?v=I7f5xJqvNQc'><img class='t' src='images/movie05.jpg'></a>";
+                let imgLen = images.length;
+                document.getElementById("images").innerHTML = images[i];
+                images1[j].className="d2";
+                i++;
+                if (i > imgLen - 1)
+                    i = 0;
+                j++;
+                if(j > 4) j=0;
+                images1[j].className="d3";
+
+            }
+        </script>
+        <footer>
+            <p>
+                E-amil:aaa@gmail.com &nbsp; Tel:(02)2222-2222 &nbsp; 台北市復興南路一段390號 &nbsp; &copy; 2014 All Rights
+                Reserved Quality Art Technology CO.
+            </p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

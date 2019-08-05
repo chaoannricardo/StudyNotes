@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BDSE蔡豫周HW5</title>
+    <style>
+        #all {
+            width: fit-content;
+            margin: auto;
+            margin-top: 100px;
+            border: solid 2px black;
+        }
+
+        .content {
+            width: fit-content;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="all">
+        <div class="content">
+            <div class="content">
+                <h2>請選擇日期</h2>
+            </div>
+            <div class="content">
+                <select name="yearSel" id="yearSel"></select>年
+                <select name="monthSel" id="monthSel"></select>月
+                <select name="dateSel" id="dateSel"></select>日
+            </div>
+            <div class="content">
+                <textarea name="show" id="show" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("yearSel").onchange=DateChange;
+        document.getElementById("monthSel").onchange=DateChange;
+        document.getElementById("dateSel").onchange=showText;
+
+        //新增年
+        for (let i = 2010; i <= 2020; i++) {
+            let opt = document.createElement("option");
+            let content = document.createTextNode(i);
+            opt.appendChild(content);
+            document.getElementById("yearSel").appendChild(opt);
+        }
+        //新增月
+        for (let i = 1; i < 13; i++) {
+            let opt = document.createElement("option");
+            let content = document.createTextNode(i);
+            opt.appendChild(content);
+            document.getElementById("monthSel").appendChild(opt);
+        }
+        function DateChange() {
+            let year = document.getElementById("yearSel").value;
+            let month = document.getElementById("monthSel").value;
+            let d = new Date(year, month, 0);
+            let dateMax = d.getDate();
+
+            dateObj = document.getElementById("dateSel");
+            dateObj.innerHTML = "";
+            for (let i = 1; i <= dateMax; i++) {
+                let opt = document.createElement("option");
+                let content = document.createTextNode(i);
+                opt.appendChild(content);
+                dateObj.appendChild(opt);
+            }
+
+            
+        }
+        function showText(){
+            let year = document.getElementById("yearSel").value;
+            let month = document.getElementById("monthSel").value;
+            let date = document.getElementById("dateSel").value;
+
+            document.getElementById("show").innerHTML=`你選擇的是${year}年${month}月${date}日`;
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

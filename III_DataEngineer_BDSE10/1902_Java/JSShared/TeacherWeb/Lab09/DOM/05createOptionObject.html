@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>05createOptionObject.html</title>    
+	</head>
+	<body>
+        <select id="idSelectMonth"></select>
+        <select>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">C</option>
+        </select>
+        <input type="button" value="clear" id="idClear">
+        <script>
+                document.getElementById('idSelectMonth').onchange=ch;
+                document.getElementById("idClear").onclick=Clearf;
+                for (let i = 1; i <= 12; i++) {   //新增月 
+                    let opt = document.createElement("option");  //<option></option>
+                    opt.setAttribute("value", i);//<option value="1"></option>
+                    let optName = document.createTextNode(i);  //1
+                    opt.appendChild(optName);//<option value="1">1</option>
+                    // opt.value = i;
+                    // opt.innerHTML = i;
+                    document.getElementById('idSelectMonth').appendChild(opt);
+                }
+                let d=new Date(2019,2,0);  //3月的0天 就是 2月的最1天
+                // alert(d.getDate());
+                function ch(){
+                    let theMonth=document.getElementById('idSelectMonth').value;
+                    alert(theMonth);
+                }
+                function Clearf(){
+                    document.getElementById('idSelectMonth').innerHTML="";
+                }
+        </script>
+	</body>
+
+</html>

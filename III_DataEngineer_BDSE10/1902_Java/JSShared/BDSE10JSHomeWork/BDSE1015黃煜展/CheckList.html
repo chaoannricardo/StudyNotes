@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CheckList</title>
+    <style>
+        fieldset {
+            width: 500px;
+            border: 2px solid #CCDDFF;
+            border-radius: 10px 10px 10px 10px
+        }
+    
+        .st {
+            width: 600px;
+            border-bottom: 1px solid #CCEEFF;
+            margin: 6px;
+            padding: 6px
+        }
+
+        .st1 {
+            width: 600;
+            float: left;
+            text-align: right;
+            padding-right: 3px
+        }
+
+        .st2 {
+            width: 450px;
+            text-align: center
+        }
+    
+        textarea {
+            resize: none
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+    <fieldset >
+        <legend>Form Check</legend>
+
+        <div class="st">
+            <label class="st1" for="account">Name:</label><input type="text" id="account" name="account" placeholder="姓名"
+                autocomplete="off"><span id="checkName"></span><br>
+            <i style="font-size:14px;font-family: '微軟正黑體 Light';color: lightslategrey ">(1.不可以空白 2.至少兩個字以上 3.全部皆為中文字)</i>
+        </div>
+
+        <div class="st">
+            <label for="pwd">Password:</label><input type="password" id="idpwd" name="password" maxlength="30" placeholder="@Joe28572418">
+                <span id="checkPass"></span><br>
+            <i style="font-size:14px;font-family: '微軟正黑體 Light';color: lightslategrey ">(1.不可以空白 2.至少6個字包含英文字母與特殊符號[!@#$%^&*])</i>
+
+        </div>
+        <div class="st">
+            <label for="" class="st1">Date:</label><input type="datetime" id="bd" name="Birthdate">
+            <sapn id = "checkDate"></sapn><br>
+            <i style="font-size:14px;font-family: '微軟正黑體 Light';color: lightslategrey ">(格式:西元年/月/日 yyyy/MM/dd)</i>
+
+        </div>
+
+        <div class="st2">
+            <input type="button" value="submit" id="buttoncheck">
+            <input type="reset" value="reset">
+        </div>
+    </fieldset>
+    </form>
+        <script>
+            function setContext(reExp,testString,idContext){
+                let checkResult = reExp.test(testString);
+                if(testString=="") {
+                    document.getElementById(idContext).innerHTML = "<img src='Images/error.png' width='20'><i>Empty</i>";
+                }else if(checkResult){
+                    document.getElementById(idContext).innerHTML = "<img src='Images/correct.png' width='20'><i>Correct format</i>";
+                }else{
+                    document.getElementById(idContext).innerHTML = "<img src='Images/error.png' width='20'><i>Wrong format</i>";
+                }
+            }
+            function checkPass(){
+                let rePassword = new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})","g");
+                let thePassword = document.getElementById("idpwd").value;
+                setContext(rePassword,thePassword,"checkPass")
+            }
+            function checkName(){
+                let reName = new RegExp("^[\u4E00-\u9FFF]{2,4}$");
+                let theName = document.getElementById("account").value;
+                setContext(reName, theName, "checkName")
+            }
+            function checkDate(){
+                let reDate = new RegExp("[1-9]{4}[./](0[1-9]|1[0-2])[./](0[1-9]|[1-2][0-9]|3[0-1])$");
+                let theDate = document.getElementById("bd").value
+                setContext(reDate,theDate,"checkDate")
+            }
+
+            document.getElementById("account").addEventListener("blur",checkName)
+            document.getElementById("idpwd").addEventListener("blur",checkPass)
+            document.getElementById("bd").addEventListener("blur",checkDate)
+        </script>
+</body>
+
+</html>

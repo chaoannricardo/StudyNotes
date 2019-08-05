@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>HW04.html</title>
+    <style>
+        .block {
+            width: 380PX;
+            display: block;
+            cursor: pointer;
+        }
+    
+        .none {
+            display: none;            
+        }
+    
+        .field {
+            width: 380PX;
+            margin: 0 auto;
+            border-radius: 20PX;
+        }
+    
+        .legend {
+            text-align: center;
+            font-size: larger
+        }
+    
+        .ads {
+            margin: 3PX 2PX;
+            width: 60PX;
+            height: 60PX;
+        }
+    
+        .adsborder {
+            margin: 3PX 2PX;
+            width: 60PX;
+            height: 60PX;
+            border: 3px solid #ffc300;
+        }
+    
+        .pdiv {
+            width: 380PX;
+            text-align: center;
+        }
+    
+        .control {
+            margin-left: 30px;
+            margin-right: 30px;
+            width: 40px;
+            -webkit-filter: grayscale(1);
+        }
+    </style>    
+</head>
+<body>
+    <fieldset class="field">
+        <legend class="legend">Ads_Carousel</legend>
+        <div class="pdiv">
+            <img id="ad0" class="block" src="images/ad001.jpg">
+            <img id="ad1" class="none" src="images/ad002.jpg">
+            <img id="ad2" class="none" src="images/ad003.jpg">
+            <img id="ad3" class="none" src="images/ad004.jpg">
+            <img id="ad4" class="none" src="images/ad005.jpg">
+        </div>
+        <hr>
+        <div class="pdiv">
+            <img id="sad0" class="adsborder" src="images/ad001.jpg">
+            <img id="sad1" class="ads" src="images/ad002.jpg">
+            <img id="sad2" class="ads" src="images/ad003.jpg">
+            <img id="sad3" class="ads" src="images/ad004.jpg">
+            <img id="sad4" class="ads" src="images/ad005.jpg">
+        </div>
+    
+        <div class="pdiv">
+            <img id="idback" class="control" src="images/back.png">
+            <img id="idpauseplay" class="control" src="images/pause.png">
+            <img id="idnext" class="control" src="images/next.png">
+        </div>
+    </fieldset>
+
+    <script>
+        let adImgs,adsImgs;
+        let count,t,flag;
+        adImgs=document.querySelectorAll("img.block,img.none");
+        adsImgs=document.querySelectorAll("img.adsborder,img.ads");
+        document.getElementById("idback").onclick=backf;
+        document.getElementById("idpauseplay").onclick=pauseplayf;
+        document.getElementById("idnext").onclick=nextf;
+
+        
+        count=0;
+        flag=true;
+        function show(){
+            adImgs[count].className="none";
+            adsImgs[count].className="ads";
+            count++;
+            if(count>4) count=0;
+            adImgs[count].className="block";
+            adsImgs[count].className="adsborder";
+        }
+        t=window.setInterval(show,1500);
+
+        function backf(){
+            adImgs[count].className="none";
+            adsImgs[count].className="ads";
+            count--;
+            if(count<0) count=4;
+            adImgs[count].className="block";
+            adsImgs[count].className="adsborder";
+        }
+        function pauseplayf(){
+            if(flag){
+                flag=false;
+                document.getElementById("idpauseplay").src="images/play.png";
+                window.clearInterval(t);
+            }else{
+                flag=true;
+                document.getElementById("idpauseplay").src="images/pause.png";
+                t=window.setInterval(show,1500);
+            }
+        }
+        function nextf(){
+            show();
+        }
+    </script>
+</body>
+</html>

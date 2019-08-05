@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>02stringlObject.html</title>
+</head>
+<body>
+
+    <script>
+        let str = "java script";  //字串變數
+        // alert(`str=${typeof str}`);  //string
+        let strObj=new String("java script hello");//字串物件
+        let strObj2=new String("一二三");
+        // alert(`strObj=${typeof strObj}`);  //object        
+        document.write("strObj.charAt(3)=" +strObj.charAt(3) + "<br/>");  //a
+        document.write("strObj.charCodeAt(3)=" +strObj.charCodeAt(3) + "<br/>");  //97
+        let ch=strObj2.charCodeAt(0);
+        // alert(ch);  //19968 0x4e00
+        if(ch>=0x4e00 && ch<=0x9fff)
+            alert(true);
+        else
+            alert(false);
+        document.write("strObj.indexOf('a')=" +strObj.indexOf('a') + "<br/>"); //1
+        document.write("strObj.lastIndexOf('a')=" +strObj.lastIndexOf('a') + "<br/>");  //3
+        document.write("strObj.lastIndexOf('@')=" +strObj.lastIndexOf('@') + "<br/>");  //-1
+        document.write("strObj.substr(5,3)=" +strObj.substr(5,3) + "<br/>");  //scr
+        document.write("strObj.substr(5)=" +strObj.substr(5) + "<br/>");  //scr
+        document.write("strObj.substring(5,8)=" + strObj.substring(5,8)+ "<br/>");  //scr
+        document.write("strObj.split(' ',2)=" + strObj.split(" ",2) + "<br>");
+    </script>
+</body>
+</html>

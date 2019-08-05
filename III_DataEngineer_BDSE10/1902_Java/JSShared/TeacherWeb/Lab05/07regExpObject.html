@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>07regExpObject.html</title>
+</head>
+<body>
+    Email:<input type="text" id="idEmail" />
+    <br />
+    <input type="button" value="checkEmail" onclick="chkEmail();" />
+    <hr>
+    <script>
+    /*
+        let str="Is this all there is?";
+		let re=new RegExp("is","gi");
+		document.write(str.match(re)+"<hr/>");
+    */
+        function chkEmail() {
+            //取得元素值
+            let theEmail = document.getElementById("idEmail").value;
+            //建立RegExp物件語法 2
+            let re1 = /^.+@.+\..{2,3}$/;  //regexp literal
+            //建立RegExp物件語法 1
+            let re2=new RegExp("^.+@.+\\..{2,3}$");
+            // alert(`re1=${re1}\nre2=${re2}`);
+            let re=/^\w+@[\.\w]+\.\w{2,3}$/;
+            let re3=/^[\u4e00-\u9fff]{2,}$/;
+
+            if (re.test(theEmail))
+                alert("successful");
+            else
+                alert("failure");
+
+        }
+    </script>
+</body>
+</html>

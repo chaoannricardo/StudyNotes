@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>99Loop</title>
+    <style>
+        table {
+            border: 2px solid blue;
+            background-color:rgb(209, 235, 243);
+            border-collapse: collapse;
+            color: red;
+        }
+        td{
+            border-right:1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <script>
+            for (var i = 1; i <= 9; i++) {
+                document.write(`<tr>`);
+                for (var j = 2; j <= 9; j++) {
+                    document.write(`<td>${j}*${i}=${j*i}</td>`);
+                }
+                document.write(`</tr>`)
+            }
+        </script>
+    </table>
+
+
+
+</body>
+
+</html>

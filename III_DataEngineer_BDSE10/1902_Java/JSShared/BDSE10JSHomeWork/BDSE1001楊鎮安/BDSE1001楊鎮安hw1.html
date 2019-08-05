@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Multiple Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table{
+            border-collapse: collapse;
+            border: 3px solid rgb(135, 135, 204);
+        }
+        td {
+            color:rgb(110, 55, 15);
+            border-right: 3px solid rgb(135, 135, 204);
+            width: 100px;
+            background-color: bisque; 
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <script>
+            for (i = 1; i <= 9; i++) {
+                document.write(`<tr>`);
+                for (j = 2; j <= 9; j++) {
+                    document.write(`<td>${j} x ${i} = ${i * j}</td>`);
+                }
+                document.write(`</tr>`);
+            }
+        </script>
+    </table>
+
+
+
+</body>
+
+</html>

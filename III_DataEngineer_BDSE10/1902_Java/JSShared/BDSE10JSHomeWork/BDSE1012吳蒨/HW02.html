@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>HW02</title>
+    <style>
+       
+        fieldset {
+            width: 600px;
+            border: 1px solid green;
+            border-radius: 20px;
+              }
+        div{
+            color:gray;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Form Check</legend>
+
+        姓名:<input type="text" id="gName" placeholder="請輸入姓名">
+        <span id="idsp"></span><br>
+    <div>
+    (1.不可空白，2.至少兩個字以上，3.必須全部為中文)
+    </div>
+        <hr>
+        密碼:<input type="text" id="gPwd" placeholder="請輸入密碼">
+        <span id="idsp1"></span><br>
+        <div>
+    (1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#\$%\^&\*])   
+        </div>
+        <hr>
+        日期:<input type="text" id="gDate" placeholder="ex:2000/2/29">
+        <span id="idsp2"></span><br>
+        <div>
+        格式: 西元年/月/日 yyyy/MM/dd   
+                    </div>  
+        <hr>
+
+    <input type="submit" value="送出">
+    <input type="reset" value="清除">
+
+
+    </fieldset>
+
+    <script>
+        document.getElementById("gName").onblur = checkName
+        function checkName() {
+            let theName = document.getElementById("gName").value;
+            let NameLen = theName.length;
+            let re = new RegExp("^[\u4E00-\u9FFF]{2,}$")
+            if (theName == "")
+                document.getElementById("idsp").innerHTML = `<img src="images/error.png">姓名不可為空白`;
+            else if (NameLen >= 2) {
+                if (re.test(theName)) {
+                    document.getElementById("idsp").innerHTML = `<img src="images/check.png">正確`;
+                }
+            }
+            else
+                document.getElementById("idsp").innerHTML = `<img src="images/error.png">必須為中文且兩個字以上`;
+        }
+
+        document.getElementById("gPwd").onblur = checkPwd
+        function checkPwd() {
+            let thePwd = document.getElementById("gPwd").value;
+            let PwdLen = thePwd.length;
+            let re1 = new RegExp("^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})")
+            if (thePwd == "")
+                document.getElementById("idsp1").innerHTML = `<img src="images/error.png">密碼不可為空白`;
+            else if (PwdLen >= 6) {
+                if (re1.test(thePwd)) {
+                    document.getElementById("idsp1").innerHTML = `<img src="images/check.png">正確`;
+                }
+            }
+            else
+                document.getElementById("idsp1").innerHTML = `<img src="images/error.png">密碼格式不正確`;
+        }
+
+        document.getElementById("gDate").onblur =checkDate
+
+        function checkDate(){
+            let theDate = document.getElementById("gDate").value;
+            let re2= new RegExp("[0-9]{4}[/](0[1-9]|1[0-2])[/](0[0-9]|[1-2][0-9]|3[0-1])$")
+            if (theDate == "")
+                document.getElementById("idsp2").innerHTML = `<img src="images/error.png">日期不可為空白`;
+            else if (re2.test(theDate)) {
+                    document.getElementById("idsp2").innerHTML = `<img src="images/check.png">正確`;
+                }
+            
+            else
+                document.getElementById("idsp2").innerHTML = `<img src="images/error.png">日期格式不正確`;
+        }
+
+        
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .slPlay{
+            width: 100px
+        }
+
+        .slPage{
+            width: 50px
+        }
+    
+    </style>
+
+</head>
+
+<body>
+    
+        <a id="ida" href="https://www.17life.com/events/20191724H/#/"><img id="idBanner" src="images/1.jpg" width="500px"></a><br>
+        <img id="idNumber1" class="slPage" src="images/1.png" value="1">
+        <img id="idNumber2" class="slPage" src="images/2.png" value="2">
+        <img id="idNumber3" class="slPage" src="images/3.png" value="3">
+        <img id="idNumber4" class="slPage" src="images/4.png" value="4">
+        <img id="idNumber5" class="slPage" src="images/5.png" value="5">
+        <br>
+        <img id="idForward" class="slPlay" src="images/forward.png">
+        <img id="idPlay" class="slPlay" src="images/pause.png">
+        <img id="idBackward" class="slPlay" src="images/backward.png">
+
+        <script>
+            let isPlaying = true;
+            let counter=0;
+            let t = window.setInterval(forwardClick, 1000);
+
+            let arrSrc = ["images/1.jpg","images/2.jpg","images/3.jpg","images/4.jpg","images/5.jpg"];
+            let arrHref = ["https://www.17life.com/events/20191724H",
+                "https://www.17life.com/deal/6a88bd7e-0914-4a0a-a604-a92cca8a035d",
+                "https://www.17life.com/deal/44771f6b-33a0-409e-a6fd-3ddf60181558",
+                "https://www.17life.com/deal/7c1a4136-eb59-41ce-8778-4534c5cb39e8",
+                "https://www.17life.com/deal/de65667e-153e-4620-ba37-738a8356de6e"];
+
+            document.getElementById("idForward").onclick = forwardClick;
+            document.getElementById("idPlay").onclick = playClick;
+            document.getElementById("idBackward").onclick = backwardClick;
+
+            let imgs = document.querySelectorAll("img.slPage");
+            for(let img of imgs){
+                img.onclick = pageClick;
+            }
+
+            function pageClick(pageNo){
+                counter = this.id.charAt(8)-1;
+                show(counter);
+            }
+
+            function playClick(){
+                if(isPlaying){
+                    window.clearInterval(t);
+                    document.getElementById("idPlay").setAttribute("src","images/play.png");
+                    isPlaying = false;
+                }
+                else{
+                    t = window.setInterval(forwardClick, 1000);
+                    document.getElementById("idPlay").setAttribute("src","images/pause.png");
+                    isPlaying = true;
+                }
+            }
+
+            function forwardClick(){
+                counter = (counter<4)? counter+1 : 0;
+                show(counter);
+            }
+
+            function backwardClick(){
+                counter = (counter>0)? counter-1 : 4;
+                show(counter);
+            }
+
+            function show(c){
+                document.getElementById("idBanner").setAttribute("src", arrSrc[c]);
+                document.getElementById("ida").setAttribute("href", arrHref[c]);
+            }
+        </script>
+
+</body>
+</html>

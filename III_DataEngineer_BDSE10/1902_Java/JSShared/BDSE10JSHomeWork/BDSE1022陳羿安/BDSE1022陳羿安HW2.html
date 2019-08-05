@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表單</title>
+    <style>
+        .sb1{
+            width: 700px;
+            border-bottom: 1px solid gray;
+            margin: 20px;
+            padding-bottom: 10px;
+        }
+        .sb2{
+            width: 700px;
+            text-align: center;
+        }
+        .lab1{
+            width: 100px;
+            float: left;
+            text-align: right;
+            padding: 5px;
+        }
+        fieldset{
+            width: 500px;
+            border: 1px solid green;
+            border-radius: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form actiov="#" method="GET" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Form Check</legend>
+            <div class="sb1">
+                <label for="idname" class="lab1">姓名:</label>
+                <input type="text" id="idname" name="account" autocomplete="off" placeholder="輸入姓名" size="20">
+                <label id="idsp"></label></br>
+                <label style="color: gray;">(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)</label>
+            </div>
+            <div class="sb1">
+                <label for="idpw" class="lab1">密碼:</label>
+                <input type="password" id="idpw" name="pwd" maxlength="6" placeholder="請輸入密碼" size="20">
+                <label id="idspw"></label></br>
+                <label style="color: gray;">(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</label>
+            </div>
+            <div class="sb1">
+                <label for="idd" class="lab1">日期:</label>
+                <input type="text" id="idd" name="date" maxlength="10" placeholder="ex:2000/02/29" size="20">
+                <label id="idspd"></label></br>
+                <label style="color: gray;">(格式:西元年/月/日 yyyy/MM/dd)</label>
+            </div>
+        </fieldset>
+        <div class="sb2">
+            <input type="submit" value="送出">
+            <input type="reset" value="清除">
+        </div>
+
+    </form>
+
+    <script>
+        let bf1 = false, bf2 = false, bf3 = false;
+        document.getElementById("idname").onblur = blur;
+        document.getElementById("idpw").onblur = blur2;
+        document.getElementById("idd").onblur = blur3;
+
+        function blur() {
+            let theIDname = document.getElementById("idname");
+            let theIDnameVal = theIDname.value;
+            if (theIDnameVal == "") {
+                document.getElementById("idsp").innerHTML = '<img src="images/p2.jpg">姓名不可空白';
+            }
+            else if (theIDnameVal.length >= 2) {
+                for (let i = 0; i < theIDnameVal.length; i++) {
+                    let Pname = theIDnameVal.charCodeAt(i);
+                    if (Pname >= 0x4e00 && Pname <= 0x9fff) {
+                        bf1 = true;
+                    }
+                    else {
+                        bf1 = false;
+                    }
+                }
+                if (bf1 == true) {
+                    document.getElementById("idsp").innerHTML = '<img src="images/p1.jpg">正確';
+                }
+                else {
+                    document.getElementById("idsp").innerHTML = '<img src="images/p2.jpg">至少兩個字以上，必須全部為中文字';
+                }
+            }
+            else {
+                document.getElementById("idsp").innerHTML = '<img src="images/p2.jpg">至少兩個字以上，必須全部為中文字';
+            }
+        }
+
+        function blur2() {
+            let thePwd = document.getElementById("idpw");
+            let thePwdVal = thePwd.value;
+            let bb1 = false, bb2 = false, bb3 = false;
+
+            //判斷元素值是否為空白，密碼長度是否大於6
+            if (thePwdVal == "") {
+                document.getElementById("idspw").innerHTML = '<img src="images/p2.jpg">不可為空的';
+            }
+
+            else if (thePwdVal.length >= 6) {
+                //如果長度是否大於6，判斷是否包含字母、數字、特殊符號
+                for (let i = 0; i < thePwdVal.length; i++) {
+                    let PWDC = thePwdVal.charAt(i).toUpperCase();
+                    if (PWDC >= "A" && PWDC <= "Z") {
+                        bb1 = true;
+                    }
+                    else if (PWDC >= "1" && PWDC <= "9") {
+                        bb2 = true;
+                    }
+                    else if (PWDC == "!" || PWDC == "@" || PWDC == "#" || PWDC == "$" || PWDC == "%" || PWDC == "^" || PWDC == "&" || PWDC == "*") {
+                        bb3 = true;
+                    }
+
+                    if (bb1 && bb2 && bb3) {
+                        break;
+                    }
+                }
+                if (bb1 && bb2 && bb3) {
+                    document.getElementById("idspw").innerHTML = '<img src="images/p1.jpg">正確';
+                }
+                else {
+                    document.getElementById("idspw").innerHTML = '<img src="images/p2.jpg">請依照提示正確輸入';
+                }
+
+            }
+            else {
+                document.getElementById("idspw").innerHTML = '<img src="images/p2.jpg">輸入長度要大於等於6';
+            }
+        }
+
+        function blur3() {
+            let theDate = document.getElementById("idd");
+            let theDateVal = theDate.value;
+            let d = new Date(theDateVal);
+            let re = /^[\d]{4}\/[\d]{2}\/[\d]{2}$/;
+
+            if (re.test(theDateVal)) {
+                if (d.getTime()) {
+                    if (d.getMonth() == parseInt(theDateVal.slice(5,7))-1) {
+                        
+                        if(parseInt(theDateVal.slice(5,7)) == 2){
+                                if(d.getFullYear() % 4 == 0){
+                                    if (d.getDate() <= 29) {
+                                        document.getElementById("idspd").innerHTML = '<img src="images/p1.jpg">正確';
+                                    }
+                                    else
+                                        document.getElementById("idspd").innerHTML = '<img src="images/p2.jpg">請輸入正確日期';
+                                }
+                                else{
+                                    if (d.getDate() < 29) {
+                                        document.getElementById("idspd").innerHTML = '<img src="images/p1.jpg">正確';
+                                    }
+                                    else
+                                        document.getElementById("idspd").innerHTML = '<img src="images/p2.jpg">請輸入正確日期';
+                                }
+                        }
+                        else{
+                            if (d.getDate() <= 31) {
+                                document.getElementById("idspd").innerHTML = '<img src="images/p1.jpg">正確';
+                            }
+                            else
+                              document.getElementById("idspd").innerHTML = '<img src="images/p2.jpg">請輸入正確日期';
+                        }
+                            
+                    }
+                    else
+                        document.getElementById("idspd").innerHTML = '<img src="images/p2.jpg">請輸入正確日期';
+                }
+                else
+                document.getElementById("idspd").innerHTML = '<img src="images/p2.jpg">請依提示輸入';
+            }
+            else
+                document.getElementById("idspd").innerHTML = '<img src="images/p2.jpg">請依提示輸入';
+
+
+
+
+
+
+        }
+
+    </script>
+
+
+
+
+</body>
+
+</html>

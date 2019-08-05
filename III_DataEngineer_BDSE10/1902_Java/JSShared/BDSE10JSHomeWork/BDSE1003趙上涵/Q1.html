@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomeworkQ1</title>
+    <style>
+        table,
+        td {
+            border: 3px solid red;
+            background: yellow;
+            border-collapse: collapse;
+        }
+
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .content {
+            width: 900px;
+            margin: 15px auto;
+            padding: 15px 30px;
+            background-color:white;
+            font-size: 18px;
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="background-color:#ffed97">
+    <div class="content">
+
+        <h1 style="font-family:微軟正黑體;">九九乘法表</h1>
+        <script>
+            document.write(`<table class="content"> <tr> `);
+            for (let i = 1; i < 10;) {
+                document.write(`<td>`);
+                for (let j = 1; j < 10; j++) {
+                    document.write(`${i} X ${j} = ${i * j}  <br>`);
+                }
+                document.write(`</td>`);
+                i++
+            }
+            document.write(`</tr> </table>`);
+
+        </script>
+
+        <br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+
+</body>
+
+</html>

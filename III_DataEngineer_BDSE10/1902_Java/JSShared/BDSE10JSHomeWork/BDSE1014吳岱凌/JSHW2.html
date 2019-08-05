@@ -1,0 +1,130 @@
+<!DOCTYPE >
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSHW2</title>
+    <style>
+        .form1{
+            border: 1px solid green;
+            border-radius: 5px 5px 5px 5px;
+        }
+        .div{
+            border-bottom: 1px solid gray;
+            margin:15px;
+            padding: 15px;
+        }
+        .bottom{
+            text-align: center;
+        }
+    
+    
+    
+    </style>
+
+
+
+</head>
+<body>
+    <form action="#" method="get" >
+        <fieldset class="form1">
+            <legend>Form Check</legend>
+            <div class="div">
+            姓名：<input type="text" id ="name"  placeholder="請輸入姓名" >
+            <label id="notice"></label>
+
+
+            <script>
+            document.getElementById("name").onblur=f1;    
+            function f1(){  
+                    let nm =document.getElementById("name").value;
+                    let namelen=nm.length; 
+                    let flag3=false;
+                    let re=new RegExp("^[\u4E00-\u9FFF]{2,4}$")
+                    if(nm == " "){
+                        document.getElementById("notice").innerHTML="不可空白";
+                    }else if(namelen>=2 ){
+                            if (re.test(nm)){
+                                document.getElementById("notice").innerHTML="姓名格式正確";   
+                            }
+                            else{document.getElementById("notice").innerHTML="姓名格式不正確";}
+                        }
+                    else{
+                        document.getElementById("notice").innerHTML="姓名格式不符合規定";
+                }
+            } 
+ 
+            </script>
+
+            </div>
+            <div class="div">
+            密碼：<input type="text" id="password" placeholder="請輸入密碼" > <label id="notice1"></label> 
+            
+            
+            <script>
+            document.getElementById("password").onblur=f2;    
+            function f2(){   
+                let flag1=false;  
+                let flag2=false; 
+                let password =document.getElementById("password").value;
+                let passwordlen=password.length;
+                if(password == " "){
+                    document.getElementById("notice1").innerHTML="不可空白";
+            }   else if(passwordlen>=6){
+                    for (let i=1;i<=passwordlen;i++){
+                        let psw=password.charAt(i).toUpperCase();
+                        if(psw>="A" && psw<="Z"){
+                            flag1=true;
+                        }else if (psw>="0" && psw<="9"){
+                            flag2=true;
+                        }  
+                        if (flag1&&flag2){break};     
+                    }   
+                        if(flag1 && flag2){document.getElementById("notice1").innerHTML="正確"} 
+                        else{document.getElementById("notice1").innerHTML="密碼不符合格式"}
+            }   else{
+                    document.getElementById("notice1").innerHTML="不可少於六個字";
+            }
+            } 
+            
+            </script>
+            </div>
+            
+            <div class="div">
+            日期：<input type="text" id ="date" placeholder="請輸入日期"><label id="notice2"></label> 
+            
+            <script>
+            document.getElementById("date").onblur= f3;   
+            
+            function f3(){
+                let dt=document.getElementById("date").value;
+                let re1=new RegExp("[1-9]{4}[./](0[1-9]1[0-2])[./](0[0-9][1-2][0-9]3[0-1])$ ")
+                if(dt==" "){
+                    document.getElementById("notice2").innerHTML="不可空白"; 
+                }
+                else if(re1.test(dt)){
+                    document.getElementById("notice2").innerHTML="日期格式正確";
+                    } 
+                else{
+                    document.getElementById("notice2").innerHTML="日期格式錯誤"; 
+                }
+            }
+
+            </script>
+
+
+            </div>
+
+            <div class="bottom"> 
+            <input type="submit" value="送出">
+            <input type="reset"  value="清除">
+            </div>
+        </fieldset>
+
+    
+    </form>
+    
+
+
+
+</body>
+</html>

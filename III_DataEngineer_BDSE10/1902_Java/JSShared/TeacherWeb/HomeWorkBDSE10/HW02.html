@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>HW02.html</title>
+    <style>
+        fieldset {
+            background-color: rgba(51, 230, 214,0.5);
+            border: 3px double #AFEEEE;
+        }
+
+        legend {
+            font-size: 30px;
+            color: #AFEEEE;
+            text-shadow: 5px 5px 10px gray;
+        }
+
+        form {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            width: 100px;
+            float: left;
+            text-align: center;
+        }
+        div {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 5px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="get">
+        <fieldset>
+            <legend>Form Check</legend>
+            <div>
+                <label for="name">姓名：</label>
+                <input type="text"  id="idName" autocomplete="off" placeholder="請輸入姓名" />
+                <span id="nameCheck"></span>
+                <br />
+                <p>(不可空白,至少兩個字且必須為中文字)</p>
+            </div>
+            <div>
+                <label for="pwd">密碼：</label>
+                <input type="password" id="idPwd" placeholder="請輸入密碼" />
+                <span id="pwdCheck"></span>
+                <br />
+                <p>(不可空白,不包含中文字,至少6個字且必須包含英文字母、數字、特殊字元[[!@#$%^&*])</p>
+            </div>
+            <div>
+                <label for="date">日期：</label>
+                <input type="text" id="idDate" placeholder="ex:2000/2/29" />
+                <span id="dateCheck"></span>
+                <br />
+                <p>(格式：西元年/月/日 ex:2000/2/29)</p>
+            </div>
+            <p>
+                <input type="reset" value="Reset" />
+                <input type="button" id="btnsubmit" value="Submit" />
+            </p>
+        </fieldset>    
+        
+    </form>
+
+    <script>        
+        
+    </script>
+</body>
+</html>

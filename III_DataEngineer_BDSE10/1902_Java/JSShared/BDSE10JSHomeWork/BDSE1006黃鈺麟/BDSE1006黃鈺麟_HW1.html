@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework1</title>
+    <style>
+
+        table {
+            background-color: #ccffff;
+            color: red;
+            border: 3px solid #0099ff;
+        }
+        td {
+            border-right: 2px solid #0099ff;
+        }
+        td:last-child{
+            border-right: none;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        document.write("<table cellspacing='0px'><tr>");
+        for (let i = 2; i < 10; i++) {
+            document.write('<td>');
+            for (let j = 1; j < 10 ; j++) {
+                document.write(`${i} * ${j} = ${i*j} <br>`);
+            }
+            document.write('</td>');
+        }
+        document.write('</tr></table>');
+    </script>
+</body>
+</html>

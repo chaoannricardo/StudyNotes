@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <select id="slYear"></select>年
+        <select id="slMonth"></select>月
+        <select id="slDate"></select>日
+        <br>
+        <p id="idp"></p>
+    </form>
+
+    <script>
+        yearCreate(2010,2020);
+        monthCreate();
+
+        document.getElementById("slYear").onchange = yearChange;
+        document.getElementById("slMonth").onchange = monthChange;
+        document.getElementById("slDate").onchange = dateChange;
+
+        function yearCreate(beginYear,endYear){
+            for(let i=beginYear; i<=endYear; i++){
+                let eleOption = document.createElement("option");
+                let txtOption = document.createTextNode(i);
+                eleOption.setAttribute("value",i);
+                eleOption.appendChild(txtOption);
+                document.getElementById("slYear").appendChild(eleOption);
+            }
+        }
+
+        function monthCreate(){
+            for(let i=1; i<=12; i++){
+                let eleOption = document.createElement("option");
+                let txtOption = document.createTextNode(i);
+                eleOption.setAttribute("value",i);
+                eleOption.appendChild(txtOption);
+                document.getElementById("slMonth").appendChild(eleOption);
+            }
+        }
+
+        function monthChange(){
+            let selectDate = document.getElementById("slDate"); 
+            let len = selectDate.childNodes.length;
+            for(let i=0; i<len; i++){
+                selectDate.removeChild(selectDate.firstChild);
+            }
+
+            let slYear = document.getElementById("slYear");
+            let yearSelected = slYear.selectedIndex;
+
+            let slMonth = document.getElementById("slMonth");
+            let monthSelected = slMonth.selectedIndex;
+
+            let date = new Date(slYear.options[yearSelected].value, slMonth.options[monthSelected].value,0);
+
+            for(let i=1; i<=date.getDate(); i++){
+                let eleOption = document.createElement("option");
+                let txtOption = document.createTextNode(i);
+                eleOption.setAttribute("value",i);
+                eleOption.appendChild(txtOption);
+                document.getElementById("slDate").appendChild(eleOption);
+            }   
+
+            showDate();
+        }
+
+        function yearChange(){
+            if(document.getElementById("slDate").childNodes.length>0) 
+                showDate();
+        }
+
+        function dateChange(){
+            showDate();
+        }
+
+        function showDate(){
+            let slYear = document.getElementById("slYear");
+            let yearSelected = slYear.selectedIndex;
+
+            let slMonth = document.getElementById("slMonth");
+            let monthSelected = slMonth.selectedIndex;
+
+            let slDate = document.getElementById("slDate");
+            let dateSelected = slDate.selectedIndex;
+
+            document.getElementById("idp").innerText=`您選擇的日期是${slYear.options[yearSelected].value}年${slMonth.options[monthSelected].value}月${slDate.options[dateSelected].value}日`;
+        }
+    
+    </script>
+</body>
+</html>

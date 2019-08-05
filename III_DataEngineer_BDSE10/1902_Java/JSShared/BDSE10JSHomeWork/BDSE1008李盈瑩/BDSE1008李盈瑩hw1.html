@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hey</title>
+    <style>
+        table {
+            border: 2px solid #9370DB;
+            border-collapse: collapse;
+
+        }
+
+        tr,
+        td {
+            background-color: #FFF5EE;
+            border: 2px solid #9370DB;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <script>
+            document.write(`<tr>`);
+            for (let i = 2; i < 10; i++) {
+                document.write(`<td>`);
+                document.write();
+                for (let j = 1; j < 10; j++) {
+                    document.write(`${i} * ${j} = ${i*j}<br>`);
+                }
+                document.write(`</td>`);
+            }
+            document.write(`</tr>`);
+        </script>
+    </table>
+
+</body>
+
+</html>

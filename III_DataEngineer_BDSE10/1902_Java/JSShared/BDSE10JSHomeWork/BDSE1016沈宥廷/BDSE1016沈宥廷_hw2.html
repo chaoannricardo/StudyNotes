@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表單</title>
+    <style>
+        *{
+          margin: 0px;
+          padding: 0px;
+          font-family: 微軟正黑體;  
+        }
+        div{
+            padding-bottom: 10px;
+            margin: 10px;
+            border-bottom: 1px solid lightgrey;
+        }
+        fieldset{
+            border: 2px solid lightcoral;
+            width: 500px;
+            border-radius: 10px;
+            /* margin-bottom: 20px; */
+            margin: 20px;
+        }
+        legend{
+            margin: 10px 15px;
+        }
+        .sub{
+            width: 500px;
+            text-align: center;
+            border-bottom: 0px;
+            padding-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <form>
+        <fieldset>
+            <legend>Form Check</legend>
+            <div>
+                <label for="name">姓名 :</label>
+                <input type="text" id="id_name" placeholder="請輸入姓名" onblur="checkName()">
+                <span id="check1_name"></span>
+                <!-- <input type="button" value="檢查" onclick="checkName()"> -->
+            </div>
+
+            <div>
+                <label for="password">密碼 :</label>
+                <input type="text" id="id_pwd" placeholder="請輸入密碼" onblur="checkPwd()">
+                <span id="check2_psw"></span>
+                <!-- <input type="button" value="檢查" onclick="checkPwd()"> -->
+            </div>
+
+            <div>
+                <label for="date">日期 :</label>
+                <input type="text" id="id_date" placeholder="ex 2000/2/29" onblur="checkDate()">
+                <span id="check3_date"></span>
+                <!-- <input type="button" value="檢查" onclick="checkDate()"> -->
+            </div>
+
+            <div class="sub">
+                <input type="submit" value="送出">
+                <input type="reset" value="清除">
+
+            </div>
+        </fieldset>
+    </form>
+
+    <script>
+        // 檢查姓名
+        function checkName() {
+            let name_obj = document.getElementById("id_name");
+            let name_val = name_obj.value;
+            // alert(`您輸入的姓名為：${name_val}`);
+            let name_len = name_val.length;
+
+            let checkNameCH = [];
+
+            if (name_val == "") {
+                document.getElementById("check1_name").innerHTML = `<img src="images/error.png"> 姓名不得為空<br/>`;
+            } else if (name_len >= 2) {
+
+                for (i = 0; i < name_len; i++) {
+                    let name_code = name_val.charCodeAt(i);
+                    if (name_code >= 0x4E00 && name_code <= 0x9FA5) {
+                        checkNameCH[i] = 1;
+                    } else {
+                        checkNameCH[i] = 0;
+                    }
+                }
+                if (checkNameCH.includes(0)) {
+                    document.getElementById("check1_name").innerHTML = `<img src="images/error.png"> 姓名含有非中文字元<br/>`;
+                } else {
+                    document.getElementById("check1_name").innerHTML = `<img src="images/correct.jpg"> 姓名可以使用<br/>`;
+                }
+            } else {
+                document.getElementById("check1_name").innerHTML = `<img src="images/error.png"> 姓名須為2個字元以上<br/>`;
+            }
+
+        }
+
+        // 檢查密碼
+        function checkPwd() {
+            let pwd_obj = document.getElementById("id_pwd");
+            let pwd_val = pwd_obj.value;
+            // alert(`您輸入的密碼為：${pwd_val}`);
+            let pwd_len = pwd_val.length;
+            let flag1 = false,  //至少1個英文大寫字母
+                flag2 = false,  //至少1個數字
+                flag3 = false;  //至少1個特殊字元
+
+            let specialChrArray = ["!", "@", "#", "$", "%", "^", "&", "*", "/", "(", ")", "-", "_"];
+            let specialChrArray_len = specialChrArray.length;
+            let checkSpecialChrArray = [];
+
+            if (pwd_val == "") {
+                document.getElementById("check2_psw").innerHTML = `<img src="images/error.png"> 密碼不得為空<br/>`;
+            } else if (pwd_len >= 6) {
+                for (i = 0; i < pwd_len; i++) {
+                    let pwd_chr = pwd_val.charAt(i).toUpperCase();
+                    if (pwd_chr >= "A" && pwd_chr <= "Z") {
+                        flag1 = true;
+                    } else if (pwd_chr >= 0 && pwd_chr <= 9) {
+                        flag2 = true;
+                    } else {
+                        // 檢查密碼是否含特殊字元，可修改成密碼必須含特殊字元
+                        for (i = 0; i < specialChrArray_len; i++) {
+                            if (pwd_chr == specialChrArray[i]) {
+                                checkSpecialChrArray[i] = 1;
+                            } else {
+                                checkSpecialChrArray[i] = 0;
+                            }
+                        }
+                        if (checkSpecialChrArray.includes(1)) {
+                            flag3 = true;
+                        } else {
+                            document.getElementById("check2_psw").innerHTML = `<img src="images/error.png"> 密碼未包含特殊字元<br/>`;
+                        }
+                    }
+                    // 只要包含就break
+                    if (flag1 && flag2 && flag3) {
+                        break;
+                    }
+                }
+                if (flag1 && flag2 && flag3) {
+                    document.getElementById("check2_psw").innerHTML = `<img src="images/correct.jpg"> 密碼可以使用<br/>`;
+                } else {
+                    document.getElementById("check2_psw").innerHTML = `<img src="images/error.png"> 密碼不符合格式<br/>`;
+                }
+            } else {
+                document.getElementById("check2_psw").innerHTML = `<img src="images/error.png"> 密碼須為6個字元以上<br/>`;
+            }
+        }
+
+        function checkDate() {
+            let date_obj = document.getElementById("id_date");
+            let date_val = date_obj.value;
+            let text = date_val.split(`/`);
+            let text_new;
+
+            if (date_val == "") {
+                document.getElementById("check3_date").innerHTML = `<img src="images/error.png"> 日期不得為空<br/>`;
+            } else {
+                for (i = 0; i < text.length; i++) {
+                    // let text_val = text[i].value;
+                    if (text[i].substr(0, 1) == "0") {
+                        text[i] = text[i].substr(1);
+                    }
+                    text_new = text[0] + "/" + text[1] + "/" + text[2];
+                }
+
+                let text_date = new Date(text_new);
+                let text_datestr = `${text_date.getFullYear()}/${text_date.getMonth() + 1}/${text_date.getDate()}`;
+
+                if (text_datestr == text_new) {
+                    document.getElementById("check3_date").innerHTML = `<img src="images/correct.jpg"> 日期可以使用<br/>`;
+                } else {
+                    document.getElementById("check3_date").innerHTML = `<img src="images/error.png"> 日期輸入錯誤或不存在<br/>`;
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

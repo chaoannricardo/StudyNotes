@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BDSE1018</title>
+    <link rel="icon" href="images/EEIT_logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="main.css">
+    <style>   
+    .dot {
+    width: .625rem;
+    height: .625rem;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: rgba(0,0,0,.26);
+    cursor: pointer;
+    
+   
+    }
+    .dot_turn {
+    width: .625rem;
+    height: .625rem;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: rgba(241, 8, 39, 0.938);
+    cursor: pointer;
+    
+   
+    }
+    .dots{
+        margin:auto;
+        width:130px;
+    }
+    fieldset{
+            border: 1px solid #acd6ff;
+            width:500px;
+            margin:auto;
+            border-radius: 15px;
+            padding:20px
+
+            }   
+    legend{
+        margin:auto;
+    }
+    #AD{
+        width: 500px;
+        height: 300px;
+    }
+    
+    .player input{
+        width:25px;
+        margin: auto;
+        
+    }
+    #forward_Btn,#backward_Btn{
+    padding: 5px    }
+    .player{
+        width:130px;
+        margin: auto;
+    }
+    
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="homework1.html">homework1</a></li>
+                    <li><a href="homework2.html">homework2</a></li>
+                    <li><a href="homework3.html">homework3</a></li>
+                    <li><a href="homework4.html">homework4</a></li>
+                    <li><a href="homework5.html">homework5</a></li>
+                    
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="content"> <!--將要浮動的article 與 aside包在一個div中 才不會影響其他物件-->
+        <article>
+            <h2 class="title">HOMEWORK4</h2>
+            <section>
+                <h2>廣告輪播</h2>
+                <br>
+                <fieldset>
+                        <legend>Advertising Carousel</legend>
+                        <a id="ADhref" href=""><img alt="" id="AD" /></a>
+                        <br>
+                        <div class="dots"> 
+                        <div class="dot" id="dot1"></div>
+                        <div class="dot" id="dot2"></div> 
+                        <div class="dot" id="dot3"></div> 
+                        <div class="dot" id="dot4"></div> 
+                        <div class="dot" id="dot5"></div> 
+                        <div class="dot" id="dot6"></div> 
+                        <div class="dot" id="dot7"></div> 
+                    </div>
+                    <div class="player">
+                            <input  type="image"  name="backward_Btn"  id="backward_Btn"  img  src="Images/backward.png"  onclick="backward()" >
+                            <input  type="image"  name="play_Btn"  id="play_Btn"  img  src="Images/play.png"  onclick="playAD()" >
+                            <input  type="image"  name="forward_Btn"  id="forward_Btn"  img  src="Images/forward.png"  onclick="forward()" >
+                       
+                    </div>
+                    </fieldset>
+                    <br>
+            </section>
+           
+        </article>
+       
+    </div><!--end content-->
+    <footer>
+        <p>
+            Name: Hwang Ching &nbsp; E-mail: jimhwch@gmail.com &nbsp; Phone: 0926-800-557 &nbsp;  
+        </p>
+    </footer>
+    </div><!--end allpage-->
+    <script >
+        var adnum=1;
+        var timer;
+        var hrefarray=["https://shopee.tw/collections/154466/","https://shopee.tw/m/groupbuy?smtt=201.26495","https://shopee.tw/m/brand-festival-free-shipping?smtt=201.26784","https://shopee.tw/m/electronicminigorilla?smtt=201.26764","https://shopee.tw/m/makeups12?smtt=201.26765","https://shopee.tw/collections/140966/","https://shopee.tw/m/tkb.hbn?smtt=201.26677"]
+        document.getElementById("AD").src=`Images/AD${adnum}.jpeg`;
+        document.getElementById(`dot${adnum}`).className="dot_turn";
+        document.getElementById("ADhref").href=hrefarray[adnum-1];
+        document.getElementById("play_Btn").onclick=playAD;
+        let areas=document.querySelectorAll(".dot");
+
+        for (let area of areas) {
+            area.onclick=Clickdot;}
+
+    function forward(){
+        window.clearInterval(timer);
+        adnum++;
+        if(adnum>7){
+        adnum=1;}
+        showAD();
+
+    }    
+    function backward(){
+        window.clearInterval(timer);
+        adnum=adnum-1;
+        if(adnum<1){
+        adnum=7;}
+        showAD();
+
+    } 
+    function Clickdot(){
+        adnum=parseInt(this.id.substring(3));
+        showAD();
+    }
+    function playAD(){
+        setAD();
+        timer=window.setInterval(setAD,3000);
+    }
+    function setAD(){
+        showAD();
+        adnum++;
+        if(adnum>7){
+        adnum=1;}
+      }
+    function showAD(){
+        for(i=1;i<=areas.length+1;i++){
+                document.getElementById(`dot${i}`).className="dot";
+        }
+        document.getElementById("AD").src=`Images/AD${adnum}.jpeg`; 
+        document.getElementById("ADhref").href=hrefarray[adnum-1];
+        document.getElementById(`dot${adnum}`).className="dot_turn";
+           
+      }
+    
+    </script>
+
+</body>
+
+</html>

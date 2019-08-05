@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>04for.html</title>
+
+    <style>
+        table {
+            color: red;
+            border: 2px solid blue;
+            border-collapse: collapse
+        }
+
+        td {
+            background-color: blanchedalmond;
+            border-right: 1.5px solid blue;
+            border-left: 1.5px solid blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    //作法一
+    <table>
+        <script>
+            for (let i = 2; i < 10; i++) {
+                document.write("<tr>")
+                for (let j = 2; j < 10; j++) {
+                    sum = i * j
+                    document.write("<td>" + j + "x" + i + "=" + sum + "</td>");
+                }
+                document.write("</tr>")
+            }
+        </script>
+    </table>
+
+    <br>
+
+    // 作法二
+    <table>
+        <script>
+            document.write("<tr>")
+            for (let i = 2; i < 10; i++) {
+                document.write("<td>");
+                for (let j = 2; j < 10; j++) {
+                    sum = i * j
+                    document.write(i + "x" + j + "=" + sum + "<br>");
+                }
+                document.write("</td>");
+            }
+            document.write("</tr>")
+        </script>
+    </table>
+</body>
+
+</html>

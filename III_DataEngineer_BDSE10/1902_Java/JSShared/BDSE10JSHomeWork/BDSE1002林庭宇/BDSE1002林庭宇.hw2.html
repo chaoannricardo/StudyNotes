@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表單</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        fieldset{
+            border: 1px solid rgb(1, 141, 1);
+            border-radius: 15px;
+            width: 500px;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding-bottom: 10px;
+        }
+        .t1 {
+            width: 100px;
+            margin: auto;
+        }
+        .t2{
+            margin-top: 20px;
+            margin-left: 15px;
+        }
+        .t3 {
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+        h6 {
+            color: rgb(182, 178, 178);
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-weight: 100;
+        }
+        hr{
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html">回首頁</a></li>
+                    <li><a href="BDSE1002林庭宇.hw1.html">九九乘法表</a></li>
+                    <li><a href="BDSE1002林庭宇.hw3.html">星星評分</a></li>
+                    <li><a href="BDSE1002林庭宇.hw4.html">循環播放</a></li>
+                    <li><a href="BDSE1002林庭宇.hw5.html">日期選擇器</a></li>
+                </ul>
+            </nav>
+            <img src="images/logo1.jpg" alt="logo" title="logo" width="1024">
+        </header>
+        <h2 class="title">表單</h2>
+        <form action="#" method="get">
+            <fieldset>
+                <legend>Form Check</legend>
+
+                <div class="t2">
+                    <label>姓名:</label>
+                    <label><input type="text" id="account" name="account" size="20" autocomplete="off" placeholder="guest"></label>
+                    <span id="a1"></span>
+                    <h6>(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)</h6>
+                    <hr>
+                </div>
+
+                <div class="t2">
+                    <label>密碼:</label><label><input type="password" id="idPwd" name="idPwd" size="20" placeholder="請輸入密碼"></label>
+                    <span id="a2"></span>
+                    <h6>(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</h6>
+                    <hr>
+                </div>
+
+                <div class="t2">
+                    <label>日期:</label><label><input type="datetime" id="date" name="date" size="20" autocomplete="off"
+                            placeholder="ex:2000/2/29"></label>
+                    <span id="a3"></span>
+                    <h6>格式:西元年/月/日 yyyy/MM/dd</h6>
+                    <hr>
+                </div>
+
+                <div class="t1">
+                    <input type="submit" class="t3" value="送出"><input type="reset" class="t3" value="清除">
+                </div>
+            </fieldset>
+        </form>
+        <script>
+            document.getElementById("account").onblur = checkName;
+
+            function checkName() {
+                let theName = document.getElementById("account").value;
+                let theNameLen = theName.length;
+                let re = /^[\u4e00-\u9fff]{2,}$/;
+
+                if (re.test(theName))
+                    document.getElementById("a1").innerHTML = `<img src="images/correct.png">正確`;
+                else if (theNameLen == 1)
+                    document.getElementById("a1").innerHTML = `<img src="images/error.png">姓名至少為兩個字`;
+                else
+                    document.getElementById("a1").innerHTML = `<img src="images/error.png">錯誤`;
+                if (theName == "")
+                    document.getElementById("a1").innerHTML = `<img src="images/error.png">姓名不可為空白`;
+            }
+            document.getElementById("idPwd").onblur = checkAge;
+            function checkAge() {
+
+                let theAge = document.getElementById("idPwd").value;
+                let theAgeLen = theAge.length;
+                let re1 = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).{6,}$/;
+
+                if (re1.test(theAge))
+                    document.getElementById("a2").innerHTML = `<img src="images/correct.png">正確`;
+                else if (theAgeLen < 6 && theAgeLen > 0)
+                    document.getElementById("a2").innerHTML = `<img src="images/error.png">密碼必須超過6個字元`;
+                else
+                    document.getElementById("a2").innerHTML = `<img src="images/error.png">須包含英文字母、數字、特殊字元`;
+                if (theAge == "")
+                    document.getElementById("a2").innerHTML = `<img src="images/error.png">密碼不可為空白`;
+
+            }
+            document.getElementById("date").onblur = checkDate;
+            function checkDate() {
+                let d1 = document.getElementById("date").value;
+                let d = new Date(d1);
+                let theYear = d.getFullYear();
+                let theMonth = d.getMonth() + 1;
+                let theDate = d.getDate();
+                let d2 = theYear + '/' + theMonth + '/' + theDate;
+
+                let theMonth1 = (d.getMonth() + 1 < 10 ? '0' : '') + (d.getMonth() + 1); //+1小於10的話補0，不小於10的話不補0 
+                let theDate1 = (d.getDate() < 10 ? '0' : '') + (d.getDate());
+                let d3 = theYear + '/' + theMonth1 + '/' + theDate1;
+                let d4 = theYear + '/' + theMonth1 + '/' + theDate;
+                let d5 = theYear + '/' + theMonth + '/' + theDate1;
+                // alert(d1);
+                // alert(d2);
+                if (d1 == d2 || d1 == d3 || d1 == d4 || d1 == d5)
+                    // alert("日期正確");
+                    document.getElementById("a3").innerHTML = `<img src="images/correct.png">日期正確`;
+                else
+                    // alert("日期錯誤");
+                    document.getElementById("a3").innerHTML = `<img src="images/error.png">日期錯誤`;
+            }
+        </script>
+        <footer>
+            <p>
+                E-amil:aaa@gmail.com &nbsp; Tel:(02)2222-2222 &nbsp; 台北市復興南路一段390號 &nbsp; &copy; 2014 All Rights
+                Reserved Quality Art Technology CO.
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

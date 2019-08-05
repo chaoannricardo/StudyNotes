@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HW1.html</title>
+    <style>
+    table,td{
+        border:1px solid black;
+        background-color:wheat;
+    }
+    </style>
+</head>
+<body>
+    <script>
+        document.write("<table><tr>");
+        for (var i=2;i<=9;i++){
+            document.write("<td>")
+        for (var j=1;j<=9;j++){
+            document.write(i+"*"+j + "=" + i*j+"<br>" )
+        }
+        document.write("</td>")
+    }
+    document.write("</table></tr>");
+
+    </script>
+</body>
+</html>

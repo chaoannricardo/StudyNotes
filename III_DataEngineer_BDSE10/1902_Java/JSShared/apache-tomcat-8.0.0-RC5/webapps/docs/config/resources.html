@@ -1,0 +1,175 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><link href="../images/docs-stylesheet.css" rel="stylesheet" type="text/css"><title>Apache Tomcat 8 Configuration Reference (8.0.0-RC5) - The Resources Component</title><script type="application/javascript" data-comments-identifier="tomcat-8.0-doc/config/resources">
+    "use strict"; // Enable strict mode
+
+    (function() {
+      var thisScript = document.currentScript;
+      if (!thisScript) { // Workaround for IE <= 11
+        var scripts = document.getElementsByTagName("script");
+        thisScript = scripts[scripts.length - 1];
+      }
+      document.addEventListener("DOMContentLoaded", (function() {
+        var commentsDiv = document.getElementById("comments_thread");
+        var commentsShortname = "tomcat";
+        var commentsIdentifier = "http://tomcat.apache.org/" +
+          thisScript.getAttribute("data-comments-identifier") + ".html";
+
+        (function(w, d) {
+          if (w.location.hostname.toLowerCase() == "tomcat.apache.org") {
+            var s = d.createElement("script");
+            s.type = "application/javascript";
+            s.async = true;
+            s.src = "https://comments.apache.org/show_comments.lua?site=" +
+              encodeURIComponent(commentsShortname) +
+              "&page=" + encodeURIComponent(commentsIdentifier);
+            d.head.appendChild(s);
+          } else {
+            commentsDiv.appendChild(d.createTextNode("Comments are disabled for this page at the moment."));
+          }
+        })(window, document);
+      }), false);
+    })();
+  </script></head><body><div id="wrapper"><header><div id="header"><div><div><div class="logo noPrint"><a href="http://tomcat.apache.org/"><img alt="Tomcat Home" src="../images/tomcat.png"></a></div><div style="height: 1px;"></div><div class="asfLogo noPrint"><a href="http://www.apache.org/" target="_blank"><img src="../images/asf-feather.png" alt="The Apache Software Foundation" style="width: 266px; height: 83px;"></a></div><h1>Apache Tomcat 8 Configuration Reference</h1><div class="versionInfo">
+          Version 8.0.0-RC5,
+          <time datetime="2013-10-16">Oct 16 2013</time></div><div style="height: 1px;"></div><div style="clear: left;"></div></div></div></div></header><div id="middle"><div><div id="mainLeft" class="noprint"><div><nav><div><h2><strong>Links</strong></h2><ul><li><a href="../index.html">Docs Home</a></li><li><a href="index.html">Config Ref. Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li><li><a href="#comments_section">User Comments</a></li></ul></div><div><h2><strong>Top Level Elements</strong></h2><ul><li><a href="server.html">Server</a></li><li><a href="service.html">Service</a></li></ul></div><div><h2><strong>Executors</strong></h2><ul><li><a href="executor.html">Executor</a></li></ul></div><div><h2><strong>Connectors</strong></h2><ul><li><a href="http.html">HTTP</a></li><li><a href="ajp.html">AJP</a></li></ul></div><div><h2><strong>Containers</strong></h2><ul><li><a href="context.html">Context</a></li><li><a href="engine.html">Engine</a></li><li><a href="host.html">Host</a></li><li><a href="cluster.html">Cluster</a></li></ul></div><div><h2><strong>Nested Components</strong></h2><ul><li><a href="globalresources.html">Global Resources</a></li><li><a href="jar-scanner.html">JarScanner</a></li><li><a href="jar-scan-filter.html">JarScanFilter</a></li><li><a href="listeners.html">Listeners</a></li><li><a href="loader.html">Loader</a></li><li><a href="manager.html">Manager</a></li><li><a href="realm.html">Realm</a></li><li><a href="resources.html">Resources</a></li><li><a href="valve.html">Valve</a></li></ul></div><div><h2><strong>Cluster Elements</strong></h2><ul><li><a href="cluster.html">Cluster</a></li><li><a href="cluster-manager.html">Manager</a></li><li><a href="cluster-channel.html">Channel</a></li><li><a href="cluster-membership.html">Channel/Membership</a></li><li><a href="cluster-sender.html">Channel/Sender</a></li><li><a href="cluster-receiver.html">Channel/Receiver</a></li><li><a href="cluster-interceptor.html">Channel/Interceptor</a></li><li><a href="cluster-valve.html">Valve</a></li><li><a href="cluster-deployer.html">Deployer</a></li><li><a href="cluster-listener.html">ClusterListener</a></li></ul></div><div><h2><strong>Other</strong></h2><ul><li><a href="filter.html">Filter</a></li><li><a href="systemprops.html">System properties</a></li></ul></div></nav></div></div><div id="mainRight"><div id="content"><h2>The Resources Component</h2><h3 id="Table_of_Contents">Table of Contents</h3><div class="text">
+<ul><li><a href="#Introduction">Introduction</a></li><li><a href="#Attributes">Attributes</a><ol><li><a href="#Common_Attributes">Common Attributes</a></li><li><a href="#Standard_Implementation">Standard Implementation</a></li></ol></li><li><a href="#Nested_Components">Nested Components</a></li><li><a href="#Special_Features">Special Features</a></li></ul>
+</div><h3 id="Introduction">Introduction</h3><div class="text">
+
+  <p>The <strong>Resources</strong> element represents all the resources
+  available to the web application. This includes classes, JAR files, HTML, JSPs
+  and any other files that contribute to the web application. Implementations
+  are provided to use directories, JAR files and WARs as the source of these
+  resources and the resources implementation may be extended to provide support
+  for files stored in other forms such as in a database or a versioned
+  repository.</p>
+
+  <p>Resources are cached by default. Caching may be controlled by configuring
+  the appropriate caching attributes on the containing <a href="context.html">
+  Context</a>.</p>
+
+  <p><strong>Note: Running a webapp with non-filesystem based
+  Resources implementations is only possible when the webapp does not
+  rely on direct filesystem access to its own resources, and uses the methods
+  in the ServletContext interface to access them.</strong></p>
+
+  <p>A Resources element MAY be nested inside a
+  <a href="context.html">Context</a> component.  If it is not included,
+  a default filesystem based Resources will be created automatically,
+  which is sufficient for most requirements.</p>
+
+</div><h3 id="Attributes">Attributes</h3><div class="text">
+
+  <div class="subsection"><h4 id="Common_Attributes">Common Attributes</h4><div class="text">
+
+    <p>All implementations of <strong>Resources</strong>
+    support the following attributes:</p>
+
+    <table class="defaultTable"><tr><th style="width: 15%;">
+          Attribute
+        </th><th style="width: 85%;">
+          Description
+        </th></tr><tr><td><code class="attributeName">className</code></td><td>
+        <p>Java class name of the implementation to use. This class must
+        implement the <code>org.apache.catalina.WebResourceRoot</code>
+        interface. If not specified, the standard value (defined below) will be
+        used.</p>
+      </td></tr></table>
+
+  </div></div>
+
+
+  <div class="subsection"><h4 id="Standard_Implementation">Standard Implementation</h4><div class="text">
+
+    <p>The standard implementation of <strong>Resources</strong> is
+    <strong>org.apache.catalina.webresources.StandardRoot</strong>, and
+    is configured by its parent Context element.</p>
+
+  </div></div>
+
+</div><h3 id="Nested_Components">Nested Components</h3><div class="text">
+
+  <p>A web application's main resources are defined by the
+  <strong>docBase</strong> defined for the <a href="context.html">Context</a>.
+  Additional resources may be made available to the web application by defining
+  one or more nested components.</p>
+
+  <h3>PreResources</h3>
+
+  <p>PreResources are searched before the main resources. They will be searched
+  in the order they are defined. To configure PreResources, nest a
+  &lt;PreResources&gt; element inside the &lt;Resources&gt; element with the
+  following attributes:</p>
+
+  <table class="defaultTable"><tr><th style="width: 15%;">
+          Attribute
+        </th><th style="width: 85%;">
+          Description
+        </th></tr><tr><td><strong><code class="attributeName">base</code></strong></td><td>
+      <p>Identifies where the resources to be used are located. This attribute
+      is required by the <code>org.apache.catalina.WebResourceSet</code>
+      implementations provided by Tomcat and should specify the absolute path to
+      the file, directory or JAR where the resources are located. Custom
+      implementations may not require it.</p>
+    </td></tr><tr><td><strong><code class="attributeName">className</code></strong></td><td>
+      <p>Java class name of the implementation to use. This class must
+      implement the <code>org.apache.catalina.WebResourceSet</code> interface.
+      Tomcat provides three standard implementations:
+      <code>org.apache.catalina.webresources.DirResourceSet</code>,
+      <code>org.apache.catalina.webresources.FileResourceSet</code> and
+      <code>org.apache.catalina.webresources.JarResourceSet</code>. Custom
+      implementations may also be used.
+      </p>
+    </td></tr><tr><td><code class="attributeName">internalPath</code></td><td>
+      <p>Identifies the path within the <strong>base</strong> where the
+      resources are to be found. This is typically only used with JAR files when
+      the resources are not located at the root of the JAR as is the case with
+      resource JARs. This attribute is required by the
+      <code>org.apache.catalina.WebResourceSet</code> implementations provided
+      by Tomcat and must start with '/'. Custom implementations may not require
+      it. If not specified, the default value '/' will be used.</p>
+    </td></tr><tr><td><code class="attributeName">webAppMount</code></td><td>
+      <p>Identifies the path within the web application that these resources
+      will be made available. For the
+      <code>org.apache.catalina.WebResourceSet</code> implementations provided
+      by Tomcat, this attribute is required and must start with '/'. Custom
+      implementations may not require it. If not specified, the default value of
+      '/' will be used.</p>
+    </td></tr></table>
+
+  <h3>JAR resources</h3>
+
+  <p>JarResources are searched after the main resources but before the
+  PostResources. They will be searched in the order they are defined. To
+  configure JarResources, nest a &lt;JarResources&gt; element inside the
+  &lt;Resources&gt; element. The configuration attributes are the same as for
+  <strong>PreResources</strong>.
+  </p>
+
+  <h3>Post-resources</h3>
+
+  <p>PostResources are searched after the resource JARs. They will be searched
+  in the order they are defined. To configure PostResources, nest a
+  &lt;PostResources&gt; element inside the &lt;Resources&gt; element. The
+  configuration attributes are the same as for <strong>PreResources</strong>.
+  </p>
+
+</div><h3 id="Special_Features">Special Features</h3><div class="text">
+
+  <p>No special features are associated with a <strong>Resources</strong>
+  element.</p>
+
+</div><div class="noprint"><h3 id="comments_section">
+                  Comments
+                </h3><div class="text"><p class="notice"><strong>Notice: </strong>This comments section collects your suggestions
+                    on improving documentation for Apache Tomcat.<br><br>
+                    If you have trouble and need help, read
+                    <a href="http://tomcat.apache.org/findhelp.html">Find Help</a> page
+                    and ask your question on the tomcat-users
+                    <a href="http://tomcat.apache.org/lists.html">mailing list</a>.
+                    Do not ask such questions here. This is not a Q&amp;A section.<br><br>
+                    The Apache Comments System is explained <a href="../comments.html">here</a>.
+                    Comments may be removed by our moderators if they are either
+                    implemented or considered invalid/off-topic.
+                  </p><div id="comments_thread"></div></div></div></div></div></div></div><footer><div id="footer">
+    Copyright &copy; 1999-2013, The Apache Software Foundation
+  </div></footer></div></body></html>

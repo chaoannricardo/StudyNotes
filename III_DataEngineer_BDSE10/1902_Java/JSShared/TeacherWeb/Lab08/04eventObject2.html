@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>05eventObject.html</title>
+</head>
+<body>
+    <!--HTML屬性事件處理程序-->
+    <!-- IE -->
+    <input type="button" id="idmouseIE" value="HTML屬性事件(IE)" onmousedown="mouseDown();" />
+    <!-- Firefox-->
+    <input type="button" id="idmouseFx" value="HTML屬性事件(Firefox)" onmousedown="mouseDown(event);" />
+
+    <!--JavaScript屬性事件處理程序-->
+    <input type="button" id="idmouse2" value="JavaScript屬性事件" />
+    
+
+    <script>          
+        function mouseDown(nsevent) {  //以event物件作為參數來使用
+            let theEvent;
+            // alert(nsevent);
+            // if(nsevent)
+            //     theEvent=nsevent;
+            // else
+            //     theEvent=window.event;
+            // theEvent=nsevent?nsevent:window.event; //三元運算子
+            theEvent=nsevent||event;  //|| 或
+            alert(theEvent.type);
+            alert(theEvent.button);
+        } 
+        function mouseDown2(p,nsevent){
+            alert(p);
+        }       
+        
+        //JavaScript屬性事件處理程序       
+        // document.getElementById("idmouse2").onmousedown=mouseDown;  //事件繫結//函式宣告 
+        document.getElementById("idmouse2").onmousedown=function(ns){mouseDown2("test",ns)};//函式字面值(function literal )
+    </script>
+</body>
+</html>

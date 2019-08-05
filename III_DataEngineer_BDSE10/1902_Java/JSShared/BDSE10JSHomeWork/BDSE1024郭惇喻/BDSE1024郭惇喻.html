@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ONE</title>
+
+<style>
+    table{
+        background-color:aquamarine;
+        /* width : 400px; */
+        border : 1px solid blue;
+        border-collapse: collapse
+        
+    }   
+    td,th{ 
+        color: red;
+        border: 2px solid blue;
+        padding: 3px; 
+        text-align: center; 
+        vertical-align: bottom; 
+}    
+    
+</style>
+</head>
+
+
+<body>
+    <table><caption>9x9乘法表</caption>
+        <tr>
+            <script>
+                for(i=2; i<10; i++){
+                    document.write(`<td>`);
+    
+                     for(j=1;j<10; j++){
+                        document.write(`${i}*${j}=${i*j} <br>`);
+                    }
+    
+                    document.write(`</td>`);
+                }
+            </script>  
+        </tr>
+    </table>
+</body>
+</html>

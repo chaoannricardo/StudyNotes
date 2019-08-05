@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="lib">
+    <archive path="/Users/vincent/Documents/Teaching/JDBC/source/JDBCSample/lib/commons-io-2.5.jar" />
+    <archive path="/Users/vincent/Documents/Teaching/JDBC/source/JDBCSample/lib/commons-csv-1.2.jar" />
+    <archive path="/Users/vincent/Documents/Teaching/JDBC/source/JDBCSample/lib/commons-dbcp2-2.1.1.jar" />
+    <archive path="/Users/vincent/Documents/Teaching/JDBC/source/JDBCSample/lib/commons-dbutils-1.5.jar" />
+    <archive path="/Users/vincent/Documents/Teaching/JDBC/source/JDBCSample/lib/commons-logging-1.2.jar" />
+    <archive path="/Users/vincent/Documents/Teaching/JDBC/source/JDBCSample/lib/commons-pool2-2.4.2.jar" />
+    <archive path="/Users/vincent/Documents/Teaching/JDBC/source/JDBCSample/lib/mssql-jdbc-7.0.0.jre8.jar" />
+  </library>
+</eclipse-userlibraries>
+

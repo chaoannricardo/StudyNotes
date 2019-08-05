@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework3</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        div{
+            height: 20px;
+            width: 70px;
+            margin: 10px auto;
+            font-size: 8px;
+        }
+        span{
+            display: inline-block;
+            height: 12px;
+            width: 14px;
+            cursor: pointer;
+        }
+        .unchecked{
+            background: url("images/star_before.gif") no-repeat 0 center;
+        }
+        .checked{
+            background: url("images/star_after.gif") no-repeat 0 center;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <span class="unchecked"></span><span class="unchecked"></span><span class="unchecked"></span><span class="unchecked"></span><span class="unchecked"></span>
+        <p id="comment"></p>
+    </div>
+    <script>
+        window.onload = function () {
+            var allSpans = document.getElementsByTagName('span');
+            var comment = document.getElementById('comment');
+
+            for (var i = 0; i < allSpans.length; i++) {
+                (function (index) {
+                    allSpans[index].onmouseover = function () {
+                        for (var j = 0; j <= index ; j++) {
+                            allSpans[j].className = "checked";
+                        }
+                        comment.innerText = "打分中..." + (index+1);
+                    };
+                    allSpans[index].onmouseout = function () {
+                        for (var j = 0; j <= index ; j++) {
+                            allSpans[j].className = "unchecked";
+                        }
+                        comment.innerText = "";
+                    };
+                    allSpans[index].onclick = function () {
+                        comment.innerText = "你給" + (index+1) +"顆星";
+                    };
+                })(i);
+
+                (function (index){
+
+                })(i)
+            }
+        }
+    </script>
+</body>
+</html>

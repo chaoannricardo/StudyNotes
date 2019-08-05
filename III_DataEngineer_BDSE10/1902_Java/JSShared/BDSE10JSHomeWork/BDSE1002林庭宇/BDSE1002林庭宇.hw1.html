@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>九九乘法表</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        table,
+        td {
+            border: 1px solid rgb(15, 146, 253);
+            color: rgb(211, 3, 3);
+            border-spacing: 0;
+            background-color: rgb(189, 248, 250);
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html">回首頁</a></li>
+                    <li><a href="BDSE1002林庭宇.hw2.html">表單</a></li>
+                    <li><a href="BDSE1002林庭宇.hw3.html">星星評分</a></li>
+                    <li><a href="BDSE1002林庭宇.hw4.html">循環播放</a></li>
+                    <li><a href="BDSE1002林庭宇.hw5.html">日期選擇器</a></li>
+                </ul>
+            </nav>
+            <img src="images/logo1.jpg" alt="logo" title="logo" width="1024">
+        </header>
+        <h2 class="title">九九乘法表</h2>
+        <script>
+            document.write("<table>");
+            for (let i = 2; i < 10; i++) {
+                document.write("<td>");
+                for (let j = 1; j < 10; j++) {
+
+                    document.write(i + "*" + j + "=" + i * j + "<br>");
+
+                }
+                document.write("</td>");
+            }
+            document.write("</table>");
+        </script>
+        <footer>
+            <p>
+                E-amil:aaa@gmail.com &nbsp; Tel:(02)2222-2222 &nbsp; 台北市復興南路一段390號 &nbsp; &copy; 2014 All Rights
+                Reserved Quality Art Technology CO.
+            </p>
+        </footer>
+    </div>
+</body>
+
+
+</html>

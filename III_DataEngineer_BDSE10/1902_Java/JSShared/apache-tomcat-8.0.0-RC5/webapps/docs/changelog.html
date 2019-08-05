@@ -1,0 +1,281 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><link href="./images/docs-stylesheet.css" rel="stylesheet" type="text/css"><title>Apache Tomcat 8 (8.0.0-RC5) - Changelog</title></head><body><div id="wrapper"><header><div id="header"><div><div><div class="logo noPrint"><a href="http://tomcat.apache.org/"><img alt="Tomcat Home" src="./images/tomcat.png"></a></div><div style="height: 1px;"></div><div class="asfLogo noPrint"><a href="http://www.apache.org/" target="_blank"><img src="./images/asf-feather.png" alt="The Apache Software Foundation" style="width: 266px; height: 83px;"></a></div><h1>Apache Tomcat 8</h1><div class="versionInfo">
+          Version 8.0.0-RC5,
+          <time datetime="2013-10-16">Oct 16 2013</time></div><div style="height: 1px;"></div><div style="clear: left;"></div></div></div></div></header><div id="middle"><div><div id="mainLeft" class="noprint"><div><nav><div><h2><strong>Links</strong></h2><ul><li><a href="index.html">Docs Home</a></li><li><a href="http://wiki.apache.org/tomcat/FAQ">FAQ</a></li><li><a href="#comments_section">User Comments</a></li></ul></div><div><h2><strong>User Guide</strong></h2><ul><li><a href="introduction.html">1) Introduction</a></li><li><a href="setup.html">2) Setup</a></li><li><a href="appdev/index.html">3) First webapp</a></li><li><a href="deployer-howto.html">4) Deployer</a></li><li><a href="manager-howto.html">5) Manager</a></li><li><a href="realm-howto.html">6) Realms and AAA</a></li><li><a href="security-manager-howto.html">7) Security Manager</a></li><li><a href="jndi-resources-howto.html">8) JNDI Resources</a></li><li><a href="jndi-datasource-examples-howto.html">9) JDBC DataSources</a></li><li><a href="class-loader-howto.html">10) Classloading</a></li><li><a href="jasper-howto.html">11) JSPs</a></li><li><a href="ssl-howto.html">12) SSL</a></li><li><a href="ssi-howto.html">13) SSI</a></li><li><a href="cgi-howto.html">14) CGI</a></li><li><a href="proxy-howto.html">15) Proxy Support</a></li><li><a href="mbeans-descriptor-howto.html">16) MBean Descriptor</a></li><li><a href="default-servlet.html">17) Default Servlet</a></li><li><a href="cluster-howto.html">18) Clustering</a></li><li><a href="balancer-howto.html">19) Load Balancer</a></li><li><a href="connectors.html">20) Connectors</a></li><li><a href="monitoring.html">21) Monitoring and Management</a></li><li><a href="logging.html">22) Logging</a></li><li><a href="apr.html">23) APR/Native</a></li><li><a href="virtual-hosting-howto.html">24) Virtual Hosting</a></li><li><a href="aio.html">25) Advanced IO</a></li><li><a href="extras.html">26) Additional Components</a></li><li><a href="maven-jars.html">27) Mavenized</a></li><li><a href="security-howto.html">28) Security Considerations</a></li><li><a href="windows-service-howto.html">29) Windows Service</a></li><li><a href="windows-auth-howto.html">30) Windows Authentication</a></li><li><a href="jdbc-pool.html">31) Tomcat's JDBC Pool</a></li><li><a href="web-socket-howto.html">32) WebSocket</a></li><li><a href="rewrite.html">33) Rewrite</a></li></ul></div><div><h2><strong>Reference</strong></h2><ul><li><a href="RELEASE-NOTES.txt">Release Notes</a></li><li><a href="config/index.html">Configuration</a></li><li><a href="api/index.html">Tomcat Javadocs</a></li><li><a href="servletapi/index.html">Servlet Javadocs</a></li><li><a href="jspapi/index.html">JSP 2.3 Javadocs</a></li><li><a href="elapi/index.html">EL 3.0 Javadocs</a></li><li><a href="websocketapi/index.html">WebSocket 1.0 Javadocs</a></li><li><a href="http://tomcat.apache.org/connectors-doc/">JK 1.2 Documentation</a></li></ul></div><div><h2><strong>Apache Tomcat Development</strong></h2><ul><li><a href="building.html">Building</a></li><li><a href="changelog.html">Changelog</a></li><li><a href="http://wiki.apache.org/tomcat/TomcatVersions">Status</a></li><li><a href="developers.html">Developers</a></li><li><a href="architecture/index.html">Architecture</a></li><li><a href="funcspecs/index.html">Functional Specs.</a></li><li><a href="tribes/introduction.html">Tribes</a></li></ul></div></nav></div></div><div id="mainRight"><div id="content"><h2>Changelog</h2><h3 id="Tomcat_8.0.0">Tomcat 8.0.0</h3><div class="text">
+  <div class="subsection"><h4 id="Catalina">Catalina</h4><div class="text">
+    <ul class="changelog">
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Implement JSR 340 - Servlet 3.1. The JSR 340 implementation includes
+        contributions from Nick Williams and Jeremy Boynes. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Implement JSR 245 MR2 - JSP 2.3. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Implement JSR 341 - Unified Expression Language 3.0. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Implement JSR 356 - WebSockets. The JSR 356 implementation includes
+        contributions from Nick Williams, Rossen Stoyanchev and Niki Dokovski.
+        (markt)
+      </li>
+      <li><img alt="Update: " class="icon" src="./images/update.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=46727">46727</a>: Refactor default servlet to make it easier to
+        sub-class to implement finer grained control of the file encoding. Based
+        on a patch by Fred Toth. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=45995">45995</a>: Align Tomcat with Apache httpd and perform MIME type
+        mapping based on file extension in a case insensitive manner. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Remove duplicate code that converted a Host's appBase attribute to
+        a canonical file. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=51408">51408</a>: Replace calls to <code>Charset.defaultCharset()</code>
+        with an explicit reference to the ISO-8859-1 Charset. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Refactor initialization code to use a single, consistent approach to
+        determining the Catalina home (binary) and base (instance) directories.
+        The search order for home is <code>catalina.home</code> system property,
+        parent of current directory if boootstrap.jar is present and finally
+        current working directory. The search order for Catalina base is
+        <code>catalina.base</code> system property falling back to the value for
+        Catalina home. (markt)
+      </li>
+      <li><img alt="Update: " class="icon" src="./images/update.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=52092">52092</a>: JULI now uses the <code>OneLineFormatter</code> and
+        <code>AsyncFileHandler</code> by default. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=52558">52558</a>: Refactor <code>CometConnectionManagerValve</code> so
+        that it does not prevent the session from being serialized in when
+        running in a cluster. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=52767">52767</a>: Remove reference to MySQL specific autoReconnect
+        property in <code>JDBCAccessLogValve</code>. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Make the Mapper type-safe. Hosts, Contexts and Wrappers are no
+        longer handled as plain objects, instead they keep their type.
+        Code using the Mapper doesn't need to cast objects returned by
+        the mapper. (rjung)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Move Manager, Loader and Resources from Container to Context since
+        Context is the only place they are used. The documentation already
+        states (and has done for some time) that Context is the only valid
+        location for these nested components. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Move the Mapper from the Connector to the Service since the Mapper is
+        identical for all Connectors of a given Service and it is common for
+        there to be multiple Connectors for a Service (http, https and ajp).
+        This means there is now only ever one Mapper per Service rather than
+        possibly multiple identically configured Mapper objects. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Remove the per Context Mapper objects and use the Mapper from the
+        Service. This removes the need to maintain two copies of the mappings
+        for Servlets and Filters. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Implement a new Resources implementation that merges Aliases,
+        VirtualLoader, VirtualDirContext, JAR resources and external
+        repositories into a single framework rather than a separate one for each
+        feature. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        URL rewrite valve, similar in functionality to mod_rewrite. (remm)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Port storeconfig functionality, which can persist to server.xml and
+        context.xml runtime container configuration changes. (remm)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=54095">54095</a>: Add support to the Default Servlet for serving
+        gzipped versions of static resources directly from disk as an
+        alternative to Tomcat compressing them on each request. Patch by
+        Philippe Marschall. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=54708">54708</a>: Change the name of the working directory for the ROOT
+        application (located under $CATALINA_BASE/work by default) from _ to
+        ROOT. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Change default configuration so that a change to the global web.xml file
+        will trigger a reload of all web applications. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55101">55101</a>: Make BASIC authentication more tolerant of whitespace.
+        Patch provided by Brian Burch. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55166">55166</a>: Move JSP descriptor and tag library descriptor schemas
+        to servlet-api.jar to enable relative references between the schemas to
+        be correctly resolved. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Refactor the descriptor parsing code into a separate module that can be
+        used by both Catalina and Jasper. Includes patches provided by Jeremy
+        Boynes. (violetagg/markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55246">55246</a>: Move TLD scanning to a ServletContainerInitializer
+        provided by Jasper. Includes removal of TldConfig lifecycle listener and
+        associated Context properties. (jboynes)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55317">55317</a>: Facilitate weaving by allowing ClassFileTransformer to
+        be added to WebppClassLoader. Patch by Nick Williams. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55620">55620</a>: Enable Tomcat to start when either $CATALINA_HOME
+        and/or $CATALINA_BASE contains a comma character. Prevent Tomcat from
+        starting when $CATALINA_HOME and/or $CATALINA_BASE contains a semi-colon
+        on Windows. Prevent Tomcat from starting when $CATALINA_HOME and/or
+        $CATALINA_BASE contains a colon on Linux/FreeBSD/etc. (markt)
+      </li>
+    </ul>
+  </div></div>
+  <div class="subsection"><h4 id="Coyote">Coyote</h4><div class="text">
+    <ul class="changelog">
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Experimental support for SDPY. Includes contributions from Sheldon Shao.
+        (costin)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        The default connector is now the Java NIO connector even when specifying
+        HTTP/1.1 as protocol (fhanik)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Update default value of pollerThreadCount for the NIO connector. The new
+        default value will never go above 2 regardless of available processors.
+        (fhanik)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=54010">54010</a>: Remove some unnecessary code (duplicate calls to
+        configure the scheme as https for AJP requests originally received over
+        HTTPS). (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Refactor char encoding/decoding using NIO APIs. (remm)
+      </li>
+      <li><img alt="Update: " class="icon" src="./images/update.gif">
+        Change the default URIEncoding for all connectors from ISO-8859-1 to
+        UTF-8. (markt)
+      </li>
+    </ul>
+  </div></div>
+  <div class="subsection"><h4 id="Jasper">Jasper</h4><div class="text">
+    <ul class="changelog">
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Simplify API of <code>ErrorDispatcher</code> class by using varargs.
+        (kkolinko)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Update Jasper to use the new common web.xml parsing code. Includes
+        patches by Jeremy Boynes. (markt/violetagg)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Create test cases for JspC. Patch by Jeremy Boynes. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55246">55246</a>: TLD scanning is now performed by JasperInitializer
+        (a ServletContainerInitializer) removing the need for support within the
+        Servlet container itself. The scan is now performed only once rather than
+        in two passes reducing startup time. (jboynes)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55251">55251</a>: Do not allow JspC task to fail silently if the web.xml
+        or web.xml fragment can not be generated. (markt)
+      </li>
+    </ul>
+  </div></div>
+  <div class="subsection"><h4 id="Cluster">Cluster</h4><div class="text">
+    <ul class="changelog">
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Remove unused JvmRouteSessionIDBinderListener and SessionIDMessage.
+        (kfujino)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Modify method signature in ReplicationValve. Cluster instance is not
+        necessary to argument of method. (kfujino)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Remove unused <code>expireSessionsOnShutdown</code> attribute in
+        <code>org.apache.catalina.ha.session.BackupManager</code>. (kfujino)
+      </li>
+    </ul>
+  </div></div>
+  <div class="subsection"><h4 id="Web_applications">Web applications</h4><div class="text">
+    <ul class="changelog">
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        Extend the diagnostic information provided by the Manager web
+        application to include details of the configured SSL ciphers suites for
+        each connector. (markt)
+      </li>
+      <li><img alt="Update: " class="icon" src="./images/update.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=48550">48550</a>: Update examples web application to use UTF-8. (markt)
+      </li>
+      <li><img alt="Update: " class="icon" src="./images/update.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55383">55383</a>: Improve the design and correct the HTML markup of
+        the documentation web application. Patches provided by Konstantin
+        Prei&szlig;er. (markt)
+      </li>
+    </ul>
+  </div></div>
+  <div class="subsection"><h4 id="Tribes">Tribes</h4><div class="text">
+    <ul class="changelog">
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Refactor <code>AbstractReplicatedMap</code> to use generics. A key
+        side-effect of this is that the class now implements
+        <code>Map&lt;K,V&gt;</code> rather than extends
+        <code>ConcurrentMap</code>. (markt)
+      </li>
+    </ul>
+  </div></div>
+  <div class="subsection"><h4 id="Other">Other</h4><div class="text">
+    <ul class="changelog">
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Remove unused, deprecated code. (markt)
+      </li>
+      <li><img alt="Code: " class="icon" src="./images/code.gif">
+        Remove static info String and associated getInfo() method where present.
+        (markt)
+      </li>
+      <li><img alt="Update: " class="icon" src="./images/update.gif">
+        (<a href="http://svn.apache.org/viewvc?view=rev&amp;rev=1353242">r1353242</a>, <a href="http://svn.apache.org/viewvc?view=rev&amp;rev=1353410">r1353410</a>):
+        Remove Ant tasks <code>jasper2</code> and <code>jkstatus</code>.
+        The correct names are <code>jasper</code> and <code>jkupdate</code>.
+        (kkolinko)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=53529">53529</a>: Clean-up the handling of
+        <code>InterruptedException</code> throughout the code base. (markt)
+      </li>
+      <li><img alt="Add: " class="icon" src="./images/add.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=54899">54899</a>: Provide an initial implementation of NetBeans support.
+        Patch provided by Brian Burch. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55166">55166</a>: Move the JSP descriptor and tag library descriptor
+        schema defintion files from jsp-api.jar to servlet-api.jar so relative
+        includes between the J2EE, Servlet and JSP schemas are correctly
+        resolved. (markt)
+      </li>
+      <li><img alt="Fix: " class="icon" src="./images/fix.gif">
+        <a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=55372">55372</a>: When starting Tomcat with the <code>jpda</code> option
+        to enable remote debugging, by default only listen on localhost for
+        connections from a debugger. Prior to this change, Tomcat listened on
+        all known addresses. (markt)
+      </li>
+    </ul>
+  </div></div>
+</div></div></div></div></div><footer><div id="footer">
+    Copyright &copy; 1999-2013, The Apache Software Foundation
+  </div></footer></div></body></html>

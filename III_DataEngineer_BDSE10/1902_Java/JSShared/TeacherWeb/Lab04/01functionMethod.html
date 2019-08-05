@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01functionMethod.html</title>
+</head>
+<body>
+
+    <script>
+        
+        //==========定義函式==================
+        //方法一函式宣告，定義帶參數的函式
+        function fAdd1(a,b=30){
+            // alert(b);
+            return (a+b);
+        }
+
+        //==========函式呼叫==================
+        //呼叫帶參數的函式
+        // document.write(`fAdd1(10,20)=${fAdd1(10,20)}<br>`);
+
+        //JavaScript沒有規定function的參數及呼叫function時給予的引數數量必須要一致
+        //少掉的參數為undefined，而多的參數會被忽略
+        // document.write(`fAdd1(10)=${fAdd1(10)}<br>`);
+        //預設參數值(ES6)
+        document.write(`fAdd1(10)=${fAdd1(10)}<br>`);
+
+        //其餘參數 Rest parameters
+        function getSum(...values){
+            console.log(values);
+            let sum=0;
+            // for(let i=0,len=values.length;i<len;i++){
+            //     sum+=values[i];
+            // }
+            for(let val of values){
+                sum+=val;
+            }
+            console.log(sum);
+        }
+        getSum(1,2,3);
+            
+        //==========定義函式==================
+        //方法二函式字面值
+        let fAdd2=function(a,b){
+            return (a+b);
+        }
+        document.write(`fAdd2(20,30)=${fAdd2(20,30)}<br>`);
+
+        //==========定義函式==================
+        //方法三箭頭函式(arrow function)
+        // let fAdd3=(a,b)=>{return (a+b)}
+        // document.write(`fAdd3(50,30)=${fAdd3(50,30)}<br>`);
+
+        //如果statement 只有一行，return 和 {} 可省略
+        let fAdd3=(a,b)=> (a+b);
+        document.write(`fAdd3(60,30)=${fAdd3(60,30)}<br>`);
+
+        //沒有參數
+        let fAdd4=()=>(100);
+        document.write(`fAdd4()=${fAdd4()}<br>`);
+
+        //只有一個參數，()可省略
+        let fAdd5=a=>(a+200);
+        document.write(`fAdd5(100)=${fAdd5(100)}<br>`);
+
+        //列印函式內容
+        // let a=10;
+        // document.write(a);
+        document.write(`fAdd2=${fAdd2}<br>`);
+        document.write(`fAdd3=${fAdd3}<br>`);
+        document.write(`fAdd1=${fAdd1}<hr>`);
+        fAdd2=fAdd1;
+        document.write(`fAdd2=${fAdd2}<br>`);
+
+        //==========方法製作==================
+        //定義物件
+        let cars = { brand: "audi", "max speed": 300 }
+
+        //定義物件方法一(使用函式字面值)
+        // cars.print1=function(){return this.brand+","+this["max speed"]}
+        // cars.print1=function(){return `${this.brand},${this["max speed"]}`}
+
+        //定義物件方法二(使用函式宣告)
+        function printf(){
+            console.log(this);
+            // return this.brand+"-"+this["max speed"];  //Es5
+            return `${this.brand}-${this["max speed"]}`;  //ES6
+        }
+        cars.print2=printf;  //binding
+        //方法呼叫
+        // document.write(`${cars.print1()}<br>`);
+        document.write(`${cars.print2()}<br>`);
+
+        // let brand="BMW";
+        // let max_speed=200;
+        let cars2={
+            brand:"audi",
+            max_speed:250,
+            print3(){
+                return (`${this.brand}==${this["max_speed"]}`)
+            }
+        }
+        document.write(`cars2=${cars2.print3()}<br>`);
+
+        // if(cars2.print3)
+        //     alert("support")
+        alert(window.alert);
+    </script>
+</body>
+</html>

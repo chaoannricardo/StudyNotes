@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        td {
+            border-right: solid 2px rgb(6, 22, 248)
+        }
+    </style>
+</head>
+
+<body>
+    <table style="border: 2px rgb(6, 22, 248) solid;background-color: aqua; color:red;border-collapse: collapse">
+        <script>
+
+            for (j = 1; j <= 9; j++) {
+                document.write("<tr>");
+                for (i = 2; i <= 9; i++) {
+                    sum = i * j;
+                    document.write("<td >" + i + "*" + j + "=" + sum + "</td>");
+                }
+                document.write("</tr>");
+            }
+        </script>
+    </table>
+</body>
+
+</html>

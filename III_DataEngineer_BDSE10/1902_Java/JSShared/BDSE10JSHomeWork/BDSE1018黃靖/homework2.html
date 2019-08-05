@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BDSE1018</title>
+    <link rel="icon" href="images/EEIT_logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="main.css">
+    <style>   
+
+        fieldset{
+            border: 1px solid #acd6ff;
+            width:500px;
+            margin:auto;
+            border-radius: 15px;
+
+            
+        }
+        .st1{
+            width: 450px;
+            border-bottom: 1px solid #e0e0e0;
+            margin: 20px;
+            padding-bottom:10px;
+        }
+        .st2{
+            width: 450px;
+            margin: 20px;
+            text-align: center;
+        }
+        .t1{
+            width:100px;
+            float: none;
+            text-align: right;
+            padding-right: 5px;
+        }
+        .t2{
+            font-size: 10px;
+            color: gray;
+            padding: 2px;
+        }
+        textarea{
+            resize: vertical;
+        }
+        .button{
+            text-align: center;
+
+        }
+        span{
+            font-size: 13px;
+            padding-bottom: 5px;
+        }
+        #idNameck,#dateck,#idsp{
+            color:gray;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="homework1.html">homework1</a></li>
+                    <li><a href="homework2.html">homework2</a></li>
+                    <li><a href="homework3.html">homework3</a></li>
+                    <li><a href="homework4.html">homework4</a></li>
+                    <li><a href="homework5.html">homework5</a></li>
+                    
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="content"> <!--將要浮動的article 與 aside包在一個div中 才不會影響其他物件-->
+        <article>
+            <h2 class="title">HOMEWORK2</h2>
+            <section >
+                <h2>帳號密碼輸入格式</h2>
+                <br>
+                <form action="#" method="get" enctype="multipart/form-data" >
+                    <fieldset>
+                        <legend> Form Check</legend>
+                        <div class="st1"><label class="t1" for="idName">姓名：</label><input type="text" id="idName" name="account"
+                                 autocomplete="off" autofocus size="10" placeholder="姓名" onblur="isChn()" > <span id="idNameck"></span><br>
+                            <label class="t2" for="idName">(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)
+                            </label>
+                        </div>
+                        <div class="st1"><label class="t1" for="idPwd">密碼：</label><input type="password" id="idPwd" name="pwd" placeholder="密碼" onblur="chkPassword()" ><span id="idsp"></span><br>
+                            <label class="t2" for="idPwd">(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])
+                            </label></div>
+                        <div class="st1"><label class="t1" for="date">日期：</label><input type="text" name="date" id="date" placeholder="ex:2000/2/29" onblur="chkDate()"><span id="dateck"></span><br>
+                            <label class="t2" for="date">格式：西元年/月/日 yyyy/MM/dd
+                            </label>
+                        </div>
+                        <div class="button">
+                            <input type="button" value="送出" onclick="isChn();chkPassword();chkDate();">
+                            <input type="reset" value="清除"></div>
+                    </fieldset>
+                    <br>
+                </form>
+            </section>
+            
+
+        </article>
+       
+    </div><!--end content-->
+    <footer>
+        <p>
+            Name: Hwang Ching &nbsp; E-mail: jimhwch@gmail.com &nbsp; Phone: 0926-800-557 &nbsp;  
+        </p>
+    </footer>
+    </div><!--end allpage-->
+    <script >
+        function isChn() {
+    let theAgeObjVal = document.getElementById("idName").value;
+    let theAgeLen = theAgeObjVal.length;
+    let flag1 = true;
+    if (theAgeObjVal == "")
+    document.getElementById("idNameck").innerHTML = '<img src="Images/error.png">  姓名不能空白';
+    else if (theAgeLen >= 2) {
+        for (let i = 0; i < theAgeLen; i++) {
+            let ch = theAgeObjVal.charCodeAt(i);
+            if (0x4E00 <= ch && ch <= 0x9FA5)
+                continue;
+            else {
+                flag1 = false;
+            }
+        }
+        if (flag1 == true) document.getElementById("idNameck").innerHTML = '<img src="Images/correct.png">  姓名格式正確';
+        else {document.getElementById("idNameck").innerHTML = '<img font src="Images/error.png">  姓名格式錯誤';}
+    }
+    else{
+        document.getElementById("idNameck").innerHTML = '<img font src="Images/error.png">  姓名格式錯誤';}
+};
+function chkDate() {
+    let text = document.getElementById("date").value;
+    text=text.split("/");
+    for (let i = 0; i < 3; i++) {
+        if(text[i].charAt(0)=="0"){
+        text[i]=text[i].charAt(1)
+    }}
+    text=`${text[0]}/${text[1]}/${text[2]}`
+    let d = new Date(text);
+    let year=d.getFullYear();
+    let month=d.getMonth()+1;
+    let day=d.getDate();
+    let date = `${year}/${month}/${day}`
+    if (text== date) {
+        document.getElementById("dateck").innerHTML = '<img src="Images/correct.png">  日期格式正確';
+    }else{
+        document.getElementById("dateck").innerHTML = '<img src="Images/error.png">  日期格式錯誤';
+    }
+}
+function chkPassword() {
+    //取得元素值
+    let theAgeObj = document.getElementById("idPwd")//Object
+    let theAgeObjVal = theAgeObj.value; //String 
+    let theAge = document.getElementById("idPwd").value;
+    let theAgeLen = theAgeObjVal.length;
+    let flag1 = false, flag2 = false, flag3 = false;
+    //判斷元素值是否為空白，密碼長度是否大於6
+    if (theAgeObjVal == "")
+        document.getElementById("idsp").innerHTML = '<img src="Images/error.png">  密碼不能空白';
+    else if (theAgeLen >= 6) {
+        for (let i = 0; i < theAgeLen; i++) {
+            let PwdCh = theAgeObjVal.charAt(i).toUpperCase();//轉換成大寫
+            let ss = "!@#$%^&";
+            if (PwdCh >= "A" && PwdCh <= "Z")
+                flag1 = true;
+            else if (PwdCh >= "0" && PwdCh <= "9")
+                flag2 = true;
+            else if (ss.includes(PwdCh))
+                flag3 = true;
+            if (flag1 && flag2 && flag3) break;
+        }
+        if (!(flag1 && flag2 && flag3))document.getElementById("idsp").innerHTML = '<img src="Images/error.png">  密碼格式錯誤';
+
+        else document.getElementById("idsp").innerHTML = '<img src="Images/correct.png">  密碼格式正確';
+
+    }
+    else
+        document.getElementById("idsp").innerHTML = '<img src="Images/error.png">  密碼長度必須為六個字元以上';
+
+}
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .slSpecify{
+            color: gray;
+            font-size: 10px;
+        }
+
+        .slCWIcon{
+            width: 15px;
+        }
+
+        .slCheck{
+            display: none;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <form>
+
+        姓名: <input id="idName" type="text" placeholder="ex.王建民" onblur="check(this)"/>
+        <div id="idNameCorrect" class="slCheck">
+            <img class="slCWIcon" src="images/correct.png">正確</div>
+        <div id="idNameWrong" class="slCheck">
+            <img class="slCWIcon" src="images/wrong.png">錯誤</div>
+        <br>
+        <p class="slSpecify">(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)</p>
+        <hr>
+        密碼: <input id="idPwd" type="password" placeholder="請輸入密碼" onblur="check(this)"/>
+        <div id="idPwdCorrect" class="slCheck">
+                <img class="slCWIcon" src="images/correct.png">正確</div>
+        <div id="idPwdWrong" class="slCheck">
+                <img class="slCWIcon" src="images/wrong.png">錯誤</div>
+        <br>
+        <p class="slSpecify">(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</p>
+        <hr>
+        日期: <input id="idDate" type="text" placeholder="ex.2000/2/29" onblur="check(this)"/>
+        <div id="idDateCorrect" class="slCheck">
+                <img class="slCWIcon" src="images/correct.png">正確</div>
+        <div id="idDateWrong" class="slCheck">
+                <img class="slCWIcon" src="images/wrong.png">錯誤</div>
+        <br>
+        <p class="slSpecify">(格式:西元年/月/日 yyyy/MM/dd)</p>
+        <hr>
+        <input id="idSummit" type="button" value="送出" />
+        <input type="button" value="清除" />
+
+    </form>
+
+    <script>
+    
+        function check(obj) {
+            let str = obj.value.trim();
+            if(obj.id=="idName"){
+                if(str.length>=2 && isChinese(str)){
+                    document.getElementById("idNameCorrect").style.display="inline";
+                    document.getElementById("idNameWrong").style.display="none";
+                }
+                else{
+                    document.getElementById("idNameCorrect").style.display="none";
+                    document.getElementById("idNameWrong").style.display="inline";
+                }
+            }
+            else if(obj.id=="idPwd"){
+                if(str.length>=6 && includeSpecial(str)){
+                    document.getElementById("idPwdCorrect").style.display="inline";
+                    document.getElementById("idPwdWrong").style.display="none";
+                }
+                else{
+                    document.getElementById("idPwdCorrect").style.display="none";
+                    document.getElementById("idPwdWrong").style.display="inline";
+                }
+            }
+            else if(obj.id=="idDate"){
+                if(isExistDate(str)){
+                    document.getElementById("idDateCorrect").style.display="inline";
+                    document.getElementById("idDateWrong").style.display="none";
+                }
+                else{
+                    document.getElementById("idDateCorrect").style.display="none";
+                    document.getElementById("idDateWrong").style.display="inline";
+                }
+            }
+        }
+
+        function isChinese(str){
+            let regex = /[^\u4e00-\u9fa5]/;
+            return !(regex.test(str));
+        }
+
+        function includeSpecial(str){
+            let regex = /[!@#$%^&*]/;
+            return regex.test(str);
+        }
+
+        function isExistDate(dateStr) {          
+            let regex = /[^\d{4}(\-|\/|\.)\d{1,2}\1\d{1,2}$]/;
+            if(regex.test(dateStr)) return false;
+
+            var dateObj = dateStr.split('/');
+            //列出12個月，每月最大日期限制
+            var limitInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+            var theYear = parseInt(dateObj[0]);
+            var theMonth = parseInt(dateObj[1]);
+            var theDay = parseInt(dateObj[2]);
+            var isLeap = new Date(theYear, 1, 29).getDate() == 29; // 是否為閏年?
+
+            if(isLeap) { // 若為閏年，最大日期限制改為 29
+                limitInMonth[1] = 29;
+            }
+
+            // 比對該日是否超過每個月份最大日期限制
+            return theDay <= limitInMonth[theMonth - 1]
+        }
+
+        </script>
+    
+</body>
+</html>

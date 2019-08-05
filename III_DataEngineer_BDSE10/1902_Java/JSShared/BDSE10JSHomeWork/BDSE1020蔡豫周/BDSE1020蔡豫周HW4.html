@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BDSE10蔡豫周HW4</title>
+    <style>
+        #all {
+            width: 500px;
+            margin: auto;
+        }
+
+        .mainPic {
+            width: 525px;
+            display: block;
+            cursor: pointer;
+            margin: auto;
+        }
+
+        .mainPic_none {
+            display: none;
+        }
+
+        #mainDisplay {
+            width: 530px;
+            align-items: center;
+        }
+
+        .subPic {
+            width: 100px;
+        }
+
+        .subPic_border {
+            width: 100px;
+            border: solid 4px yellow;
+        }
+
+        #subDisplay {
+            width: 525px;
+            margin: auto;
+        }
+
+        #panel {
+            width: 160px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset id=all>
+        <legend>廣告看板</legend>
+        <div id="mainDisplay">
+            <a href="https://www.google.com/"><img class="mainPic" src="images/DisplayP1.jpg" alt=""></a>
+            <a href="https://shopping.pchome.com.tw/"><img class="mainPic_none" src="images/DisplayP2.jpg" alt=""></a>
+            <a href="https://tw.yahoo.com/"><img class="mainPic_none" src="images/DisplayP3.jpg" alt=""></a>
+            <a href="https://www.youtube.com/?gl=TW&hl=zh-TW"> <img class="mainPic_none" src="images/DisplayP4.jpg" alt=""></a>
+            <a href="https://www.facebook.com/"><img class="mainPic_none" src="images/DisplayP5.jpg" alt=""></a>
+                       
+        </div>
+        <div id="subDisplay">
+            <img class="subPic_border" src="images/DisplayP1.jpg" alt="">
+            <img class="subPic" src="images/DisplayP2.jpg" alt="">
+            <img class="subPic" src="images/DisplayP3.jpg" alt="">
+            <img class="subPic" src="images/DisplayP4.jpg" alt="">
+            <img class="subPic" src="images/DisplayP5.jpg" alt="">
+        </div>
+        <div id="panel">
+            <img id="rewind" src="images/rewind.png" alt="">
+            <img id="playpause" src="images/pause.png" alt="">
+            <img id="forward" src="images/forward.png" alt="">
+        </div>
+
+    </fieldset>
+    <script>
+
+        let counter = 0;
+        let playpause = true;
+        let mainPics = document.querySelectorAll("#mainDisplay img");
+        let subPics = document.querySelectorAll("#subDisplay img");
+
+        document.getElementById("rewind").onclick = rewind;
+        document.getElementById("forward").onclick = forward;
+        document.getElementById("playpause").onclick = playpausef;
+
+        function play() {
+            mainPics[counter].className = "mainPic_none";
+            subPics[counter].className = "subPic";
+            counter = (counter + 1) % 5;
+            mainPics[counter].className = "mainPic";
+            subPics[counter].className = "subPic_border";
+        }
+        let t = setInterval(play, 1000);
+
+        function playpausef() {
+            if (playpause) {
+                clearInterval(t);
+                document.getElementById("playpause").src = "images/play.png";
+                playpause = false;
+            } else {
+                play();
+                t = setInterval(play, 1000);
+                document.getElementById("playpause").src = "images/pause.png";
+                playpause = true;
+            }
+        }
+
+        function forward() {
+            play();
+        }
+
+        function rewind() {
+            mainPics[counter].className = "mainPic_none";
+            subPics[counter].className = "subPic";
+            if (counter == 0) counter = 5;
+            counter = (counter - 1);
+            mainPics[counter].className = "mainPic";
+            subPics[counter].className = "subPic_border";
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

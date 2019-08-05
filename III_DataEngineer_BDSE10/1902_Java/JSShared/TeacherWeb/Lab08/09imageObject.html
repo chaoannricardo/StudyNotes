@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>09imageObject.html</title>
+    <link rel="icon" href="images/EEIT_logo.png" type="image/x-icon" />    
+</head>
+<body>
+    <div style="float:left;width:200px;height:343px;margin-top:20px;">
+        <img id="imgMap" alt="" src="images/map00.gif"  usemap="#FPMap0"/>
+            <map id="FPMap0" name="FPMap0">
+                <area  id="idTaipei" class="imgbut" coords="136,21,144,13,151,29,145,38,137,21"  shape="poly" />
+                <area  id="idTaoyuan"  class="imgbut" coords="95,38,120,22,132,34,125,45,138,64,128,78,95,37"  shape="poly" />
+                <area  id="idTaichung" coords="46,113,58,89,87,104,120,91,134,100,122,113,81,122,70,134,45,112,45,112"  shape="poly" />
+                <area  id="idKaohsiung"  class="imgbut" coords="18,241,39,242,86,185,98,201,76,243,72,250,46,251,39,283,25,259,18,240"  shape="poly" />
+            </map>
+    </div>
+    <div id="mapdiv" style="float:left;width:auto;height:auto;"></div>
+
+    <script>
+        document.title="BDSE10";
+        //=============================================================
+        //1. 使用<area>物件的id
+        //2. 使用 document.getElementsByTagName("area")取得所有area元素
+        //3. 使用 document.querySelectorAll("area")取得所有area元素(slide 85)  
+        //=============================================================       
+        // document.getElementById("idTaipei").onmouseover=mouseOver;//事件繫結
+        // document.getElementById("idTaipei").onmouseout=mouseOut;
+        // document.getElementById("idTaipei").onclick=Click;
+        // document.getElementById("idTaoyuan").onmouseover=mouseOver;//事件繫結
+        // document.getElementById("idTaoyuan").onmouseout=mouseOut;
+        // document.getElementById("idTaoyuan").onclick=Click;
+    //    alert(document.images.length);
+
+        // let areas=document.getElementsByTagName("area");
+        let areas=document.querySelectorAll(".imgbut");
+        let areasLen=areas.length;
+        // alert(areasLen);
+        // for(let i=0;i<areasLen;i++){
+        //     areas[i].onmouseover=mouseOver;
+        //     areas[i].onmouseout=mouseOut;
+        //     areas[i].onclick=Click;
+        // }
+        for(let area of areas){
+            area.onmouseover=mouseOver;
+            area.onmouseout=mouseOut;
+            area.onclick=Click;
+        }
+
+        function mouseOver() {
+            // alert(this.id);
+            // document.images[0].src = "images/MapTaipei.gif";
+            // document.images[0].src = "images/Map"+this.id.substr(2)+".gif";  //ES5
+            document.images[0].src = `images/Map${this.id.substr(2)}.gif`;  //ES6
+        }
+
+
+        function mouseOut() {
+            document.images[0].src = "images/map00.gif";
+        }
+
+
+        function Click() {
+            // document.getElementById("mapdiv").innerHTML = "<img src='images/Taipei.gif'/>";
+            // document.getElementById("mapdiv").innerHTML = "<img src='images/"+this.id.substr(2)+".gif'/>";
+            document.getElementById("mapdiv").innerHTML = `<img src='images/${this.id.substr(2)}.gif'/>`;
+        }
+    </script>
+</body>
+</html>

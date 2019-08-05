@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .original{
+            filter: grayscale(1);
+            width: 100px;
+        }
+        .selected{
+            filter: grayscale(0);
+            width: 100px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+        <div id="idDiv">
+            <img id="imgStar1" class="original" src="images/star.png">
+            <img id="imgStar2" class="original" src="images/star.png">
+            <img id="imgStar3" class="original" src="images/star.png">
+            <img id="imgStar4" class="original" src="images/star.png">
+            <img id="imgStar5" class="original" src="images/star.png">
+        </div>
+        <br><p id="idScoring"></p><p id="idScored"></p>
+
+        <script>
+            let imgs = document.querySelectorAll("img.original");
+            let score=0;
+            let isScored=false;
+            
+            for(let img of imgs){
+                img.onmouseover = mouseOver;
+                img.onmouseout = mouseOut;
+                img.onclick = Click;
+            }
+
+            function mouseOver(){
+                if(!isScored){
+                    score = this.id.charAt(7);
+                    for(let i=0; i<score; i++){
+                        imgs[i].className = "selected";
+                    }
+                    document.getElementById("idScoring").innerText=`打分中...${score}`;
+                }
+            }
+
+            function mouseOut(){
+                if(!isScored){
+                    score = this.id.charAt(7);
+                    for(let i=0; i<score; i++){
+                        imgs[i].className = "original";
+                    }
+                    document.getElementById("idScoring").innerText="";
+                }
+            }
+
+            function Click(){
+                isScored = true;
+                document.getElementById("idScoring").innerText=`你給${score}顆星`;
+            }
+
+        </script>
+</body>
+</html>

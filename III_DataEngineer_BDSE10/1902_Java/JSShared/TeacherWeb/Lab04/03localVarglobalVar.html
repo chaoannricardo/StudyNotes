@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>03localVarglobalVar.html</title>
+
+</head>
+<body>
+
+    <script>
+        //廣域(全域)變數
+        var a=100;  //global variable
+
+        //宣告式函式定義
+        function f(){
+            // var a=10;  //local variable
+            a=1000;  //global variable
+            for(let a=1;a<=5;a++){
+                document.write(`function let a=${a}<br>`);
+            }
+            document.write(`function in a=${a}<br>`);
+        }
+
+        //呼叫函式
+        document.write(`function out before a=${a}<br>`);
+        f();
+        document.write(`function out after a=${a}<br>`);
+    </script>
+</body>
+</html>

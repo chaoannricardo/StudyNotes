@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    /*拿掉預設margin padding*/
+    padding: 0;
+}
+
+.allpage {
+    width: 1005px;
+    margin: auto;
+}
+
+.menu {
+    width: 100%;
+    /*不管allpage如何調整 寬度始終是100%*/
+    overflow: auto;
+    /* 調整容器大小*/
+    background-color: #66B3FF;
+    list-style-type: none;
+    /*拿掉項目清單*/
+    border-bottom: 3px solid #cccccc;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.menu li {
+    float: left;
+    /*選項水平排列*/
+    width: 12.5em;
+    /*為了讓連結區域能依字型大小的變化自動放大,因此在指定width屬性時採用em為單位*/
+    border-right: 1px solid #cccccc;
+    /*每個li元素右邊要有一條分隔線*/
+}
+
+.menu li a {
+    width: 100%;
+    display: block;
+    /*讓超連結元素先變成block 預設為inline*/
+    text-align: center;
+    text-decoration: none;
+    line-height: 2.5em;
+    /*讓文字上下空出適當的空白,不用padding屬性,直接將行Box的高度設的高一些*/
+    color: #333333;
+}
+
+.menu li a:hover {
+    color: #FFFFFF;
+    background-color: #0080FF;
+}
+
+.title {
+    background-color: #0066cc;
+    color: white;
+    padding-left: 20px;
+    line-height: 2.5em;
+}
+
+article section {
+    margin: 16px;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 10px;
+}
+
+.list1 {
+    list-style: decimal inside;
+    /*list-style可同時設定list-style-type、 
+    list-style-image、list-style-position三個的屬性*/
+}
+
+article section p {
+    margin: 10px 0;
+    /*因為title已經有調整過左右的
+    margin 故p只要調整上下margin即可*/
+}
+aside dl{
+    margin: 16px;
+}
+.content{
+    overflow: auto;
+    width: 100%;
+}
+article{
+    width: 100%;  
+    float: left;
+}   
+
+footer{
+    background-color: #66B3FF;
+    line-height: 2.5em;
+    text-align: center;
+    color:#ffffff;
+    border-bottom-right-radius:15px;
+    border-bottom-left-radius:15px;
+}

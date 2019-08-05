@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>10formObject.html</title>
+</head>
+<body>
+    <form  action="http://192.168.35.77:8080/get.jsp" method="get">
+			name:<input type="text" name="txtName" id="idName" value="abc" /><span id="idsp"></span><br/>
+			<input type="checkbox" name="hobby" checked="checked" value="reading"/>reading
+			<input type="checkbox" name="hobby" value="game"/>game
+			<input type="checkbox" name="hobby" value="sleep"/>sleep
+			<br/>
+            <input type="submit" value="送出" />	
+            <input id="idbutton" type="button" value="check" />
+            <input id="idreset" type="button" value="reset" />
+			<input id="idsubmit" type="button" value="submit" />
+	</form>
+
+    <script>       
+        document.getElementById("idbutton").onclick=checkf;//事件繫結
+        document.getElementById("idreset").onclick=resetf;
+        document.getElementById("idsubmit").onclick=submitf;
+
+        function checkf() {
+            let theName;
+            // theName=document.forms[0].txtName.value;
+            // theName=document.forms[0].elements[0].value;
+            // theName=document.getElementById("idName").value;
+            theName=document.getElementsByName("txtName")[0].value;
+            // alert(theName);
+            let eles=document.forms[0].elements;
+            for(let i=0;i<eles.length;i++){
+                // alert(eles[i].tagName);
+                if(eles[i].checked)
+                    alert(eles[i].value);
+            }
+        }
+
+        function resetf() {
+            document.forms[0].reset();
+        }
+
+        function submitf() {
+            let theName=document.getElementsByName("txtName")[0].value;
+            if(theName=="")
+                document.getElementById("idsp").innerHTML="you must enter";
+            else    
+                document.forms[0].submit();
+
+        }
+    </script>
+</body>
+</html>

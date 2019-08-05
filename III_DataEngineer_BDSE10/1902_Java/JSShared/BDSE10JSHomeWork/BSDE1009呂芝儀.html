@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>04for.html</title>
+</head>
+<body>
+    <style>
+     table,td{
+         border:3px solid blue;
+         border-collapse:collapse ;
+         background-color:paleturquoise;
+         font-size: 1.2em;
+         color:tomato;
+         };
+ 
+    
+    
+    </style>
+    <script>
+        /*
+        var i=1
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+        i++;
+        document.write("i=",i+"<br/>");
+
+        for (var i=1;i<=5;i++)
+        for(var j=1;j<=5;j++)
+        document.write("i="+i+" j="+j+"<br/>");
+        */
+        // var sum = 0;
+        // for (var i = 1; i <= 5; i++) {
+        //     //sum=sum+i;
+        //     sum += i;
+        //     document.write("i=" + i + " sum=" + sum + "<br/>");
+
+        // }\
+        document.write("<table><tr>") 
+
+        for( let i=1;i<=9;i++){
+            document.write("<td>")
+                for( let j= 1;j<=9;j++){ 
+                    document.write(i+"*"+j+"="+i*j);
+                    document.write("<br/>");
+            }
+        }
+        document.write("</td>")
+      
+        document.write("</tr></table>");
+ 
+
+
+    </script>
+</body>
+
+</html>

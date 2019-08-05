@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BDSE1018</title>
+    <link rel="icon" href="images/EEIT_logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .information {
+            float: right;
+            width: 400px;
+            padding-right: 20px;
+            margin: auto;
+        }
+        .information h2{
+            background-color: #0066cc;
+            text-align: center;
+            color: beige;
+            border-top-right-radius:15px;
+            border-top-left-radius:15px;
+        }
+        .information p{
+            height: 300px;
+            border: 1px solid darkblue;
+            border-bottom-right-radius:15px;
+            border-bottom-left-radius:15px;
+
+        }
+        .date{
+            float: left;
+            width: 250px;
+            margin: auto;
+            padding:25px;
+
+        }   
+        article{
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="homework1.html">homework1</a></li>
+                    <li><a href="homework2.html">homework2</a></li>
+                    <li><a href="homework3.html">homework3</a></li>
+                    <li><a href="homework4.html">homework4</a></li>
+                    <li><a href="homework5.html">homework5</a></li>
+
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content">
+            <!--將要浮動的article 與 aside包在一個div中 才不會影響其他物件-->
+            <article>
+                <h2 class="title">HOMEWORK5</h2>
+                <section>
+                    <h2>製作2010~2020年日曆</h2>
+                </section>
+                <div class="date">
+                        <select id="idSelectYear"></select>年
+                        <select id="idSelectMonth"></select>月
+                        <select id="idSelectDate"></select>日
+                    </div>
+                    <div class="information">
+                        <h2>information</h2>
+                        <p id="date">您選擇的日期是</p>
+                    </div>
+            </article>
+        <br>
+        </div>
+        <footer>
+            <p>
+                Name: Hwang Ching &nbsp; E-mail: jimhwch@gmail.com &nbsp; Phone: 0926-800-557 &nbsp;
+            </p>
+        </footer>
+    </div>
+    <script>
+        Year();
+        Month();
+        let thedate=document.getElementById('idSelectDate').value;
+        document.getElementById('idSelectMonth').onchange = ch;
+        document.getElementById('idSelectDate').onchange = chdate;
+
+        function Year() {
+            for (let i = 2010; i <= 2020; i++) {   //s 
+                let opt = document.createElement("option");
+                opt.setAttribute("value", i);
+                let optName = document.createTextNode(i);
+                opt.appendChild(optName);
+                document.getElementById('idSelectYear').appendChild(opt);
+            }
+        }
+        function Month() {
+            for (let i = 1; i <= 12; i++) {   //新增月 
+                let opt = document.createElement("option");
+                opt.setAttribute("value", i);
+                let optName = document.createTextNode(i);
+                opt.appendChild(optName);
+                document.getElementById('idSelectMonth').appendChild(opt);
+            }
+        }
+        function ch() {
+            Clearf();
+            let theMonth = document.getElementById('idSelectMonth').value;
+            let theYear = document.getElementById('idSelectYear').value;
+            let date = new Date(theYear, theMonth, 0).getDate();
+            for (let i = 1; i <= date; i++) {
+                let opt = document.createElement("option");
+                opt.setAttribute("value", i);
+                let optName = document.createTextNode(i);
+                opt.appendChild(optName);
+                document.getElementById('idSelectDate').appendChild(opt);
+            }
+        }
+
+        function Clearf() {
+            document.getElementById('idSelectDate').innerHTML = "";
+        }
+        function chdate(){
+            let theMonth = document.getElementById('idSelectMonth').value;
+            let theYear = document.getElementById('idSelectYear').value;
+            let thedate=document.getElementById('idSelectDate').value;
+            document.getElementById('date').innerHTML=`您選擇的日期是${theYear}年 ${theMonth}月 ${thedate}日`;
+        }
+          
+    </script>
+
+</body>
+
+</html>

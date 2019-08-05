@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <style>
+        fieldset {
+            border:1px solid #acd6ff;
+            width:500px;
+            margin:15px;
+            border-radius:15px;
+        }
+        .st1 {
+            width:450px;
+            border-bottom:1px solid #e0e0e0;
+            margin:20px;
+            padding-bottom:0px;
+        }
+       
+       .sub{
+           text-align: center
+       }
+        
+        p{          
+          font-size: 10px;  
+          color: rgb(146, 146, 146);
+          padding-bottom: 0px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <form action="#" method="get" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Form Check</legend>
+            <div class="st1">
+                <label class="t1" for="account1">姓名:<input type="text" id="idname" onblur="check1()" placeholder="請輸入姓名">
+                    <span id="ck1"></span>
+                    <p>(1.不可空白，2.至少兩個字以上，3.必須全部為中文字)</p>
+            </div>
+
+            <div class="st1">
+                <label class="t1" for="pwd1">密碼:<input type="text" id="idnumber" value="" onblur="check();" placeholder="請輸入密碼" />
+                    <span id="ck2"></span>
+                    <p>(1.不可空白，2.至少6個字且必須包含英文字母、數字、特殊字元[!@#$%^&*])</p>
+            </div>
+            <div class="st1">
+                <label for="" class="t1">日期:<input type="text" name="birth" id="date8" onblur="check3();" placeholder="ex:2000/2/29"></label>
+                <span id="ck3"></span>
+                <p>格式:西元年/月/日 yyyy/MM/dd</p>
+            </div>
+            <div class=sub>
+                <input type="submit" value="送出">
+                <input type="reset" value="清除">
+            </div>
+
+        </fieldset>
+
+    </form>
+
+    <script>
+
+        function check1() {
+
+            let theAgeObj = document.getElementById("idname");
+
+            let theAgeObjVal = theAgeObj.value;
+            let theAgeObjValLen = theAgeObjVal.length;
+            let flag1 = false;
+
+
+            if (theAgeObjVal == "") {
+                document.getElementById("ck1").innerHTML = `<img src="Images/error.png">must enter words`;
+            }
+
+            else if (theAgeObjValLen >= 2) {
+                for (let i = 0; i < theAgeObjValLen; i++) {
+                    let PwdChr = theAgeObjVal.charCodeAt(i);
+                    if (PwdChr >= 0x4E00 && PwdChr <= 0x9FFF) {
+                        flag1 = true;
+                    }
+                    else { flag1 = false; break }
+
+                }
+                if (flag1) { document.getElementById("ck1").innerHTML = `<img src="images/correct.png">correct` }
+                else { document.getElementById("ck1").innerHTML = `<img src="images/error.png">please enter chinese words` };
+            }
+            else {
+                document.getElementById("ck1").innerHTML = `<img src="images/error.png">must more than 2 words`
+            }
+        }
+
+
+        function check() {
+            //取得元素值
+
+            let theAgeObj = document.getElementById("idnumber");    
+            let theAgeObjVal = theAgeObj.value;
+            let theAgeObjValLen = theAgeObjVal.length
+            let flag1 = false, flag2 = false, flag3 = false
+            let special = ['!', '@', '#', '$', '%', '^', '&', '*']
+          
+
+            //判斷元素值是否為空白
+            if (theAgeObjVal == "") {
+                document.getElementById("ck2").innerHTML = `<img src="images/error.png">must enter numbers`
+            }
+
+            //如果長度大於6，判斷是否包含字母、數字、特殊符號
+            else if (theAgeObjValLen >= 6) {
+                for (let i = 0; i < theAgeObjValLen; i++) {
+                    let PwdChr = theAgeObjVal.charAt(i).toUpperCase();
+                    if (PwdChr >= "A" && PwdChr <= "Z")
+                        flag1 = true;
+                    else if (PwdChr >= "0" && PwdChr <= "9")
+                        flag2 = true;
+                    else if (PwdChr = special)
+                        flag3 = true;
+                    if (flag1 && flag2 && flag3) break;
+
+                }
+                if (flag1 && flag2 && flag3) document.getElementById("ck2").innerHTML = `<img src="images/correct.png">correct`;
+
+                else document.getElementById("ck2").innerHTML = `<img src="images/error.png">incorrect`;
+            }
+            else
+                document.getElementById("ck2").innerHTML = `<img src="images/error.png">password length must be greater than 6`
+        }
+
+        function check3() {
+
+            let theDateObj = document.getElementById("date8");
+            let theDateObjVal = theDateObj.value;
+
+            let date = new Date(theDateObjVal);
+            let year1 = date.getFullYear(); 
+            let month1 = date.getMonth() + 1; 
+
+            let date1 = date.getDate();
+            let correctDate = `${year1}/${month1}/${date1}`;
+            let correctDate2 = `${year1}/${("0" + month1).substr(-2)}/${("0" + date1).substr(-2)}`;
+
+            if (theDateObjVal == correctDate) {
+                document.getElementById("ck3").innerHTML = `<img src="images/correct.png">correct`
+            }
+            else if (theDateObjVal == correctDate2) {
+                document.getElementById("ck3").innerHTML = `<img src="images/correct.png">correct`
+            }
+            else { document.getElementById("ck3").innerHTML = `<img src="images/error.png">incorrect` }
+        }
+
+    </script>
+
+</body>
+
+</html>

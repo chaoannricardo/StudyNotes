@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BDSE1018</title>
+    <link rel="icon" href="images/EEIT_logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="main.css">
+    <style>   
+        .s {
+            -webkit-filter: grayscale(1);  /*沒有任何色彩的黑白影像*/
+            
+        }
+        .n {
+            -webkit-filter: grayscale(0);  /*顏色不變*/
+        }
+        div .div1{
+            border: 1px solid #acd6ff;
+            width:500px;
+            margin:auto;
+            border-radius: 15px;
+            padding:40px;
+        }
+        input{
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="allpage">
+        <header>
+            <nav>
+                <ul class="menu">
+                    <li><a href="homework1.html">homework1</a></li>
+                    <li><a href="homework2.html">homework2</a></li>
+                    <li><a href="homework3.html">homework3</a></li>
+                    <li><a href="homework4.html">homework4</a></li>
+                    <li><a href="homework5.html">homework5</a></li>
+                    
+                </ul>
+            </nav>
+        </header>
+        
+        <div class="content"> <!--將要浮動的article 與 aside包在一個div中 才不會影響其他物件-->
+        <article>
+            <h2 class="title">HOMEWORK3</h2>
+            <section>
+                <h2>評點製作</h2>
+                <div class="div1">
+                <img id="star1" alt="" class="s" src="images/star.jpg" />
+                <img id="star2" alt="" class="s" src="images/star.jpg" />
+                <img id="star3" alt="" class="s" src="images/star.jpg" />
+                <img id="star4" alt="" class="s" src="images/star.jpg" />
+                <img id="star5" alt="" class="s" src="images/star.jpg" />
+                
+                <br> <span id="counting"></span> <br>
+                    <input type="reset" value="重新評點" onclick="reset()">
+            
+            </div>
+            </div>  
+                
+
+            </section>
+           
+        </article>
+       
+    </div><!--end content-->
+    <footer>
+        <p>
+            Name: Hwang Ching &nbsp; E-mail: jimhwch@gmail.com &nbsp; Phone: 0926-800-557 &nbsp;  
+        </p>
+    </footer>
+    </div><!--end allpage-->
+    <script >
+        let is_completed=true;
+        let areas=document.querySelectorAll(".s");
+        for (let area of areas) {
+            area.onmouseover=mouseOver;
+            area.onmouseout=mouseOut;
+            area.onclick=Click;}
+    function reset(){
+        is_completed=true;
+        for(i=1;i<=5;i++){
+            document.getElementById(`star${i}`).className = "s";
+        }
+        document.getElementById("counting").innerHTML = ` `;
+        
+        
+    }       
+
+        // document.getElementById("star1").onmouseover = mouseOver;  //事件繫結，滑鼠滑入
+        // document.getElementById("star1").onmouseout = mouseOut; 
+    function mouseOver() {
+        if(is_completed){
+            let num=parseInt(this.id.substring(4,));
+            for(i=1;i<=num;i++){
+            document.getElementById(`star${i}`).className = "n";
+            }
+            document.getElementById("counting").innerHTML = `評分中...${num}顆星`;
+        }else{
+            return;
+        }
+        }
+
+  function mouseOut() {
+      if(is_completed){
+            let num=parseInt(this.id.substring(4,));
+            for(i=1;i<=num;i++){
+            document.getElementById(`star${i}`).className = "s";
+            }}
+        }
+    function Click() {
+        if(is_completed){
+        document.getElementById("counting").innerHTML = `你給${parseInt(this.id.substring(4,))}顆星`;
+        is_completed=false;}
+    }
+    </script>
+
+</body>
+
+</html>
