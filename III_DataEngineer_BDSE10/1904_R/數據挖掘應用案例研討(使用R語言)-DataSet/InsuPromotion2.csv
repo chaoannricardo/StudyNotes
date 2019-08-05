@@ -1,0 +1,11 @@
+Income,CreditCardInsu,Sex,Age,InsuPromotion
+0.660000,"No","Male",0.660000,"No"
+0.330000,"No","Female",0.660000,"Yes"
+0.660000,"No","Male",0.660000,"No"
+0.330000,"Yes","Male",0.660000,"Yes"
+1.000000,"No","Female",0.330000,"Yes"
+0.000000,"Yes","Female",1.000000,"No"
+0.330000,"Yes","Male",0.330000,"Yes"
+0.000000,"No","Male",0.000000,"No"
+0.330000,"No","Female",0.660000,"Yes"
+0.660000,"No","Female",0.660000,"Yes"

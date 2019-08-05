@@ -1,0 +1,15 @@
+SID,Distance,Density,Area,Metro,Target
+1,20,High,Residences,Yes,No
+2,28,High,Residences,No,No
+3,35,High,Residences,Yes,Yes
+4,45,Medium,Residences,Yes,Yes
+5,43,Low,Business,Yes,Yes
+6,50,Low,Business,No,No
+7,32,Low,Business,No,Yes
+8,25,Medium,Residences,Yes,No
+9,10,High,Business,Yes,Yes
+10,50,Medium,Business,Yes,Yes
+11,15,Medium,Business,No,Yes
+12,36,Medium,Residences,No,Yes
+13,35,High,Business,Yes,Yes
+14,45,Medium,Residences,No,No

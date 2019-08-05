@@ -1,0 +1,11 @@
+Location,Type,Miles,SF,CM,Home_Price
+Urban,Detached,2,2200,50,310
+Rural,Detached,19,2500,5,75
+Urban,Attached,3,1500,150,220
+Urban,Detached,15,2000,250,290
+Rural,Detached,30,2000,1,60
+Rural,Detached,3,2500,10,180
+Rural,Detached,9,1800,5,120
+Urban,Attached,5,1800,50,280
+Rural,Detached,30,3000,1,90
+Urban,Attached,25,1200,100,160

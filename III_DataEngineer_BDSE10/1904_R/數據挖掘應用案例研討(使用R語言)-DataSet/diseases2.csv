@@ -1,0 +1,11 @@
+Patient_ID,Sore_Throat,Fever,Swollen_Glands,Congestion,Headache,Diagnosis
+1,Yes,Yes,Yes,Yes,Yes,Strep_throat
+2,?,?,?,Yes,Yes,Allergy
+3,Yes,Yes,?,Yes,?,Cold
+4,Yes,?,Yes,?,?,Strep_throat
+5,?,Yes,?,Yes,?,Cold
+6,?,?,?,Yes,?,Allergy
+7,?,?,Yes,?,?,Strep_throat
+8,Yes,?,?,Yes,Yes,Allergy
+9,?,Yes,?,Yes,Yes,Cold
+10,Yes,Yes,?,Yes,Yes,Cold
