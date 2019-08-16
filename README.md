@@ -1,4 +1,4 @@
-## Maning: Deep Learning with Python / Keras大神帶你用Python實做
+## # Maning: Deep Learning with Python / Keras大神帶你用Python實做
 #### Author of Keras: François Chollet; 1st Edition |
 * Author's Code Repository: https://github.com/fchollet/deep-learning-with-python-notebooks
 
