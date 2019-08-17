@@ -1,0 +1,99 @@
+Account Info:
+
+1) login account : vagrant/vagrant
+
+2) hadoop ecosystem : hadoop/hadoop
+
+
+==========================================================
+
+Install Vagrant
+
+1) Download vagrant from https://www.vagrantup.com/downloads.html   
+
+2) Check vagrant version
+   vagrant version
+
+3) Install vagrant-reload plugin
+   vagrant plugin install vagrant-reload
+   vagrant plugin list
+
+
+==========================================================
+
+Install Git 
+
+1) Download git from https://git-scm.com/ (for Windows user)
+
+2) Setup git bash
+
+
+==========================================================
+
+Install VirtualBox
+
+Download VirtualBox from https://www.virtualbox.org/wiki/Downloads
+   (Need V5.2 or above)
+
+
+==========================================================
+
+Setup VM
+
+0) Copy hadoop_Pseudo directory to user's home directory
+   Use git bash cd to hadoop_Pseudo directory
+   cd 
+   cd hadoop_Pseudo
+
+1) Create VM
+   vagrant up
+   
+2) Check VM
+   vagrant status
+   
+3) Connect to VM
+   vagrant ssh
+
+   
+==========================================================
+
+Setup hadoop
+
+1) Switch to hadoop account (password:hadoop) 
+   su - hadoop
+
+2) Format hdfs (only once)
+   hdfs namenode -format
+   
+3) Start namenode/datanodes
+   start-dfs.sh
+   jps
+   
+4) Start resourcemanager/nodemanager
+   start-yarn.sh
+   jps
+   
+5) Run pi map/reduce program
+   hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.0.jar pi 3 10
+   
+6) Stop resourcemanager/nodemanager
+   stop-yarn.sh
+   jps
+   
+7) Stop namenode/datanodes
+   stop-dfs.sh
+   jps
+
+
+==========================================================
+
+Stop VM
+
+1) Logout from VM
+   exit # back to vagrant
+   exit # logout
+
+2) Shutdown VM
+   vagrant halt
+   vagrant status
+   

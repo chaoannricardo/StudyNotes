@@ -1,0 +1,3 @@
+docker container run -d -P --name static_web iiitraining/static_web
+docker container ls
+docker container exec -it static_web /bin/bash

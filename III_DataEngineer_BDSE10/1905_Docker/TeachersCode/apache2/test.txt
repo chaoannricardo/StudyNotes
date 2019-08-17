@@ -1,0 +1,2 @@
+nc 172.16.0.2 80
+GET /index.html

@@ -1,0 +1,11 @@
+Docker CE Ubuntu:
+ https://docs.docker.com/install/linux/docker-ce/ubuntu/
+ 
+
+docker command reference:
+ https://docs.docker.com/engine/reference/commandline/docker/
+
+
+Dockerfile reference:
+ https://docs.docker.com/engine/reference/builder/
+ 

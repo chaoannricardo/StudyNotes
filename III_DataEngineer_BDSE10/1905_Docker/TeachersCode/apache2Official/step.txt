@@ -1,0 +1,10 @@
+docker build -t iiiedu/apache2 .
+docker run -d -p 80 -v "$PWD/html:/var/www/html" --name apache2 iiiedu/apache2
+
+============================================================================
+docker run -d -p 80 --name apache2 iiiedu/apache2
+docker run --name share_test -it --volumes-from apache2test ubuntu /bin/bash
+
+可以查看volume獨立存放的內容
+/var/lib/docker/volumes
+============================================================================
