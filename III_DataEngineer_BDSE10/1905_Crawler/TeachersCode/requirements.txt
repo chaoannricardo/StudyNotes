@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+pyquery
+selenium
+numpy
+pandas
+ipykernel
