@@ -1,0 +1,6 @@
+python yarn-utils.py -c 2 -m 4 -d 1 -k False
+
+python3 yarn-utils3.py -c 2 -m 4 -d 1 -k False
+
+each node has:
+2 cores, 4G RAM, 1 disk, no hbase installed
