@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <script type="text/javascript" src="../scripts/d3/d3.min.js"></script>
+  <style>
+    svg {
+      width: 1000px;
+      height: 1000px;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- <svg>
+    <circle cx="250" cy="250" r="100" fill="red"></circle>
+  </svg> -->
+
+  <!--
+    練習 #5:
+    利用 SVG 畫一個紅色的圓，圓心與半徑隨意
+  -->
+
+  <script type="text/javascript">
+    var svg = d3.select('body').append('svg');
+
+    svg.append('circle')    
+       .attr({
+         'cx': 10,
+         'cy': 50,
+         'r': 50,
+         'fill': 'red'
+       })
+       .on('click', function(){
+         
+        d3.select( this )
+           .transition()
+           .duration(10000)
+           .attr({
+            'cx': 300,
+             'fill': 'yellow'
+           })
+       })
+
+
+  </script>
+
+</body>
+</html>

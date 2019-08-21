@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <script type="text/javascript" src="../scripts/d3/d3.min.js"></script>
+  <style>
+    .but {
+      width: 1000px;
+      height: 500px;
+    }
+
+    .text {
+      font-size: 50px;
+      color: blue;
+      font-weight: bolder;
+    }
+
+    .red {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+      margin-top:50px;
+      margin-bottom: 50px;
+    }
+
+    .white {
+      color: white;
+      text-align: center;
+      font-size: 50px;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!--
+    練習 #4:
+    在 body 上面透過 d3 新增 (append) 一個按鈕，
+    並在按下按鈕之後，新增一個紅色的方框。
+  -->
+
+
+
+  <script type="text/javascript">
+    // code here...
+
+    d3.select('body')
+      .append('button')
+      .classed('but', true)
+      .text('Click Here!')
+      .classed('text', true)
+
+    d3.select('button')
+    .on('click', 
+    function(){
+      d3.select('body')
+      .append('div')
+      .classed('red', true)
+      .text('This is a red block.')
+      .classed('white', true)
+    }
+    )
+
+
+  </script>
+
+</body>
+
+</html>
