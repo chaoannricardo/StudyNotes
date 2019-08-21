@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>01varDeclarationTypeTransfer.html</title>
+</head>
+<body>
+
+
+    <script>
+        //1.變數宣告
+        var a;
+        //定義初始值
+        a = 10;
+        //2.變數宣告時可以同時賦予初始值
+        var a = 10;
+        //3.不宣告變數，直接賦予初始值
+        a = 10;
+        //列印及typeof
+        document.write("a = " + a + ", typeof a = " + typeof a + "<br>");
+        document.write("a = " + a + ", typeof a = " + typeof a + "<br>");
+        a = "abc"
+        document.write("a = " + a + ", typeof a = " + typeof a + "<br>");
+        //字串變數
+        var a = "123456789";
+        document.write("a = " + a + ", typeof a = " + typeof a + "<br>");
+        // let 不能重複宣告
+        if (true) {
+            let b = 50; 
+            // let成為區域變數
+            document.write(b + "<br>");
+        }
+        // document.write(b); //在這裡會失效
+        if (true) {
+            var c = 100;
+        }
+        document.write(c + "<br>");
+        //const 宣告時必須給予初始值
+        const d = 10;
+        const e = "abcde";
+        //Template Literals
+        console.log(`abcdeferewrffsf dfsfsfsfgsg ${d} ds fnjkanrgjuhbgfu weu ${e}`);
+        document.write(`abcdeferewrffsf dfsfsfsfgsg ${d} ds fnjkanrgjuhbgfu weu ${e}`);
+        // "a+b"
+        console.log("\"a+b\"");
+        console.log(`"a+b"`);
+        // \a+b\
+        console.log("\\a+b\\");
+        //布林變數
+        let f = true;
+        console.log("true + 1 = "+ (f + 1));
+        let g = false;
+        console.log("false = "+ (g + 0));
+        if (f + 1) {
+            console.log("f + 1 is " + "true");
+        }else{
+            console.log("f + 1 is " + "false");
+        }
+        if (g) {
+            console.log("g is " + "true");
+        }else{
+            console.log("g is " + "false");
+        } 
+        //null
+        let n = null;
+        console.log(`n = ${n}, type of n = ${typeof n}`);
+        //如果沒有初始值，JavaScript會自動將變數的值初始化為undefined(預設值 default value)
+        let u;
+        console.log(`u = ${u}, type of u = ${typeof u}`);
+
+
+        //===============================
+        //建立物件，語法一
+        var person = new Object();
+        //定義物件屬性
+        person.name = "Ricardo";
+        person.age = 23;
+        person.ID = "A123456789";
+        console.log(person.name + person.age + person.ID);
+        //建立物件，語法二
+        car = {brand:"toyota", "max speed":180, price:1000000};
+        console.log(car["brand"] + car["max speed"] + car.price);
+        //資料型別的轉換
+        console.log(parseInt("12.123456789"));
+        console.log(parseInt("33P"));
+        console.log(parseInt("P33"));
+    </script>
+</body>
+</html>

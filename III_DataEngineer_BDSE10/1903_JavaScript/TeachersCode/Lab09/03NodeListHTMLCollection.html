@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <form >
+        name:<input type="text" name="txtName" value="abc" /><span id="idsp"></span><br />
+        <input type="checkbox" class="ch" name="hobby" checked="checked" value="reading" />reading
+        <input type="checkbox" class="ch" name="hobby" value="movie" />movie
+        <input type="checkbox" name="hobby" value="game" />game
+        <!--<input type="checkbox" name="hobby" value="sleep" />sleep-->
+        <br />
+        <input id="idcheck" type="button" value="check" />
+        
+    </form>
+
+    <script>
+        //***********************************************************
+        //NodeList 與 HTMLCollection : 這些物件是唯讀的類陣列物件(array-like objects)
+        //1.NodeList物件 : 有length 屬性和item(index)方法
+        //2.HTMLCollection物件 : 有length 屬性和item(index)方法，namedItem(name)
+        //https://developer.mozilla.org/en-US/docs/Web/API
+        //***********************************************************
+       
+        document.getElementById("idcheck").onclick = check;
+        
+        function check() {
+            /*
+            //NodeList
+            let theHobbys = document.getElementsByName("hobby");
+            alert(theHobbys);  //[object NodeList]
+            //let theSelectors = document.querySelectorAll("input");
+            //alert(theSelectors); //[object NodeList]
+            let theHobbysLen = theHobbys.length;
+
+            for (let i = 0; i < theHobbysLen; i++) {
+                //console.log(theHobbys.item(i).value);
+                console.log(theHobbys[i].value);
+            }
+            */
+
+
+            /*
+            //HTMLCollection
+            let theInputs = document.getElementsByTagName("input");
+            //alert(theInputs);  //[object HTMLCollection]
+            //let theClass = document.getElementsByClassName("ch");
+            //alert(theClass);  //[object HTMLCollection]
+            let theInputsLen = theInputs.length;
+
+            for (let i = 0; i < theInputsLen; i++) {
+                //console.log(theInputs.item(i).value);
+                //console.log(theInputs[i].value);
+            }
+            //console.log(theInputs.namedItem("txtName").value);  //abc
+            console.log(theInputs.namedItem("hobby").value);  //reading 傳回第一個
+            console.log(theInputs["hobby"].value);
+            */
+        }
+    </script>
+</body>
+</html>

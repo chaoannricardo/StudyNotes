@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">    
+    <title>Document</title>    
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form>
+        <label>user name</label> 
+        <input type="text" id="idName">
+        <input type="button" id="idLogin" value="Login">
+    </form>
+    <script>
+        
+            document.getElementById("idLogin").onclick=cookief;
+             function cookief() {
+                let theName = document.getElementById("idName").value;
+                document.cookie = "name=" + encodeURI(theName) + ";expires=Mon 10 Dec 2018 20:47:11 GMT; path=/";
+                location.href = "01HomePage.html";
+            };
+       
+
+    </script>
+</body>
+</html>

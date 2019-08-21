@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>05eventObject.html</title>
+</head>
+<body>
+    <!--HTML屬性事件處理程序-->
+    <!-- IE -->
+    <input type="button" id="idmouseIE" value="HTML屬性事件(IE)" onmousedown="mouseDown();" />
+    <!-- Firefox-->
+    <input type="button" id="idmouseFx" value="HTML屬性事件(Firefox)" onmousedown="mouseDown(event);" />
+
+    <!--JavaScript屬性事件處理程序-->
+    <input type="button" id="idmouse2" value="JavaScript屬性事件" />
+    
+
+    <script>
+        // //IE10以下的瀏覽器(window 7),HTML屬性事件
+        // //回傳1 表示使用者按下左鍵，chrome 回傳0
+        // //回傳4 表示使用者按下滾輪，chrome 回傳1
+        // //回傳2 表示使用者按下右鍵，chrome 回傳2
+        // function IEmouseDown() {    //IE8以前是透過全域變數window.event來取用這個物件
+        //     alert(event.type);
+        //     alert(event.button);
+        // }
+
+
+        // //IE8以下的瀏覽器(window 7),HTML屬性事件
+        // //回傳1 表示使用者按下左鍵，Fixefox及chrome 回傳0
+        // //回傳4 表示使用者按下滾輪，Fixefox及chrome 回傳1
+        // //回傳2 表示使用者按下右鍵，Fixefox及chrome 回傳2
+        // function FirefoxmouseDown(nsevent) {  //以event物件作為參數來使用
+        //     alert(nsevent);
+        //     alert(nsevent.type);
+        //     alert(nsevent.button);
+        // }
+
+        function mouseDown(nsevent){
+            // // 最原始寫法
+            // let theEvent;
+            // alert(nsevent);
+            // if (nsevent) {
+            //     theEvent = nsevent;
+            // }else{
+            //     theEvent = window.event;
+            // }
+            // // 三元運算子
+            // theEvent = nsevent?nsevent:window.event;
+            // 新式寫法
+            theEvent = nsevent || event;
+            alert(theEvent.type);
+            alert(theEvent.button);
+            
+
+        }
+
+
+
+
+
+        //JavaScript屬性事件處理程序       
+        //document.getElementById("idmouse2").onmousedown=mouseDown;  //事件繫結
+        document.getElementById("idmouse2").onmousedown = function(nsevent){mouseDown(nsevent)};
+       
+    </script>
+</body>
+</html>

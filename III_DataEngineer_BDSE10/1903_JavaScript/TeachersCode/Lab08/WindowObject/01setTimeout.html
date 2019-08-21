@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>01setTimeout.html</title>    
+</head>
+<body>    
+	<input type="button" id="idbutstop" value="停止轉向連結" />
+    <script>        
+        document.getElementById("idbutstop").onclick=stopf;  //事件繫結
+
+        function stopf() {
+            //window.clearTimeout-停止計時器
+            window.clearTimeout(t)            
+
+        }
+
+        //轉向連結到 http://taipei.iiiedu.org.tw
+        //slide75,location.href-轉向連結到其它網址
+
+        function h(){
+            location.href = "http://taipei.iiiedu.org.tw"
+        }
+        let t = window.setTimeout(h, 2000);
+
+
+    </script>
+    
+</body>
+</html>

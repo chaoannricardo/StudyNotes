@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>09drawSomething.html</title>
+        <style>
+            #myCanvas{
+    	               border:1px green solid;
+            }
+        </style> 
+    </head>
+
+    <body>
+    <input type="color" id="color1" style="vertical-align:bottom">
+    <input type="number" min="2" max="20" step="2" id="number1" value="2">
+    <select id="ColorSelect">
+      <option value="black">black</option>
+      <option value="yellow">yellow</option>
+      <option value="blue">blue</option>
+      <option value="pink">pink</option>
+      <option value="purple">purple</option>
+      <option value="green">green</option>
+    </select>
+    <select id="WidthSelect">
+      <option value="2">2</option>
+      <option value="4">4</option>
+      <option value="6">6</option>
+      <option value="8">8</option>
+      <option value="10">10</option>
+      <option value="12">12</option>
+    </select>
+    
+    <br/>
+    <canvas id="myCanvas" width="400px" height="300px"></canvas>
+    <br/>
+    <input type="button" value="清除" onclick="location.reload()"/>
+    <input type="button" value="儲存" id="buttonSave"/>
+    <br/>
+    <img id="img1"/>
+    
+    
+        <script>            
+            //取得camvas物件
+            let canvas = document.getElementById("myCanvas");
+            //產生CanvasRenderingContext2D物件
+            let context = canvas.getContext("2d");
+
+            document.getElementById("buttonSave").onclick=btnSavef;  //binding
+            canvas.onmousedown=mouseDownf;  //binding
+            canvas.onmousemove=mouseMovef;
+            canvas.onmouseup=mouseUpf;
+
+
+
+            function btnSavef() {
+                let imgObj=document.getElementById("img1");
+                imgObj.src=canvas.toDataURL("image/png");
+            }
+
+            let flag;
+
+            //offsetX/offsetY : 傳回事件觸發時,滑鼠游標相對於來源元素的座標位置
+
+            //開始畫圖
+            function mouseDownf(event) {
+                //設定畫圖flag
+                flag=true;
+                //開始一條新路徑
+               context.beginPath();
+                //設定一條新的子路徑的開始位置
+                context.moveTo(event.offsetX,event.offsetY);
+            }
+            //畫圖中
+            function mouseMovef(event) {
+                //判斷是否為mousedown線條
+                if (flag) {
+                    //在目前位置新增一條直線
+                    context.lineTo(event.offsetX,event.offsetY);
+                    //讀取設定顏色
+                    let color=document.getElementById("color1").value;
+                    //讀取設定寬度
+                    let w=document.getElementById("number1").value;
+                    //設定顏色
+                    context.strokeStyle=color;
+                    //設定寬度
+                    context.lineWidth=w;
+                    //開始畫圖
+                    context.stroke();
+                }
+            }
+            //結束畫圖
+            function mouseUpf(event) {
+                //設定畫圖flag
+                flag=false;
+                //結束畫圖
+                context.closePath();
+            }          
+        </script>     
+    </body>
+
+</html>

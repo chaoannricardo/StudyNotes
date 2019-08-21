@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>03localVarglobalVar.html</title>
+
+</head>
+<body>
+
+    <script>
+        //廣域(全域)變數
+        var a = 100; //Global Variable
+        console.log(`Globa0  a = ${a}`);
+        //宣告式函式定義
+        function func0(){
+            var a = 10; //Local0 Variable
+            console.log(`Local0 a = ${a}`);
+            a = 150; //Local1 Variable
+            console.log(`Local1 a = ${a}`);
+            window.a = 250; //Global Variable
+        }
+        function func1(){
+            a = 300; //Global Variable
+        }
+        func0();
+        console.log(`Global1 a = ${a}`);
+        func1();
+        console.log(`Global2 a = ${a}`);
+        for (let a = 1; a < 10; a++) {
+            console.log(a)
+        }
+
+
+        //呼叫函式
+    </script>
+</body>
+</html>

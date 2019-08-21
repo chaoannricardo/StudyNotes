@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>06arrayObject.html</title>
+</head>
+<body>
+
+    <script>
+        //建立陣列語法 1
+        let balls = new Array();
+        //alert(balls.length);
+        balls[0] = "basketball";
+        balls[1] = "baseball";
+        balls[2] = "tennis";
+        balls[3] = "volleyball";
+        balls[4] = 123;
+        //alert(balls.length);
+        //列印陣列語法 1
+        document.write(balls);
+
+        //建立陣列語法 2
+        let balls0 = new Array("basketball", "baseball", "tennis", "volleyball");
+
+        //建立陣列語法 3
+        let balls1 = ["basketball", "baseball", "tennis", "volleyball"];
+
+        //列印陣列語法 2 -- 使用 for loop
+        for (let index = 0; index < balls0.length; index++) {
+            console.log(balls0[index])
+        }
+
+        //列印陣列語法 3 -- 使用 for of 
+        //for(variable of iterable)
+        for (let value of balls0) {
+            console.log(value)
+        }
+
+
+        //copy Lab12/01Cookie.html line 36~43
+        //var strcookie = "name2=Mary;name=Jack";
+        /*
+                document.write("<table>");
+                cookieArray = strcookie.split(";");
+                for (var i = 0; i < cookieArray.length; i++) {
+                    thisCookie = cookieArray[i].split("=");
+                    cookieName = decodeURI(thisCookie[0]);
+                    cookieValue = decodeURI(thisCookie[1]);
+                    document.write("<tr><td style='border:solid red 2px'>" + cookieName + "</td><td style='border:solid red 2px'>" + cookieValue + "</td></tr>");
+                }
+                document.write("</table>");
+        */
+
+
+        /*
+            var balls=["basketball","baseball","tennis","volleyball",123];
+            document.write("join('-')="+balls.join("-")+"<br>");
+            document.write("reverse().join('=>')="+balls.reverse().join("=>")+"<br>");
+            document.write("sort()="+balls.sort()+"<br>");
+       */
+    </script>
+</body>
+</html>

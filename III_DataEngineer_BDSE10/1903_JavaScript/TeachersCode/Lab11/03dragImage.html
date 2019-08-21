@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>03dragImage.html</title>
+    <style type="text/css">
+        #dropZone  {
+                     width:600px;height:300px;border:1px solid blue;float:left
+	                }
+        .thumb{
+ 	            height:75px;margin:5px;
+	            }
+    </style>
+    
+</head>
+<body>
+    <!--<div id="dropZone"  ondragover="dragoverHandler(event)" ondrop="dropHandler(event)"></div>-->
+    <div id="dropZone"></div>
+
+    <script>
+        document.getElementById("dropZone").ondragover=dragoverHandler;
+        document.getElementById("dropZone").ondrop=dropHandler;
+
+        function dragoverHandler(e) {
+
+        }
+
+        function dropHandler(e) {
+
+        }
+    </script>
+</body>
+</html>

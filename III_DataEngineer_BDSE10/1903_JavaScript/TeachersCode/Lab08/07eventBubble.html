@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>07eventBubble.html</title>
+</head>
+<body>
+    <div id="iddiv">
+		div
+		<p id="idp">ppppp</p>
+	</div>
+    <a id="idhref" href="http://tw.yahoo.com" >YAHOO</a>
+
+    <script> 
+        //==============================================================
+        //階層式標籤，事件流程分三階段，
+        //事件捕獲(capture)階段==>處理目標階段==>事件氣泡(bubbling)階段
+        //==============================================================    
+        document.onclick=docClick;
+        document.getElementById("iddiv").onclick=divClick; //事件繫結，事件氣泡(bubbling)
+        document.getElementById("idp").onclick=pClick;
+        //document.getElementById("idhref").onclick=hrefClick;
+       
+
+        function docClick() {
+            window.alert("Document");
+        }
+
+        //取消事件氣泡(bubbling)
+        function divClick(nsEvent) {
+            window.alert("div");
+
+        }
+
+        function pClick() {
+            window.alert("p");
+        }
+
+        function hrefClick() {
+
+        }
+
+    </script>
+</body>
+</html>

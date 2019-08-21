@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>01eventHandler.html</title>
+</head>
+
+<body>
+    <!-- HTML屬性事件處理程序 -->
+    <h1 onclick="f1()">method 1</h1>
+
+
+
+    <!-- JavaScript屬性事件處理程序 -->
+    <h1 id="method2">method 2</h1>
+
+
+
+    <!-- W3C DOM 處理程序 -->
+    <h1 id="method3">method 3</h1>
+
+
+    <script>
+
+        function f1() {
+            alert("Method 1");
+        }
+
+        function f2() {
+            alert("Method 2")
+        }
+
+        function f3() {
+            alert("Method 3")
+        }
+
+        document.getElementById("method2").onclick = f2;
+        document.getElementById("method2").onclick = function(){ alert("Method 2 X");}
+        document.getElementById("method3").addEventListener("click", f3, false)
+        document.getElementById("method3").addEventListener("click", function(){alert("Method 3 X")}, false)
+
+
+
+
+    </script>
+</body>
+
+</html>

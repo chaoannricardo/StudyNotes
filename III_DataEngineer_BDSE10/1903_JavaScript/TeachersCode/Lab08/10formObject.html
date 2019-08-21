@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>10formObject.html</title>
+</head>
+
+<body>
+    <form action="http://192.168.35.get.jsp" method="get">
+        name:<input type="text" name="txtName" value="abc" /><span id="idsp"></span><br />
+        <input type="checkbox" name="hobby" checked="checked" value="reading" />reading
+        <input type="checkbox" name="hobby" value="game" />game
+        <input type="checkbox" name="hobby" value="sleep" />sleep
+        <br />
+        <input type="submit" value="送出" />
+        <input id="idbutton" type="button" value="check" />
+        <input id="idreset" type="button" value="reset" />
+        <input id="idsubmit" type="button" value="submit" />
+    </form>
+
+    <script>
+        document.getElementById("idbutton").onclick = checkf;//事件繫結
+        document.getElementById("idreset").onclick = resetf;
+        document.getElementById("idsubmit").onclick = submitf;
+
+        function checkf() {
+            // // get elements value
+            // let theName;
+            // theName = document.forms[0].txtName.value;
+            // alert(theName);
+            // theName = theNamedocument.forms[0].elements[0].value;
+            // document.getElementsByName("txtname");
+
+            //alert checked option
+            let elelen = document.forms[0].elements.length;
+            for (let index = 0; index < elelen; index++) {
+                if (document.forms[0].elements[index].checked) {
+                    alert(document.forms[0].elements[index].value);
+                }
+
+            }
+
+        }
+
+        function resetf() {
+            document.forms[0].reset();
+        }
+
+        function submitf() {
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>02stringlObject.html</title>
+</head>
+
+<body>
+
+    <script>
+        //字串變數
+        let str = "java script";
+        //字串物件一
+        let strObj = new String("java script")
+
+        //字串物件一|測試
+        document.write("strObj.charAt(3)= " + strObj.charAt(3) + "<br/>");
+        document.write("strObj.charCodeAt(3)=" + strObj.charCodeAt(3) + "<br/>");
+        document.write("strObj.indexOf('a')=" + strObj.indexOf('a') + "<br/>");
+        document.write("strObj.lastIndexOf('a')=" + strObj.lastIndexOf('a') + "<br/>");
+        document.write("strObj.lastIndexOf('@')=" + strObj.lastIndexOf('@') + "<br/>");
+        document.write("strObj.substr(5,3)=" + strObj.substr(5, 3) + "<br/>");
+        document.write("strObj.substring(5,8)=" + strObj.substring(5, 8) + "<br/>");
+        document.write("strObj.split(' ')=" + strObj.split(" ") + "<br>");
+
+        //字串物件二
+        let strObj2 = new String("一二三");
+
+        // 檢查中文字Unicode編碼
+        let ch = strObj2.charCodeAt(0);
+        if (ch >= 0x4e00 && ch <= 0x9fff)
+            alert(true);
+        else
+            alert(false);
+
+
+    </script>
+</body>
+
+</html>
