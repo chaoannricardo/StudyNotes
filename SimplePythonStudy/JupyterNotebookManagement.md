@@ -11,3 +11,8 @@
     jupyter kernelspec list
 * Delete jupyter kernel
     jupyter kernelspec uninstall XXXX
+    
+    
+## Notebook Convert
+jupyter nbconvert --to html 190930_Homework_M946108004.ipynb
+wkhtmltopdf 190930_Homework_M946108004.html 190930_Homework_M946108004.pdf
