@@ -1,0 +1,1 @@
+PATH=$PATH=:/c/Users/ricardo/Anaconda3/:/c/Users/ricardo/Anaconda3/Scripts/:
