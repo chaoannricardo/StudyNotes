@@ -3,3 +3,5 @@
 
 CMakeFiles\C_Studies.dir\ex001.c.obj: ..\ex001.c
 
+CMakeFiles\C_Studies.dir\ex002.c.obj: ..\ex002.c
+

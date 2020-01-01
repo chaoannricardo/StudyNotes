@@ -151,6 +151,33 @@ ex001.c.s:
 	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex001.c.s
 .PHONY : ex001.c.s
 
+ex002.obj: ex002.c.obj
+
+.PHONY : ex002.obj
+
+# target to build an object file
+ex002.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex002.c.obj
+.PHONY : ex002.c.obj
+
+ex002.i: ex002.c.i
+
+.PHONY : ex002.i
+
+# target to preprocess a source file
+ex002.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex002.c.i
+.PHONY : ex002.c.i
+
+ex002.s: ex002.c.s
+
+.PHONY : ex002.s
+
+# target to generate assembly for a file
+ex002.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex002.c.s
+.PHONY : ex002.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -163,6 +190,9 @@ help:
 	@echo ... ex001.obj
 	@echo ... ex001.i
 	@echo ... ex001.s
+	@echo ... ex002.obj
+	@echo ... ex002.i
+	@echo ... ex002.s
 .PHONY : help
 
 

@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Storage/Github/StudyNotes/C_Studies/ex001.c" "C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/C_Studies.dir/ex001.c.obj"
+  "C:/Storage/Github/StudyNotes/C_Studies/ex002.c" "C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/C_Studies.dir/ex002.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 
