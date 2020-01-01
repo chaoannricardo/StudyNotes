@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 C:/Storage/Github/StudyNotes/C_Studies/ex002.c
+
+C:/Storage/Github/StudyNotes/C_Studies/ex003.c
 stdio.h
+-
+stdlib.h
 -
 

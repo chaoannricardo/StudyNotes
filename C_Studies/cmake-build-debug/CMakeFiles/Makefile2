@@ -75,12 +75,12 @@ preinstall:
 CMakeFiles\C_Studies.dir\all:
 	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\depend
 	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Built target C_Studies"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target C_Studies"
 .PHONY : CMakeFiles\C_Studies.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\C_Studies.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles 4
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles\C_Studies.dir\rule
