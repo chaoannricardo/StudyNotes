@@ -7,3 +7,5 @@ CMakeFiles\C_Studies.dir\ex002.c.obj: ..\ex002.c
 
 CMakeFiles\C_Studies.dir\ex003.c.obj: ..\ex003.c
 
+CMakeFiles\C_Studies.dir\ex004.c.obj: ..\ex004.c
+
