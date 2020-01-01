@@ -3,4 +3,4 @@ project(C_Studies C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(C_Studies ex001.c ex002.c ex003.c ex004.c)
+add_executable(C_Studies BasicC/ex001.c BasicC/ex002.c BasicC/ex003.c BasicC/ex004.c BasicC/ex005.c)
