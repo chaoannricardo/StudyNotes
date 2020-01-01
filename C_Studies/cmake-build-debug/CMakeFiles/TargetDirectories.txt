@@ -1,0 +1,3 @@
+C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/C_Studies.dir
+C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/rebuild_cache.dir

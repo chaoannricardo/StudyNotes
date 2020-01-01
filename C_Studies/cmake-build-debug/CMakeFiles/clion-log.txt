@@ -1,1 +1,4 @@
-Visual Studio not found at: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community Configure
+"C:\Program Files\JetBrains\CLion 2019.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Storage\Github\StudyNotes\C_Studies
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug
