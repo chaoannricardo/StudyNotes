@@ -11,7 +11,7 @@ This is a repository mainly consists study notes and codes of topics such as:
 * [R](#r-studies)
 ### Deep/Machine Learning
 * [Deep Learning with Python](#Maning-Deep-Learning-with-Python) 
-* [Deep Learning from Scratch](#O'Relly-Deep-Learning-from-Scratch)
+* [Deep Learning from Scratch](#ORelly-Deep-Learning-from-Scratch)
 * [Python Machine Learning](#Packt-Python-Machine-Learning)
 * [TensorFlow](#TensorFlow)
 ### Others
