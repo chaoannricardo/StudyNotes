@@ -7,7 +7,7 @@ This is a repository mainly consists study notes and codes of topics such as:
 <br>
 
 ### Programming Languages
-* [C Sharp](####c-sharp)
+* [C Sharp](#c-sharp)
 ### Deep/Machine Learning
 * [Deep Learning with Python](####Maning-Deep-Learning-with-Python)
 * [Deep Learning from Scratch](####O'Relly: Deep Learning from Scratch / 用 Python 進行深度學習實作)
@@ -17,7 +17,7 @@ This is a repository mainly consists study notes and codes of topics such as:
 
 <br>
 
-#### C Sharp
+# C Sharp
 
 <br>
 
