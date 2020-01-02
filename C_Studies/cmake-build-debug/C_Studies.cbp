@@ -111,6 +111,12 @@
 		<Unit filename="C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex009.c">
 			<Option target="C_Studies"/>
 		</Unit>
+		<Unit filename="C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex010.c">
+			<Option target="C_Studies"/>
+		</Unit>
+		<Unit filename="C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex011.c">
+			<Option target="C_Studies"/>
+		</Unit>
 		<Unit filename="C:/Storage/Github/StudyNotes/C_Studies/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

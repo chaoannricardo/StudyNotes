@@ -367,6 +367,60 @@ BasicC\ex009.c.s:
 	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex009.c.s
 .PHONY : BasicC\ex009.c.s
 
+BasicC\ex010.obj: BasicC\ex010.c.obj
+
+.PHONY : BasicC\ex010.obj
+
+# target to build an object file
+BasicC\ex010.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex010.c.obj
+.PHONY : BasicC\ex010.c.obj
+
+BasicC\ex010.i: BasicC\ex010.c.i
+
+.PHONY : BasicC\ex010.i
+
+# target to preprocess a source file
+BasicC\ex010.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex010.c.i
+.PHONY : BasicC\ex010.c.i
+
+BasicC\ex010.s: BasicC\ex010.c.s
+
+.PHONY : BasicC\ex010.s
+
+# target to generate assembly for a file
+BasicC\ex010.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex010.c.s
+.PHONY : BasicC\ex010.c.s
+
+BasicC\ex011.obj: BasicC\ex011.c.obj
+
+.PHONY : BasicC\ex011.obj
+
+# target to build an object file
+BasicC\ex011.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex011.c.obj
+.PHONY : BasicC\ex011.c.obj
+
+BasicC\ex011.i: BasicC\ex011.c.i
+
+.PHONY : BasicC\ex011.i
+
+# target to preprocess a source file
+BasicC\ex011.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex011.c.i
+.PHONY : BasicC\ex011.c.i
+
+BasicC\ex011.s: BasicC\ex011.c.s
+
+.PHONY : BasicC\ex011.s
+
+# target to generate assembly for a file
+BasicC\ex011.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex011.c.s
+.PHONY : BasicC\ex011.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -403,6 +457,12 @@ help:
 	@echo ... BasicC/ex009.obj
 	@echo ... BasicC/ex009.i
 	@echo ... BasicC/ex009.s
+	@echo ... BasicC/ex010.obj
+	@echo ... BasicC/ex010.i
+	@echo ... BasicC/ex010.s
+	@echo ... BasicC/ex011.obj
+	@echo ... BasicC/ex011.i
+	@echo ... BasicC/ex011.s
 .PHONY : help
 
 
