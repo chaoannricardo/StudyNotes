@@ -14,6 +14,10 @@ int main(void){
         case '3':
             printf("Too bad!!!");
             break;
+        default:
+            printf("error\n");
+            break;
     }
     system("pause");
+    return 0;
 }
