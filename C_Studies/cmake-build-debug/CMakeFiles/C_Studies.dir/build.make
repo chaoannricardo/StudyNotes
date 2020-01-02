@@ -191,6 +191,44 @@ CMakeFiles\C_Studies.dir\BasicC\ex007.c.s: cmake_force
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\C_Studies.dir\BasicC\ex007.c.s /c C:\Storage\Github\StudyNotes\C_Studies\BasicC\ex007.c
 <<
 
+CMakeFiles\C_Studies.dir\BasicC\ex008.c.obj: CMakeFiles\C_Studies.dir\flags.make
+CMakeFiles\C_Studies.dir\BasicC\ex008.c.obj: ..\BasicC\ex008.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/C_Studies.dir/BasicC/ex008.c.obj"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1424~1.283\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\C_Studies.dir\BasicC\ex008.c.obj /FdCMakeFiles\C_Studies.dir\ /FS -c C:\Storage\Github\StudyNotes\C_Studies\BasicC\ex008.c
+<<
+
+CMakeFiles\C_Studies.dir\BasicC\ex008.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/C_Studies.dir/BasicC/ex008.c.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1424~1.283\bin\Hostx86\x86\cl.exe > CMakeFiles\C_Studies.dir\BasicC\ex008.c.i @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Storage\Github\StudyNotes\C_Studies\BasicC\ex008.c
+<<
+
+CMakeFiles\C_Studies.dir\BasicC\ex008.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/C_Studies.dir/BasicC/ex008.c.s"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1424~1.283\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\C_Studies.dir\BasicC\ex008.c.s /c C:\Storage\Github\StudyNotes\C_Studies\BasicC\ex008.c
+<<
+
+CMakeFiles\C_Studies.dir\BasicC\ex009.c.obj: CMakeFiles\C_Studies.dir\flags.make
+CMakeFiles\C_Studies.dir\BasicC\ex009.c.obj: ..\BasicC\ex009.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/C_Studies.dir/BasicC/ex009.c.obj"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1424~1.283\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\C_Studies.dir\BasicC\ex009.c.obj /FdCMakeFiles\C_Studies.dir\ /FS -c C:\Storage\Github\StudyNotes\C_Studies\BasicC\ex009.c
+<<
+
+CMakeFiles\C_Studies.dir\BasicC\ex009.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/C_Studies.dir/BasicC/ex009.c.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1424~1.283\bin\Hostx86\x86\cl.exe > CMakeFiles\C_Studies.dir\BasicC\ex009.c.i @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Storage\Github\StudyNotes\C_Studies\BasicC\ex009.c
+<<
+
+CMakeFiles\C_Studies.dir\BasicC\ex009.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/C_Studies.dir/BasicC/ex009.c.s"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1424~1.283\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\C_Studies.dir\BasicC\ex009.c.s /c C:\Storage\Github\StudyNotes\C_Studies\BasicC\ex009.c
+<<
+
 # Object files for target C_Studies
 C_Studies_OBJECTS = \
 "CMakeFiles\C_Studies.dir\BasicC\ex001.c.obj" \
@@ -199,7 +237,9 @@ C_Studies_OBJECTS = \
 "CMakeFiles\C_Studies.dir\BasicC\ex004.c.obj" \
 "CMakeFiles\C_Studies.dir\BasicC\ex005.c.obj" \
 "CMakeFiles\C_Studies.dir\BasicC\ex006.c.obj" \
-"CMakeFiles\C_Studies.dir\BasicC\ex007.c.obj"
+"CMakeFiles\C_Studies.dir\BasicC\ex007.c.obj" \
+"CMakeFiles\C_Studies.dir\BasicC\ex008.c.obj" \
+"CMakeFiles\C_Studies.dir\BasicC\ex009.c.obj"
 
 # External object files for target C_Studies
 C_Studies_EXTERNAL_OBJECTS =
@@ -211,9 +251,11 @@ C_Studies.exe: CMakeFiles\C_Studies.dir\BasicC\ex004.c.obj
 C_Studies.exe: CMakeFiles\C_Studies.dir\BasicC\ex005.c.obj
 C_Studies.exe: CMakeFiles\C_Studies.dir\BasicC\ex006.c.obj
 C_Studies.exe: CMakeFiles\C_Studies.dir\BasicC\ex007.c.obj
+C_Studies.exe: CMakeFiles\C_Studies.dir\BasicC\ex008.c.obj
+C_Studies.exe: CMakeFiles\C_Studies.dir\BasicC\ex009.c.obj
 C_Studies.exe: CMakeFiles\C_Studies.dir\build.make
 C_Studies.exe: CMakeFiles\C_Studies.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable C_Studies.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable C_Studies.exe"
 	"C:\Program Files\JetBrains\CLion 2019.3.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\C_Studies.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1424~1.283\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\C_Studies.dir\objects1.rsp @<<
  /out:C_Studies.exe /implib:C_Studies.lib /pdb:C:\Storage\Github\StudyNotes\C_Studies\cmake-build-debug\C_Studies.pdb /version:0.0  /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

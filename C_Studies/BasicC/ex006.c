@@ -6,7 +6,7 @@ int ex006 (void){
     int number;
     int i;
     printf("Please enter an integer: ");
-    scanf_s("%d",number);
+    scanf_s("%d",&number);
     /* increasing */
     for (i=1; i<=number; i++) {
         sum+=i;
@@ -23,9 +23,9 @@ int ex006 (void){
         sum += i;
         printf("%d", i);
         if (i<=1)
-            printf("%d",i);
-        else
             printf("=");
+        else
+            printf("+");
     }
     printf("%d\n",sum);
     system("pause");

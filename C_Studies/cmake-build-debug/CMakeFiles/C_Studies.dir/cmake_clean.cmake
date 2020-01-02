@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/C_Studies.dir/BasicC/ex005.c.obj"
   "CMakeFiles/C_Studies.dir/BasicC/ex006.c.obj"
   "CMakeFiles/C_Studies.dir/BasicC/ex007.c.obj"
+  "CMakeFiles/C_Studies.dir/BasicC/ex008.c.obj"
+  "CMakeFiles/C_Studies.dir/BasicC/ex009.c.obj"
   "C_Studies.exe"
   "C_Studies.exe.manifest"
   "C_Studies.lib"

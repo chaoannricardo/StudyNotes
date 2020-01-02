@@ -6,9 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex007.c
+C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex006.c
+stdlib.h
+-
 stdio.h
 -
+
+C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex008.c
 stdlib.h
+-
+stdio.h
 -
 
