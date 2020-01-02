@@ -15,4 +15,5 @@ int main(void){
             printf("Too bad!!!");
             break;
     }
+    system("pause");
 }
