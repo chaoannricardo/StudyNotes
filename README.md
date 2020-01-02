@@ -7,8 +7,8 @@ This is a repository mainly consists study notes and codes of topics such as:
 ### Programming Languages
 * [C Sharp](#c-sharp)
 * [C](#c-studies)
-* [Python](#python_studies)
-* [R](#r_studies)
+* [Python](#python-studies)
+* [R](#r-studies)
 ### Deep/Machine Learning
 * [Deep Learning with Python](#Maning:-Deep-Learning-with-Python) 
 * [Deep Learning from Scratch](#O'Relly:-Deep-Learning-from-Scratch)
