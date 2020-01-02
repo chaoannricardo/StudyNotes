@@ -13,3 +13,5 @@ CMakeFiles\C_Studies.dir\BasicC\ex005.c.obj: ..\BasicC\ex005.c
 
 CMakeFiles\C_Studies.dir\BasicC\ex006.c.obj: ..\BasicC\ex006.c
 
+CMakeFiles\C_Studies.dir\BasicC\ex007.c.obj: ..\BasicC\ex007.c
+
