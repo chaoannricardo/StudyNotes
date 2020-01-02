@@ -17,6 +17,10 @@ This is a repository mainly consists study notes and codes of topics such as:
 
 <br>
 
+#### C Sharp
+
+<br>
+
 ####  III Data Engineer Training Course
 III: Data Engineer BDSE10 / 臺灣資策會 巨量資料分析班 第十期
 
