@@ -9,6 +9,7 @@ This is a repository mainly consists study notes and codes of
 ## Index
 
 ### Deep/Machine Learning
+* [Maning: Deep Learning with Python / Keras大神帶你用Python實做](####Maning)
 * [Maning: Deep Learning with Python / Keras大神帶你用Python實做](####Maning: Deep Learning with Python / Keras大神帶你用Python實做)
 * [O'Relly: Deep Learning from Scratch / 用 Python 進行深度學習實作](####O'Relly: Deep Learning from Scratch / 用 Python 進行深度學習實作)
 * [Packt: Python-Machine-Learning / Python 機器學習](####Packt: Python-Machine-Learning / Python 機器學習)
@@ -19,6 +20,8 @@ This is a repository mainly consists study notes and codes of
 ## Description
 
 ####  **III: Data Engineer BDSE10 / 臺灣資策會 巨量資料分析班 第十期** 
+
+### Maning
 
 <br>
 
