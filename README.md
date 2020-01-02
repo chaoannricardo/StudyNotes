@@ -10,9 +10,9 @@ This is a repository mainly consists study notes and codes of topics such as:
 * [Python](#python-studies)
 * [R](#r-studies)
 ### Deep/Machine Learning
-* [Deep Learning with Python](#Maning:-Deep-Learning-with-Python) 
-* [Deep Learning from Scratch](#O'Relly:-Deep-Learning-from-Scratch)
-* [Python Machine Learning](#Packt:-Python-Machine-Learning)
+* [Deep Learning with Python](#Maning-Deep-Learning-with-Python) 
+* [Deep Learning from Scratch](#O'Relly-Deep-Learning-from-Scratch)
+* [Python Machine Learning](#Packt-Python-Machine-Learning)
 * [TensorFlow](#TensorFlow)
 ### Others
 * [Git](#Git)
@@ -45,7 +45,7 @@ Which includes topic such as, **Java, JDBC, T-SQL, HTML, JavaScript, R, Basic cr
 
 <br>
 
-# Maning: Deep Learning with Python 
+# Maning Deep Learning with Python 
 Updated to Chapter 
 
 **Author of Keras:** François Chollet; 1st Edition
@@ -56,7 +56,7 @@ This is a repository consists of codes and study notes of the book **Maning: Dee
 
 <br>
 
-# O'Relly: Deep Learning from Scratch
+# O'Relly Deep Learning from Scratch
 *Updated to Chapter 5.6.2*
 
 **Author:**  齋藤康毅; 1st Edition
@@ -67,7 +67,7 @@ This is a repository consists of codes and study notes of the book **O'Relly: De
 
 <br>
 
-# Packt: Python Machine Learning
+# Packt Python Machine Learning
 *Update to Chapter 5*
 
 **Author:** Sebastian Raschka; Vahid Mirjalili; 2nd Edition
