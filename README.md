@@ -6,7 +6,7 @@ This is a repository mainly consists study notes and codes of topics such as:
 * **Data Engineering**, such as study notes of Hadoop
 ### Programming Languages
 * [C Sharp](#c-sharp)
-* [C](#c-studies)
+* [Data Structure with C](#data-structure-with-c)
 * [Python](#python-studies)
 * [R](#r-studies)
 ### Deep/Machine Learning
@@ -24,7 +24,7 @@ This is a repository mainly consists study notes and codes of topics such as:
 
 <br>
 
-# C Studies
+# Data Structure with C
 
 <br>
 
