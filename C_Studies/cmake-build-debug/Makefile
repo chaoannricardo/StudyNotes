@@ -124,140 +124,140 @@ C_Studies\fast:
 	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\build
 .PHONY : C_Studies\fast
 
-ex001.obj: ex001.c.obj
+BasicC\ex001.obj: BasicC\ex001.c.obj
 
-.PHONY : ex001.obj
-
-# target to build an object file
-ex001.c.obj:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex001.c.obj
-.PHONY : ex001.c.obj
-
-ex001.i: ex001.c.i
-
-.PHONY : ex001.i
-
-# target to preprocess a source file
-ex001.c.i:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex001.c.i
-.PHONY : ex001.c.i
-
-ex001.s: ex001.c.s
-
-.PHONY : ex001.s
-
-# target to generate assembly for a file
-ex001.c.s:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex001.c.s
-.PHONY : ex001.c.s
-
-ex002.obj: ex002.c.obj
-
-.PHONY : ex002.obj
+.PHONY : BasicC\ex001.obj
 
 # target to build an object file
-ex002.c.obj:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex002.c.obj
-.PHONY : ex002.c.obj
+BasicC\ex001.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex001.c.obj
+.PHONY : BasicC\ex001.c.obj
 
-ex002.i: ex002.c.i
+BasicC\ex001.i: BasicC\ex001.c.i
 
-.PHONY : ex002.i
+.PHONY : BasicC\ex001.i
 
 # target to preprocess a source file
-ex002.c.i:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex002.c.i
-.PHONY : ex002.c.i
+BasicC\ex001.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex001.c.i
+.PHONY : BasicC\ex001.c.i
 
-ex002.s: ex002.c.s
+BasicC\ex001.s: BasicC\ex001.c.s
 
-.PHONY : ex002.s
+.PHONY : BasicC\ex001.s
 
 # target to generate assembly for a file
-ex002.c.s:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex002.c.s
-.PHONY : ex002.c.s
+BasicC\ex001.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex001.c.s
+.PHONY : BasicC\ex001.c.s
 
-ex003.obj: ex003.c.obj
+BasicC\ex002.obj: BasicC\ex002.c.obj
 
-.PHONY : ex003.obj
+.PHONY : BasicC\ex002.obj
 
 # target to build an object file
-ex003.c.obj:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex003.c.obj
-.PHONY : ex003.c.obj
+BasicC\ex002.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex002.c.obj
+.PHONY : BasicC\ex002.c.obj
 
-ex003.i: ex003.c.i
+BasicC\ex002.i: BasicC\ex002.c.i
 
-.PHONY : ex003.i
+.PHONY : BasicC\ex002.i
 
 # target to preprocess a source file
-ex003.c.i:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex003.c.i
-.PHONY : ex003.c.i
+BasicC\ex002.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex002.c.i
+.PHONY : BasicC\ex002.c.i
 
-ex003.s: ex003.c.s
+BasicC\ex002.s: BasicC\ex002.c.s
 
-.PHONY : ex003.s
+.PHONY : BasicC\ex002.s
 
 # target to generate assembly for a file
-ex003.c.s:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex003.c.s
-.PHONY : ex003.c.s
+BasicC\ex002.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex002.c.s
+.PHONY : BasicC\ex002.c.s
 
-ex004.obj: ex004.c.obj
+BasicC\ex003.obj: BasicC\ex003.c.obj
 
-.PHONY : ex004.obj
+.PHONY : BasicC\ex003.obj
 
 # target to build an object file
-ex004.c.obj:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex004.c.obj
-.PHONY : ex004.c.obj
+BasicC\ex003.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex003.c.obj
+.PHONY : BasicC\ex003.c.obj
 
-ex004.i: ex004.c.i
+BasicC\ex003.i: BasicC\ex003.c.i
 
-.PHONY : ex004.i
+.PHONY : BasicC\ex003.i
 
 # target to preprocess a source file
-ex004.c.i:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex004.c.i
-.PHONY : ex004.c.i
+BasicC\ex003.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex003.c.i
+.PHONY : BasicC\ex003.c.i
 
-ex004.s: ex004.c.s
+BasicC\ex003.s: BasicC\ex003.c.s
 
-.PHONY : ex004.s
+.PHONY : BasicC\ex003.s
 
 # target to generate assembly for a file
-ex004.c.s:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex004.c.s
-.PHONY : ex004.c.s
+BasicC\ex003.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex003.c.s
+.PHONY : BasicC\ex003.c.s
 
-ex005.obj: ex005.c.obj
+BasicC\ex004.obj: BasicC\ex004.c.obj
 
-.PHONY : ex005.obj
+.PHONY : BasicC\ex004.obj
 
 # target to build an object file
-ex005.c.obj:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex005.c.obj
-.PHONY : ex005.c.obj
+BasicC\ex004.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex004.c.obj
+.PHONY : BasicC\ex004.c.obj
 
-ex005.i: ex005.c.i
+BasicC\ex004.i: BasicC\ex004.c.i
 
-.PHONY : ex005.i
+.PHONY : BasicC\ex004.i
 
 # target to preprocess a source file
-ex005.c.i:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex005.c.i
-.PHONY : ex005.c.i
+BasicC\ex004.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex004.c.i
+.PHONY : BasicC\ex004.c.i
 
-ex005.s: ex005.c.s
+BasicC\ex004.s: BasicC\ex004.c.s
 
-.PHONY : ex005.s
+.PHONY : BasicC\ex004.s
 
 # target to generate assembly for a file
-ex005.c.s:
-	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\ex005.c.s
-.PHONY : ex005.c.s
+BasicC\ex004.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex004.c.s
+.PHONY : BasicC\ex004.c.s
+
+BasicC\ex005.obj: BasicC\ex005.c.obj
+
+.PHONY : BasicC\ex005.obj
+
+# target to build an object file
+BasicC\ex005.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex005.c.obj
+.PHONY : BasicC\ex005.c.obj
+
+BasicC\ex005.i: BasicC\ex005.c.i
+
+.PHONY : BasicC\ex005.i
+
+# target to preprocess a source file
+BasicC\ex005.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex005.c.i
+.PHONY : BasicC\ex005.c.i
+
+BasicC\ex005.s: BasicC\ex005.c.s
+
+.PHONY : BasicC\ex005.s
+
+# target to generate assembly for a file
+BasicC\ex005.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex005.c.s
+.PHONY : BasicC\ex005.c.s
 
 # Help Target
 help:
@@ -268,21 +268,21 @@ help:
 	@echo ... C_Studies
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... ex001.obj
-	@echo ... ex001.i
-	@echo ... ex001.s
-	@echo ... ex002.obj
-	@echo ... ex002.i
-	@echo ... ex002.s
-	@echo ... ex003.obj
-	@echo ... ex003.i
-	@echo ... ex003.s
-	@echo ... ex004.obj
-	@echo ... ex004.i
-	@echo ... ex004.s
-	@echo ... ex005.obj
-	@echo ... ex005.i
-	@echo ... ex005.s
+	@echo ... BasicC/ex001.obj
+	@echo ... BasicC/ex001.i
+	@echo ... BasicC/ex001.s
+	@echo ... BasicC/ex002.obj
+	@echo ... BasicC/ex002.i
+	@echo ... BasicC/ex002.s
+	@echo ... BasicC/ex003.obj
+	@echo ... BasicC/ex003.i
+	@echo ... BasicC/ex003.s
+	@echo ... BasicC/ex004.obj
+	@echo ... BasicC/ex004.i
+	@echo ... BasicC/ex004.s
+	@echo ... BasicC/ex005.obj
+	@echo ... BasicC/ex005.i
+	@echo ... BasicC/ex005.s
 .PHONY : help
 
 

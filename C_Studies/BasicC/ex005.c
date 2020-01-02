@@ -12,6 +12,7 @@ int main(void){
             printf("Still got some space to imporove!!!");
             break;
         case '3':
-            
+            printf("Too bad!!!");
+            break;
     }
 }
