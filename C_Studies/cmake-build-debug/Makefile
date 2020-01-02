@@ -259,6 +259,33 @@ BasicC\ex005.c.s:
 	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex005.c.s
 .PHONY : BasicC\ex005.c.s
 
+BasicC\ex006.obj: BasicC\ex006.c.obj
+
+.PHONY : BasicC\ex006.obj
+
+# target to build an object file
+BasicC\ex006.c.obj:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex006.c.obj
+.PHONY : BasicC\ex006.c.obj
+
+BasicC\ex006.i: BasicC\ex006.c.i
+
+.PHONY : BasicC\ex006.i
+
+# target to preprocess a source file
+BasicC\ex006.c.i:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex006.c.i
+.PHONY : BasicC\ex006.c.i
+
+BasicC\ex006.s: BasicC\ex006.c.s
+
+.PHONY : BasicC\ex006.s
+
+# target to generate assembly for a file
+BasicC\ex006.c.s:
+	$(MAKE) -f CMakeFiles\C_Studies.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\C_Studies.dir\BasicC\ex006.c.s
+.PHONY : BasicC\ex006.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -283,6 +310,9 @@ help:
 	@echo ... BasicC/ex005.obj
 	@echo ... BasicC/ex005.i
 	@echo ... BasicC/ex005.s
+	@echo ... BasicC/ex006.obj
+	@echo ... BasicC/ex006.i
+	@echo ... BasicC/ex006.s
 .PHONY : help
 
 

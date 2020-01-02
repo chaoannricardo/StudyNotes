@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int main(void){
+int ex005(void){
     char ch;
     scanf_s("%c", &ch);
     switch (ch)

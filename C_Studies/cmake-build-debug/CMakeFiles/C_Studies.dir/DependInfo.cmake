@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex003.c" "C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/C_Studies.dir/BasicC/ex003.c.obj"
   "C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex004.c" "C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/C_Studies.dir/BasicC/ex004.c.obj"
   "C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex005.c" "C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/C_Studies.dir/BasicC/ex005.c.obj"
+  "C:/Storage/Github/StudyNotes/C_Studies/BasicC/ex006.c" "C:/Storage/Github/StudyNotes/C_Studies/cmake-build-debug/CMakeFiles/C_Studies.dir/BasicC/ex006.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 
