@@ -1,13 +1,13 @@
 # Study Notes
 
 This is a repository mainly consists study notes and codes of topics such as:
-* Programming Laguanges, such as Python, C, Java, and others.
-* Machine Learning and Deep Learning.
+* **Programming Languages** , such as Python, C, Java, and others.
+* **Machine Learning and Deep Learning**
 
 <br>
 
 ### Programming Languages
-* [C#](####c-sharp)
+* [C#](####C-Sharp)
 ### Deep/Machine Learning
 * [Deep Learning with Python](####Maning-Deep-Learning-with-Python)
 * [Deep Learning from Scratch](####O'Relly: Deep Learning from Scratch / 用 Python 進行深度學習實作)
