@@ -13,8 +13,8 @@ int ex009(void){
                              {"5.No need of that."}};
     for(i=0; i<5; i++)
     {
-     printf("%s", newspaper[i]);
-     printf("\n");
+        printf("%s", newspaper[i]);
+        printf("\n");
     }
     printf("Please enter your choice");
     choice=getche();
@@ -33,4 +33,3 @@ int ex009(void){
     system("pause");
     return 0;
 }
-
