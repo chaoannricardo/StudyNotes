@@ -1,0 +1,25 @@
+<html><head>
+ <title></title>
+ <script language="javascript" type="text/javascript">
+     var redirectTimerId = 0;
+     function closeWindow()
+     {
+         window.opener = top;
+         redirectTimerId = window.setTimeout('redirect()', 2000);
+         window.close(); 
+     }
+
+     function stopRedirect()
+     {
+         window.clearTimeout(redirectTimerId);
+     }
+
+     function redirect()
+     {
+         window.location = 'default.aspx';
+     }
+ </script>
+ </head>
+ <body onload="closeWindow()" onunload="stopRedirect()" style="">
+     <center><h1>Please Wait...</h1></center>
+ </body></html>
