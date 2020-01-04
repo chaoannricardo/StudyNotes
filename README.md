@@ -1,5 +1,4 @@
 # Study Notes
-
 This is a repository mainly consists study notes and codes of topics such as:
 * **Programming Languages** , such as study notes of Python, C, Java, and others.
 * **Machine Learning and Deep Learning**
