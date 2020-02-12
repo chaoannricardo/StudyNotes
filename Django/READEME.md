@@ -41,10 +41,6 @@ sudo apt-get -y install vsftpd
 conda create python==3.7 --name Django
 # pip install django
 pip install django
-# start a new project with django (myweb is the name of the project)
-django-admin startproject myweb
-# freeze package list of the enviroment
-conda list > requirements.md
 ```
 
 <br>
@@ -54,8 +50,17 @@ conda list > requirements.md
 ## 2.1.2 產生第一個網路框架
 
 ```shell
+# start a new project with django (myweb is the name of the project)
+django-admin startproject myweb
+# start a new app (blog is the name of the app)
+python manage.py startapp blog
+```
+
+
+```shell
 # run the django server
-python manage.py runserver 192.168.92.130:8000
+python manage.py runserver 0.0.0.0:8000
+# 0.0.0.0 means that you're running the website on all internet interfaces.
 ```
 ```shell
 # if facing "DisallowedHost" error
@@ -63,7 +68,43 @@ sudo vim setting.py
 ALLOWED_HOSTS = ['*']
 ```
 
+<br>
 
+## 2.3.1 建立網頁版輸出模版template
+
+###### BASE_DIR 為與 manage.py 所在的目錄
+
+1. 在 setting.py 中設定模版資料夾的位置
+
+   1. 設定一個和 manage.py 同級的 templates 資料夾
+   2. 將 templates 資料夾路徑加入 setting.py 中的 TEMPLATES（修改 DIRS 路徑）
+      1. E.G. os.path.join(BASE_DIR, 'templates')
+   3. 撰寫 views.py 程式碼
+
+   ```python
+   from django.template.loader import get_template
+   from django.http import HttpResponse
+   from django.shortcuts import render
+   from datetime import datetime
+   from .models import Post
+   
+   
+   # Create your views here.
+   def homepage(request):
+       template = get_template('About.html')
+       posts = Post.object.all()
+       now = datetime.now()
+       html = template.render(locals())
+       return HttpResponse(html)
+   ```
+
+2. 在 urls.py 建立網址和 views.py 中的函數對應的關係
+
+3. 建立 .html 檔案（例如 index.html），做好排版並安排資料要放置的位置
+
+4. 執行程式，以 objects.all() 在 views.py 取得資料，並放入變數中，例如 posts
+
+5. 以 render 函數，把資料（例如posts）送到指定的模版檔案
 
 
 
