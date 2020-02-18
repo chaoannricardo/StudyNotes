@@ -63,9 +63,20 @@ python manage.py runserver 0.0.0.0:8000
 # 0.0.0.0 means that you're running the website on all internet interfaces.
 ```
 ```shell
-# if facing "DisallowedHost" error
-sudo vim setting.py
+# configure settings.py inside configurations' directory
+.
+.
 ALLOWED_HOSTS = ['*']
+.
+.
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 ```
 
 <br>

@@ -6,7 +6,7 @@ This part documents the way to set up a linebot with basic echo function, with D
 
 
 
-1. Create a conda environment with line-bot-sdk and django installed, after that set up **requirements.txt** and **Procfile** for later Heroku usage.
+1. Create a conda environment with **line-bot-sdk** and **django** installed, after that set up **requirements.txt** and **Procfile** for later Heroku usage.
 
 ```shell
 # set up conda environment
