@@ -35,18 +35,7 @@ def create_data(x, y, raw_data):
     return value_array, value_list
 
 
-def data_preprocessing(data_path):
-    raw_data = pd.read_csv(data_path, header=None)
-    # 準備最後餵進 pandas 的 list
-    data_list = []
-    for x in range(raw_data.shape[0]):
-        for y in range(raw_data.shape[1]):
-            value_array, value_list = create_data(x, y, raw_data)
-            # Row 資料建立完成，Append 到總資料框上
-            data_list.append(value_list)
-
-    training_data = pd.DataFrame(data_list, columns=[('X' + str(i)) for i in range(25)])
-
+def create_y_value(training_data):
     # 開始計算 x_movement, y_movement 值
     for i in range(len(training_data)):
         row_max = int(training_data.iloc[i, :].max())
@@ -92,9 +81,49 @@ def data_preprocessing(data_path):
                 or int(training_data.iloc[i, 14]) == row_max \
                 or int(training_data.iloc[i, 19]) == row_max or int(training_data.iloc[i, 24]) == row_max:
             training_data.loc[i, 'y_movement'] = 2
+    return training_data
 
-    training_data.to_csv("./data/data_regression_data.csv", sep=',', index=None, header=True)
-    return training_data, raw_data
+
+def data_preprocessing(data_path):
+    raw_data = pd.read_csv(data_path, header=None)
+    # 準備最後餵進 pandas 的 list
+    data_list = []
+    for x in range(raw_data.shape[0]):
+        for y in range(raw_data.shape[1]):
+            value_array, value_list = create_data(x, y, raw_data)
+            # Row 資料建立完成，Append 到總資料框上
+            data_list.append(value_list)
+
+    training_data = pd.DataFrame(data_list, columns=[('X' + str(i)) for i in range(25)])
+    training_data_preprocessed = create_y_value(training_data)
+    training_data_preprocessed.to_csv("./data/data_regression_data.csv", sep=',', index=None, header=True)
+    return training_data_preprocessed, raw_data
+
+
+def second_phase_regression(start_x, start_y, raw_data):
+    # Create Training Data
+    data_point_x = [i for i in range((start_x - 5), (start_x + 6))]
+    data_point_y = [i for i in range((start_y - 5), (start_y + 6))]
+    data_list = []
+    for i, j in enumerate(data_point_x):
+        for a, b in enumerate(data_point_y):
+            value_array, value_list = create_data(j, b, raw_data)
+            data_list.append(value_list)
+    second_phase_data = pd.DataFrame(data_list, columns=[('X' + str(i)) for i in range(25)])
+    # data preprocessing
+    second_phase_data_preprocessed = create_y_value(second_phase_data)
+    # split the data to X, and y1, y2 and train regression
+    X = second_phase_data_preprocessed.iloc[:, :-2]
+    y = second_phase_data_preprocessed.iloc[:, -1]
+
+    reg_y = linear_model.LinearRegression().fit(X, y)
+    y = second_phase_data_preprocessed.iloc[:, -2]
+    reg_x = linear_model.LinearRegression().fit(X, y)
+    # predict the data
+    test_array, test_list = create_data(start_x, start_y, raw_data)
+    x_movement = int(np.around(reg_x.predict(test_array), decimals=0))
+    y_movement = int(np.around(reg_y.predict(test_array), decimals=0))
+    return x_movement, y_movement
 
 
 def climb(data_path, penalty, margin, stop_epoch, memory, start_x, start_y):
@@ -105,7 +134,6 @@ def climb(data_path, penalty, margin, stop_epoch, memory, start_x, start_y):
     reg_y = linear_model.LinearRegression().fit(X, y)
     # print('R^2:', reg_y.score(X, y))
     # train regression model for x-axis
-    X = training_data.iloc[:, :-2]
     y = training_data.iloc[:, -2]
     reg_x = linear_model.LinearRegression().fit(X, y)
     # print('R^2:', reg_x.score(X, y))
@@ -174,28 +202,42 @@ def climb(data_path, penalty, margin, stop_epoch, memory, start_x, start_y):
 
         # 檢查是否回到原本的點
         if int(start_x + x_movement) in x_memory and int(start_y + y_movement) in y_memory:
-            # 重新隨機賦予新值
-            random_walk = [i for i in range(-2, 3)]
 
-            if start_x <= margin or (raw_data.shape[0] - start_x) <= margin or start_y <= margin \
-                    or (raw_data.shape[1] - start_y) <= margin:
-                print('                   Random Walk (With Penalty)!!!!!!!')
-                x_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
-                y_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
-                # 確認新點會在邊界內
-                while not 0 <= (start_y + y_movement) <= (raw_data.shape[1] - 1) \
-                        or not 0 <= (start_x + x_movement) <= (raw_data.shape[0] - 1):
-                    x_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
-                    y_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
-            else:
-                print('                   Random Walk!!!!!!!')
-                x_movement = random_walk[random.randint(0, len(random_walk) - 1)]
-                y_movement = random_walk[random.randint(0, len(random_walk) - 1)]
-                # 確認新點會在邊界內
-                while not 0 <= (start_y + y_movement) <= (raw_data.shape[1] - 1) \
-                        or not 0 <= (start_x + x_movement) <= (raw_data.shape[0] - 1):
-                    x_movement = random_walk[random.randint(0, len(random_walk) - 1)]
-                    y_movement = random_walk[random.randint(0, len(random_walk) - 1)]
+            # 進行第二階段回歸
+            print('                   Second Phase Regression!!!!!!!')
+            x_movement, y_movement = second_phase_regression(start_x, start_y, raw_data)
+
+            # 如果還是一樣
+            if int(start_x + x_movement) in x_memory and int(start_y + y_movement) in y_memory:
+                # 重新隨機賦予新值
+                random_walk = [i for i in range(-2, 3)]
+                find_epoch = 0
+                while int(start_x + x_movement) in x_memory and int(start_y + y_movement) in y_memory:
+                    # 重新嘗試限制
+                    find_epoch += 1
+                    if find_epoch == 30:
+                        x_memory = []
+                        y_memory = []
+                        print('                   Random Walk (With Penalty)!!!!!!!')
+                    if start_x <= margin or (raw_data.shape[0] - start_x) <= margin or start_y <= margin \
+                            or (raw_data.shape[1] - start_y) <= margin:
+                        print('                   Memory abandoned!!!!!!!')
+                        x_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
+                        y_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
+                        # 確認新點會在邊界內
+                        while not 0 <= (start_y + y_movement) <= (raw_data.shape[1] - 1) \
+                                or not 0 <= (start_x + x_movement) <= (raw_data.shape[0] - 1):
+                            x_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
+                            y_movement = penalty * random_walk[random.randint(0, len(random_walk) - 1)]
+                    else:
+                        print('                   Random Walk!!!!!!!')
+                        x_movement = random_walk[random.randint(0, len(random_walk) - 1)]
+                        y_movement = random_walk[random.randint(0, len(random_walk) - 1)]
+                        # 確認新點會在邊界內
+                        while not 0 <= (start_y + y_movement) <= (raw_data.shape[1] - 1) \
+                                or not 0 <= (start_x + x_movement) <= (raw_data.shape[0] - 1):
+                            x_movement = random_walk[random.randint(0, len(random_walk) - 1)]
+                            y_movement = random_walk[random.randint(0, len(random_walk) - 1)]
 
         # 給予新值
         start_x += x_movement
@@ -225,8 +267,8 @@ def climb(data_path, penalty, margin, stop_epoch, memory, start_x, start_y):
 
 
 if __name__ == '__main__':
-    x_history, y_history = climb("C:/Storage/Github/StudyNotes/2020_DataAnalytics/data/Volcano.csv",
-          penalty=5, margin=10, stop_epoch=3000, memory=5, start_x=60, start_y=86)
+    x_history, y_history = climb("./data/Volcano.csv",
+          penalty=5, margin=10, stop_epoch=3000, memory=25, start_x=60, start_y=86)
 #     print(x_history, '\n', y_history)
     plt.figure(figsize=(5, 5))
     plt.plot(x_history, y_history, linewidth=1)
