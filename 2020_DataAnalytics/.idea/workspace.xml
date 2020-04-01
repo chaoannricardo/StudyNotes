@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4144550c-5f4b-4a92-962b-18172ce35acc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/multiple_regression_raw.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/HW_3-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/HW_3-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HW_3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HW_3.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ORL_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ORL_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mountain_climbing.py" beforeDir="false" afterPath="$PROJECT_DIR$/mountain_climbing.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
