@@ -30,7 +30,7 @@ def stepwise_selection(X, y, initial_list=[], threshold_in=0.01, threshold_out=0
             new_pval[new_column] = model.pvalues[new_column]
         best_pval = new_pval.min()
         if best_pval < threshold_in:
-            best_feature = new_pval.argmin()
+            best_feature = new_pval.idxmin()
             included.append(best_feature)
             changed = True
             if verbose:
@@ -44,7 +44,7 @@ def stepwise_selection(X, y, initial_list=[], threshold_in=0.01, threshold_out=0
             worst_pval = pvalues.max()  # null if pvalues is empty
             if worst_pval > threshold_out:
                 changed = True
-                worst_feature = pvalues.argmax()
+                worst_feature = pvalues.idxmax()
                 included.remove(worst_feature)
                 if verbose:
                     print('Drop {:30} with p-value {:.6}'.format(worst_feature, worst_pval))
