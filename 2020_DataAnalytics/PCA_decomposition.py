@@ -17,7 +17,7 @@ def PCA_decomposition(X, isCorrMX):
     # https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html
     eigenvalues, eigenvectors = np.linalg.eig(X_covariance)
     #
-    X_project = eigenvectors.T.dot(X_center.T).T
+    X_project = -(eigenvectors.T.dot(X_center.T).T)
     return eigenvalues, eigenvectors, X_project
 
 
