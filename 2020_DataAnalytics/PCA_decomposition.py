@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -16,8 +17,42 @@ def PCA_decomposition(X, isCorrMX):
     # calculate eigenvalues and eigenvectors
     # https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html
     eigenvalues, eigenvectors = np.linalg.eig(X_covariance)
-    #
     X_project = -(eigenvectors.T.dot(X_center.T).T)
+    # calculate explainable ratio of each pricipal components
+    explainable_ratio_list = []
+    for i in range(eigenvalues.shape[0]):
+        eigenvalues_totals = np.sum(eigenvalues)
+        ratio = eigenvalues[i] / eigenvalues_totals
+        explainable_ratio_list.append(ratio)
+
+    # calculate how many principal components needed to explain 50, 60, 70, 80, 90% of total variance
+    total_explainable_ratio = 0
+    components_needed_list = []
+    for i, j in enumerate(explainable_ratio_list):
+        total_explainable_ratio += j
+        if total_explainable_ratio >= 0.9:
+            if len(components_needed_list) < 5:
+                components_needed_list.append(i + 1)
+                print('90%:', str(i + 1), 'pricipal components needed.')
+            break
+        elif total_explainable_ratio >= 0.8:
+            if len(components_needed_list) < 4:
+                components_needed_list.append(i + 1)
+                print('80%:', str(i + 1), 'pricipal components needed.')
+        elif total_explainable_ratio >= 0.7:
+            if len(components_needed_list) < 3:
+                components_needed_list.append(i + 1)
+                print('70%:', str(i + 1), 'pricipal components needed.')
+        elif total_explainable_ratio >= 0.6:
+            if len(components_needed_list) < 2:
+                components_needed_list.append(i + 1)
+                print('60%:', str(i + 1), 'pricipal components needed.')
+        elif total_explainable_ratio >= 0.5:
+            if len(components_needed_list) < 1:
+                components_needed_list.append(i + 1)
+                print('50%:', str(i + 1), 'pricipal components needed.')
+
+
     return eigenvalues, eigenvectors, X_project
 
 
