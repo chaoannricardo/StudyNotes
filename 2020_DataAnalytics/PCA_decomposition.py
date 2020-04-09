@@ -18,6 +18,7 @@ def PCA_decomposition(X, isCorrMX):
     # https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html
     eigenvalues, eigenvectors = np.linalg.eig(X_covariance)
     X_project = -(eigenvectors.T.dot(X_center.T).T)
+
     # calculate explainable ratio of each pricipal components
     explainable_ratio_list = []
     for i in range(eigenvalues.shape[0]):
@@ -27,7 +28,15 @@ def PCA_decomposition(X, isCorrMX):
 
     # calculate how many principal components needed to explain 50, 60, 70, 80, 90% of total variance
     total_explainable_ratio = 0
+    total_explainable_ratio_list = []
+    culmulative_explainable_ratio_list = []
     components_needed_list = []
+    for i, j in enumerate(explainable_ratio_list):
+        total_explainable_ratio += j
+        total_explainable_ratio_list.append(total_explainable_ratio)
+        culmulative_explainable_ratio_list.append(np.sum(explainable_ratio_list[(i):]))
+
+    total_explainable_ratio = 0
     for i, j in enumerate(explainable_ratio_list):
         total_explainable_ratio += j
         if total_explainable_ratio >= 0.9:
@@ -52,6 +61,17 @@ def PCA_decomposition(X, isCorrMX):
                 components_needed_list.append(i + 1)
                 print('50%:', str(i + 1), 'pricipal components needed.')
 
+    # Plot the scree plot
+    if len(explainable_ratio_list) <= 15:
+        x_list = ['PC' + str(i) for i in range(1, len(explainable_ratio_list) + 1)]
+        plt.plot(total_explainable_ratio_list)
+        plt.bar(x_list, culmulative_explainable_ratio_list, align='center', alpha=0.5)
+    else:
+        x_list = ['PC' + str(i) for i in range(1, 16)]
+        plt.plot(total_explainable_ratio_list[:15])
+        plt.bar(x_list, culmulative_explainable_ratio_list[:15], align='center', alpha=0.5)
+    plt.xticks(rotation=90)
+    plt.show()
 
     return eigenvalues, eigenvectors, X_project
 
