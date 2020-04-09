@@ -37,7 +37,7 @@ def stepwise_selection(X, y, initial_list=[], threshold_in=0.01, threshold_out=0
                 print('Add  {:30} with p-value {:.6}'.format(best_feature, best_pval))
 
             # backward step
-            model = sm.OLS(y, sm.add_constant(pd.DataFrame(X[included]))).fit()
+            model = sm.OLS(y, sm.add_constant(pd.DataFrame(X[included].values))).fit()
             print('R_square = ', model.rsquared)
             # use all coefs except intercept
             pvalues = model.pvalues.iloc[1:]
@@ -45,7 +45,7 @@ def stepwise_selection(X, y, initial_list=[], threshold_in=0.01, threshold_out=0
             if worst_pval > threshold_out:
                 changed = True
                 worst_feature = pvalues.idxmax()
-                included.remove(worst_feature)
+                included.remove(included[worst_feature])
                 if verbose:
                     print('Drop {:30} with p-value {:.6}'.format(worst_feature, worst_pval))
             if not changed:
