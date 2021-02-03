@@ -1,0 +1,7 @@
+ludwig train --data_csv "C:/Users/ricardo/Documents/GitHub/Kaggle/1910_Iris/Datasets/new_iris_training.csv" --model_definition "{input_features:[{name: SepalLengthCm, type: numerical}, {name: SepalWidthCm, type: numerical}, {name: PetalLengthCm, type: numerical}, {name: PetalWidthCm, type: numerical}], output_features: [{name: Species, type: category}], training: {epochs: 20000}}" 
+
+ludwig predict --data_csv /home/user/191018_iris/new_iris_test.csv --model_path results/experiment_run_1/model/ -od /home/user/191018_iris/iris_prediction.csv
+
+ludwig visualize --visualization learning_curves --training_statistics results/experiment_run_1/training_statistics.json
+
+ludwig train --data_csv ./191018_iris/pca_train.csv --model_definition "{input_features:[{name: PrincipleComponents_1, type: numerical}, {name: PrincipleComponents_2, type: numerical}], output_features: [{name: Species, type: category}], training: {epochs: 20000}}" 

@@ -1,0 +1,7 @@
+ludwig train --data_csv "C:\Users\ricardo\Documents\GitHub\Kaggle\1910_TMU_EnglishReviewClassification\Data\training_set_without_stopwords_1.csv" --model_definition "{input_features:[{name: text, type: text}], output_features: [{name: class, type: category}], training: {epochs: 20000}}" 
+
+
+ludwig visualize --visualization learning_curves --training_statistics results/experiment_run_2/training_statistics.json
+
+
+ludwig predict --data_csv "C:\Users\ricardo\Documents\GitHub\Kaggle\1910_TMU_EnglishReviewClassification\Data\test_data_without_stopwords_1.csv" --model_path results/experiment_run_2/model/ -od "C:\Users\ricardo\Documents\GitHub\Kaggle\1910_TMU_EnglishReviewClassification\Data"
