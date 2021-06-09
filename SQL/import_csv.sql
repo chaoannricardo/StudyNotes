@@ -1,0 +1,15 @@
+USE linebot;
+SHOW VARIABLES LIKE 'secure_file_priv';
+
+LOAD DATA INFILE "output_utf8.csv"
+INTO TABLE Answers_public
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE "output_utf8.csv"
+INTO TABLE Answers_public
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
