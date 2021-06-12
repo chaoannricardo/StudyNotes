@@ -1,0 +1,17 @@
+use admin
+db.createUser(
+  {
+    user: "ntume",
+    pwd: "Industry400",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+
+
+mongo --port 27017 -u "ntume" -p "Industry400" \
+  --authenticationDatabase "admin"
+  
+  
+  
+db.grantRolesToUser('ntume', [{ role: 'root', db: 'admin' }])
+db.createUser({user:"ricardo",pwd:"XXXXX",roles:[{role:"root",db:"admin"}]})
