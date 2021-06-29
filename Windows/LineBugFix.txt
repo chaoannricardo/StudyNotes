@@ -1,0 +1,3 @@
+經我的測試需要在每次開啟Line 之前，先到windows的暫存位置刪除所有的如下檔案
+1. qtsingleapp-linexx-xxxx-1-lockfile (xxx 為亂碼)
+2. Ticket_10414.lock
