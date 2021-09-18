@@ -1,0 +1,19 @@
+ffmpeg.exe -i Band.of.Brothers.2001.JAP.BluRay.E01.1080p.DTS-HD.MA.5.1.x264-HDWinG.mkv -filter_complex "subtitles='Band.of.Brothers.2001.JAP.BluRay.E01.1080p.DTS-HD.MA.5.1.x264-HDWinG.mkv:si=2'" -acodec copy output.mp4
+
+ffmpeg.exe -i Band.of.Brothers.2001.JAP.BluRay.E01.1080p.DTS-HD.MA.5.1.x264-HDWinG.mkv -map 0:1 -map 0:4 -c:v libx264 -c:a aac output.mp4
+
+ffmpeg -i Band.of.Brothers.2001.JAP.BluRay.E01.1080p.DTS-HD.MA.5.1.x264-HDWinG.mkv -vf subtitles=Band.of.Brothers.2001.JAP.BluRay.E01.1080p.DTS-HD.MA.5.1.x264-HDWinG.mkv -acodec copy new_video.mp4
+
+
+ffmpeg -analyzeduration 100M -probesize 100M -i test.mkv -vf subtitles=test.mkv -acodec copy -ss 3 new_video.mp4
+
+ffmpeg -analyzeduration 10000M -probesize 10000M -i test.mkv -vf subtitles=test.mkv -acodec copy -ss 100 new_video.mp4
+
+
+ffmpeg -i test.mkv -vf subtitles=test.mkv  output.mp4
+
+
+ffmpeg -analyzeduration 10000M -probesize 10000M -i test.mkv -c:a aac -map 0:1 -c:s libzvbi-teletext -map 0:5 new_video.mp4
+
+
+ffmpeg -i Band.of.Brothers.2001.JAP.BluRay.E02.1080p.DTS-HD.MA.5.1.x264-HDWinG.mkv -filter_complex "[0:v][0:5]overlay[v]" -map "[v]" -map 0:1 Band.of.Brothers.2001.JAP.BluRay.E02.1080p.DTS-HD.MA.5.1.x264-HDWinG.mp4
