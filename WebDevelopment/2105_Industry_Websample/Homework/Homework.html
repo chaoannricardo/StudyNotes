@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 網頁名稱 -->
+    <title>MotorTech</title>
+    <!-- bootstrap 使用 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- 對.css檔做連結 -->
+    <link rel="stylesheet" href="arrange.css">
+</head>
+<!-- onload 事件用來設計當網頁載入完成後，執行init()函示 -->
+<body id = "mybody">
+    <!-- h1標題 -->
+    <h1>馬達查詢與工廠運作狀況</h1>
+    <div>
+    <!--  使用form標籤建立一個 HTML 表單，用來作為新增table的表單，name為form id 為 form -->
+    <form name='form' id='form'>
+      <!-- 使用input標籤來建立輸入文字(text)這個表單控制元件，用來作為新增table時的輸入內容地方，並分別取不同的name，除了第一列使用id，其他都使用群組class
+        最後會使用placeholder來作為顯示初始值 -->
+      <input type='text' name='Motor_Name' id = "Motor_Name" placeholder="Motor Name"/>
+      <input type='text' name='Power' class = "word" placeholder="Power"/>
+      <input type='text' name='Torque' class = "word" placeholder="Rated Torque"/>
+      <input type='text' name='Rated Speed' class = "word" placeholder="Rated Speed"/>
+      <input type='text' name='Max Speed' class = "word" placeholder="Max Speed"/>
+      <input type='text' name='Rated Current' class = "word" placeholder="Rated Current"/>
+      <input type='text' name='Inertial' class = "word" placeholder="Inertial"/>
+      <input type='text' name='Stator Resistance' class = "word" placeholder="Stator Resistance"/>
+      <input type='text' name='Stator Inductance' class = "word" placeholder="Stator Inductance"/>
+      <!-- 使用input標籤來建立按鈕(button)這個表單控制元件，用來作為新增及刪除table時的按鈕，使用value來顯示不同功能的名稱
+        最後使用點擊事件觸發onclick，新增表格使用的函式為AddRow()，移除表格使用的函式為DeleteRow() -->
+      <input type='button' name='Add'  class = "store" value='儲存至資料庫' onclick="AddRow(this);"/>
+      <br>
+      <input class = "upload" id = "picfile" type='file' name='motor_pic'/>
+      <input class = "upload" id = "detail_file" type='file' name='detail_file'/>
+      <input class = "upload" id = "drive_file" type='file' name='drive_file'/>
+      <br>
+      <input type='button' name='information' class = "doform" value='獲取資料庫馬達參數' onclick="DeleteRow();"/>
+      <br>
+      <input type='button' name='factory' class = "doform" value='工廠運作狀況' onclick="DeleteRow();"/>
+    </form>
+  </div>
+    <!-- 使用table標籤，建立表格，並命名id為Motor_Table -->
+    <table id = "Motor_Table">
+      <!-- 使用thead標籤，定義表格的標題 -->
+      <thead>
+      <!-- 使用tr標籤，建立第一列表格並命名id為topic   -->
+      <tr id = "topic">
+        <!-- 使用td標籤，對每行的名稱設定 -->
+        <td class="theme">馬達名稱</td>
+        <td>功率 (W)</td>
+        <td>額定扭矩 (Nm)</td>
+        <td>額定轉速 (Rpm)</td>
+        <td>最大轉速 (Rpm)</td>
+        <td>額定電流 (A)</td>
+        <td>慣性 (10^-4 J)</td>
+        <td>繞線電阻 (Ohm)</td>
+        <td>繞線電感 (mH)</td>
+      </tr>
+    </thead>
+    <!-- 使用tbody標籤，定義表格的內容 -->
+    <tbody id = "mytbody">
+      <!-- 第二列 -->
+      <tr>
+        <!-- 第二列內容，在第一行時做一個事件觸發，當點擊SMH-L010R30時，呼叫函示Show()，此函示可以換成SMH-L010R30的圖片，與顯示型錄 -->
+        <td class = 'theme' onclick = "Show('image','SMH_L010R30.png','Det','SDH_Detail.pdf','Dri','SDH_Drive.pdf');">SMH-L010R30</td>
+        <td>100</td>
+        <td>0.32</td>
+        <td>3000</td>
+        <td>4500</td>
+        <td>0.85</td>
+        <td>0.055</td>
+        <td>36.18</td>
+        <td>29.81</td>
+      </tr>
+      <!-- 第三列 -->
+      <tr>
+        <!-- 第三列內容，在第一行時做一個事件觸發，當點擊SMH-L020R30時，呼叫函示Show()，此函示可以換成SMH-L020R30的圖片，與顯示型錄 -->
+        <td class = 'theme' onclick = "Show('image','SMH_L020R30.png','Det','SDH_Detail.pdf','Dri','SDH_Drive.pdf');">SMH-L020R30</td>
+        <td>200</td>
+        <td>0.64</td>
+        <td>3000</td>
+        <td>4500</td>
+        <td>1.4</td>
+        <td>0.205</td>
+        <td>11.7</td>
+        <td>42.1</td>
+      </tr>
+      <tr>
+        <!-- 第四列內容，在第一行時做一個事件觸發，當點擊SMH-L040R30時，呼叫函示Show()，此函示可以換成SMH-L040R30的圖片，與顯示型錄 -->
+        <td class = 'theme' onclick = "Show('image','SMH_L040R30.png','Det','SDH_Detail.pdf','Dri','SDH_Drive.pdf');">SMH-L040R30</td>
+        <td>400</td>
+        <td>1.27</td>
+        <td>3000</td>
+        <td>4500</td>
+        <td>2.45</td>
+        <td>0.334</td>
+        <td>5.63</td>
+        <td>22.95</td>
+      </tr>
+    </tbody>
+    </table>
+        </div>
+            <!-- 使用a標籤來建立檔案下載 -->
+        <a id ="Detail" href="SDH_Detail.pdf" target="_blank">
+          <button class ="Showdetail" id = "Det">更多細節</button></a>  
+        <a id ="Drive" href="SDH_Drive.pdf" target="_blank">
+          <button class ="Showdetail" id = "Dri">驅動器說明書</button></a>
+
+             <!-- 使用img標籤來建立圖片 -->
+        <img id = "image" src="SMH_L010R30.png" alt="" >
+
+    <!-- bootstrap使用網址以及將所寫的javascript檔案連結 -->
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>

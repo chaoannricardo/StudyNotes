@@ -1,0 +1,112 @@
+/* 設定整個網頁的背景顏色 */
+body{
+    background-color: rgb(247, 243, 243);
+}
+/* 設定h1標題，包含粗體、字體大小、及移至中間、背景顏色、內距 */
+h1{
+    font-weight: bold; font-size: 75px;text-align: center;
+    background-color:cornsilk;
+    padding: 0px 0px 10px 0px;
+}
+/* 設定表格寬度，邊界粗細、顏色、移至所要位置、最後調整字體大小、至中、改變字體 */
+table{
+    width: 1150px;
+    border:1px solid aqua;
+    margin: 50px 0px 50px 50px;
+    font-size: 20px;text-align: center;font-family: "Gill Sans", sans-serif;
+}
+/* 設定表格中的每一行的外圍線條寬度及顏色，最後設定內距 */
+td{
+    border: 5px solid gray;padding: 10px;
+}
+/* 設定id標籤裡的topic，這個topic為表格的主題，設定其背景顏色，字體為粗體 */
+#topic{
+    background-color: rgba(0, 0, 255, 0.315);font-weight: bold;
+}
+/* 設定基數列(1、3、5...)背景顏色 */
+tr:nth-child(odd){
+    background-color: khaki;
+}
+/* 設定偶數列(1、3、5...)背景顏色 */
+tr:nth-child(even){
+    background-color: lightgrey;
+}
+td.theme{
+    width: 175px;
+}
+
+/* 設定form標籤的距離邊界的相對位置 */
+form{
+    position: relative; left: 50px;
+}
+/* 設定input標籤裡面的群組word，設定其寬度、背景顏色、邊線顏色 */
+input.word{
+    width: 150px;
+    background-color: rgba(177, 196, 191, 0.986);
+    border-color: ghostwhite;
+}
+/* 設定id為Motor_Name的格式，Motor_Name為輸入文字(text)這個表單控制元件，設定包含寬度，背景顏色，邊線顏色 */
+#Motor_Name{
+    width: 200px;
+    background-color: chartreuse;
+    border-color: ghostwhite;
+}
+/* 設定當鼠標移動到input.word群組時變色 */
+input.word:hover{
+    background-color: royalblue;
+}
+/* 設定當鼠標移動到id是Motor_Name名稱時變色 */
+#Motor Name:hover{
+    background-color: salmon;
+}
+input.store{
+    background-color:dodgerblue;
+    margin: 5px 0px 0px 0px;
+    font-weight:bold ; font-size: 20px;
+    border-color: ghostwhite;border-width:4px;border-style:groove
+    background-color:transparent !important;
+}
+/* 設定input.doform群組，設定包含背景顏色，邊界設定，字體變粗，字體大小，邊線顏色寬度和型式 */
+input.doform{
+    width: 300px;
+    background-color:cadetblue;
+    margin: 15px 0px 0px 0px;
+    font-weight:bold ; font-size: 24px;
+    border-color: ghostwhite;border-width:4px;border-style:groove
+    background-color:transparent !important;
+}
+/* 設定當鼠標移動到input.doform群組時變色 */
+input.doform:hover{
+    background-color: rgb(98, 0, 255);
+}
+input.store:hover{
+    background-color:gold
+}
+
+/* 設定圖片包含寬度，位置，邊線寬度及顏色，並把邊線設定為虛線，最後設定內距 */
+img{
+    width: 500px;height: 400px;
+    position: fixed;right: 110px;top: 300px;
+    border-width:5px;border-style:dashed;border-color: turquoise;
+    padding: 50px;
+}
+#Detail{
+    position: fixed;right: 380px;top: 710px;
+}
+#Drive{
+    position: fixed;right: 220px;top: 710px;
+}
+.Showdetail{
+    background-color: rgb(162, 245, 79);
+    font-weight: bold;color: blue;font-size: 20px;
+    border-color: rgb(103, 212, 20);border-width:3px;
+}
+.Showdetail:hover{
+    background-color: cyan;
+}
+.upload{
+    background-color: rgb(209, 236, 236);
+    font-weight: bold;font-family: Georgia, 'Times New Roman', Times, serif;
+    border-color: rgb(92, 92, 72);
+    margin-top: 5px;
+}

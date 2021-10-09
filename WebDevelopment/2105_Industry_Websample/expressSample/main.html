@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Check PLC information</h1>
+    <div class="container">
+        <h2>Add information</h2>
+        <form method="POST">
+        <!-- 使用input標籤來建立輸入文字(text)這個表單控制元件，用來作為新增table時的輸入內容地方，並分別取不同的name，除了第一列使用id，其他都使用群組class
+        最後會使用placeholder來作為顯示初始值 -->
+        <input type='text' name='Motor_Name' id="Motor_Name" placeholder="Motor Name" />
+        <input type='text' name='Torque' class="word" id="Torque" placeholder="Rated Torque" />
+        <input type='text' name='Power' class="word" id="Power" placeholder="Power" />
+        <input type='text' name='Rated Speed' class="word" id="Rated_Speed" placeholder="Rated Speed" />
+        <input type='text' name='Max Speed' class="word" id="Max_Speed" placeholder="Max Speed" />
+        <input type='text' name='Rated Current' class="word"  id="Rated_Current" placeholder="Rated Current" /> 
+        <input type='text' name='Inertial' class="word" id="Inertial" placeholder="Inertial" />
+        <input type='text' name='Stator Resistance' class="word" id="Stator_Resistance" placeholder="Stator Resistance" />
+        <input type='text' name='Stator Inductance' class="word" id="Stator_Inductance" placeholder="Stator Inductance" />
+        <!-- 使用input標籤來建立按鈕(button)這個表單控制元件，用來作為新增及刪除table時的按鈕，使用value來顯示不同功能的名稱
+        最後使用點擊事件觸發onclick，新增表格使用的函式為AddRow()，移除表格使用的函式為DeleteRow() -->
+        <input type='button' name='Add' class="store" value='Database Store' onclick="AddRow();" />
+        <br>
+        <button id="post_data" type="submit" class="store">Submit</button>
+        <br>
+        <h2>Upload data !</h2>
+        <h2>Motor Picture/Detail File/Drive File</h2>
+        <br>
+        <input class="upload" id="pic_file" type='file' name='motor_pic' />
+        <input class="upload" id="detail_file" type='file' name='detail_file' />
+        <input class="upload" id="drive_file" type='file' name='drive_file' />
+        <br>
+        <input type='button' name='information' class="doform" value='Get Information' onclick="DeleteRow();" />
+        <input type='button' name='factory' class="doform" value='Factory Operate' onclick="DeleteRow();" />
+        </form>
+    </div>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="axios.min.js"></script>
+    <script src="proxy.js"></script>
+</body>
+</html>

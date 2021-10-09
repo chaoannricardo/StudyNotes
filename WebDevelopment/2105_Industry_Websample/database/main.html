@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Check PLC information</h1>
+    <div class="container">
+        <h2>Add information</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="Device">Device:</label>
+                <input type="text" class="form-control" id="Device" placeholder="Enter Device" name="Device">
+            </div>
+            <div class="form-group">
+                <label for="Comm">Comm:</label>
+                <input type="text" class="form-control" id="Comm" placeholder="Enter Comm" name="Comm">
+            </div>
+            <div class="form-group">
+                <label for="IP">IP:</label>
+                <input type="text" class="form-control" id="IP" placeholder="Enter IP" name="IP">
+            </div>
+            <div class="form-group">
+                <label for="Port">Port:</label>
+                <input type="text" class="form-control" id="Port" placeholder="Enter Port" name="Port">
+            </div>
+            <div class="form-group">
+                <label for="Node">Node:</label>
+                <input type="text" class="form-control" id="Node_0" placeholder="Enter Node" name="Node_0">
+            </div>
+            <div class="form-group">
+                <label for="Info">Info:</label>
+                <input type="text" class="form-control" id="Info_0" placeholder="Enter Info" name="Info_0">
+            </div>
+            <button id="post_data" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="axios.min.js"></script>
+    <script src="proxy.js"></script>
+</body>
+</html>
